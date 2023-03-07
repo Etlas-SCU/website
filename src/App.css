@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing:border-box;
+    font-family: var(--mainFont);
+}
+
+:root{
+    --mainColor:#003441;
+    --mShadow1:#1B7B94;
+    --mShadow2:#55C4E0;
+    --secondryColor:#BF8148;
+    --sShadow1:#E09955;
+    --sShadow2:#FFBA7A;    
+    --mainFont: 'Montserrat', sans-serif;
+}
+@font-face{
+    font-family: CapitalFont;
+    src: url(fonts/CapitalisTypOasis.ttf);
+    font-family: PressFont;
+    src: url(fonts/PressJobs.ttf);
+    
+}
+.contBTn{
+    cursor: pointer;
+    background-color: var(--secondryColor);
+    color: white;
+    font-size: large;
+    width: 250px;
+    padding: 17px 35px;
+    border-radius: 17px;
+    border: none;
+    font-weight: 600;
+    margin: 50px 0px;
+}

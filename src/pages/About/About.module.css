@@ -1,0 +1,79 @@
+
+.about{
+    padding: 120px 25px;
+    height: 100%;
+}
+.lift_side{
+    position: relative;
+}
+.about .title{
+ color: white;
+}
+.tri{
+    width: 498px;
+    position: absolute;
+    z-index: -1;
+    top: 48px;
+    left: -275px;
+    height: 450px;
+    border-radius: 10px;
+    background-color: var(--secondryColor);
+    rotate: 133deg;
+}
+.rotTit{
+    font-size: 60px;
+    font-family: CapitalFont;
+    color: var(--mainColor);
+    /* transform: rotate(-270deg); */
+    rotate: 90deg;
+    position: absolute;
+    top: 229px;
+    left: -73px;
+}
+.discreption{
+    width: 45%;
+    margin:60px 185px ;
+    color: white;
+}
+.discreption p{
+    margin-bottom: 60px ;
+    font-weight: 300;
+    line-height: 1.5;
+
+}
+.discreption h2{
+    margin: 10px 0px;
+}
+
+.png img{
+    width: 373px;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+}
+.png p{
+    color: white;
+    position: absolute;
+}
+.linkes{
+position: absolute;
+right: 50px;
+bottom: 50px;
+}
+.linkes a img{
+    width: 40px;
+}
+.linkes p{
+    margin-bottom: 17px;
+    text-align: center;
+    color: white;
+}
+.copy_right{
+color: white;
+margin:  0px;
+padding: 30px 25px;
+}
+@media only screen and (max-width: 900px){
+    .discreption{width: 100%; margin: 0px 0px 60px 79px;}
+    .png img{z-index: -1; opacity: 0.5;}
+}
