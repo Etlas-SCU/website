@@ -3,10 +3,21 @@
     background-color: var(--secondryColor);
     color: white;
     font-size: large;
-    width: fit-content;
+    width:230px;
     padding: 17px 35px;
     border-radius: 17px;
     border: none;
-    font-weight: 600;
+    font-weight: 500;
     margin: 50px 0px;
+    text-align: center;
+    height: 70px;
+}
+@media only screen and (max-width: 900px){
+    .contBTn{
+        width: 200px;
+        height: 65px;
+        font-weight: 400;
+        font-size: 14px;
+        
+    }
 }

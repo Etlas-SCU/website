@@ -5,35 +5,10 @@ import downLogo from "../../images/Icons/downLogo.png";
 import ContainedBtn from "../../components/containedBtn/ContainedBtn";
 
 export default function Home() {
-  const [isHovering ,setIsHovering]=useState(false)
+  const [isHovering, setIsHovering] = useState(false);
   return (
     <Stack>
-      <Box className={styles.home__sec1}>
-        {/* first section  */}
-        The Next Generation of Tourist Exploration is here!The Next Generation
-        of Tourist Exploration is here!The Next Generation of Tourist
-        Exploration is here!The Next Generation of Tourist Exploration is
-        here!The Next Generation of Tourist Exploration is here!The Next
-        Generation of Tourist Exploration is here!The Next Generation of Tourist
-        Exploration is here!The Next Generation of Tourist Exploration is
-        here!The Next Generation of Tourist Exploration is here!The Next
-        Generation of Tourist Exploration is here!The Next Generation of Tourist
-        Exploration is here!The Next Generation of Tourist Exploration is
-        here!The Next Generation of Tourist Exploration is here!The Next
-        Generation of Tourist Exploration is here!The Next Generation of Tourist
-        Exploration is here!The Next Generation of Tourist Exploration is
-        here!The Next Generation of Tourist Exploration is here!The Next
-        Generation of Tourist Exploration is here!The Next Generation of Tourist
-        Exploration is here!The Next Generation of Tourist Exploration is
-        here!The Next Generation of Tourist Exploration is here!The Next
-        Generation of Tourist Exploration is here!The Next Generation of Tourist
-        Exploration is here!The Next Generation of Tourist Exploration is
-        here!The Next Generation of Tourist Exploration is here!The Next
-        Generation of Tourist Exploration is here!The Next Generation of Tourist
-        Exploration is here! is here! is here! is here! is here! is here! is
-        here! is here! is here! is here! is here! is here! is here! is here! is
-        here! is here! is here!
-      </Box>
+      <Box className={styles.home__sec1}>{/* first section  */}</Box>
 
       <Stack direction="row-reverse" className={styles.home__sec2}>
         <Box>
@@ -47,7 +22,7 @@ export default function Home() {
         </Box>
         <Box width="60%">
           <h2>Why our Application?</h2>
-          <p>
+          <p className={styles.sec2__para}>
             Etlas application let feel the full experience as it can be used to
             recognize monuments, statues and landmarks with a text-to-speech
             technology and make your trip/tour much easier and funnier to learn
@@ -55,34 +30,21 @@ export default function Home() {
             your favorite object to appear in your camera using the AR
             technology.
           </p>
-          <ContainedBtn
+
+          <Box width="230px"
             onMouseOver={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className={styles.contBTn}
           >
-
-            {isHovering ? (
-              <img alt="ay" width="30px" src={downLogo} />
-            ) : (
-              <p>Download Now!</p>
-            )}
-
-          </ContainedBtn>
+            <ContainedBtn>
+              {isHovering ? (
+                <img alt="ay" width="30px" src={downLogo} />
+              ) : (
+                <p style={{paddingTop:"7px"}}>Download Now!</p>
+              )}
+            </ContainedBtn>
+          </Box>
         </Box>
       </Stack>
-
-      <Box>
-        Generation of Tourist Exploration is here!The Next Generation of Tourist
-        Exploration is here!The Next Generation of Tourist Exploration is
-        here!The Next Generation of Tourist Exploration is here!The Next
-        Generation of Tourist Exploration is here!The Next Generation of Tourist
-        Exploration is here!The Next Generation of Tourist Exploration is
-        here!The Next Generation of Tourist Exploration is here!The Next
-        Generation of Tourist Exploration is here!The Next Generation of Tourist
-        Exploration is here!The Next Generation of Tourist Exploration is
-        here!The Next Generation of Tourist Exploration is here!The Next
-        Generation of Tourist Exploration is here!The N
-      </Box>
     </Stack>
   );
 }

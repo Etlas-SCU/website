@@ -12,28 +12,16 @@
 .home__sec2 h2{
     padding:50px 0px 18px 0px;
 }
-.home__sec2 p{
+.sec2__para{
     font-weight: 500;
 }
 
-/* .contBTn{
-    cursor: pointer;
-    background-color: var(--secondryColor);
-    color: white;
-    font-size: large;
-    width: 250px;
-    padding: 17px 35px;
-    border-radius: 17px;
-    border: none;
-    font-weight: 600;
-    margin: 50px 0px;
-} */
-.contBTn:hover{
+/* .BTn:hover{
     transition: 3s;
 }
-.contBTn{
+.BTn{
     height: 70px;
-}
+} */
 
 @media only screen and (max-width: 900px){
     .home__sec2{
@@ -42,15 +30,15 @@
     .home__sec2 h2{
         font-size: 15px;
     }
-    .home__sec2 p{
+    .sec2__para{
         font-size: 12px;
     }
-    .home__sec2 button{
+    /* .home__sec2 button{
         padding: 12px;
         margin: 20px 0px;
         width: 150px;
   
-    }
+    } */
     /* .home--sec2 .hamada{
         width: 50%;
     } */
