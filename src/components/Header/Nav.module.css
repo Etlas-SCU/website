@@ -54,7 +54,7 @@ padding: 8px;
   margin-right: 8PX;
 }
 
-.lang--popUp {
+.lang__popUp {
   width: 167px;
   background-color: var(--secondryColor);
   color: white;
@@ -69,10 +69,10 @@ padding: 8px;
   font-weight:500 ;
 
 }
-@media only screen and (min-width: 1090px){.lang--popUp{width:235px;}}
+@media only screen and (min-width: 1090px){.lang__popUp{width:235px;}}
 
 
-.triangle-up {
+.triangle_up {
   width: 0;
   height: 0;
   border-left: 15px solid transparent;
@@ -83,7 +83,7 @@ padding: 8px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.lang--popUp--title{
+.lang__popUp__title{
   color:var(--mainColor) ;
   font-weight:900 ;
   text-align: center;

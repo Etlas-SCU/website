@@ -2,6 +2,8 @@ import { Box, Stack } from "@mui/material";
 import React, { useState } from "react";
 import styles from "./Home.module.css";
 import downLogo from "../../images/Icons/downLogo.png";
+import ContainedBtn from "../../components/containedBtn/ContainedBtn";
+
 export default function Home() {
   const [isHovering ,setIsHovering]=useState(false)
   return (
@@ -53,15 +55,19 @@ export default function Home() {
             your favorite object to appear in your camera using the AR
             technology.
           </p>
-          <button className={styles.contBTn}
-           onMouseOver={()=>setIsHovering(true)}
-           onMouseLeave={()=>setIsHovering(false)}
-        
+          <ContainedBtn
+            onMouseOver={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            className={styles.contBTn}
           >
-            {isHovering ? <img width="30px" src={downLogo} /> :  <p>Download Now!</p>}
-            
-            
-          </button>
+
+            {isHovering ? (
+              <img alt="ay" width="30px" src={downLogo} />
+            ) : (
+              <p>Download Now!</p>
+            )}
+
+          </ContainedBtn>
         </Box>
       </Stack>
 

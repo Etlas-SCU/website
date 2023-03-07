@@ -4,7 +4,7 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink } from "react-router-dom";
-import "./Nav.css";
+import styles from  "./Nav.module.css";
 import world from "../../images/Icons/World.png";
 import { Stack } from "@mui/material";
 import Popup from "./registe-signin/Popup";
@@ -26,7 +26,7 @@ export default function Nav() {
     <>
       <NavLink to="/">
         <p
-          className="nav__list__item"
+          className={styles.nav__list__item}
           onClick={() => setbackgroundColor("#003441")}
         >
           Home
@@ -34,7 +34,7 @@ export default function Nav() {
       </NavLink>
       <NavLink to="/know_history">
         <p
-          className="nav__list__item"
+          className={styles.nav__list__item}
           onClick={() => setbackgroundColor("#FFFFFF")}
         >
           {" "}
@@ -43,7 +43,7 @@ export default function Nav() {
       </NavLink>
       <NavLink to="/tours">
         <p
-          className="nav__list__item"
+          className={styles.nav__list__item}
           onClick={() => setbackgroundColor("#FFFFFF")}
         >
           Tours
@@ -51,7 +51,7 @@ export default function Nav() {
       </NavLink>
       <NavLink to="/articles">
         <p
-          className="nav__list__item"
+          className={styles.nav__list__item}
           onClick={() => setbackgroundColor("#FFFFFF")}
         >
           Articles
@@ -59,7 +59,7 @@ export default function Nav() {
       </NavLink>
       <NavLink to="/knowledge" style={{ marginRight: "2vw" }}>
         <p
-          className="nav__list__item"
+          className={styles.nav__list__item}
           onClick={() => setbackgroundColor("#FFFFFF")}
         >
           Knowledge Check
@@ -69,13 +69,13 @@ export default function Nav() {
       <button
         onClick={() => setButtonPopup([true, "Register"])}
         style={{ backgroundColor: "#003441" }}
-        className="nav__list__btn"
+        className={styles.nav__list__btn}
       >
         Register
       </button>
       <button
         onClick={() => setButtonPopup([true, "Sign In"])}
-        className="nav__list__btn"
+        className={styles.nav__list__btn}
       >
         Sign in
       </button>
@@ -93,7 +93,7 @@ export default function Nav() {
       style={{ backgroundColor: "#BF8148" }}
       height="100%"
     >
-      <Stack className="nav__list" direction="column">
+      <Stack className={styles.nav__list} direction="column">
         <Box p="50px 0px 10px 0px" lineHeight="60px">
           {NavList}
         </Box>
@@ -104,10 +104,10 @@ export default function Nav() {
         ></Box>
 
         <Box>
-          <p className="sideNav_li">English</p>
-          <p className="sideNav_li">العربيه</p>
-          <p className="sideNav_li">Española</p>
-          <p className="sideNav_li">Française</p>
+          <p className={styles.sideNav_li}>English</p>
+          <p className={styles.sideNav_li}>العربيه</p>
+          <p className={styles.sideNav_li}>Española</p>
+          <p className={styles.sideNav_li}>Française</p>
         </Box>
       </Stack>
     </Box>
@@ -117,13 +117,13 @@ export default function Nav() {
     <>
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup} />
 
-      <Box className="nav">
+      <Box className={styles.nav}>
         <Box
           display="flex"
           alignItems="center"
           sx={{ width: { xs: "auto", md: "20%" } }}
         >
-          <div className="elogo">e</div>
+          <div className={styles.elogo}>e</div>
           <Box color="white" fontWeight="200">
             <p style={{ fontFamily: "CapitalFont", fontSize: "20px" }}>ETLAS</p>
             <div style={{ fontFamily: "var(--mainFont)", fontSize: "11px" }}>
@@ -153,9 +153,9 @@ export default function Nav() {
         </Box>
 
         <Box sx={{ display: { xs: "none", md: "block" } }}>
-          <Box className="nav__list">
+          <Box className={styles.nav__list}>
             <Box
-              className="nav__list__lang"
+              className={styles.nav__list__lang}
               onMouseEnter={() => setLangPopup(true)}
               onMouseLeave={() => setLangPopup(false)}
               open={langPopup}
@@ -163,20 +163,20 @@ export default function Nav() {
               <img src={world} alt="worldIcon" style={{ width: "30px" }} />
 
               {langPopup && (
-                <Box pt="20px" className="lang--popUp ">
-                  <p className="triangle-up"> </p>
+                <Box pt="20px" className={styles.lang__popUp}>
+                  <p className={styles.triangle_up}> </p>
 
-                  <p className="lang--popUp--title">choose your language</p>
+                  <p className={styles.lang__popUp__title}>choose your language</p>
                   <Box
                     margin="0 auto"
                     mb="10px"
                     borderBottom="2.6px solid white "
                     width="92px"
                   ></Box>
-                  <p className="sideNav_li">English</p>
-                  <p className="sideNav_li">العربيه</p>
-                  <p className="sideNav_li">Española</p>
-                  <p className="sideNav_li">Française</p>
+                  <p className={styles.sideNav_li}>English</p>
+                  <p className={styles.sideNav_li}>العربيه</p>
+                  <p className={styles.sideNav_li}>Española</p>
+                  <p className={styles.sideNav_li}>Française</p>
                 </Box>
               )}
             </Box>
