@@ -37,12 +37,13 @@ export default function Home() {
               onMouseOver={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >
-              <NavLink to="/download" >
+
+              <NavLink to="/download">
                 <ContainedBtn>
                   {isHovering ? (
-                    <img alt="ay" width="30px" src={downLogo}  />
+                    <img alt="ay" width="30px" src={downLogo} />
                   ) : (
-                    <p  >Download Now!</p>
+                    <p >Download Now!</p>
                   )}
                 </ContainedBtn>
               </NavLink>

@@ -32,10 +32,6 @@ a{
     width: 450px;
 }
 
-/* .home__sec2__LSide .ha:hover{
-    transition:  9s;
-} */
-
 @media only screen and (max-width: 900px){
     .home__sec2{
         width: fit-content;
