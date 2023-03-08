@@ -1,0 +1,12 @@
+/* .img {
+    background-image: linear-gradient(to top, #6c6967b3, #6c6967b3, #6c69676a, #a5a39f2b, #dfe2dc50);
+  
+   
+} */
+
+.info__sec2{
+    position: absolute;
+    bottom: -358px;
+    background-color: var(--mainColor);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}

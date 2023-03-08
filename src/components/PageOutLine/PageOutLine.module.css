@@ -1,0 +1,9 @@
+.title{
+    background-color: var(--mainColor);
+    color: white;
+    padding: 0 90px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 0px 15px 15px 0px;
+}
