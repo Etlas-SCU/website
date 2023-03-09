@@ -22,10 +22,10 @@ export default function Sec1() {
             For a better experience <span className={styles.download}> download </span> our App
           </Stack>
           <Stack className={styles.download_icons} direction='row' gap='10px'>
-            <a href='##' className={styles.download_btn}>
+            <a href = '##' className={styles.download_btn}>
               <img src={Play} className={styles.playstore_img} alt='download-with-play-store' />
             </a>
-            <a href='##' className={styles.download_btn}>
+            <a href = '##' className={styles.download_btn}>
               <img src={App} className={styles.appstore_img} alt='download-with-app-store' />
             </a>
           </Stack>
