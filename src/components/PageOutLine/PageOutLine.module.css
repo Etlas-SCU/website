@@ -1,9 +1,18 @@
 .title{
     background-color: var(--mainColor);
     color: white;
-    padding: 0 90px;
-    font-size: 40px;
+    padding: 0 45px;
+    font-size: 28px;
     display: flex;
     align-items: center;
     border-radius: 0px 15px 15px 0px;
+}
+.filterIcon{
+    width: 55px;
+}
+@media only screen and (max-width: 900px){
+    .title{font-size: 20px;}
+    .filterIcon{
+      width: 48px;
+    }
 }

@@ -44,33 +44,7 @@
     color: #FFFFFF;
     padding: 15px 0 ;
   }
-  
-  .search {
-    padding: 20px 0;
-  }
-  
-  .search_input {
-    height: 50px;
-    width: 620px;
-    border-radius: 18px;
-    border: none;
-    background: #D9D9D9;
-    color: #9F9F9F;
-    font-family: 'Montserrat';
-    font-weight: 400;
-    font-size: 16px;
-    outline: none;
-    padding: 0 10px;
-  }
-  
-  .search_icon {
-    position: relative;
-    width: 15px;
-    height: 20px;
-    top: 19px;
-    right: 40px;
-  }
-  
+
   .download_prag {
     width: 400px;
     height: 20px;
@@ -109,41 +83,7 @@
     height: 60px;
   }
   
-  .home__sec2 {
-    position: relative;
-    padding: 100px 25px;
-    color: var(--mainColor);
-    background-color: white;
-    clip-path: polygon(0 15%, 100% 0%, 100% 80%, 0% 100%);
-  }
-  
-  .home__sec2__LSide {
-    width: 56%;
-  }
-  
-  .home__sec2__LSide h2 {
-    padding: 50px 0px 18px 0px;
-  }
-  
-  .home__sec2__para {
-    font-weight: 500;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  .home__sec2__RSide {
-    position: absolute;
-    bottom: -20px;
-    right: 0px;
-    width: fit-content;
-  }
-  
-  .home__sec2__RSide img {
-    width: 450px;
-  }
-  
+ 
   @media only screen and (max-width: 900px) {
     .home__sec1{
         height: 72rem;
@@ -184,7 +124,7 @@
         padding: 2rem 0 0 0 ;
     }
   
-    .search_input {
+    /* .search_input {
         height: 2.5rem;
         width: 35rem;
         font-size: 13px;
@@ -196,32 +136,6 @@
         top: 1rem;
     }
   
-    .home__sec2 {
-        width: fit-content;
-        justify-content: center;
-    }
+  */
   
-    .home__sec2__LSide {
-        margin: 0 auto;
-        width: 65%;
-    }
-  
-    .home__sec2__LSide h2 {
-        font-size: 15px;
-    }
-  
-    .home__sec2__para {
-        font-size: 12px;
-    }
-  
-    .home__sec2__RSide {
-        position: unset;
-        margin: 0 auto;
-    }
-  
-    .home__sec2__RSide img {
-        width: 220px;
-    }
-  
-  
-  }
+  } 
