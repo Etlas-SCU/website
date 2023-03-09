@@ -54,6 +54,12 @@
   margin-right: 2.5px;
 }
 
+.appstore_img,
+.playstore_img {
+  width: 180px;
+}
+
+
 /* .download_icons {
   padding: 10px 0;
   left: 10px;
@@ -64,12 +70,6 @@
   border: none;
   margin-right: 10px;
 } */
-
-.appstore_img,
-.playstore_img {
-  width: 180px;
-}
-
 
 @media only screen and (max-width: 900px) {
   .home_row {
