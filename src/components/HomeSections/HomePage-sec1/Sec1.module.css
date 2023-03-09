@@ -1,130 +1,120 @@
+
 .home__sec1 {
-    padding: 90px 0px;
-    background: var(--mainColor);
-    height: 700px;
-  }
-  
-  .home_row {
-    justify-content: space-around;
-  }
-  
-  .img_col {
-    top: 3px;
-  }
-  
-  .home_img {
-    width: 530px;
-    height: 700px;
-  }
-  
-  .home_col {
-    padding: 130px 0px 100px 50px;
-  }
-  
-  .home_title {
-    width: 515px;
-    height: 125px;
-    font-family: 'CapitalisTypOasis';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 40px;
-    color: var( --secondryColor);
-    padding: 3px 0 ;
-  }
-  
-  .home_prag {
-    width: 704px;
-    height: 75px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: #FFFFFF;
-    padding: 15px 0 ;
+  padding: 90px 0px;
+  background: var(--mainColor);
+  position: relative;
+}
+
+.home_row {
+  justify-content: space-between;
+}
+
+
+.home_img {
+  width: 330px;
+  height: 650px;
+}
+
+.home_col {
+  padding: 100px 0 0 40px;
+}
+
+.home_title {
+  font-family: 'CapitalisTypOasis';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 52px;
+  color: var(--secondryColor);
+  padding: 10px 0;
+}
+
+.home_prag {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #FFFFFF;
+  padding: 10px 0;
+}
+
+.download_prag {
+  padding: 20px 0;
+  font-style: normal;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.download {
+  color: var(--secondryColor);
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+}
+
+.download_icons {
+  padding: 10px 0;
+  left: 10px;
+}
+
+.download_btn {
+  background: none;
+  border: none;
+  margin-right: 10px;
+}
+
+.playstore_img {
+  width: 180px;
+  height: 60px;
+}
+
+.appstore_img {
+  width: 180px;
+  height: 60px;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .home_row{
+    justify-content: center;
+    width: fit-content;
   }
 
-  .download_prag {
-    width: 400px;
-    height: 20px;
-    padding: 30px 0;
-    font-style: normal;
-    font-family: 'Montserrat';
-    font-weight: 400;
-    font-size: 16px;
-    color: #ffffff;
+  .img_col {
+    position: absolute;
+    margin: 0 auto;
   }
-  
-  .download {
-    color: var( --secondryColor);
-    margin-left: 2.5px;
-    margin-right: 2.5px;
+
+  .home_img {
+    width: 15rem;
+    height: 30rem;
   }
-  
-  .download_icons {
-    padding: 10px;
-    left: 10px;
+
+  .home_col {
+    width: 65%;
+    padding: 400px 0 0 0 ;
+  } 
+
+  .home_title {
+    font-size: 30px;
+    line-height: 35px;
   }
-  
-  .download_btn {
-    background: none;
-    border: none;
-    margin-right: 10px;
+
+  .home_prag {
+    font-size: 15px;
   }
-  
-  .playstore_img {
-    width: 180px;
-    height: 60px;
+
+  .download_icons{
+    flex-wrap: wrap;
   }
-  
-  .appstore_img {
-    width: 180px;
-    height: 60px;
+
+  .download_prag{
+    flex-wrap: wrap;
   }
-  
- 
-  @media only screen and (max-width: 900px) {
-    .home__sec1{
-        height: 72rem;
-    }
-    .home_row {
-        justify-content: center;
-    }
-  
-    .img_col {
-        /* position: absolute;
-        /* opacity: 0.3;
-        top: 35rem; */
-        position: absolute;
-        padding: 90px 0px 0px 0px;
-    }
-  
-    .home_img {
-        width: 30rem;
-        height: 40rem;
-    }
-  
-    .home_col {
-        position: absolute;
-        top: 35rem;
-        /*padding: 70px 0px 70px 40px; */
-    }
-  
-    .home_title {
-        width: 40rem;
-        height: 5rem;
-        font-size: 35px;
-    }
-  
-    .home_prag {
-        width: 40rem;
-        height: 8rem;
-        font-size: 15px;
-        padding: 2rem 0 0 0 ;
-    }
-  
-    /* .search_input {
+
+  /* .search_input {
         height: 2.5rem;
         width: 35rem;
         font-size: 13px;
@@ -137,5 +127,6 @@
     }
   
   */
-  
-  } 
+
+}
+

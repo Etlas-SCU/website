@@ -1,3 +1,4 @@
+
 import { Stack } from '@mui/material'
 import React from 'react'
 import Search from '../../images/Icons/Search.png'
@@ -15,3 +16,4 @@ export default function SearchInput() {
   </Stack>
   )
 }
+
