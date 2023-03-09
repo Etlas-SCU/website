@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Box, Stack, Button } from "@mui/material";
 import styles from "./Sec1.module.css";
@@ -38,3 +39,4 @@ export default function Sec1() {
 
   )
 }
+
