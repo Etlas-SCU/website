@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Download.module.css";
 import play from "../../images/Pngs/PlayStore.png";
 import app from "../../images/Pngs/AppStore.png";
-import EG from "../../images/Pngs/EG .png";
+import phone from "../../images/Pngs/phone (2).png";
 
 export default function Download() {
   return (
@@ -19,7 +19,7 @@ export default function Download() {
         historic information about your scanned object. You can also use your
         favorite object to appear in your camera using the AR technology.
       </p>
-      <img src={EG} alt="EG" className={styles.eg}/>
+      <img src={phone} alt="EG" className={styles.phone}/>
      </Box>
 
       <Stack direction="row" className={styles.down__sec} >

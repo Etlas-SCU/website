@@ -1,0 +1,130 @@
+.home__sec1 {
+  padding: 90px 0px;
+  background: var(--mainColor);
+  position: relative;
+}
+
+.home_row {
+  justify-content: space-between;
+}
+
+
+.home_img {
+  width: 330px;
+  height: 650px;
+}
+
+.home_col {
+  padding: 100px 0 0 40px;
+}
+
+.home_title {
+  font-family: 'CapitalisTypOasis';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 52px;
+  color: var(--secondryColor);
+  padding: 10px 0;
+}
+
+.home_prag {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #FFFFFF;
+  padding: 10px 0;
+}
+
+.download_prag {
+  padding: 20px 0;
+  font-style: normal;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.download {
+  color: var(--secondryColor);
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+}
+
+.download_icons {
+  padding: 10px 0;
+  left: 10px;
+}
+
+.download_btn {
+  background: none;
+  border: none;
+  margin-right: 10px;
+}
+
+.playstore_img {
+  width: 180px;
+  height: 60px;
+}
+
+.appstore_img {
+  width: 180px;
+  height: 60px;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .home_row{
+    justify-content: center;
+    width: fit-content;
+  }
+
+  .img_col {
+    position: absolute;
+    margin: 0 auto;
+  }
+
+  .home_img {
+    width: 15rem;
+    height: 30rem;
+  }
+
+  .home_col {
+    width: 65%;
+    padding: 400px 0 0 0 ;
+  } 
+
+  .home_title {
+    font-size: 30px;
+    line-height: 35px;
+  }
+
+  .home_prag {
+    font-size: 15px;
+  }
+
+  .download_icons{
+    flex-wrap: wrap;
+  }
+
+  .download_prag{
+    flex-wrap: wrap;
+  }
+
+  /* .search_input {
+        height: 2.5rem;
+        width: 35rem;
+        font-size: 13px;
+    }
+  
+    .search_icon {
+        width: 1rem;
+        height: 1rem;
+        top: 1rem;
+    }
+  
+  */
+
+}
