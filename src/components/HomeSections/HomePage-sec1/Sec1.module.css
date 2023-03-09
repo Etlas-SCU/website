@@ -1,5 +1,5 @@
 .home__sec1 {
-  padding: 90px 0px;
+  padding: 90px 0 0 0;
   background: var(--mainColor);
   position: relative;
 }
@@ -10,8 +10,9 @@
 
 
 .home_img {
-  width: 330px;
-  height: 650px;
+  width: 43vw;
+  margin-top: 15px;
+  /* height: 650px; */
 }
 
 .home_col {
@@ -22,7 +23,7 @@
   font-family: 'CapitalisTypOasis';
   font-style: normal;
   font-weight: 400;
-  font-size: 60px;
+  font-size: 45px;
   line-height: 52px;
   color: var(--secondryColor);
   padding: 10px 0;
@@ -32,18 +33,18 @@
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 22px;
   color: #FFFFFF;
-  padding: 10px 0;
+  padding: 10px 0 25px 0;
 }
 
 .download_prag {
-  padding: 20px 0;
+  padding: 40px 0 20px 0;
   font-style: normal;
   font-family: 'Montserrat';
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   color: #ffffff;
 }
 
@@ -53,7 +54,7 @@
   margin-right: 2.5px;
 }
 
-.download_icons {
+/* .download_icons {
   padding: 10px 0;
   left: 10px;
 }
@@ -62,56 +63,54 @@
   background: none;
   border: none;
   margin-right: 10px;
-}
+} */
 
+.appstore_img,
 .playstore_img {
   width: 180px;
-  height: 60px;
-}
-
-.appstore_img {
-  width: 180px;
-  height: 60px;
 }
 
 
 @media only screen and (max-width: 900px) {
-  .home_row{
+  .home_row {
     justify-content: center;
-    width: fit-content;
   }
 
   .img_col {
     position: absolute;
-    margin: 0 auto;
   }
 
-  .home_img {
+  /* .home_img {
     width: 15rem;
     height: 30rem;
-  }
+  } */
 
   .home_col {
-    width: 65%;
-    padding: 400px 0 0 0 ;
-  } 
+    width: 80%;
+    padding: 48vw 0 0 0;
+  }
 
   .home_title {
-    font-size: 30px;
-    line-height: 35px;
+    font-size: 25px;
+    line-height: 25px;
   }
 
-  .home_prag {
-    font-size: 15px;
+  .home_prag,
+  .download_prag {
+    font-size: 12px;
+    line-height: 18px;
+    width: 85%;
   }
 
-  .download_icons{
-    flex-wrap: wrap;
+  .appstore_img,
+  .playstore_img {
+    width: 100px;
   }
 
+  /* 
   .download_prag{
     flex-wrap: wrap;
-  }
+  } */
 
   /* .search_input {
         height: 2.5rem;
