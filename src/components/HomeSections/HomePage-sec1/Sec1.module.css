@@ -44,33 +44,7 @@
     color: #FFFFFF;
     padding: 15px 0 ;
   }
-  
-  .search {
-    padding: 20px 0;
-  }
-  
-  .search_input {
-    height: 50px;
-    width: 620px;
-    border-radius: 18px;
-    border: none;
-    background: #D9D9D9;
-    color: #9F9F9F;
-    font-family: 'Montserrat';
-    font-weight: 400;
-    font-size: 16px;
-    outline: none;
-    padding: 0 10px;
-  }
-  
-  .search_icon {
-    position: relative;
-    width: 15px;
-    height: 20px;
-    top: 19px;
-    right: 40px;
-  }
-  
+
   .download_prag {
     width: 400px;
     height: 20px;
@@ -150,7 +124,7 @@
         padding: 2rem 0 0 0 ;
     }
   
-    .search_input {
+    /* .search_input {
         height: 2.5rem;
         width: 35rem;
         font-size: 13px;
@@ -162,6 +136,6 @@
         top: 1rem;
     }
   
+  */
   
-  
-  }
+  } 

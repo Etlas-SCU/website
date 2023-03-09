@@ -4,7 +4,7 @@ import styles from "./Sec1.module.css";
 import Statue2 from '../../../images/Pngs/Statue2.png'
 import App from '../../../images/Pngs/AppStore.png'
 import Play from '../../../images/Pngs/PlayStore.png'
-import Search from '../../../images/Icons/Search.png'
+import SearchInput from '../../SearchInput/SearchInput';
 
 export default function Sec1() {
   return (
@@ -15,14 +15,9 @@ export default function Sec1() {
           <p className={styles.home_title}>THE NEXT GENERATION OF TOURIST EXPLORATION IS HERE!</p>
           <p className={styles.home_prag}>Etlas is designed to revolutionize the way tourists explore new places. The app makes use of computer vision and augmented reality technologies to enhance the tourist experience by providing interactive and immersive experiences at famous landmarks and monuments.</p>
         </Box>
-        <Stack className={styles.search} direction='row'>
-          <input
-            type='search'
-            placeholder='Search for monuments, statues, landmarks and more!'
-            name='search'
-            className={styles.search_input} />
-          <img src={Search} className={styles.search_icon} alt='search' />
-        </Stack>
+
+        <SearchInput/>
+       
         <Stack className={styles.download_prag} direction='row'>
           For a better experience <span className={styles.download}> download </span> our App
         </Stack>
