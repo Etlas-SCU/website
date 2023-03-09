@@ -1,59 +1,227 @@
-.home__sec1{
-    padding: 105px 0px;
-}
-.home__sec2{
-
+.home__sec1 {
+    padding: 90px 0px;
+    background: var(--mainColor);
+    height: 700px;
+  }
+  
+  .home_row {
+    justify-content: space-around;
+  }
+  
+  .img_col {
+    top: 3px;
+  }
+  
+  .home_img {
+    width: 530px;
+    height: 700px;
+  }
+  
+  .home_col {
+    padding: 130px 0px 100px 50px;
+  }
+  
+  .home_title {
+    width: 515px;
+    height: 125px;
+    font-family: 'CapitalisTypOasis';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 40px;
+    color: var( --secondryColor);
+    padding: 3px 0 ;
+  }
+  
+  .home_prag {
+    width: 704px;
+    height: 75px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    padding: 15px 0 ;
+  }
+  
+  .search {
+    padding: 20px 0;
+  }
+  
+  .search_input {
+    height: 50px;
+    width: 620px;
+    border-radius: 18px;
+    border: none;
+    background: #D9D9D9;
+    color: #9F9F9F;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 16px;
+    outline: none;
+    padding: 0 10px;
+  }
+  
+  .search_icon {
+    position: relative;
+    width: 15px;
+    height: 20px;
+    top: 19px;
+    right: 40px;
+  }
+  
+  .download_prag {
+    width: 400px;
+    height: 20px;
+    padding: 30px 0;
+    font-style: normal;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 16px;
+    color: #ffffff;
+  }
+  
+  .download {
+    color: var( --secondryColor);
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+  
+  .download_icons {
+    padding: 10px;
+    left: 10px;
+  }
+  
+  .download_btn {
+    background: none;
+    border: none;
+    margin-right: 10px;
+  }
+  
+  .playstore_img {
+    width: 180px;
+    height: 60px;
+  }
+  
+  .appstore_img {
+    width: 180px;
+    height: 60px;
+  }
+  
+  .home__sec2 {
     position: relative;
     padding: 100px 25px;
     color: var(--mainColor);
     background-color: white;
     clip-path: polygon(0 15%, 100% 0%, 100% 80%, 0% 100%);
-}
-.home__sec2__LSide{
-    width:56%;
-}
-.home__sec2__LSide h2{
-    padding:50px 0px 18px 0px;
-}
-.home__sec2__para{
+  }
+  
+  .home__sec2__LSide {
+    width: 56%;
+  }
+  
+  .home__sec2__LSide h2 {
+    padding: 50px 0px 18px 0px;
+  }
+  
+  .home__sec2__para {
     font-weight: 500;
-}
-a{
-  text-decoration: none;
-}
-
-.home__sec2__RSide{
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .home__sec2__RSide {
     position: absolute;
     bottom: -20px;
     right: 0px;
     width: fit-content;
-}
-.home__sec2__RSide img{
+  }
+  
+  .home__sec2__RSide img {
     width: 450px;
-}
-
-@media only screen and (max-width: 900px){
-    .home__sec2{
+  }
+  
+  @media only screen and (max-width: 900px) {
+    .home__sec1{
+        height: 72rem;
+    }
+    .home_row {
+        justify-content: center;
+    }
+  
+    .img_col {
+        /* position: absolute;
+        /* opacity: 0.3;
+        top: 35rem; */
+        position: absolute;
+        padding: 90px 0px 0px 0px;
+    }
+  
+    .home_img {
+        width: 30rem;
+        height: 40rem;
+    }
+  
+    .home_col {
+        position: absolute;
+        top: 35rem;
+        /*padding: 70px 0px 70px 40px; */
+    }
+  
+    .home_title {
+        width: 40rem;
+        height: 5rem;
+        font-size: 35px;
+    }
+  
+    .home_prag {
+        width: 40rem;
+        height: 8rem;
+        font-size: 15px;
+        padding: 2rem 0 0 0 ;
+    }
+  
+    .search_input {
+        height: 2.5rem;
+        width: 35rem;
+        font-size: 13px;
+    }
+  
+    .search_icon {
+        width: 1rem;
+        height: 1rem;
+        top: 1rem;
+    }
+  
+    .home__sec2 {
         width: fit-content;
         justify-content: center;
     }
-    .home__sec2__LSide{
+  
+    .home__sec2__LSide {
         margin: 0 auto;
         width: 65%;
     }
-    .home__sec2__LSide h2{
+  
+    .home__sec2__LSide h2 {
         font-size: 15px;
     }
-    .home__sec2__para{
+  
+    .home__sec2__para {
         font-size: 12px;
     }
+  
     .home__sec2__RSide {
         position: unset;
         margin: 0 auto;
     }
-    .home__sec2__RSide img{
+  
+    .home__sec2__RSide img {
         width: 220px;
     }
-    
   
-}
+  
+  }
