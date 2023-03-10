@@ -1,7 +1,7 @@
 
 .home__sec2 {
     position: relative;
-    padding: 100px 25px;
+    padding: 100px 37px;
     color: var(--mainColor);
     background-color: white;
     clip-path: polygon(0 15%, 100% 0%, 100% 80%, 0% 100%);
@@ -41,7 +41,7 @@
 
 .home__sec2__LSide {
     margin: 0 auto;
-    width: 65%;
+    width: 82%;
 }
 
 .home__sec2__LSide h2 {
