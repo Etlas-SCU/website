@@ -16,3 +16,8 @@
       width: 48px;
     }
 }
+@media only screen and (max-width: 526px){
+    .input{
+        margin-left: 15px;
+    }
+}
