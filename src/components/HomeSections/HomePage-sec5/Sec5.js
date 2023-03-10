@@ -15,9 +15,8 @@ export default function Sec5() {
         <p>Check our articles</p>
       </Box>
       
-
-      <Stack className={styles.hamada} >
-       <Box className={styles.hamadad}>
+      <Stack className={styles.cont} >
+       <Box className={styles.cards}>
        <ArticlesCard />
         <ArticlesCard />
         <ArticlesCard />
