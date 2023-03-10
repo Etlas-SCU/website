@@ -11,9 +11,8 @@ export default function PageOutLine({ children, value }) {
       <Stack direction="row" gap="10px" flexWrap="wrap">
         <h1 className={styles.title}>{value}</h1>
 
-        <Stack direction="row" gap="10px">
+        <Stack direction="row" gap="10px" className={styles.input}>
           <SearchInput />
-
           <img src={filter} alt="filter" className={styles.filterIcon} />
         </Stack>
       </Stack>
