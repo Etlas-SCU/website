@@ -35,9 +35,8 @@
     cursor: pointer;
 }
 @media only screen and (max-width: 900px){.card{width:40%;}}
-@media only screen and (max-width: 500px){.card{width:60%;}}
-@media only screen and (max-width: 400px){
-    .card{width:100%;}
+@media only screen and (max-width: 700px){
+    .card{min-width: 60%;}
 }
 
 
