@@ -15,7 +15,7 @@
     text-align: center;
 }
 
- .hamadad{
+ .cards{
     flex-wrap: wrap;
     justify-content: center;
     display: flex;
@@ -23,12 +23,12 @@
 }
 
 @media only screen and (max-width: 700px){
-    .hamada{
+    .cont{
         position: relative;
         max-width: 1230px;
         width: 100%;
     }
-    .hamadad{
+    .cards{
         margin: auto;
         max-width: 1200px;
         width: 90vw;
@@ -39,7 +39,7 @@
         scroll-behavior: smooth;
         justify-content:unset ;
     }
-    .hamadad::-webkit-scrollbar{
+    .cards::-webkit-scrollbar{
         width: 0;
     }
 
