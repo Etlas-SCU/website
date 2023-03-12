@@ -1,0 +1,16 @@
+.btn{
+    border: 2px solid var(--secondryColor);
+    padding: 15px 25px;
+    color: white;
+    background-color: transparent;
+    border-radius: 15px;
+    font-weight: 500;
+    width: fit-content;
+    margin: 60px auto;
+    cursor: pointer;
+}
+.btn:hover{
+    transform: scale(1.1);
+    background-color: var(--secondryColor);
+    /* border: none; */
+}
