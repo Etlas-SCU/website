@@ -40,8 +40,7 @@
 }
 
 .Icon {
-   font-size: 50px;
-   color: white;
+    color: white;
 }
 
 .description {
@@ -50,29 +49,33 @@
 }
 
 @media only screen and (max-width: 900px) {
- 
-    .info__sec2{
+
+    .info__sec2 {
         padding: 36px 50px;
     }
 }
+
 @media only screen and (max-width: 700px) {
-    .fav{
+    .fav {
         padding: 0 10px;
         height: 50px;
-    border-radius: 10px;
-    width: fit-content;
+        border-radius: 10px;
+        width: fit-content;
 
     }
-    .info__sec2{
+
+    .info__sec2 {
         padding: 36px 20px;
     }
-    .Icon{
+
+    .Icon {
         font-size: 25px;
-        
+
     }
+
     .fav p {
         /* width: 54%; */
         /* font-size: 12px; */
-       display: none;
+        display: none;
     }
 }
