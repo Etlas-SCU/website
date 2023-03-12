@@ -18,6 +18,7 @@ export default function ArticleInfo() {
             <h2 className={styles.title}>Anubis</h2>
             <p className={styles.date}>15 Jan 2023</p>
           </Box>
+
           <Stack
             direction="row"
             justifyContent="space-between"
@@ -28,9 +29,9 @@ export default function ArticleInfo() {
             <Tooltip title={isClicked ? "remove" : "add"}>
               <button onClick={() => setIsClicked(!isClicked)}>
                 {isClicked ? (
-                  <FavoriteIcon  className={styles.Icon} />
+                  <FavoriteIcon fontSize="large" className={styles.Icon} />
                 ) : (
-                  <FavoriteBorderIcon
+                  <FavoriteBorderIcon fontSize="large"
                   className={styles.Icon} 
                   />
                 )}
