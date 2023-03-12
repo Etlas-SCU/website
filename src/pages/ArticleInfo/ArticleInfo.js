@@ -1,16 +1,44 @@
-import { Box } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import { Stack } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import info from "../../images/Pngs/info.png";
-import styles from "./ArticleInfo.module.css"
+import styles from "./ArticleInfo.module.css";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function ArticleInfo() {
+  const [isClicked, setIsClicked] = useState(false);
   return (
-    <Stack position="relative" className={styles.artical__info}>
-      <img src={info} alt="imgInfo"/>
-      {/* <Box className={styles.info__sec2}>
-        <Stack direction="row"></Stack>
-        <Box>
+    <Stack className={styles.artical__info} position="relative">
+      <img src={info} alt="imgInfo" className={styles.artImg} />
+
+      <Box className={styles.info__sec2}>
+        <Stack direction="row" justifyContent="space-between" mb="40px">
+          <Box borderBottom="2px solid white" p="0px 32px 15px 0px">
+            <h2 className={styles.title}>Anubis</h2>
+            <p className={styles.date}>15 Jan 2023</p>
+          </Box>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            className={styles.fav}
+            alignItems="center"
+          >
+            <p>{isClicked ? "Remove from" : "Add to"} Favorites</p>
+            <Tooltip title={isClicked ? "remove" : "add"}>
+              <button onClick={() => setIsClicked(!isClicked)}>
+                {isClicked ? (
+                  <FavoriteIcon  className={styles.Icon} />
+                ) : (
+                  <FavoriteBorderIcon
+                  className={styles.Icon} 
+                  />
+                )}
+              </button>
+            </Tooltip>
+          </Stack>
+        </Stack>
+        <Box className={styles.description}>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -21,6 +49,10 @@ export default function ArticleInfo() {
             with the release of Letraset sheets containing Lorem Ipsum passages,
             and more recently with desktop publishing software like Aldus
             PageMaker including versions of Lorem Ipsum.
+            <br />
+            <br />
+            <br />
+            <br />
             <br />
             There are many variations of passages of Lorem Ipsum available, but
             the majority have suffered alteration in some form, by injected
@@ -34,6 +66,7 @@ export default function ArticleInfo() {
             generate Lorem Ipsum which looks reasonable. The generated Lorem
             Ipsum is therefore always free from repetition, injected humour, or
             non-characteristic words etc.
+            <br />
             <br />
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -57,6 +90,7 @@ export default function ArticleInfo() {
             always free from repetition, injected humour, or non-characteristic
             words etc.
             <br />
+            <br />
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
@@ -66,6 +100,7 @@ export default function ArticleInfo() {
             with the release of Letraset sheets containing Lorem Ipsum passages,
             and more recently with desktop publishing software like Aldus
             PageMaker including versions of Lorem Ipsum.
+            <br />
             <br />
             There are many variations of passages of Lorem Ipsum available, but
             the majority have suffered alteration in some form, by injected
@@ -81,7 +116,7 @@ export default function ArticleInfo() {
             non-characteristic words etc.
           </p>
         </Box>
-      </Box> */}
+      </Box>
     </Stack>
   );
 }

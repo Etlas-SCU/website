@@ -1,64 +1,82 @@
-
 .home__sec2 {
-    position: relative;
-    padding: 100px 37px;
-    color: var(--mainColor);
-    background-color: white;
-    clip-path: polygon(0 15%, 100% 0%, 100% 80%, 0% 100%);
-  }
-  
-  .home__sec2__LSide {
-    width: 56%;
-  }
-  
-  .home__sec2__LSide h2 {
-    padding: 50px 0px 18px 0px;
-  }
-  
-  .home__sec2__para {
-    font-weight: 500;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  .home__sec2__RSide {
-    position: absolute;
-    bottom: -20px;
-    right: 0px;
-    width: fit-content;
-  }
-  
-  .home__sec2__RSide img {
-    width: 450px;
-  }
-  
-  @media only screen and (max-width: 900px) {  .home__sec2 {
-    width: fit-content;
-    justify-content: center;
+  position: relative;
+  padding: 100px 37px;
+  color: var(--mainColor);
+  background-color: white;
+  clip-path: polygon(0 15%, 100% 0%, 100% 80%, 0% 100%);
 }
 
 .home__sec2__LSide {
-    margin: 0 auto;
-    width: 82%;
+  width: 56%;
+}
+
+a {
+  text-decoration: none;
 }
 
 .home__sec2__LSide h2 {
-    font-size: 15px;
+  padding: 50px 0px 18px 0px;
 }
 
 .home__sec2__para {
-    font-size: 12px;
+  font-weight: 500;
 }
 
+.download_icon{
+  display: inline-block;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-50px);
+}
+.download_button:hover .download_icon{
+  display: inline-block;
+  transform: translateY(0);
+}
+.download_button:hover span{
+  display: none;
+
+}
+
+
+
+
 .home__sec2__RSide {
-    position: unset;
-    margin: 0 auto;
+  position: absolute;
+  bottom: -20px;
+  right: 0px;
+  width: fit-content;
 }
 
 .home__sec2__RSide img {
-    width: 220px;
+  width: 450px;
 }
 
+@media only screen and (max-width: 900px) {
+  .home__sec2 {
+    width: fit-content;
+    justify-content: center;
   }
+
+  .home__sec2__LSide {
+    margin: 0 auto;
+    width: 82%;
+  }
+
+  .home__sec2__LSide h2 {
+    font-size: 15px;
+  }
+
+  .home__sec2__para {
+    font-size: 12px;
+  }
+
+  .home__sec2__RSide {
+    position: unset;
+    margin: 0 auto;
+  }
+
+  .home__sec2__RSide img {
+    width: 220px;
+  }
+
+}
