@@ -1,4 +1,3 @@
-
 .home__sec1 {
   padding: 90px 0 0 0;
   background: var(--mainColor);
@@ -17,6 +16,7 @@
 }
 
 .home_col {
+  width: 55%;
   padding: 100px 0 0 40px;
 }
 
@@ -101,6 +101,7 @@
     font-size: 12px;
     line-height: 18px;
     width: 85%;
+    flex-wrap: wrap;
   }
 
   .appstore_img,
@@ -128,4 +129,3 @@
   */
 
 }
-
