@@ -33,6 +33,6 @@ jobs:
     - name: Build and deploy to GitHub Pages
       run: |
         npm run build
-        gh-pages -d build -u "waelahmed6599@gmail.com" -b gh-pages -r "origin" -t "${secrets.GH_PAGES_TOKEN}"
+        gh-pages -d build -u "waelahmed6599@gmail.com" -b gh-pages -r "origin" -t "${{ secrets.GH_PAGES_TOKEN }}"
       env:
         GH_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
