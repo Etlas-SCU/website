@@ -1,7 +1,7 @@
 {
   "name": "etlas",
   "version": "0.1.0",
-  "homepage": "http://anuupadhyay.github.io/my-app", 
+  "homepage": "http://etlas-scu.github.io/website", 
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
