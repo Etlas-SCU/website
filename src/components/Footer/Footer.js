@@ -1,23 +1,23 @@
 import React from 'react'
 import { Box, Stack } from "@mui/material";
-import {Link} from 'react-router-dom'
-import Design from "./Sec6.module.css";
-import Etitle from '../../../images/Pngs/etitle.png'
-import App from '../../../images/Pngs/AppStore.png'
-import Play from '../../../images/Pngs/PlayStore.png'
-import Face from '../../../images/Icons/face.png'
-import Twitter from '../../../images/Icons/twitter.png'
-import Google from '../../../images/Icons/google.png'
-import Linked from '../../../images/Icons/linkedin.png'
-import Arrow from '../../../images/Icons/Up arrow.png'
+import { Link, NavLink } from 'react-router-dom'
+import Design from "./Footer.module.css";
+import Etitle from '../../images/Pngs/etitle.png'
+import App from '../../images/Pngs/AppStore.png'
+import Play from '../../images/Pngs/PlayStore.png'
+import Face from '../../images/Icons/face.png'
+import Twitter from '../../images/Icons/twitter.png'
+import Google from '../../images/Icons/google.png'
+import Linked from '../../images/Icons/linkedin.png'
+import Arrow from '../../images/Icons/Up arrow.png'
 
 export default function Sec6() {
     return (
         <Stack className={Design.footer}>
             <Box className={Design.arrow_icon}>
-                <a href='##'>
+                <NavLink to='/home'>
                     <img src={Arrow} alt="Home" />
-                </a>
+                </NavLink>
             </Box>
             <Stack className={Design.footer_section} direction='row'>
                 <Stack direction='column' className={Design.footer_sec1}>

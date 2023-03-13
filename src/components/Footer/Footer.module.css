@@ -133,7 +133,12 @@
     width: 40px;
 }
 
-@media only screen and (max-width: 900px) {
+.footer_prag3{
+    font-size: 14px;
+    padding-bottom: 5px ;
+}
+
+@media only screen and (max-width: 860px) {
     .footer{
         justify-content: center;
     }
