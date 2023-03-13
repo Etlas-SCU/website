@@ -5,12 +5,14 @@ on:
     branches:
       - master
 
-env:
-  ci: false
+
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+    env:
+      ci: false
 
     steps:
     - name: Checkout code
