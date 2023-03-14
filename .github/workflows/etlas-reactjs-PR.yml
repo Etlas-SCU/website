@@ -1,0 +1,26 @@
+name: ReactJs-PR
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set CI environment variable to false
+      run: echo "CI=false" >> $GITHUB_ENV
+      
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Test code
+      run: npm test 
+    
+    - name: Build code
+      run: npm run build
