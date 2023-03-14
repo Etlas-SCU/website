@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set CI environment variable to false
+      run: echo "CI=false" >> $GITHUB_ENV
+      
     - uses: actions/checkout@v2
       with:
         ref: ${{ github.event.pull_request.head.sha }}
