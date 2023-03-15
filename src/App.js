@@ -11,6 +11,7 @@ import Tours from "./pages/Tours/Tours";
 import ArticleInfo from "./pages/ArticleInfo/ArticleInfo";
 import { useEffect } from "react";
 
+Test syntax error failure detection.
 
 function App() {
   const { pathname } = useLocation();
