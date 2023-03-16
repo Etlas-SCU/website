@@ -1,5 +1,4 @@
 import { Stack } from "@mui/material";
-import { Box } from "@mui/system";
 import React from "react";
 import filter from "../../images/Icons/Filter.png";
 import SearchInput from "../SearchInput/SearchInput";
