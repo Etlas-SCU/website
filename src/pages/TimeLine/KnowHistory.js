@@ -49,7 +49,7 @@ export default function KnowHistory() {
       <Box className={styles.timeLineCont}>
         <Box className={styles.timeLineTitle}>TimeLine</Box>
 
-        <Box display="flex" justifyContent="flex-end" height="100%">
+        <Box display="flex" justifyContent="flex-end">
           <Box className={styles.timeLine}>
             <Timeline
               sx={{
@@ -61,11 +61,11 @@ export default function KnowHistory() {
             >
               {values.map((val) => {
                 return (
-                  <Box>
+                  <Box key={val.id}>
                     <TimelineItem>
                       <TimelineSeparator>
                         <TimelineDot
-                          sx={{ backgroundColor: "var(--secondryColor)" }}
+                          sx={{ backgroundColor: "#8D5E32" }}
                         >
                           <Box ></Box>
                         </TimelineDot>

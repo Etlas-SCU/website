@@ -37,12 +37,11 @@
   position: fixed;
   width: 20%;
   top: 110px;
-  height: 100%;
 }
 .timeLine{
-  padding-top: 27px;
+  padding: 27px 0px;
     background: #BFCCCF;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 0 0 10px 10px ;
     width: 80%;
     margin-right: 20px;
 }
