@@ -46,17 +46,17 @@ export default function AboutUs() {
       <Box className={styles.linkes}>
         <p>you can find us on:</p>
         <Stack direction="row" gap="10px">
-          <a href="#">
+          <a href="#" alt="facebook">
             <img src={face} />
           </a>
-          <a href="#">
+          <a href="#" alt="twitter">
             <img src={twitter} />
           </a>
           <a href="#">
-            <img src={linkedin} />
+            <img src={linkedin} alt="linkedin" />
           </a>
           <a href="#">
-            <img src={google} />
+            <img src={google} alt="google" />
           </a>
         </Stack>
 

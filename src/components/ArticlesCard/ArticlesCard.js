@@ -14,7 +14,7 @@ export default function ArticlesCard({id}) {
     
     <Box className={styles.card}>
         <Box >
-        <img src={article} className={styles.card__img} />
+        <img src={article} className={styles.card__img} alt="article"/>
         </Box>
        <Box ml="15px">
        <h2 className={styles.card__name}>Anubis</h2>

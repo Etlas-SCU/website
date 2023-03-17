@@ -26,13 +26,13 @@ export default function Download() {
         <Box borderRight="2px solid white">
           <p>if you’re Android download this version of Etlas.</p>
           <a href="#">
-            <img src={play} alt={play} />
+            <img src={play} alt="play" />
           </a>
         </Box>
         <Box>
           <p>if you’re IOS download this version of Etlas.</p>
           <a href="#">
-            <img src={app} alt={app} />
+            <img src={app} alt="app" />
           </a>
         </Box>
       </Stack>

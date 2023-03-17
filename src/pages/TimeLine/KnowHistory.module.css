@@ -1,0 +1,82 @@
+.historyCont{
+  width: 75%;
+  margin-left: 21vw;
+}
+.history{
+  background: var(--mainColor);
+  color: white;
+  border-radius: 26px 26px 0px 0px;
+  padding: 2px 70px;
+}
+.history__date{
+  color: var(--secondryColor);
+  font-size: 12px;
+  margin: 7px 0px;
+  font-weight: 500;
+
+}
+.history__img{
+  width: 91%;
+}
+.history__discription p{
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px 0px;
+}
+.timeLineTitle{
+  background-color: var(--mainColor);
+    color: white;
+    padding: 10px 5vw;
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+    border-radius: 0px 15px 15px 0px;
+    width: fit-content;
+}
+.timeLineCont{
+  position: fixed;
+  width: 20%;
+  top: 110px;
+}
+.timeLine{
+  padding: 27px 0px;
+    background: #BFCCCF;
+    border-radius: 0 0 10px 10px ;
+    width: 80%;
+    margin-right: 20px;
+}
+.clicked{
+  background-color: var(--sShadow2);
+    width: 8px;
+    height: 7px;
+    border-radius: 50%;
+    z-index: 3000;
+}
+.timeLine__title{
+  font-size: 15px;
+  color: var(--mainColor);
+}
+.timeLine__date{
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondryColor);
+}
+@media only screen and (max-width: 900px) {
+  .history{
+  padding: 2px 20px;
+
+  }
+  .history__discription p{
+    font-size: 11px;
+   
+  }
+  .timeLineCont{
+    display: none;
+  }
+  .historyCont{
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
