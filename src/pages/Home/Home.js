@@ -11,7 +11,7 @@ import Footer from "../../components/Footer/Footer";
 export default function Home() {
 
   return (
-    <Stack>
+    <Stack sx={{backgroundColor:"var(--mainColor)"}}>
       <Sec1/>
       <Sec2/>
       {/* sec3 */}

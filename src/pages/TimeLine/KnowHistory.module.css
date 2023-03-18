@@ -16,6 +16,10 @@
 
 }
 .history__img{
+  width: 90%;
+  margin: 20px auto;
+}
+.history__discription{
   width: 91%;
 }
 .history__discription p{

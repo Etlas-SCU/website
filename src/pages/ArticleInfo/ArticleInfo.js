@@ -1,5 +1,4 @@
-import { Box, Tooltip } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Box, Stack, Tooltip } from "@mui/material";
 import React, { useState } from "react";
 import info from "../../images/Pngs/info.png";
 import styles from "./ArticleInfo.module.css";

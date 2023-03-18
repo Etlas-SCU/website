@@ -45,7 +45,7 @@ export default function KnowHistory() {
   ];
 
   return (
-    <Stack direction="row" mt="120px">
+    <Stack direction="row" mt="120px" sx={{backgroundColor:"white"}}>
       <Box className={styles.timeLineCont}>
         <Box className={styles.timeLineTitle}>TimeLine</Box>
 
@@ -102,7 +102,7 @@ export default function KnowHistory() {
         <Box className={styles.history}>
           {values.map((val) => {
             return (
-              <Box key={val.id} mt="20px" id={val.id}>
+              <Box key={val.id} m="60px auto" id={val.id} width="87%">
                 <h4>{val.title}</h4>
                 <p className={styles.history__date}>{val.date}</p>
                 <img

@@ -4,16 +4,14 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink } from "react-router-dom";
-import styles from  "./Nav.module.css";
+import styles from "./Nav.module.css";
 import world from "../../images/Icons/World.png";
 import { Stack } from "@mui/material";
 import Popup from "./registe-signin/Popup";
 import { Context } from "../Context/Context";
 
 export default function Nav() {
- 
   const {
-    setbackgroundColor,
     mobileOpen,
     setMobileOpen,
     langPopup,
@@ -25,45 +23,19 @@ export default function Nav() {
   const NavList = (
     <>
       <NavLink to="/">
-        <p
-          className={styles.nav__list__item}
-          onClick={() => setbackgroundColor("#003441")}
-        >
-          Home
-        </p>
+        <p className={styles.nav__list__item}>Home</p>
       </NavLink>
       <NavLink to="/know_history">
-        <p
-          className={styles.nav__list__item}
-          onClick={() => setbackgroundColor("#FFFFFF")}
-        >
-          {" "}
-          Know History
-        </p>
+        <p className={styles.nav__list__item}> Know History</p>
       </NavLink>
       <NavLink to="/tours">
-        <p
-          className={styles.nav__list__item}
-          onClick={() => setbackgroundColor("#FFFFFF")}
-        >
-          Tours
-        </p>
+        <p className={styles.nav__list__item}>Tours</p>
       </NavLink>
       <NavLink to="/articles">
-        <p
-          className={styles.nav__list__item}
-          onClick={() => setbackgroundColor("#FFFFFF")}
-        >
-          Articles
-        </p>
+        <p className={styles.nav__list__item}>Articles</p>
       </NavLink>
       <NavLink to="/knowledge" style={{ marginRight: "2vw" }}>
-        <p
-          className={styles.nav__list__item}
-          onClick={() => setbackgroundColor("#FFFFFF")}
-        >
-          Knowledge Check
-        </p>
+        <p className={styles.nav__list__item}>Knowledge Check</p>
       </NavLink>
 
       <button
@@ -166,7 +138,9 @@ export default function Nav() {
                 <Box pt="20px" className={styles.lang__popUp}>
                   <p className={styles.triangle_up}> </p>
 
-                  <p className={styles.lang__popUp__title}>choose your language</p>
+                  <p className={styles.lang__popUp__title}>
+                    choose your language
+                  </p>
                   <Box
                     margin="0 auto"
                     mb="10px"
