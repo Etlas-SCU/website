@@ -9,7 +9,7 @@ export default function Articles() {
     <PageOutLine value="Articles">
       <Stack direction="row" flexWrap="wrap" justifyContent="center">
         {hamada.map((ind) => (
-          <ArticlesCard id={ind} />
+          <ArticlesCard id={ind} key={ind}/>
         ))}
       </Stack>
     </PageOutLine>
