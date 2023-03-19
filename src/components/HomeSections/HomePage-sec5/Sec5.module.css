@@ -4,7 +4,7 @@
 }
 .title{
     border-top: 1px solid white;
-    padding: 60px 0 20px 0;
+    padding: 5vw 0 20px 0;
     color: white;
     font-size: 30px;
     width: fit-content;
@@ -23,6 +23,9 @@
 }
 
 @media only screen and (max-width: 700px){
+    .title{
+        font-size: 18px;
+    }
     .cont{
         position: relative;
         max-width: 1230px;

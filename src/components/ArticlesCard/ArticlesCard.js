@@ -1,14 +1,12 @@
 import { Box} from "@mui/material";
-import React, { useContext } from "react";
+import React from "react";
 import article from "../../images/Pngs/article.png";
 import styles from "./ArticlesCard.module.css";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { Link } from "react-router-dom";
-import { Context } from "../../components/Context/Context";
 
 
 export default function ArticlesCard({id}) {
-  const { setbackgroundColor } = useContext(Context);
 
   return (
     
@@ -25,7 +23,7 @@ export default function ArticlesCard({id}) {
         </p>
         <p className={styles.card__date}>15 Jan 2023</p>
         
-        <Link to={`/articles/${id}`} style={{textDecoration:"none", color:"white"}} onClick={() => setbackgroundColor("#FFFFFF")}>
+        <Link to={`/articles/${id}`} style={{textDecoration:"none", color:"white"}}>
 
         <p className={styles.card__more}>Learn more <KeyboardArrowRightIcon/></p>
 

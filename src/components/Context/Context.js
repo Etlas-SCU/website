@@ -4,15 +4,12 @@ export const Context = createContext();
 
 export const Provider= (props)=>{
     const {children}=props;
-    const [backgroundColor, setbackgroundColor] = useState("#003441");
     const [mobileOpen, setMobileOpen] = useState(false);
     const [langPopup, setLangPopup] = useState(false);
     const [buttonPopup, setButtonPopup] = useState([false, ""]);
 
 
     const AllContext ={
-        setbackgroundColor,
-        backgroundColor,
         mobileOpen,
         setMobileOpen,
         langPopup,
@@ -22,7 +19,7 @@ export const Provider= (props)=>{
     }
    
     return  <Context.Provider value={AllContext}>
-      <div style={{ backgroundColor: backgroundColor, position: "sticky" }}>
+      <div style={{position:"sticky" ,backgroundColor:"var(--mainColor)"}}>
         {children}
         </div>
     </Context.Provider>

@@ -22,17 +22,19 @@ a {
   font-weight: 500;
 }
 
-.download_icon{
+.download_icon {
   display: inline-block;
   position: absolute;
   transition: all 0.3s ease-in-out;
   transform: translateY(-50px);
 }
-.download_button:hover .download_icon{
+
+.download_button:hover .download_icon {
   display: inline-block;
   transform: translateY(0);
 }
-.download_button:hover span{
+
+.download_button:hover span {
   display: none;
 
 }
@@ -55,6 +57,8 @@ a {
   .home__sec2 {
     width: fit-content;
     justify-content: center;
+    padding: 100px 0px;
+
   }
 
   .home__sec2__LSide {

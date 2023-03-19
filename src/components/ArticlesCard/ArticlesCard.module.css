@@ -36,7 +36,15 @@
 }
 @media only screen and (max-width: 900px){.card{width:40%;}}
 @media only screen and (max-width: 700px){
-    .card{min-width: 60%;}
+    .card{min-width: 40%;max-width: 60%;}
+    .card__more{ font-size: 12px;}
+    .card__about{font-size: 11px;}
+    .card__name{font-size: 15px;}
+}
+@media only screen and (max-width: 400px){
+    .card{min-width: 80%;}
+    .card__more,.card__about{ font-size: 14px;}
+    .card__name{font-size: 16px;}
 }
 
 

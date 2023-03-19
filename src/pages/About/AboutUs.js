@@ -8,7 +8,7 @@ import linkedin from "../../images/Icons/linkedin.png";
 import google from "../../images/Icons/google.png";
 export default function AboutUs() {
   return (
-    <>
+    <Stack >
       <Stack className={styles.about} direction="row" flexWrap="wrap">
         <Box className={styles.lift_side} >
           <div className={styles.tri}></div>
@@ -62,6 +62,6 @@ export default function AboutUs() {
 
       </Box>
         <p className={styles.copy_right}>© Etlas all rights reserved 2023</p>
-    </>
+    </Stack>
   );
 }
