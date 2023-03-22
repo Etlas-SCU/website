@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Stack } from "@mui/material";
 import { Link, NavLink } from 'react-router-dom'
-import Design from "./Footer.module.css";
+import Style from "./Footer.module.css";
 import Etitle from '../../images/Pngs/etitle.png'
 import App from '../../images/Pngs/AppStore.png'
 import Play from '../../images/Pngs/PlayStore.png'
@@ -11,33 +11,33 @@ import Google from '../../images/Icons/google.png'
 import Linked from '../../images/Icons/linkedin.png'
 import Arrow from '../../images/Icons/Up arrow.png'
 
-export default function Sec6() {
+export default function Footer() {
     return (
-        <Stack className={Design.footer}>
-            <Box className={Design.arrow_icon}>
+        <Stack className={Style.footer}>
+            <Box className={Style.arrow_icon}>
                 <NavLink to='/home'>
                     <img src={Arrow} alt="Home" />
                 </NavLink>
             </Box>
-            <Stack className={Design.footer_section} direction='row'>
-                <Stack direction='column' className={Design.footer_sec1}>
-                    <Box className={Design.footer_title}>
-                        <img src={Etitle} alt='img-footer' className={Design.footer_img} />
-                        <h1 className={Design.footer_h1}>ETLAS</h1>
+            <Stack className={Style.footer_section} direction='row'>
+                <Stack direction='column' className={Style.footer_sec1}>
+                    <Box className={Style.footer_title}>
+                        <img src={Etitle} alt='img-footer' className={Style.footer_img} />
+                        <h1 className={Style.footer_h1}>ETLAS</h1>
                     </Box>
                     <Box sx={{ width: '80px', height: '1px', background: '#003441' }}></Box>
-                    <p className={Design.footer_prag1}> You can download the app from the links below:</p>
-                    <Box className={Design.download}>
+                    <p className={Style.footer_prag1}> You can download the app from the links below:</p>
+                    <Box className={Style.download}>
                         <a href='##'>
-                            <img src={Play} alt='download-with-play-store' className={Design.download_btn} />
+                            <img src={Play} alt='download-with-play-store' className={Style.download_btn} />
                         </a>
                         <a href='##'>
-                            <img src={App} alt='download-with-play-store' className={Design.download_btn} />
+                            <img src={App} alt='download-with-play-store' className={Style.download_btn} />
                         </a>
                     </Box>
                 </Stack>
-                <Stack className={Design.footer_sec2}></Stack>
-                <Stack className={Design.footer_sec3}>
+                <Stack className={Style.footer_sec2}></Stack>
+                <Stack className={Style.footer_sec3}>
                     <Stack direction='row' gap='20px'>
                         <ul>
                             Mapping
@@ -55,16 +55,16 @@ export default function Sec6() {
                             <li><a href='##' >Française</a></li>
                         </ul>
                     </Stack>
-                    <Box className={Design.footer_prag2}>
-                        <a href='##' >Contact Us</a>
+                    <Box className={Style.footer_prag2}>
+                        <Link to='/contact' >Contact Us</Link>
                         <a href='##' >Terms and conditions</a>
-                        <Link to='/about' >About US</Link>
+                        <Link to='/about'>About US</Link>
                     </Box>
                 </Stack>
             </Stack>
-            <Stack className={Design.footer_icons} direction='row'>
-                <p className={Design.footer_prag3}>© Etlas all rights reserved 2023</p>
-                <Box className={Design.icons}>
+            <Stack className={Style.footer_icons} direction='row'>
+                <p className={Style.footer_prag3}>© Etlas all rights reserved 2023</p>
+                <Box className={Style.icons}>
                     <a href='##'>
                         <img src={Face} alt="facebook" />
                     </a>
