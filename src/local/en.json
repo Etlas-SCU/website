@@ -1,0 +1,66 @@
+{
+    "DownLoad": {
+        "title": "Download",
+        "description": "Etlas application let feel the full experience as it can be used to recognize monuments, statues and landmarks with a text-to-speech technology and make your trip/tour much easier and funnier to learn new historic information about your scanned object. You can also use your favorite object to appear in your camera using the AR technology.",
+        "IOS": "if you’re IOS download this version of Etlas.",
+        "android": "if you’re Android download this version of Etlas.",
+        "DownLoadSection": {
+            "title": "Why our Application?",
+            "download": "Download Now!"
+        }
+    },
+    "AboutUs": {
+        "title": "About Us",
+        "heading1": "Who are we?",
+        "description1": "We are a Computer Science students that graduated from faculty of computers and informatics Suez Canal university who wanted to make an E-Tourism application to make tourism more easy and also much fun to try and experience.",
+        "heading2": "Purpose",
+        "description2": "Etlas purpose is to enhance the way tourists explore monuments and landmarks. The app is designed to provide tourists with an interactive and immersive experience, allowing them to discover new places and learn about their history and significance, also Etlas make it easier to tourists or foreigners to know about Egypt's history using the timeline feature or by articles, it also recommends popular-rated tours for the user to try.",
+        "findUs": "you can find us on:"
+    },
+    "Articles": {
+        "title": "Articles",
+        "ArticlesInfo": {
+            "add": "Add to",
+            "remove": "Remove from",
+            "fav": "Favorite"
+        },
+        "ArticlesSection": {
+            "title": "Check our articles",
+            "seeMore": "See more!"
+        }
+    },
+    "timeLine":{
+       "timeLine":"timeLine",
+       "title":"Know History"
+    },
+    "nav":{
+      "register":"Register",
+      "signin":"Sign in",
+      "lang":"Choose your language",
+      "name":"Name",
+      "namePlaceholder":"Your name",
+      "phone":"Phone number",
+      "phonePlaceholder":"Your phone number",
+      "address":"Address",
+      "addressPlaceholder":"Your address",
+      "email":"Email",
+      "emailPlaceholder":"Your email",
+      "password":"Password",
+      "passwordPlaceholder":"Your password",
+      "contWith":"Or continue with",
+      "signInPopup":{
+        "note1":"Please, enter your account",
+        "note2":"Don’t have an account yet? "
+      },
+      "RegisterPopup":{
+        "note1":"Please, enter your information carefully",
+        "note2":"Alearedy have an account? "
+      },
+      "required":"required",
+      "emailformat":"invalid email format",
+      "passwordShort":"Password is too short - should be 8 chars minimum.",
+      "passwordLetters":"Password must contain Latin letters."
+
+    },
+    "copyRight":"© Etlas all rights reserved 2023"
+}

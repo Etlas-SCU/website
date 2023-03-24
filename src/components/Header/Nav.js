@@ -10,8 +10,10 @@ import { Stack } from "@mui/material";
 import Popup from "./registe-signin/Popup";
 import { Context } from "../Context/Context";
 import check from "../../images/Icons/Check.png";
+import { useTranslation } from 'react-i18next';
 
 export default function Nav() {
+  const { t, i18n } = useTranslation();
   const {
     mobileOpen,
     setMobileOpen,
@@ -43,17 +45,17 @@ export default function Nav() {
       </NavLink>
 
       <button
-        onClick={() => setButtonPopup([true, "Register"])}
+        onClick={() => setButtonPopup([true, t('nav.register')])}
         style={{ backgroundColor: "#003441" }}
         className={styles.nav__list__btn}
       >
-        Register
+        {t('nav.register')}
       </button>
       <button
-        onClick={() => setButtonPopup([true, "Sign In"])}
+        onClick={() => setButtonPopup([true,t('nav.signin')])}
         className={styles.nav__list__btn}
       >
-        Sign in
+        {t('nav.signin')}
       </button>
     </>
   );
@@ -62,8 +64,9 @@ export default function Nav() {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const handleLanguageClick = (language) => {
-    setSelectedLanguage(language);
+  const handleLanguageClick = (obj) => {
+    setSelectedLanguage(Object.values(obj)[0]);
+    i18n.changeLanguage(Object.keys(obj)[0])
   };
 
   const drawer = (
@@ -84,20 +87,20 @@ export default function Nav() {
         ></Box>
 
         <Box width="75%">
-          {LANGUAGES.map((lang) => {
+          {LANGUAGES.map((obj ,index) => {
             return (
               <Stack
                 direction="row"
                 justifyContent="space-between"
-                key={lang}
-                onClick={() => handleLanguageClick(lang)}
+                key={index}
+                onClick={() => handleLanguageClick(obj)}
               >
-                <p className={styles.sideNav_li}>{lang}</p>
+                <p className={styles.sideNav_li}>{Object.values(obj)[0]}</p>
                 <img
                   src={check}
                   alt="check"
                   className={
-                    selectedLanguage === lang ? styles.check : styles.notcheck
+                    selectedLanguage === Object.values(obj)[0] ? styles.check : styles.notcheck
                   }
                 />
               </Stack>
@@ -162,7 +165,7 @@ export default function Nav() {
                   <p className={styles.triangle_up}> </p>
 
                   <p className={styles.lang__popUp__title}>
-                    choose your language
+                  {t('nav.lang')}
                   </p>
                   <Box
                     margin="0 auto"
@@ -171,22 +174,20 @@ export default function Nav() {
                     width="92px"
                   ></Box>
 
-                  {LANGUAGES.map((lang) => {
+                  {LANGUAGES.map((obj ,index)=> {
                     return (
                       <Stack
                         direction="row"
                         justifyContent="space-between"
-                        key={lang}
-                        onClick={() => handleLanguageClick(lang)}
+                        key={index}
+                        onClick={() => handleLanguageClick(obj)}
                       >
-                        <p className={styles.sideNav_li}>{lang}</p>
+                        <p className={styles.sideNav_li}>{Object.values(obj)[0]}</p>
                         <img
                           src={check}
                           alt="check"
                           className={
-                            selectedLanguage === lang
-                              ? styles.check
-                              : styles.notcheck
+                            selectedLanguage === Object.values(obj)[0] ? styles.check : styles.notcheck
                           }
                         />
                       </Stack>
