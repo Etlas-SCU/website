@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -9,6 +9,7 @@ import world from "../../images/Icons/World.png";
 import { Stack } from "@mui/material";
 import Popup from "./registe-signin/Popup";
 import { Context } from "../Context/Context";
+import check from "../../images/Icons/Check.png";
 
 export default function Nav() {
   const {
@@ -16,6 +17,9 @@ export default function Nav() {
     setMobileOpen,
     langPopup,
     setLangPopup,
+    LANGUAGES,
+    selectedLanguage,
+    setSelectedLanguage,
     buttonPopup,
     setButtonPopup,
   } = useContext(Context);
@@ -58,6 +62,10 @@ export default function Nav() {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const handleLanguageClick = (language) => {
+    setSelectedLanguage(language);
+  };
+
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
@@ -75,11 +83,26 @@ export default function Nav() {
           width="92px"
         ></Box>
 
-        <Box>
-          <p className={styles.sideNav_li}>English</p>
-          <p className={styles.sideNav_li}>العربيه</p>
-          <p className={styles.sideNav_li}>Española</p>
-          <p className={styles.sideNav_li}>Française</p>
+        <Box width="75%">
+          {LANGUAGES.map((lang) => {
+            return (
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                key={lang}
+                onClick={() => handleLanguageClick(lang)}
+              >
+                <p className={styles.sideNav_li}>{lang}</p>
+                <img
+                  src={check}
+                  alt="check"
+                  className={
+                    selectedLanguage === lang ? styles.check : styles.notcheck
+                  }
+                />
+              </Stack>
+            );
+          })}
         </Box>
       </Stack>
     </Box>
@@ -147,10 +170,28 @@ export default function Nav() {
                     borderBottom="2.6px solid white "
                     width="92px"
                   ></Box>
-                  <p className={styles.sideNav_li}>English</p>
-                  <p className={styles.sideNav_li}>العربيه</p>
-                  <p className={styles.sideNav_li}>Española</p>
-                  <p className={styles.sideNav_li}>Française</p>
+
+                  {LANGUAGES.map((lang) => {
+                    return (
+                      <Stack
+                        direction="row"
+                        justifyContent="space-between"
+                        key={lang}
+                        onClick={() => handleLanguageClick(lang)}
+                      >
+                        <p className={styles.sideNav_li}>{lang}</p>
+                        <img
+                          src={check}
+                          alt="check"
+                          className={
+                            selectedLanguage === lang
+                              ? styles.check
+                              : styles.notcheck
+                          }
+                        />
+                      </Stack>
+                    );
+                  })}
                 </Box>
               )}
             </Box>

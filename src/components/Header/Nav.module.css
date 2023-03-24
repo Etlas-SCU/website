@@ -24,7 +24,7 @@
 
 .nav__list div {
   background-color: var(--secondryColor);
-  
+  align-items: center;
   border-radius: 9px;
   color: white;
 
@@ -117,5 +117,14 @@ padding: 8px;
   rotate: -19deg;
   margin-top: 20px;
   margin-right: 15px;
+}
+
+.check{
+  width: 21px;;
+  height: 21px;
+
+}
+.notcheck{
+  display: none;
 }
 

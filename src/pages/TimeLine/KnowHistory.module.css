@@ -2,6 +2,10 @@
   width: 75%;
   margin-left: 21vw;
 }
+.historyCont .title{
+  color: var(--mainColor);
+  margin-bottom: 10px;
+}
 .history{
   background: var(--mainColor);
   color: white;
@@ -49,16 +53,21 @@
     width: 80%;
     margin-right: 20px;
 }
-.clicked{
-  background-color: var(--sShadow2);
-    width: 8px;
+.circle{
+    background-color: #8D5E32;
+    width: 7px;
     height: 7px;
     border-radius: 50%;
     z-index: 3000;
 }
+.clicked{
+  background-color: var(--sShadow2);
+}
 .timeLine__title{
   font-size: 15px;
   color: var(--mainColor);
+  cursor: pointer;
+
 }
 .timeLine__date{
   margin-top: 5px;
