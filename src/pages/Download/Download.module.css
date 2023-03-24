@@ -51,10 +51,14 @@
 }
 @media only screen and (max-width: 900px){
     .para {width: 100%; font-size: 18px;}
-    .down__sec{width: 95%;font-size: 15px;}
+    .down__sec{width: 100%;font-size: 15px;     margin: 50px auto;
+    }
+    .down__sec p{
+        font-size: 12px;
+    }
     .down__sec a img{width: 100px;}
-    .down__sec div{padding: 0 20px; }
-    .phone { 
+    .down__sec div{padding: 0 20px; width: 50%;}
+    .dphone { 
         display: none;
     }
 

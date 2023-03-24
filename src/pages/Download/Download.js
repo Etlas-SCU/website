@@ -32,7 +32,7 @@ export default function Download() {
             <img src={app} alt="app" />
           </a>
         </Box>
-        <Box>
+        <Box className={styles.dphone}>
           <img src={phone} alt="EG" className={styles.phone} />
         </Box>
       </Stack>
