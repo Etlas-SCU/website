@@ -6,7 +6,7 @@ export const Provider= (props)=>{
     const {children}=props;
     const [mobileOpen, setMobileOpen] = useState(false);
     const [langPopup, setLangPopup] = useState(false);
-    const LANGUAGES = ["English", "العربيه", "Española", "Française"];
+    const LANGUAGES = [{en: "English"},{ar: "العربيه"}, {es:"Española"},{fr:"Française"} ];
     const [selectedLanguage, setSelectedLanguage] = useState("English");
     const [buttonPopup, setButtonPopup] = useState([false, ""]);
 

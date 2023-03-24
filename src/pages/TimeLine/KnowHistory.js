@@ -11,8 +11,12 @@ import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import { Link } from 'react-scroll';
+import { useTranslation } from "react-i18next";
+
 
 export default function KnowHistory() {
+  const { t } = useTranslation();
+
   const sectionRefs = useRef([]);
 
   const [activeLink, setActiveLink] = useState();
@@ -109,7 +113,7 @@ export default function KnowHistory() {
     <Stack direction="row" mt="120px" sx={{ backgroundColor: "white" }}>
       <Box className={styles.timeLineCont}>
 
-        <Box className={styles.timeLineTitle}>TimeLine</Box>
+        <Box className={styles.timeLineTitle}>{t("timeLine.timeLine")}</Box>
 
         <Box display="flex" justifyContent="flex-end">
 
@@ -167,7 +171,7 @@ export default function KnowHistory() {
       </Box>
 
       <Box className={styles.historyCont}>
-        <h4 className={styles.title}>Know History</h4>
+        <h4 className={styles.title}>{t("timeLine.title")}</h4>
 
         <Box className={styles.history}>
           {sections.map((sec) => {

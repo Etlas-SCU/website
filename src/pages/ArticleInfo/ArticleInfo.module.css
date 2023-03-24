@@ -1,9 +1,11 @@
+.artical__info{
+background-color: white;
+}
 .artImg {
     width: 100%;
     margin-top: 80px;
 
 }
-
 .info__sec2 {
     color: white;
     padding: 36px 92px;

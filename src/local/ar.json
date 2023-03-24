@@ -1,0 +1,12 @@
+{
+    "DownLoad": {
+        "title": "Download",
+        "description": "Etlas application let feel the full experience as it can be used to recognize monuments, statues and landmarks with a text-to-speech technology and make your trip/tour much easier and funnier to learn new historic information about your scanned object. You can also use your favorite object to appear in your camera using the AR technology.",
+        "IOS": "if you’re IOS download this version of Etlas.",
+        "android": "if you’re Android download this version of Etlas.",
+        "DownLoadSection": {
+            "title": "لماذا هذا التطبيق؟",
+            "download": "Download Now!"
+        }
+    }
+}

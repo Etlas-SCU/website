@@ -4,9 +4,11 @@ import info from "../../images/Pngs/info.png";
 import styles from "./ArticleInfo.module.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useTranslation } from 'react-i18next';
 
 export default function ArticleInfo() {
   const [isClicked, setIsClicked] = useState(false);
+  const { t } = useTranslation();
   return (
     <Stack className={styles.artical__info} position="relative">
       <img src={info} alt="imgInfo" className={styles.artImg} />
@@ -24,7 +26,7 @@ export default function ArticleInfo() {
             className={styles.fav}
             alignItems="center"
           >
-            <p>{isClicked ? "Remove from" : "Add to"} Favorites</p>
+            <p>{isClicked ? t('Articles.ArticlesInfo.remove') :t('Articles.ArticlesInfo.add')} {t('Articles.ArticlesInfo.fav')}</p>
             <Tooltip title={isClicked ? "remove" : "add"}>
               <button onClick={() => setIsClicked(!isClicked)}>
                 {isClicked ? (
