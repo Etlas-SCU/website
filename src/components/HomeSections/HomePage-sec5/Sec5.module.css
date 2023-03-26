@@ -22,8 +22,14 @@
     display: flex;
 
 }
+.card{
+    width: 25%;
+}
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 900px){
+    .card{
+        min-width: 40%;
+    }
     .title{
         font-size: 18px;
     }
@@ -48,6 +54,11 @@
     }
 
 }
- 
+@media only screen and (max-width: 430px){
+    .card{
+        min-width: 60%;
+    }
+}
+
 
 

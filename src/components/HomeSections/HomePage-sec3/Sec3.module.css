@@ -56,13 +56,13 @@
 }
 .disCont::after{
     content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 25px;
-  background-color: #dfdadadb;
-  filter: blur(14px);
+    position: absolute;
+    bottom: -12px;
+    left: -33px;
+    width: 100%;
+    height: 45px;
+    background-color: #dfdadafc;
+    filter: blur(15px);
 }
 
 .slider__title {
