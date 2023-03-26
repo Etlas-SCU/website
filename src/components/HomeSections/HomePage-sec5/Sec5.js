@@ -4,32 +4,29 @@ import { NavLink } from "react-router-dom";
 import ArticlesCard from "../../ArticlesCard/ArticlesCard.js";
 import OutLineBtn from "../../outLineBtn/OutLineBtn.js";
 import styles from "./Sec5.module.css";
-import { useTranslation } from 'react-i18next';
-
+import { useTranslation } from "react-i18next";
 
 export default function Sec5() {
   const { t } = useTranslation();
-
+  let arr = [1, 2,3, 4, 5, 6];
   return (
     <Stack className={styles.sec5}>
       <Box className={styles.title}>
-        <p>{t('Articles.ArticlesSection.title')}</p>
+        <p>{t("Articles.ArticlesSection.title")}</p>
       </Box>
-      
-      <Stack className={styles.cont} >
-       <Box className={styles.cards}>
-       <ArticlesCard />
-        <ArticlesCard />
-        <ArticlesCard />
-        <ArticlesCard />
-        <ArticlesCard />
-        <ArticlesCard />
-       </Box>
+
+      <Stack className={styles.cont}>
+        <Box className={styles.cards}>
+          {arr.map((i)=>{
+           return <ArticlesCard className={styles.card} key={i}/>
+          })}
+          
+        </Box>
       </Stack>
 
       <Box textAlign="center">
         <NavLink to="/articles">
-          <OutLineBtn value={t('Articles.ArticlesSection.seeMore')}/>
+          <OutLineBtn value={t("Articles.ArticlesSection.seeMore")} />
         </NavLink>
       </Box>
     </Stack>
