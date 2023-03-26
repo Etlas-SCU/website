@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect , useState} from 'react'
 import { Box, Stack } from "@mui/material";
-import { Link, NavLink } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import Style from "./Footer.module.css";
 import Etitle from '../../images/Pngs/etitle.png'
 import App from '../../images/Pngs/AppStore.png'
@@ -12,12 +12,51 @@ import Linked from '../../images/Icons/linkedin.png'
 import Arrow from '../../images/Icons/Up arrow.png'
 
 export default function Footer() {
+    const [backToTop , setBackToTop] = useState(false) ;
+
+    useEffect(() =>{
+        window.addEventListener("scroll" , ()=> {
+            if(window.scrollY > 100) {
+                setBackToTop(true) ;
+            }else{
+                setBackToTop(false);
+            }
+        })
+    }, [])
+
+    const scrollUp = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
+
+    const [backToSec2 , setBackToSec2] = useState(false) ;
+
+    useEffect(() =>{
+        window.addEventListener("scroll" , ()=> {
+            if(window.scrollY > 100) {
+                setBackToSec2(true) ;
+            }else{
+                setBackToSec2(false);
+            }
+        })
+    }, [])
+
+    const scrollUpSec2 = () => {
+        window.scrollTo({
+            top: 570,
+            behavior: 'smooth'
+        })
+    }
+
+
     return (
         <Stack className={Style.footer}>
             <Box className={Style.arrow_icon}>
-                <NavLink to='/home'>
+                {backToTop && ( <button onClick={scrollUp} className={Style.scroll_btn}>
                     <img src={Arrow} alt="Home" />
-                </NavLink>
+                </button>) }
             </Box>
             <Stack className={Style.footer_section} direction='row'>
                 <Stack direction='column' className={Style.footer_sec1}>
@@ -41,7 +80,7 @@ export default function Footer() {
                     <Stack direction='row' gap='20px'>
                         <ul>
                             Mapping
-                            <li> <a href='##' >Why our Application? </a></li>
+                            {backToSec2 && (<li onClick={() => scrollUpSec2()}>Why our Application?</li>)}
                             <li><a href='##' >Know History </a></li>
                             <li><a href='##' >Tours</a></li>
                             <li><a href='##' >Articles</a></li>

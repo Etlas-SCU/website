@@ -80,7 +80,7 @@
     font-size: 14px;
 }
 
-.footer_sec3 li a {
+.footer_sec3 li , .footer_sec3 li a  {
     color: var(--mainColor);
     text-decoration: none;
 }
@@ -136,6 +136,11 @@
 .footer_prag3{
     font-size: 14px;
     padding-bottom: 5px ;
+}
+
+.scroll_btn{
+    border: none;
+    background: none;
 }
 
 @media only screen and (max-width: 860px) {
