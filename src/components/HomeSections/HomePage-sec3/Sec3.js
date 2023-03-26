@@ -6,6 +6,8 @@ import { Context } from "../../Context/Context";
 import arrow from "../../../images/Icons/Know History Arrow.png";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Link } from "react-router-dom";
+import Fade from "react-reveal/Fade";
+import { Zoom } from "react-reveal";
 
 export default function Sec3() {
   const { t } = useTranslation();
@@ -17,22 +19,33 @@ export default function Sec3() {
       <Stack className={styles.slider} key={sec.id}>
         <Stack direction="row">
           <Box className={styles.imgCont}>
-            <img src={sec.img} alt={sec.title} className={styles.slider__img} />
+            <Fade buttom>
+              <img
+                src={sec.img}
+                alt={sec.title}
+                className={styles.slider__img}
+              />
+            </Fade>
           </Box>
+
           <Stack direction="column" className={styles.disCont}>
-            <p className={styles.slider__title}>{sec.title}</p>
-            <p className={styles.slider__dis}>{sec.description}</p>
+            <Fade left>
+              <p className={styles.slider__title}>{sec.title}</p>
+              <p className={styles.slider__dis}>{sec.description}</p>
+            </Fade>
           </Stack>
         </Stack>
 
         <Link to={`/know_history#${sec.id}`}>
-          <button className={styles.slider__btn}>
+         <Zoom>
+         <button className={styles.slider__btn}>
             <p>{t("timeLine.timeLineSection.btnText")}</p>
             <ArrowForwardIcon
               sx={{ display: "none" }}
               className={styles.contArrow}
             />
           </button>
+         </Zoom>
         </Link>
       </Stack>
     );
@@ -64,7 +77,6 @@ export default function Sec3() {
       <Box className={styles.title}>
         <p>{t("timeLine.timeLineSection.title")}</p>
       </Box>
-  
 
       <Stack direction="row" margin="0 auto 50px" width="fit-content">
         {timline}
