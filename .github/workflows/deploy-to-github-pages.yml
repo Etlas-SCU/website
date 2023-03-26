@@ -27,7 +27,7 @@ jobs:
         git config --global user.password "${{ secrets.GH_PAGES_TOKEN  }}"
 
     - name: Install dependencies
-      run: npm install
+      run: npm install --force
 
     - name: Build project
       run: npm run build
