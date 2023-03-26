@@ -12,7 +12,7 @@ export default function Sec5() {
 
   return (
     <Stack className={styles.sec5}>
-      <Box textAlign="center" className={styles.title}>
+      <Box className={styles.title}>
         <p>{t('Articles.ArticlesSection.title')}</p>
       </Box>
       

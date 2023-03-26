@@ -4,12 +4,13 @@
 }
 .title{
     border-top: 1px solid white;
-    padding: 5vw 0 20px 0;
+    padding: 3vw 0 20px 0;
     color: white;
     font-size: 30px;
     width: fit-content;
     font-weight: 500;
     margin: 0 auto;
+    text-align: center;
 }
 .title p{
     text-align: center;

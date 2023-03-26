@@ -1,7 +1,5 @@
 import { Box, Stack } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
-import pic1 from "../../images/Pics/pic1.png";
-import pic2 from "../../images/Pics/pic2.png";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./KnowHistory.module.css";
 import "./KnowHistory.module.css";
 import Timeline from "@mui/lab/Timeline";
@@ -10,9 +8,10 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
-import { Link } from 'react-scroll';
+import { Link } from "react-scroll";
 import { useTranslation } from "react-i18next";
-
+import { Context } from "../../components/Context/Context";
+import { useLocation } from "react-router-dom";
 
 export default function KnowHistory() {
   const { t } = useTranslation();
@@ -21,102 +20,64 @@ export default function KnowHistory() {
 
   const [activeLink, setActiveLink] = useState();
 
-  const sections = [
-    {
-      id: 1,
-      date: "200 B.C. - 231 B.C.",
-      title: "Osiris Kingdom",
-      img: pic1,
-      description: [
-        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially  unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      ],
-    },
-    {
-      id: 2,
-      date: "231 B.C. - 369 B.C.",
-      title: "The Old Kingdom",
-      img: pic2,
-      description: [
-        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially  unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      ],
-    },
-    {
-      id: 3,
-      date: "200 B.C. - 231 B.C.",
-      title: "Osiris Kingdom",
-      img: pic1,
-      description: [
-        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially  unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      ],
-    },
-    {
-      id: 4,
-      date: "231 B.C. - 369 B.C.",
-      title: "The Old Kingdom",
-      img: pic2,
-      description: [
-        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially  unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      ],
-    },
-
-    {
-      id: 5,
-      date: "200 B.C. - 231 B.C.",
-      title: "Osiris Kingdom",
-      img: pic1,
-      description: [
-        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially  unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      ],
-    },
-  ];
+  const { timeLineSections } = useContext(Context); 
+  const location = useLocation();
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
-    let activeSection = sections[0].id;
-  
-    sections.forEach((section, index) => {
+    let activeSection = timeLineSections[0].id;
+
+    timeLineSections.forEach((section, index) => {
       const sectionRef = sectionRefs.current[index];
       if (sectionRef && sectionRef.current) {
         const sectionTop = sectionRef.current.offsetTop;
         const sectionBottom = sectionTop + sectionRef.current.offsetHeight;
-        if (currentScrollPos >= sectionTop && currentScrollPos < sectionBottom) {
+        if (
+          currentScrollPos >= sectionTop &&
+          currentScrollPos < sectionBottom
+        ) {
           activeSection = section.id;
         }
       }
     });
-  
+
     setActiveLink(activeSection);
   };
 
   useEffect(() => {
-    sectionRefs.current = new Array(5).fill(null).map(() => React.createRef(null));
-    window.addEventListener('scroll', handleScroll);
+    if (location.hash) {
+      const element = document.getElementById(location.hash.slice(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth'});
+      }
+    }
+  });
+
+
+  useEffect(() => {
+    sectionRefs.current = new Array(5)
+      .fill(null)
+      .map(() => React.createRef(null));
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
-  
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   function handleClick(id) {
     setTimeout(() => {
-      setActiveLink(id)
-    }, 1000); 
+      setActiveLink(id);
+    }, 1000);
   }
 
   return (
     <Stack direction="row" mt="120px" sx={{ backgroundColor: "white" }}>
       <Box className={styles.timeLineCont}>
-
         <Box className={styles.timeLineTitle}>{t("timeLine.timeLine")}</Box>
 
         <Box display="flex" justifyContent="flex-end">
-
           <Box className={styles.timeLine}>
             <Timeline
               sx={{
@@ -126,7 +87,7 @@ export default function KnowHistory() {
                 },
               }}
             >
-              {sections.map((sec) => {
+              {timeLineSections.map((sec) => {
                 return (
                   <Box key={sec.id}>
                     <TimelineItem>
@@ -153,7 +114,10 @@ export default function KnowHistory() {
                         <Link
                           to={sec.id}
                           onClick={() => handleClick(sec.id)}
-                          spy={true} smooth={true} duration={200} offset={-100}
+                          spy={true}
+                          smooth={true}
+                          duration={200}
+                          offset={-100}
                         >
                           <h3 className={styles.timeLine__title}>
                             {sec.title}
@@ -174,7 +138,7 @@ export default function KnowHistory() {
         <h4 className={styles.title}>{t("timeLine.title")}</h4>
 
         <Box className={styles.history}>
-          {sections.map((sec) => {
+          {timeLineSections.map((sec) => {
             return (
               <Box
                 key={sec.id}
@@ -182,7 +146,7 @@ export default function KnowHistory() {
                 id={sec.id}
                 width="87%"
                 margin="0 auto"
-                ref={sectionRefs.current[sections.indexOf(sec)]}
+                ref={sectionRefs.current[timeLineSections.indexOf(sec)]}
               >
                 <h4>{sec.title}</h4>
                 <p className={styles.history__date}>{sec.date}</p>
