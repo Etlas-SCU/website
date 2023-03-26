@@ -12,7 +12,7 @@ export default function Sec3() {
   const { timeLineSections } = useContext(Context);
   const [currIndx, setcurrIndx] = useState(0);
 
-  const slider = timeLineSections.map((sec, i) => {
+  const slider = timeLineSections.map((sec) => {
     return (
       <Stack className={styles.slider} key={sec.id}>
         <Stack direction="row">
@@ -25,7 +25,7 @@ export default function Sec3() {
           </Stack>
         </Stack>
 
-        <Link to="/know_history">
+        <Link to={`/know_history#${sec.id}`}>
           <button className={styles.slider__btn}>
             <p>{t("timeLine.timeLineSection.btnText")}</p>
             <ArrowForwardIcon

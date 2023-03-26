@@ -11,6 +11,7 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import { Link } from "react-scroll";
 import { useTranslation } from "react-i18next";
 import { Context } from "../../components/Context/Context";
+import { useLocation } from "react-router-dom";
 
 export default function KnowHistory() {
   const { t } = useTranslation();
@@ -19,7 +20,8 @@ export default function KnowHistory() {
 
   const [activeLink, setActiveLink] = useState();
 
-  const { timeLineSections } = useContext(Context);
+  const { timeLineSections } = useContext(Context); 
+  const location = useLocation();
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -41,6 +43,16 @@ export default function KnowHistory() {
 
     setActiveLink(activeSection);
   };
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.slice(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth'});
+      }
+    }
+  });
+
 
   useEffect(() => {
     sectionRefs.current = new Array(5)
