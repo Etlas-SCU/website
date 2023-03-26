@@ -31,7 +31,11 @@
     },
     "timeLine":{
        "timeLine":"timeLine",
-       "title":"Know History"
+       "title":"Know History",
+       "timeLineSection":{
+         "title":"Know Egypt history",
+         "btnText":"Continue Reading"
+       }
     },
     "nav":{
       "register":"Register",
