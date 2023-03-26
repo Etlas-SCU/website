@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Button } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import styles from "./Sec1.module.css";
 import Statue2 from '../../../images/Pngs/Statue2.png'
 import App from '../../../images/Pngs/AppStore.png'
