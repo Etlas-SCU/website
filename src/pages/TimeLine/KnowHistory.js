@@ -12,6 +12,7 @@ import { Link } from "react-scroll";
 import { useTranslation } from "react-i18next";
 import { Context } from "../../components/Context/Context";
 import { useLocation } from "react-router-dom";
+import Fade from "react-reveal/Fade";
 
 export default function KnowHistory() {
   const { t } = useTranslation();
@@ -150,15 +151,20 @@ export default function KnowHistory() {
               >
                 <h4>{sec.title}</h4>
                 <p className={styles.history__date}>{sec.date}</p>
+                <Fade>
+
                 <img
                   className={styles.history__img}
                   src={sec.img}
                   alt={sec.title}
                 />
+                </Fade>
                 <Box className={styles.history__discription}>
-                  <p>{sec.description[0]}</p>
+                 <Fade top>
+                 <p>{sec.description[0]}</p>
                   <br />
                   <p>{sec.description[1]}</p>
+                 </Fade>
                 </Box>
               </Box>
             );
