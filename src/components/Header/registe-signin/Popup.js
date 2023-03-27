@@ -51,14 +51,10 @@ export default function Popup({ trigger, setTrigger }) {
             src={register ? reg : sign}
             alt="formImg"
           />
-        {/* <Box sx={{ width: "38%", display: { xs: "none", md: "block" } }}>
-         
-        </Box> */}
-
         <Stack
           sx={{
             width: { xs: "90%", md: "70%" },
-            m: { xs: "20px 0px 0px 15px", md: "20px 10px" },
+            m: "50px 15px 0",
           }}
         >
           <Box>
@@ -176,7 +172,7 @@ export default function Popup({ trigger, setTrigger }) {
                   </Box>
                   <img className={styles.e} src={e} alt="epng" />
 
-                  <Box display="flex" justifyContent="flex-end">
+                  <Box display="flex" justifyContent="flex-end" height="195px" alignItems="flex-end">
                     <Box className={styles.continue__with}>
                       <p>{t("nav.contWith")}</p>
 

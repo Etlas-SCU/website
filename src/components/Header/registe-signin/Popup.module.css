@@ -9,14 +9,14 @@
 }
 .popup_inner{
     cursor: auto;
-    width: 80%;
+    width: 60%;
     position: absolute;
     border-radius: 30px;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     background-color: white;
-    height: 80%;
+    height: 72%;
     overflow: auto;
 } 
 .popup_inner::-webkit-scrollbar {
@@ -111,9 +111,9 @@
 }
 @media only screen and (max-width: 900px){
     .continue__with{
-        margin: 10px 0;
+        margin: 10px auto;
     }
-    .popup_inner{width:fit-content;}
+    .popup_inner{width:70%;}
     .continue__with img{width:180px; }
     input{width:80%;}
     .popup_inner input{

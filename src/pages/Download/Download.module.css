@@ -49,6 +49,10 @@
     top: -95px;
   
 }
+.down .e{
+    display: none;
+}
+
 @media only screen and (max-width: 900px){
     .para {width: 100%; font-size: 18px;}
     .down__sec{width: 100%;font-size: 15px;     margin: 50px auto;
@@ -61,5 +65,13 @@
     .dphone { 
         display: none;
     }
+    .down .e{
+        display: inline;
+        width: 95px;
+        position: absolute;
+        right: 0;
+        top: 210px;
+    }
+    
 
 }
