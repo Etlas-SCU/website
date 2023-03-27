@@ -5,6 +5,7 @@ import play from "../../images/Pngs/PlayStore.png";
 import app from "../../images/Pngs/AppStore.png";
 import phone from "../../images/Pngs/phone (2).png";
 import { useTranslation } from 'react-i18next';
+import e from "../../images/Pngs/e.png";
 
 
 export default function Download() {
@@ -18,6 +19,8 @@ export default function Download() {
         {t('DownLoad.description')}
         </p>
       </Box>
+
+      <img className={styles.e} src={e} alt="epng" />
 
       <Stack direction="row" className={styles.down__sec}>
         <Box borderRight="2px solid white">

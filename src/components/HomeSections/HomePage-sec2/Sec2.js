@@ -6,6 +6,9 @@ import { NavLink } from "react-router-dom";
 import phone from "../../../images/Pngs/Phone.png";
 import styles from "./Sec2.module.css";
 import { useTranslation } from 'react-i18next';
+import Fade from "react-reveal/Fade";
+import { Zoom } from "react-reveal";
+
 export default function Sec2() {
   
   const { t } = useTranslation();
@@ -18,10 +21,13 @@ export default function Sec2() {
         </Box>
 
         <Box className={styles.home__sec2__LSide}>
+          <Fade top>
           <h2>{t('DownLoad.DownLoadSection.title')}</h2>
           <p className={styles.home__sec2__para}>{t('DownLoad.description')}  </p>
+          </Fade>
 
           <Box width="230px" className={styles.download_button}>
+            <Zoom>
             <NavLink to="/download">
               <ContainedBtn>
                 <span>{t('DownLoad.DownLoadSection.download')}</span>
@@ -34,6 +40,7 @@ export default function Sec2() {
                 />
               </ContainedBtn>
             </NavLink>
+            </Zoom>
           </Box>
         </Box>
       </Box>
