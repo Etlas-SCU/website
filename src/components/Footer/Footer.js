@@ -80,7 +80,7 @@ export default function Footer() {
                     <Stack direction='row' gap='20px'>
                         <ul>
                             Mapping
-                            {backToSec2 && (<li onClick={() => scrollUpSec2()}>Why our Application?</li>)}
+                            <li>{backToSec2 && (<a href ='##' onClick={() => scrollUpSec2()}>Why our Application?</a>)} </li>
                             <li><a href='##' >Know History </a></li>
                             <li><a href='##' >Tours</a></li>
                             <li><a href='##' >Articles</a></li>
@@ -96,7 +96,7 @@ export default function Footer() {
                     </Stack>
                     <Box className={Style.footer_prag2}>
                         <Link to='/contact' >Contact Us</Link>
-                        <a href='##' >Terms and conditions</a>
+                        <Link to='/terms'>Terms and conditions</Link>
                         <Link to='/about'>About US</Link>
                     </Box>
                 </Stack>
