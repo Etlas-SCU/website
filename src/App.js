@@ -10,6 +10,7 @@ import Articles from "./pages/Articles/Articles";
 import Tours from "./pages/Tours/Tours";
 import ArticleInfo from "./pages/ArticleInfo/ArticleInfo";
 import ContactUs from "./pages/ContactUs/ContactUS";
+import Terms from "./pages/TermsAndConditions/Terms" ;
 import { useEffect } from "react";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/download" element={<Download />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
     </Provider>
   );
