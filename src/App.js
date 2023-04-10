@@ -12,6 +12,7 @@ import ArticleInfo from "./pages/ArticleInfo/ArticleInfo";
 import ContactUs from "./pages/ContactUs/ContactUS";
 import Terms from "./pages/TermsAndConditions/Terms" ;
 import { useEffect } from "react";
+import KnowledgeCheck from "./pages/KnowledgeCheck/KnowledgeCheck";
 
 function App() {
   const { pathname } = useLocation();
@@ -26,17 +27,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/know_history"  element={<KnowHistory /> }/>
-           
-          
-        {/* <Switch>
-          <Route path="/know_history">
-            <KnowHistory />
-          </Route>
-        </Switch> */}
         <Route path="/tours" element={<Tours />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:id" element={<ArticleInfo />}></Route>
-        <Route path="/knowledge" element={<div>knowledge</div>} />
+        <Route path="/knowledge" element={<KnowledgeCheck/>} />
         <Route path="/download" element={<Download />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />

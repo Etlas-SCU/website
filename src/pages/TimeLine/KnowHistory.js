@@ -15,14 +15,13 @@ import { useLocation } from "react-router-dom";
 import Fade from "react-reveal/Fade";
 
 export default function KnowHistory() {
+  const { timeLineSections } = useContext(Context); 
   const { t } = useTranslation();
 
   const sectionRefs = useRef([]);
+  const location = useLocation();
 
   const [activeLink, setActiveLink] = useState();
-
-  const { timeLineSections } = useContext(Context); 
-  const location = useLocation();
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -33,10 +32,7 @@ export default function KnowHistory() {
       if (sectionRef && sectionRef.current) {
         const sectionTop = sectionRef.current.offsetTop;
         const sectionBottom = sectionTop + sectionRef.current.offsetHeight;
-        if (
-          currentScrollPos >= sectionTop &&
-          currentScrollPos < sectionBottom
-        ) {
+        if (currentScrollPos >= sectionTop && currentScrollPos < sectionBottom) {
           activeSection = section.id;
         }
       }
@@ -52,7 +48,7 @@ export default function KnowHistory() {
         element.scrollIntoView({ behavior: 'smooth'});
       }
     }
-  });
+  },[location]);
 
 
   useEffect(() => {
@@ -61,7 +57,6 @@ export default function KnowHistory() {
       .map(() => React.createRef(null));
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -118,7 +113,7 @@ export default function KnowHistory() {
                           spy={true}
                           smooth={true}
                           duration={200}
-                          offset={-100}
+                          offset={-60}
                         >
                           <h3 className={styles.timeLine__title}>
                             {sec.title}
