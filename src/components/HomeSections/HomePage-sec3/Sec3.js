@@ -36,6 +36,7 @@ export default function Sec3() {
           </Stack>
         </Stack>
 
+       
         <Link to={`/know_history#${sec.id}`}>
          <Zoom>
          <button className={styles.slider__btn}>
