@@ -48,7 +48,7 @@ export default function KnowHistory() {
         element.scrollIntoView({ behavior: 'smooth'});
       }
     }
-  },[location]);
+  });
 
 
   useEffect(() => {
