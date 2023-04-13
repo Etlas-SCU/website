@@ -4,16 +4,20 @@ import { Box } from "@mui/material";
 import { useContext } from "react";
 import { Context } from "../../components/Context/Context";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function QandA() {
   const { title } = useParams();
   const [currQ, setCurrQ] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [clicked, setClicked] = useState(false);
-
   const { statusQ, statusScore, setStatusScore, categories } =
     useContext(Context);
 
+    useEffect(() => {
+      setStatusScore(0);
+    }, []);
+    
   const handleCorrectAnswer = (iscorrect) => {
     setClicked(true);
     if (currQ === statusQ.length - 1) {
@@ -21,7 +25,7 @@ export default function QandA() {
         setQuizFinished(true);
       }, 1500);
     }
-    if (iscorrect === "true" ) {
+    if (iscorrect === "true") {
       setStatusScore(statusScore + 1);
     }
     setTimeout(() => {
@@ -47,7 +51,11 @@ export default function QandA() {
       </Box>
       {quizFinished ? (
         <Box className={style.finish}>
-          {statusScore >= (statusQ.length/2) ?<h1>congratulations 🥳</h1>:<h1>Ooops! try again 😥</h1>}
+          {statusScore >= statusQ.length / 2 ? (
+            <h1>congratulations 🥳</h1>
+          ) : (
+            <h1>Ooops! try again 😥</h1>
+          )}
           <Box>Your Score is : {SC()}</Box>
         </Box>
       ) : (
@@ -66,7 +74,8 @@ export default function QandA() {
                     key={index}
                     onClick={() => handleCorrectAnswer(ans.iscorrect)}
                     style={{
-                      backgroundColor: ans.iscorrect === "true" && clicked ? "green" : "",
+                      backgroundColor:
+                        ans.iscorrect === "true" && clicked ? "green" : "",
                     }}
                   >
                     {ans.answer}
