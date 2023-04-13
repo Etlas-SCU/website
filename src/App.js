@@ -13,6 +13,7 @@ import ContactUs from "./pages/ContactUs/ContactUS";
 import Terms from "./pages/TermsAndConditions/Terms" ;
 import { useEffect } from "react";
 import KnowledgeCheck from "./pages/KnowledgeCheck/KnowledgeCheck";
+import QandA from "./pages/QandA/QandA";
 
 function App() {
   const { pathname } = useLocation();
@@ -29,8 +30,9 @@ function App() {
         <Route path="/know_history"  element={<KnowHistory /> }/>
         <Route path="/tours" element={<Tours />} />
         <Route path="/articles" element={<Articles />} />
-        <Route path="/articles/:id" element={<ArticleInfo />}></Route>
+        <Route path="/articles/:id" element={<ArticleInfo />}/>
         <Route path="/knowledge" element={<KnowledgeCheck/>} />
+        <Route path="/knowledge/:title" element={<QandA/>} />
         <Route path="/download" element={<Download />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />

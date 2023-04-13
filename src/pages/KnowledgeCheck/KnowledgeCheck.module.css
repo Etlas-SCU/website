@@ -9,7 +9,6 @@
     border-radius: 24px;
     height: fit-content;
     padding-top: 20px;
-    color: white;
     width: 27%;
     cursor: pointer;
 }
@@ -20,12 +19,16 @@
 .cat__title{
     padding: 0 20px;
     font-size: 26px;
+    color: white;
+
 }
 .cat__dis{
     width: 85%;
     padding: 15px 20px;
     font-size: 16px;
     font-weight: 200;
+    color: white;
+
 }
 
 .cat__pan {
@@ -42,6 +45,8 @@
     font-weight: 700;
     font-size: 6vw;
     left: 11px;
+    color: white;
+
 }
 @media only screen and (max-width: 900px){
     .cat__title{
