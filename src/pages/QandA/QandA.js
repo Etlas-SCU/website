@@ -21,7 +21,7 @@ export default function QandA() {
         setQuizFinished(true);
       }, 1500);
     }
-    if (iscorrect === "true") {
+    if (iscorrect === "true" ) {
       setStatusScore(statusScore + 1);
     }
     setTimeout(() => {
@@ -39,7 +39,7 @@ export default function QandA() {
       return <p> {categories[2].score}</p>;
     }
   };
-  
+
   return (
     <Box p="120px 0" height="100%">
       <Box className={style.title}>
