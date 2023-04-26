@@ -1,0 +1,68 @@
+.Sec1{
+    padding: 150px 40px 0;
+}
+.slide{
+    margin-bottom: -120px;
+}
+.swiper_container{
+    position: relative;
+}
+
+.swiper_slide > img{
+    height: 370px;
+    width: 550px;
+    background: none ;
+}
+
+
+.Sec2{
+    padding: 80px 50px;
+    background: #ffffff;
+    color: var(--mainColor) ;
+}
+
+.tours_info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tours_title{
+    padding: 10px 0;
+}
+
+.tours_prag{
+    font-size: 15px;
+    width: 70%;
+}
+
+.tours_prag2{
+    font-size: 15px;
+    width: 70%;
+}
+
+.tours_rate{
+    width: 15%;
+}
+
+.tours_prag3{
+    font-size: 12px;
+    padding: 10px 0;
+    color: var(--mainColor);
+}
+
+@media only screen and (max-width: 900px) {
+    .tours_info{
+        flex-direction: column-reverse;
+    }
+
+    .tours_prag , .tours_prag2{
+        font-size: 13px;
+    }
+
+    .tours_rate{
+        width: fit-content;
+    }
+
+}
+

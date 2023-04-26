@@ -9,6 +9,7 @@ import { Provider } from "./components/Context/Context";
 import Articles from "./pages/Articles/Articles";
 import Tours from "./pages/Tours/Tours";
 import ArticleInfo from "./pages/ArticleInfo/ArticleInfo";
+import ToursInfo from "./pages/ToursInfo/ToursInfo" ;
 import ContactUs from "./pages/ContactUs/ContactUS";
 import Terms from "./pages/TermsAndConditions/Terms" ;
 import { useEffect } from "react";
@@ -34,6 +35,7 @@ function App() {
           </Route>
         </Switch> */}
         <Route path="/tours" element={<Tours />} />
+        <Route path="/tours/:id" element={<ToursInfo />}></Route>
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:id" element={<ArticleInfo />}></Route>
         <Route path="/knowledge" element={<div>knowledge</div>} />
