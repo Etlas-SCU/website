@@ -1,0 +1,53 @@
+.sec4{
+    background: #ffffff;
+    padding: 0 50px;
+}
+
+.title{
+    text-align: center;
+    color: var(--mainColor);
+    padding: 40px 0 20px 0 ;
+    font-size: 30px;
+    width: fit-content;
+    font-weight: 500;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.seeMore{
+    color: var(--mainColor) !important;
+}
+
+@media only screen and (max-width: 900px){
+    .title{
+        font-size: 18px;
+    }
+
+    .tour_card{
+        position: relative;
+        max-width: 1230px;
+        width: 100%;
+    }
+
+    .cards{
+        margin: auto;
+        overflow-x: scroll;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        scroll-behavior: smooth;
+        justify-content:unset ;
+        max-width: 1220px;
+        width: 90vw;
+    }
+
+    .cards::-webkit-scrollbar{
+        width: 0;
+    }
+}

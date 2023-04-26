@@ -9,6 +9,7 @@ import { Provider } from "./components/Context/Context";
 import Articles from "./pages/Articles/Articles";
 import Tours from "./pages/Tours/Tours";
 import ArticleInfo from "./pages/ArticleInfo/ArticleInfo";
+import ToursInfo from "./pages/ToursInfo/ToursInfo" ;
 import ContactUs from "./pages/ContactUs/ContactUS";
 import Terms from "./pages/TermsAndConditions/Terms" ;
 import { useEffect } from "react";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/know_history"  element={<KnowHistory /> }/>
         <Route path="/tours" element={<Tours />} />
+        <Route path="/tours/:id" element={<ToursInfo />}></Route>
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:id" element={<ArticleInfo />}/>
         <Route path="/knowledge" element={<KnowledgeCheck/>} />

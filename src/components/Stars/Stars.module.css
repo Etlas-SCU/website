@@ -1,0 +1,10 @@
+.star{
+    background: rgba(181, 181, 181, 1);
+    color : rgba(191, 129, 72, 1);
+    width: fit-content ;
+    font-size: 20px;
+    margin-top: 15px ;
+    border-radius: 8px ;
+    padding: 2px 5px 0 5px;
+    flex-wrap: nowrap;
+}
