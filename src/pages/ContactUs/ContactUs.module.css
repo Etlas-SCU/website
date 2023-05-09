@@ -1,6 +1,7 @@
 .contactUs {
     padding-top: 100px;
     height: 100%;
+    display: flex;
     justify-content: space-between;
     background: var(--mainColor);
 }
@@ -36,7 +37,30 @@
     background: #ffffff;
     height: 450px;
     border-radius: 15px;
+    padding: 5px 15px 5px 5px;
+    width: 600px;
 }
+
+.contact label {
+    padding: 7px 15px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 17px;
+    color: #BF8148;
+}
+
+.contact input{
+    margin: 0 15px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 14px;
+    background: #D9D9D9 ;
+    color: rgba(0, 52, 65, 0.5);
+    border: none;
+    border-radius: 10px;
+    height: 45px;
+}
+
 
 .btn_submit {
     font-family: 'Montserrat';
@@ -55,25 +79,6 @@
 .second_eimg {
     width: 70px;
     height: 100px;
-}
-
-.contact label {
-    padding: 5px 15px;
-    font-family: 'Montserrat';
-    font-weight: 500;
-    font-size: 15px;
-    color: #BF8148;
-}
-
-.contact input{
-    margin: 0 15px;
-    font-family: 'Montserrat';
-    font-weight: 500;
-    font-size: 13px;
-    background: #D9D9D9 ;
-    color: rgba(0, 52, 65, 0.5);
-    border: none;
-    height: 45px;
 }
 
 .subject{
@@ -103,6 +108,18 @@
     height: 99.5%;
 }
 
+.title_popup{
+    padding: 40px 0 20px 0;
+    color: var(--mainColor);
+
+}
+
+.prag_popup{
+    color: var(--mainColor);
+    font-size: 15px;
+    font-weight: 500;
+}
+
 @media only screen and (max-width: 1000px){
     .contact_eimg{
         display: none;
@@ -114,13 +131,28 @@
     .sec1{
         width: 100%;
     }
+
+    .contact {
+        width: 80%;
+    }
+
     .contact_title{
-        font-size: 25px;
+        font-size: 27px;
     }
+
     .contact label{
-        font-size: 13px;
+        font-size: 15px;
     }
+
     .contact input{
-        font-size: 11px;
+        font-size: 12px;
+    }
+
+    .title_popup{
+        font-size: 20px;
+    }
+
+    .prag_popup{
+        font-size: 12px;
     }
 }

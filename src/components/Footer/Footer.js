@@ -50,6 +50,64 @@ export default function Footer() {
         })
     }
 
+    const [backToSec3 , setBackToSec3] = useState(false) ;
+
+    useEffect(() =>{
+        window.addEventListener("scroll" , ()=> {
+            if(window.scrollY > 100) {
+                setBackToSec3(true) ;
+            }else{
+                setBackToSec3(false);
+            }
+        })
+    }, [])
+
+    const scrollUpSec3 = () => {
+        window.scrollTo({
+            top: 1140,
+            behavior: 'smooth'
+        })
+    }
+
+    const [backToSec4 , setBackToSec4] = useState(false) ;
+
+    useEffect(() =>{
+        window.addEventListener("scroll" , ()=> {
+            if(window.scrollY > 100) {
+                setBackToSec4(true) ;
+            }else{
+                setBackToSec4(false);
+            }
+        })
+    }, [])
+
+    const scrollUpSec4 = () => {
+        window.scrollTo({
+            top: 1850,
+            behavior: 'smooth'
+        })
+    }
+
+    const [backToSec5 , setBackToSec5] = useState(false) ;
+
+    useEffect(() =>{
+        window.addEventListener("scroll" , ()=> {
+            if(window.scrollY > 100) {
+                setBackToSec5(true) ;
+            }else{
+                setBackToSec5(false);
+            }
+        })
+    }, [])
+
+    const scrollUpSec5 = () => {
+        window.scrollTo({
+            top: 2500,
+            behavior: 'smooth'
+        })
+    }
+
+
 
     return (
         <Stack className={Style.footer}>
@@ -81,10 +139,10 @@ export default function Footer() {
                         <ul>
                             Mapping
                             <li>{backToSec2 && (<a href ='##' onClick={() => scrollUpSec2()}>Why our Application?</a>)} </li>
-                            <li><a href='##' >Know History </a></li>
-                            <li><a href='##' >Tours</a></li>
-                            <li><a href='##' >Articles</a></li>
-                            <li><a href='##' >Knowledge Check</a></li>
+                            <li>{backToSec3 && (<a href ='##' onClick={() => scrollUpSec3()}>Know History </a> )} </li>
+                            <li>{backToSec4 && (<a href ='##' onClick={() => scrollUpSec4()}>Tours</a> )}</li>
+                            <li>{backToSec5 && (<a href ='##' onClick={() => scrollUpSec5()}>Articles</a> )}</li>
+                            <li><Link to='/knowledge' >Knowledge Check</Link></li>
                         </ul>
                         <ul>
                             Language

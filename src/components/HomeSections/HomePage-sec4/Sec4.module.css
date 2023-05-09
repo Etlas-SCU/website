@@ -1,6 +1,5 @@
 .sec4{
     background: #ffffff;
-    padding: 0 50px;
 }
 
 .title{
@@ -14,28 +13,40 @@
     text-align: center;
 }
 
-.cards{
+.tours{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.seeMore{
+.cards{
+    width: 30%;
+}
+
+.see_more{
     color: var(--mainColor) !important;
 }
 
+.see_more:hover{
+    color: #ffffff !important;
+}
+
 @media only screen and (max-width: 900px){
+    .cards{
+        min-width: 40%;
+    }
+
     .title{
         font-size: 18px;
     }
 
-    .tour_card{
+    .tours_cards{
         position: relative;
         max-width: 1230px;
         width: 100%;
     }
 
-    .cards{
+    .tours{
         margin: auto;
         overflow-x: scroll;
         display: flex;
@@ -47,7 +58,15 @@
         width: 90vw;
     }
 
-    .cards::-webkit-scrollbar{
+    .tours::-webkit-scrollbar{
         width: 0;
     }
 }
+
+@media only screen and (max-width: 450px){
+    .cards{
+        min-width: 60%;
+    }
+}
+
+

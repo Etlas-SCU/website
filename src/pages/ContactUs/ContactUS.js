@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Style from './ContactUs.module.css'
 import { Box, Stack } from '@mui/material';
 import Econtact1 from '../../images/Pngs/e(contactus).png'
 import Econtact2 from '../../images/Pngs/e(contactus)2.png'
 import Statue from '../../images/Pngs/Statue(Contact Us).png'
+import PopUp_img from '../../images/Icons/Contact Us Pop up Check.png'
+
+import PopUp from '../../components/PopUp_Message/PopUp';
 
 import { Field, Formik, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
@@ -27,6 +30,8 @@ const onSubmit = (values, { resetForm }) => {
 };
 
 export default function ContactUS() {
+    const [buttonPopup , setButtonPopup] = useState(false) ; 
+
     return (
         <Stack className={Style.contactUs} direction='row'>
             <Box className={Style.sec1}>
@@ -91,10 +96,16 @@ export default function ContactUS() {
                         </Formik>
                     </Box>
                     <Box className={Style.sec2}>
-                        <button type='submit' className={Style.btn_submit}>Submit</button>
+                        <button type='submit' className={Style.btn_submit} onClick={() => setButtonPopup(true)}>Submit</button>
                         <img src={Econtact2} alt='e2' className={Style.second_eimg} />
                     </Box>
                 </Box>
+                <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}>
+                    <Box>
+                        <h2 className={Style.title_popup}>Thanks for contacting us</h2>
+                        <p className={Style.prag_popup}>Your message has been sent successfully</p>
+                    </Box>
+                </PopUp>
             </Box>
             <Box width='42%' className={Style.contact_eimg}>
                 <img src={Statue} alt='statue' className={Style.contact_img} />
