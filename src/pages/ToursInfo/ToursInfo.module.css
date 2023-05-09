@@ -1,68 +1,112 @@
-.Sec1{
-    padding: 150px 40px 0;
+.Sec1 {
+    padding: 150px 0 0;
 }
-.slide{
-    margin-bottom: -120px;
+
+.swiper_slide {
+    width: 40%;
 }
-.swiper_container{
+
+
+.swiper_slide>img {
+    width: 530px;
+    height: 300px;
+}
+
+.next_btn {
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 30%;
+    top: 127px;
+}
+
+.prev_btn {
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 30%;
+    top: 127px;
+}
+
+.next_img,
+.prev_img {
+    width: 40px;
+    height: 40px;
     position: relative;
 }
 
-.swiper_slide > img{
-    height: 370px;
-    width: 550px;
-    background: none ;
-}
-
-
-.Sec2{
-    padding: 80px 50px;
+.Sec2 {
+    padding: 30px;
     background: #ffffff;
-    color: var(--mainColor) ;
+    color: var(--mainColor);
 }
 
-.tours_info{
+.tours_info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.tours_title{
+.tours_title {
     padding: 10px 0;
 }
 
-.tours_prag{
+.tours_prag {
     font-size: 15px;
     width: 70%;
 }
 
-.tours_prag2{
+.tours_prag2 {
     font-size: 15px;
     width: 70%;
 }
 
-.tours_rate{
-    width: 15%;
+.tours_rate {
+    display: flex;
+    flex-direction: column;
 }
 
-.tours_prag3{
+.rate_btn {
+    background: none;
+    border: none;
+}
+
+.tours_prag3 {
     font-size: 12px;
     padding: 10px 0;
+    width: 150px;
     color: var(--mainColor);
 }
 
-@media only screen and (max-width: 900px) {
-    .tours_info{
+.popup_title {
+    padding: 20px 0;
+}
+
+.popup_star {
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 700px) {
+    .tours_info {
         flex-direction: column-reverse;
     }
 
-    .tours_prag , .tours_prag2{
+    .tours_prag,
+    .tours_prag2 {
+        font-size: 13px;
+        width: 80%;
+    }
+
+    .popup_title {
+        font-size: 18px;
+    }
+
+    .popup_prag {
         font-size: 13px;
     }
-
-    .tours_rate{
-        width: fit-content;
-    }
-
 }
-

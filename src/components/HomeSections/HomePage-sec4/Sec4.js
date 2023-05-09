@@ -12,16 +12,16 @@ export default function Sec4(props) {
             <Box className={Style.title}>
                 <p>Check popular tours</p>
             </Box>
-            <Stack className={Style.tour_cards}>
-                <Box className={Style.cards}>
+            <Stack className={Style.tours_cards}>
+                <Box className={Style.tours}>
                     {tour.map((value) => {
-                        return <ToursCard className={Style.card} key={value} />
+                        return <ToursCard className={Style.cards} key={value} />
                     })}
                 </Box>
             </Stack>
             <Box>
                 <NavLink to='/tours' >
-                    <OutLineBtn className={Style.seeMore} value={("See more!")} />
+                    <OutLineBtn className={Style.see_more} value={("See more!")} />
                 </NavLink>
             </Box>
         </Stack>
