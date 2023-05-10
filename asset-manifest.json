@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/website/static/css/main.7c4121b0.css",
+    "main.js": "/website/static/js/main.aa902337.js",
+    "static/media/pic2.png": "/website/static/media/pic2.271acc4c49a4b69f3882.png",
+    "static/media/Statue2.png": "/website/static/media/Statue2.de41b062bbfc332368e3.png",
+    "static/media/register.png": "/website/static/media/register.7225f00fe095993100c6.png",
+    "static/media/pic1.png": "/website/static/media/pic1.4e43bbe11012fd820009.png",
+    "static/media/signin.png": "/website/static/media/signin.9c2053e8b760fb6f0734.png",
+    "static/media/Statue(Contact Us).png": "/website/static/media/Statue(Contact Us).5691ee60141bb1815473.png",
+    "static/media/Tours4.png": "/website/static/media/Tours4.8b61a0820689b3b32a21.png",
+    "static/media/Tours3.png": "/website/static/media/Tours3.ec4e455edcbac302a0c5.png",
+    "static/media/info.png": "/website/static/media/info.a1306d87e536382176e2.png",
+    "static/media/landmarks.png": "/website/static/media/landmarks.ec8e64cade98f425e7dc.png",
+    "static/media/statues.png": "/website/static/media/statues.361b58d97553616da619.png",
+    "static/media/Tours5.png": "/website/static/media/Tours5.ea60cafc9af1383c385a.png",
+    "static/media/Phone.png": "/website/static/media/Phone.48f0d52995f2211e9f94.png",
+    "static/media/monuments.png": "/website/static/media/monuments.c5c515ae420844aa8bb5.png",
+    "static/media/Tours1.png": "/website/static/media/Tours1.2645b5e5e9ea44213482.png",
+    "static/media/Tours2.png": "/website/static/media/Tours2.1292ea0ac3b5e2433313.png",
+    "static/media/phone (2).png": "/website/static/media/phone (2).c5c13719d314e2cfa7fe.png",
+    "static/media/neith.png": "/website/static/media/neith.7f2e7cabf115febd4228.png",
+    "static/media/about.png": "/website/static/media/about.21a1238e0103c10f476c.png",
+    "static/media/PressJobs.ttf": "/website/static/media/PressJobs.1a5dc7f5afa0e1b2026b.ttf",
+    "static/media/article.png": "/website/static/media/article.439688f42b4c8193c7db.png",
+    "static/media/hat-stock 1.png": "/website/static/media/hat-stock 1.93885b19214628f43ea1.png",
+    "static/media/Tours.png": "/website/static/media/Tours.7ecffe3e06fb77c8286b.png",
+    "static/media/CapitalisTypOasis.ttf": "/website/static/media/CapitalisTypOasis.b1296a99e746f176ddc9.ttf",
+    "index.html": "/website/index.html",
+    "main.7c4121b0.css.map": "/website/static/css/main.7c4121b0.css.map",
+    "main.aa902337.js.map": "/website/static/js/main.aa902337.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7c4121b0.css",
+    "static/js/main.aa902337.js"
+  ]
+}
