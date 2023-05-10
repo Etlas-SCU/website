@@ -4,12 +4,12 @@ import article from "../../images/Pngs/article.png";
 import styles from "./ArticlesCard.module.css";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { Link } from "react-router-dom";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 
 export default function ArticlesCard({ id, className }) {
   return (
     <Box className={`${styles.cont} ${className}`}> 
-      <Fade left>
+      <Fade direction="left">
         <Box className={styles.card}>
           <Box className={styles.card__img}>
             <img src={article} alt="article" />
