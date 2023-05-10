@@ -19,10 +19,12 @@ export default function QandA() {
     }, []);
     
   const handleCorrectAnswer = (iscorrect) => {
+    if (clicked) return;
     setClicked(true);
     if (currQ === statusQ.length - 1) {
       setTimeout(() => {
         setQuizFinished(true);
+        setClicked(false);
       }, 1500);
     }
     if (iscorrect === "true") {
