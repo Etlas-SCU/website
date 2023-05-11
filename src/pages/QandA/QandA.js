@@ -15,9 +15,6 @@ export default function QandA() {
   const { statusQ, statusScore, setStatusScore, categories } =
     useContext(Context);
 
-  const [Answers, setAnswers] = useState(statusQ[currQ].answers);
- console.log(Answers)
-
   useEffect(() => {
     setStatusScore(0);
   }, []);
@@ -25,25 +22,25 @@ export default function QandA() {
   const handleCorrectAnswer = (iscorrect) => {
     if (clicked) return;
     setClicked(true);
-     if (iscorrect === "true") {
-      setStatusScore(statusScore + 1);
+    if (currQ === statusQ.length - 1) {
       setTimeout(() => {
-        setCurrQ(currQ + 1);
+        setQuizFinished(true);
         setClicked(false);
       }, 1500);
     }
-    if (currQ === statusQ.length - 1 ) {
-      setTimeout(() => {
-        setQuizFinished(true);
-      }, 1500);
+    if (iscorrect === "true") {
+      setStatusScore(statusScore + 1);
     }
-   
+    setTimeout(() => {
+      setCurrQ(currQ + 1);
+      setClicked(false);
+    }, 1500);
   };
-  
-  const handleHint=()=>{
-    const filteredAnswers = Answers.filter((answer) => answer.isCorrect || filteredAnswers.length < 2);
-    setAnswers(filteredAnswers);
-  }
+
+  // const handleHint=()=>{
+  //   const filteredAnswers = statusQ[currQ].answers.filter((answer) => answer.isCorrect || filteredAnswers.length < 2);
+  //   setAnswers(filteredAnswers);
+  // }
 
   const SC = () => {
     if (title === "Statues") {
@@ -79,7 +76,7 @@ export default function QandA() {
           <Box className={style.questions}>
             <p>{statusQ[currQ].Question} </p>
             <ul>
-              {Answers.map((ans, index) => {
+              {statusQ[currQ].answers.map((ans, index) => {
                 return (
                   <li
                     className={style.questions__answer}
@@ -100,7 +97,16 @@ export default function QandA() {
           <Box className={style.questions__score}>
             <Box>
               <p>Need a help? </p>
-             <button style={{backgroundColor:"transparent" ,border:"none" ,cursor:"pointer"}} onClick={handleHint}> <img src={hint} alt="hint" /></button>
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+                //  onClick={handleHint}
+              >
+                <img src={hint} alt="hint" />
+              </button>
             </Box>
             <Box>
               <p>Your score: </p>

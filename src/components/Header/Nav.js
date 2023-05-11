@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 import styles from "./Nav.module.css";
 import world from "../../images/Icons/World.png";
 import { Stack } from "@mui/material";
-import Popup from "./registe-signin/Popup";
+import Popup from "./Popup";
 import { Context } from "../Context/Context";
 import check from "../../images/Icons/Check.png";
 import { useTranslation } from 'react-i18next';
@@ -22,7 +22,6 @@ export default function Nav() {
     LANGUAGES,
     selectedLanguage,
     setSelectedLanguage,
-    buttonPopup,
     setButtonPopup,
   } = useContext(Context);
 
@@ -113,7 +112,7 @@ export default function Nav() {
 
   return (
     <>
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup} />
+      <Popup/>
 
       <Box className={styles.nav}>
         <Box
