@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/website/static/css/main.7c4121b0.css",
-    "main.js": "/website/static/js/main.aa902337.js",
+    "main.css": "/website/static/css/main.78d183f8.css",
+    "main.js": "/website/static/js/main.552c934a.js",
     "static/media/pic2.png": "/website/static/media/pic2.271acc4c49a4b69f3882.png",
     "static/media/Statue2.png": "/website/static/media/Statue2.de41b062bbfc332368e3.png",
     "static/media/register.png": "/website/static/media/register.7225f00fe095993100c6.png",
@@ -27,11 +27,11 @@
     "static/media/Tours.png": "/website/static/media/Tours.7ecffe3e06fb77c8286b.png",
     "static/media/CapitalisTypOasis.ttf": "/website/static/media/CapitalisTypOasis.b1296a99e746f176ddc9.ttf",
     "index.html": "/website/index.html",
-    "main.7c4121b0.css.map": "/website/static/css/main.7c4121b0.css.map",
-    "main.aa902337.js.map": "/website/static/js/main.aa902337.js.map"
+    "main.78d183f8.css.map": "/website/static/css/main.78d183f8.css.map",
+    "main.552c934a.js.map": "/website/static/js/main.552c934a.js.map"
   },
   "entrypoints": [
-    "static/css/main.7c4121b0.css",
-    "static/js/main.aa902337.js"
+    "static/css/main.78d183f8.css",
+    "static/js/main.552c934a.js"
   ]
 }
