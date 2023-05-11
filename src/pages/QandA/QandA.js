@@ -3,8 +3,9 @@ import style from "./QandA.module.css";
 import { Box } from "@mui/material";
 import { useContext } from "react";
 import { Context } from "../../components/Context/Context";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import hint from "../../images/Pngs/Hint.png";
 
 export default function QandA() {
   const { title } = useParams();
@@ -14,15 +15,17 @@ export default function QandA() {
   const { statusQ, statusScore, setStatusScore, categories } =
     useContext(Context);
 
-    useEffect(() => {
-      setStatusScore(0);
-    }, []);
-    
+  useEffect(() => {
+    setStatusScore(0);
+  }, []);
+
   const handleCorrectAnswer = (iscorrect) => {
+    if (clicked) return;
     setClicked(true);
     if (currQ === statusQ.length - 1) {
       setTimeout(() => {
         setQuizFinished(true);
+        setClicked(false);
       }, 1500);
     }
     if (iscorrect === "true") {
@@ -33,6 +36,11 @@ export default function QandA() {
       setClicked(false);
     }, 1500);
   };
+
+  // const handleHint=()=>{
+  //   const filteredAnswers = statusQ[currQ].answers.filter((answer) => answer.isCorrect || filteredAnswers.length < 2);
+  //   setAnswers(filteredAnswers);
+  // }
 
   const SC = () => {
     if (title === "Statues") {
@@ -51,12 +59,13 @@ export default function QandA() {
       </Box>
       {quizFinished ? (
         <Box className={style.finish}>
-          {statusScore >= statusQ.length / 2 ? (
-            <h1>congratulations 🥳</h1>
-          ) : (
-            <h1>Ooops! try again 😥</h1>
-          )}
-          <Box>Your Score is : {SC()}</Box>
+          <Box className={style.score}>
+            <h1>{SC()}</h1>
+            <p>Is your total score</p>
+          </Box>
+          <Link to="/knowledge">
+            <button>play again</button>
+          </Link>
         </Box>
       ) : (
         <Box className={style.QandA}>
@@ -86,8 +95,23 @@ export default function QandA() {
           </Box>
 
           <Box className={style.questions__score}>
-            <p>Your score: </p>
-            {SC()}
+            <Box>
+              <p>Need a help? </p>
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+                //  onClick={handleHint}
+              >
+                <img src={hint} alt="hint" />
+              </button>
+            </Box>
+            <Box>
+              <p>Your score: </p>
+              {SC()}
+            </Box>
           </Box>
         </Box>
       )}

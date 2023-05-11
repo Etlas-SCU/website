@@ -1,56 +1,50 @@
-import { Box, Stack, Typography } from "@mui/material";
-import React, { useContext } from "react";
-import styles from "./Popup.module.css";
+import React from "react";
+import { Box, Stack } from "@mui/material";
+import styles from "../Popup.module.css";
 import reg from "../../../images/Pics/register.png";
-import sign from "../../../images/Pics/signin.png";
-import close from "../../../images/Icons/close.png";
 import fac from "../../../images/Pngs/Groupfac.png";
 import google from "../../../images/Pngs/Groupgoogle.png";
 import apple from "../../../images/Pngs/Groupapple.png";
-import e from "../../../images/Pngs/e.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import { Typography } from "@mui/material";
 import { Context } from "../../Context/Context";
 
-export default function Popup({ trigger, setTrigger }) {
-  const { buttonPopup, setButtonPopup } = useContext(Context);
-
-  const { t } = useTranslation();
-
-  const initialValues = {
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    password: "",
-  };
-
-  const validationSchema = Yup.object({
-    name: Yup.string().required(t("nav.required")),
-    phone: Yup.string().required(t("nav.required")),
-    email: Yup.string().email(t("nav.emailformat")).required(t("nav.required")),
-    password: Yup.string()
-      .required(t("nav.required"))
-      .min(8, t("nav.passwordShort"))
-      .matches(/[a-zA-Z]/, t("nav.passwordLetters")),
-  });
-
-  const onSubmit = (values, { resetForm }) => {
-    console.log(values);
-    resetForm({ values: "" });
-  };
-
-  const register = trigger[1] === "Register" ? true : false;
-
-  return trigger[0] ? (
-    <Box className={styles.popup}>
-      <Stack direction="row" className={styles.popup_inner}>
-      <img
-            className={styles.popup__img}
-            src={register ? reg : sign}
-            alt="formImg"
-          />
+export default function Register() {
+    const { t } = useTranslation();
+    const { setButtonPopup } = useContext(Context);
+  
+    const initialValues = {
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      password: "",
+    };
+  
+    const validationSchema = Yup.object({
+      name: Yup.string().required(t("nav.required")),
+      phone: Yup.string().required(t("nav.required")),
+      email: Yup.string().email(t("nav.emailformat")).required(t("nav.required")),
+      password: Yup.string()
+        .required(t("nav.required"))
+        .min(8, t("nav.passwordShort"))
+        .matches(/[a-zA-Z]/, t("nav.passwordLetters")),
+    });
+  
+    const onSubmit = (values) => {
+      console.log(values);
+      setButtonPopup([false, ""])
+    };
+    return (
+      <>
+        <img
+          className={styles.popup__img}
+          src={reg}
+          alt="formImg"
+        />
         <Stack
           sx={{
             width: { xs: "90%", md: "70%" },
@@ -58,14 +52,12 @@ export default function Popup({ trigger, setTrigger }) {
           }}
         >
           <Box>
-            <Typography fontWeight="800">{trigger[1]}</Typography>
+            <Typography fontWeight="800">SignIn</Typography>
             <Typography fontSize="12px" pt="5px">
-              {register
-                ? t("nav.RegisterPopup.note2")
-                : t("nav.signInPopup.note2")}
+                { t("nav.RegisterPopup.note1")}
             </Typography>
           </Box>
-
+  
           <Box>
             <Formik
               initialValues={initialValues}
@@ -74,8 +66,6 @@ export default function Popup({ trigger, setTrigger }) {
             >
               <Form>
                 <Stack direction="column">
-                  {register && (
-                    <>
                       <label htmlFor="name">{t("nav.name")}</label>
                       <Field
                         type="text"
@@ -86,9 +76,7 @@ export default function Popup({ trigger, setTrigger }) {
                       <ErrorMessage name="name">
                         {(e) => <div className={styles.errors}>{e}</div>}
                       </ErrorMessage>
-                    </>
-                  )}
-
+  
                   <label htmlFor="email">{t("nav.email")}</label>
                   <Field
                     type="email"
@@ -99,7 +87,7 @@ export default function Popup({ trigger, setTrigger }) {
                   <ErrorMessage name="email">
                     {(e) => <div className={styles.errors}>{e}</div>}
                   </ErrorMessage>
-
+  
                   <label htmlFor="password">{t("nav.password")}</label>
                   <Field
                     type="password"
@@ -110,9 +98,8 @@ export default function Popup({ trigger, setTrigger }) {
                   <ErrorMessage name="password">
                     {(e) => <div className={styles.errors}>{e}</div>}
                   </ErrorMessage>
-
-                  {register && (
-                    <>
+  
+               
                       <label htmlFor="phone">{t("nav.phone")}</label>
                       <Field
                         type="text"
@@ -123,7 +110,7 @@ export default function Popup({ trigger, setTrigger }) {
                       <ErrorMessage name="phone">
                         {(e) => <div className={styles.errors}>{e}</div>}
                       </ErrorMessage>
-
+  
                       <label htmlFor="address">{t("nav.address")}</label>
                       <Field
                         type="text"
@@ -131,21 +118,15 @@ export default function Popup({ trigger, setTrigger }) {
                         id="address"
                         name="address"
                       />
-                    </>
-                  )}
-
+                  
                   <Box>
-                    {register ? (
                       <button type="submit">{t("nav.register")}</button>
-                    ) : (
-                      <button type="submit">{t("nav.signin")}</button>
-                    )}
-
+                  
+  
                     <Typography fontSize="12px" mt="10px">
-                      {register ? (
                         <span>
                           {t("nav.RegisterPopup.note2")}
-
+  
                           <span
                             onClick={() =>
                               setButtonPopup([true, t("nav.signin")])
@@ -154,28 +135,19 @@ export default function Popup({ trigger, setTrigger }) {
                           >
                             {t("nav.signin")}
                           </span>
-                        </span>
-                      ) : (
-                        <span>
-                          {t("nav.signInPopup.note2")}
-                          <span
-                            onClick={() =>
-                              setButtonPopup([true, t("nav.register")])
-                            }
-                            style={{ color: "#BF8148", cursor: "pointer" }}
-                          >
-                            {t("nav.register")}
-                          </span>
-                        </span>
-                      )}
+                     </span>
                     </Typography>
                   </Box>
-                  <img className={styles.e} src={e} alt="epng" />
-
-                  <Box display="flex" justifyContent="flex-end" height="195px" alignItems="flex-end">
+  
+                  <Box
+                    display="flex"
+                    justifyContent="flex-end"
+                    height="195px"
+                    alignItems="flex-end"
+                  >
                     <Box className={styles.continue__with}>
                       <p>{t("nav.contWith")}</p>
-
+  
                       <Stack direction="column">
                         <a href="#">
                           <img src={fac} alt="fac" />
@@ -193,17 +165,9 @@ export default function Popup({ trigger, setTrigger }) {
               </Form>
             </Formik>
           </Box>
-
-          <Box
-            className={styles.popup__closeBtn}
-            onClick={() => setTrigger(false)}
-          >
-            <img src={close} alt="closeIcon" />
-          </Box>
+  
+         
         </Stack>
-      </Stack>
-    </Box>
-  ) : (
-    ""
-  );
+      </>
+    );
 }

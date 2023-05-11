@@ -6,8 +6,8 @@ import { Context } from "../../Context/Context";
 import arrow from "../../../images/Icons/Know History Arrow.png";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Link } from "react-router-dom";
-import Fade from "react-reveal/Fade";
-import { Zoom } from "react-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
+
 
 export default function Sec3() {
   const { t } = useTranslation();
@@ -19,7 +19,7 @@ export default function Sec3() {
       <Stack className={styles.slider} key={sec.id}>
         <Stack direction="row">
           <Box className={styles.imgCont}>
-            <Fade buttom>
+            <Fade direction="bottom">
               <img
                 src={sec.img}
                 alt={sec.title}

@@ -12,10 +12,10 @@ import { Link } from "react-scroll";
 import { useTranslation } from "react-i18next";
 import { Context } from "../../components/Context/Context";
 import { useLocation } from "react-router-dom";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 
 export default function KnowHistory() {
-  const { timeLineSections } = useContext(Context); 
+  const { timeLineSections } = useContext(Context);
   const { t } = useTranslation();
 
   const sectionRefs = useRef([]);
@@ -32,7 +32,10 @@ export default function KnowHistory() {
       if (sectionRef && sectionRef.current) {
         const sectionTop = sectionRef.current.offsetTop;
         const sectionBottom = sectionTop + sectionRef.current.offsetHeight;
-        if (currentScrollPos >= sectionTop && currentScrollPos < sectionBottom) {
+        if (
+          currentScrollPos >= sectionTop &&
+          currentScrollPos < sectionBottom
+        ) {
           activeSection = section.id;
         }
       }
@@ -45,11 +48,10 @@ export default function KnowHistory() {
     if (location.hash) {
       const element = document.getElementById(location.hash.slice(1));
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth'});
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   });
-
 
   useEffect(() => {
     sectionRefs.current = new Array(5)
@@ -147,19 +149,18 @@ export default function KnowHistory() {
                 <h4>{sec.title}</h4>
                 <p className={styles.history__date}>{sec.date}</p>
                 <Fade>
-
-                <img
-                  className={styles.history__img}
-                  src={sec.img}
-                  alt={sec.title}
-                />
+                  <img
+                    className={styles.history__img}
+                    src={sec.img}
+                    alt={sec.title}
+                  />
                 </Fade>
                 <Box className={styles.history__discription}>
-                 <Fade top>
-                 <p>{sec.description[0]}</p>
-                  <br />
-                  <p>{sec.description[1]}</p>
-                 </Fade>
+                  <Fade direction="top">
+                    <p>{sec.description[0]}</p>
+                    <br />
+                    <p>{sec.description[1]}</p>
+                  </Fade>
                 </Box>
               </Box>
             );
