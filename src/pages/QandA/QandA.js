@@ -12,8 +12,10 @@ export default function QandA() {
   const [currQ, setCurrQ] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const { statusQ, statusScore, setStatusScore, categories } =
-    useContext(Context);
+  const { statusQ, statusScore, setStatusScore, categories } = useContext(Context);
+
+  console.log(currQ)
+
 
   useEffect(() => {
     setStatusScore(0);
@@ -38,7 +40,7 @@ export default function QandA() {
   };
 
   // const handleHint=()=>{
-  //   const filteredAnswers = statusQ[currQ].answers.filter((answer) => answer.isCorrect || filteredAnswers.length < 2);
+  //   const filteredAnswers = Answers.filter((answer) => answer.isCorrect || filteredAnswers.length < 2);
   //   setAnswers(filteredAnswers);
   // }
 
@@ -70,7 +72,7 @@ export default function QandA() {
       ) : (
         <Box className={style.QandA}>
           <Box className={style.questions__image}>
-            <img src={statusQ[currQ].img} />
+            <img src={statusQ[currQ].img} alt={title}/>
           </Box>
 
           <Box className={style.questions}>

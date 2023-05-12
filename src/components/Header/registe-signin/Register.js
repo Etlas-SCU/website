@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Stack } from "@mui/material";
-import styles from "../Popup.module.css";
+import styles from "./sign_reg.module.css";
 import reg from "../../../images/Pics/register.png";
 import fac from "../../../images/Pngs/Groupfac.png";
 import google from "../../../images/Pngs/Groupgoogle.png";
@@ -50,9 +50,10 @@ export default function Register() {
             width: { xs: "90%", md: "70%" },
             m: "50px 15px 0",
           }}
+          className={styles.form}
         >
           <Box>
-            <Typography fontWeight="800">SignIn</Typography>
+            <Typography fontWeight="800"> { t("nav.register")}</Typography>
             <Typography fontSize="12px" pt="5px">
                 { t("nav.RegisterPopup.note1")}
             </Typography>

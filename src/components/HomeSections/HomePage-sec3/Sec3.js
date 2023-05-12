@@ -6,7 +6,7 @@ import { Context } from "../../Context/Context";
 import arrow from "../../../images/Icons/Know History Arrow.png";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Link } from "react-router-dom";
-import { Fade, Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 
 export default function Sec3() {
@@ -19,7 +19,7 @@ export default function Sec3() {
       <Stack className={styles.slider} key={sec.id}>
         <Stack direction="row">
           <Box className={styles.imgCont}>
-            <Fade direction="bottom">
+            <Fade>
               <img
                 src={sec.img}
                 alt={sec.title}
@@ -29,7 +29,7 @@ export default function Sec3() {
           </Box>
 
           <Stack direction="column" className={styles.disCont}>
-            <Fade left>
+            <Fade direction="left">
               <p className={styles.slider__title}>{sec.title}</p>
               <p className={styles.slider__dis}>{sec.description}</p>
             </Fade>
@@ -38,7 +38,7 @@ export default function Sec3() {
 
        
         <Link to={`/know_history#${sec.id}`}>
-         <Zoom>
+         <Fade>
          <button className={styles.slider__btn}>
             <p>{t("timeLine.timeLineSection.btnText")}</p>
             <ArrowForwardIcon
@@ -46,7 +46,7 @@ export default function Sec3() {
               className={styles.contArrow}
             />
           </button>
-         </Zoom>
+         </Fade>
         </Link>
       </Stack>
     );
