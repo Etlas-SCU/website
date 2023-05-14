@@ -1,13 +1,13 @@
 import { Box, Stack } from "@mui/material";
 import React from "react";
 import styles from "./Popup.module.css";
-import Register from "./registe-signin/Register";
-import SignIn from "./registe-signin/SignIn";
-import e from "../../images/Pngs/e.png";
-import close from "../../images/Icons/close.png";
+import Register from "../Register";
+import SignIn from "../SignIn";
+import e from "../../../../images/Pngs/e.png";
+import close from "../../../../images/Icons/close.png";
 import { useContext } from "react";
-import { Context } from "../Context/Context";
-import ForgetPass from "./registe-signin/ForgetPass";
+import { Context } from "../../../Context/Context";
+import ForgetPass from "../ForgetPassword/ForgetPass";
 
 export default function Popup() {
   const { buttonPopup, setButtonPopup } = useContext(Context);

@@ -27,7 +27,7 @@ function App() {
     <Provider>
       <Nav />
       <Routes>
-        <Route path="/website" element={<Home />} />
+        <Route path="*" element={<Home />} />
         <Route path="/know_history"  element={<KnowHistory /> }/>
         <Route path="/tours" element={<Tours />} />
         <Route path="/tours/:id" element={<ToursInfo />}></Route>
