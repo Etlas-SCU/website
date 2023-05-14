@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/website/static/css/main.78d183f8.css",
-    "main.js": "/website/static/js/main.552c934a.js",
+    "main.css": "/website/static/css/main.08de9f10.css",
+    "main.js": "/website/static/js/main.3e7cce52.js",
     "static/media/pic2.png": "/website/static/media/pic2.271acc4c49a4b69f3882.png",
     "static/media/Statue2.png": "/website/static/media/Statue2.de41b062bbfc332368e3.png",
     "static/media/register.png": "/website/static/media/register.7225f00fe095993100c6.png",
     "static/media/pic1.png": "/website/static/media/pic1.4e43bbe11012fd820009.png",
+    "static/media/forgetPass.png": "/website/static/media/forgetPass.1595a41b5430da5715de.png",
     "static/media/signin.png": "/website/static/media/signin.9c2053e8b760fb6f0734.png",
     "static/media/Statue(Contact Us).png": "/website/static/media/Statue(Contact Us).5691ee60141bb1815473.png",
     "static/media/Tours4.png": "/website/static/media/Tours4.8b61a0820689b3b32a21.png",
@@ -27,11 +28,11 @@
     "static/media/Tours.png": "/website/static/media/Tours.7ecffe3e06fb77c8286b.png",
     "static/media/CapitalisTypOasis.ttf": "/website/static/media/CapitalisTypOasis.b1296a99e746f176ddc9.ttf",
     "index.html": "/website/index.html",
-    "main.78d183f8.css.map": "/website/static/css/main.78d183f8.css.map",
-    "main.552c934a.js.map": "/website/static/js/main.552c934a.js.map"
+    "main.08de9f10.css.map": "/website/static/css/main.08de9f10.css.map",
+    "main.3e7cce52.js.map": "/website/static/js/main.3e7cce52.js.map"
   },
   "entrypoints": [
-    "static/css/main.78d183f8.css",
-    "static/js/main.552c934a.js"
+    "static/css/main.08de9f10.css",
+    "static/js/main.3e7cce52.js"
   ]
 }
