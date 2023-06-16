@@ -1,98 +1,103 @@
 import React, { useState } from 'react';
 import Style from './ToursInfo.module.css';
 import { Box, Stack } from '@mui/material';
-import { Link } from 'react-router-dom';
 import Stars from '../../components/Stars/Stars'
 import Tours1 from '../../images/Pngs/Tours1.png'
 import Tours2 from '../../images/Pngs/Tours2.png'
 import Tours3 from '../../images/Pngs/Tours3.png'
 import Tours4 from '../../images/Pngs/Tours4.png'
 import Tours5 from '../../images/Pngs/Tours5.png'
-import Arrow_Prev from '../../images/Icons/Arrow.png'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { EffectCoverflow, Pagination, Navigation } from 'swiper';
+import Arrow_Prev from '../../images/Icons/prevArrow.png'
+import Arrow_Next from '../../images/Icons/nextArrow.png'
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+import SwiperCore, { Autoplay, Navigation, Pagination, EffectCoverflow } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import PopUp from '../../components/PopUp_Message/PopUp';
 
 export default function ToursInfo(props) {
+    SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
     const [buttonPopUp, setButtonPopUp] = useState(false);
-    const [slideIndex , setSlideIndex] = useState(1) ;
-    
-    const nextImg = () =>{
-        if (slideIndex !== 5){
-            setSlideIndex(slideIndex + 1) ;
-        }else if(slideIndex === 5){
-            setSlideIndex(1) ;
+
+    // reference for swiper
+    const swiperRef = React.useRef(null);
+
+    // goto next slide
+    const goNext = () => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slideNext();
         }
-    }
-    const prevImg = () => {
-        if(slideIndex !== 1){
-            setSlideIndex(slideIndex - 1) ;
-        }else if(slideIndex === 1){
-            setSlideIndex(5) ;
+    };
+
+
+    // goto prev slide
+    const goPrev = () => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slidePrev();
         }
-    } 
+    };
+
+
+    // the images that will be displayed
+    const slide_img = [
+        Tours1,
+        Tours2,
+        Tours3,
+        Tours4,
+        Tours5,
+    ];
+
 
     return (
         <Stack>
             <Stack className={Style.Sec1}>
                 <Box className={Style.slide}>
                     <Swiper
-                        freeMode={true}
+                        ref={swiperRef} 
+                        autoplay={true}
+                        initialSlide={slide_img.length / 2}
                         effect={'coverflow'}
                         grabCursor={true}
                         centeredSlides={true}
-                        loop={true}
-
+                        slidesPerView={3}
+                        coverflowEffect={{
+                            rotate: 50,
+                            stretch: 0,
+                            depth: 100,
+                            modifier: 1,
+                            slideShadows: false,
+                        }}
                         breakpoints={{
                             0:{
                                 slidesPerView: 1 ,
                                 spaceBetween: 5,
                             },
                             700:{
-                                slidesPerView: 3,
+                                slidesPerView: 2,
                                 spaceBetween:7,
                             },
                             900:{
-                                slidesPerView: 'auto',
+                                slidesPerView: 3,
                                 spaceBetween:9,
                             }
                         }}
-                        coverflowEffect={
-                            {
-                                rotate: 0,
-                                stretch: 0,
-                                depth: 100,
-                                modifier: 3,
-                            }
-                        }
-                        // pagination={{ el: '.swiper_pagination', clickable: true }}
-                        // navigation={{
-                        //     nextEl: '.next_img',
-                        //     prevEl: '.prev_img',
-                        //     clickable: true,
-                        // }}
-                        // navigation
-                        // pagination={{ clickable: true }}
-                        modules={[EffectCoverflow, Pagination, Navigation]}
-                        className={Style.swiper_container}
+                        pagination={true}
+                        className="mySwiper"
                     >
-                        <SwiperSlide className={Style.swiper_slide}><img src={Tours1} alt='tour1' /></SwiperSlide>
-                        <SwiperSlide className={Style.swiper_slide}><img src={Tours2} alt='tour2' /></SwiperSlide>
-                        <SwiperSlide className={Style.swiper_slide}><img src={Tours3} alt='tour3' /></SwiperSlide>
-                        <SwiperSlide className={Style.swiper_slide}><img src={Tours4} alt='tour4' /></SwiperSlide>
-                        <SwiperSlide className={Style.swiper_slide}><img src={Tours5} alt='tour5' /></SwiperSlide>
-
+                        {slide_img.map((img, i) => {
+                            return (
+                                <SwiperSlide key={i}>
+                                    <img src={img} alt="" />
+                                </SwiperSlide>
+                            );
+                        })}
                         <Box className={Style.slider_controller}>
-                            <button className={Style.prev_btn} onClick={prevImg}>
+                            <button className={Style.prev_btn} onClick={goPrev}>
                                 <img src={Arrow_Prev} className={Style.prev_img} alt='prev'/>
                             </button>
-                            <button className={Style.next_btn} onClick={nextImg}>
-                                <img src={Arrow_Prev} className={Style.next_img} alt='next'/>
+                            <button className={Style.next_btn} onClick={goNext}>
+                                <img src={Arrow_Next} className={Style.next_img} alt='next'/>
                             </button>
                             <Box className={Style.swiper_pagination}></Box>
                         </Box>
@@ -114,7 +119,7 @@ export default function ToursInfo(props) {
                         <Stars />
                         <button onClick={() => setButtonPopUp(true)} className={Style.rate_btn}>
                             <p className={Style.tours_prag3}>
-                                if you take a trip to Giza before, don’t forget to give your feedback.
+                                if you take a trip to Giza before, don't forget to give your feedback.
                             </p>
                         </button>
                     </Box>
