@@ -20,14 +20,18 @@ export default function ToursInfo(props) {
     SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
     const [buttonPopUp, setButtonPopUp] = useState(false);
 
+    // reference for swiper
     const swiperRef = React.useRef(null);
 
+    // goto next slide
     const goNext = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
             swiperRef.current.swiper.slideNext();
         }
     };
 
+
+    // goto prev slide
     const goPrev = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
             swiperRef.current.swiper.slidePrev();
@@ -35,6 +39,7 @@ export default function ToursInfo(props) {
     };
 
 
+    // the images that will be displayed
     const slide_img = [
         Tours1,
         Tours2,
