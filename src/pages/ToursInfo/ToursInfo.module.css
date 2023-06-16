@@ -13,23 +13,39 @@
 }
 
 .next_btn {
-    background: none;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     position: absolute;
-    right: 30%;
-    top: 127px;
+    right: 22%;
+    top: 180px;
+    z-index: 9999;
+    background: #003441;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    display: flex;
+}
+
+.btn_inacitve {
+    opacity: 0.5;
 }
 
 .prev_btn {
-    background: none;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     position: absolute;
-    left: 30%;
-    top: 127px;
+    left: 33%;
+    top: 180px;
+    z-index: 9999;
+    background: #003441;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    display: flex;
 }
 
 .next_img,
@@ -89,6 +105,29 @@
 .popup_star {
     display: flex;
     justify-content: center;
+}
+
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+}
+
+.mySwiper {
+    justify-content: center;
+    align-items: center;
 }
 
 @media only screen and (max-width: 700px) {

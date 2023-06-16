@@ -122,7 +122,7 @@ export default function Nav() {
         >
           <div className={styles.elogo}>e</div>
           <Box color="white" fontWeight="200">
-            <p style={{ fontFamily: "CapitalFont", fontSize: "20px" }}>ETLAS</p>
+            <p style={{ fontFamily: "CapitalisTypOasis", fontSize: "20px" }}>ETLAS</p>
             <div style={{ fontFamily: "var(--mainFont)", fontSize: "11px" }}>
               Your Tour Guid
             </div>

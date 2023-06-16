@@ -22,7 +22,7 @@
 }
 .rotTit{
     font-size: 60px;
-    font-family: CapitalFont;
+    font-family: 'CapitalisTypOasis';
     color: var(--mainColor);
     /* transform: rotate(-270deg); */
     rotate: 90deg;
