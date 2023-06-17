@@ -16,7 +16,7 @@
     left: 50%;
     transform: translate(-50%,-50%);
     background-color: white;
-    height: 72%;
+    height: 70%;
     overflow: auto;
 } 
 .popup_inner::-webkit-scrollbar {
@@ -43,8 +43,8 @@
     right: 0;
     z-index: -1;
 }
-@media only screen and (max-width: 900px){
-     .popup_inner{width:70%;}
+@media only screen and (max-width: 600px){
+     .popup_inner{width:75%;}
   
 }
 

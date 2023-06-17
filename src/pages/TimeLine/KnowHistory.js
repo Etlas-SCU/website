@@ -148,7 +148,7 @@ export default function KnowHistory() {
               >
                 <h4>{sec.title}</h4>
                 <p className={styles.history__date}>{sec.date}</p>
-                <Fade>
+                <Fade  triggerOnce="false">
                   <img
                     className={styles.history__img}
                     src={sec.img}
@@ -156,7 +156,7 @@ export default function KnowHistory() {
                   />
                 </Fade>
                 <Box className={styles.history__discription}>
-                  <Fade direction="top">
+                  <Fade direction="down"  triggerOnce="false">
                     <p>{sec.description[0]}</p>
                     <br />
                     <p>{sec.description[1]}</p>

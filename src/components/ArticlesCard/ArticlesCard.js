@@ -9,7 +9,7 @@ import { Fade } from "react-awesome-reveal";
 export default function ArticlesCard({ id, className }) {
   return (
     <Box className={`${styles.cont} ${className}`}> 
-      <Fade direction="left">
+      <Fade direction="left" triggerOnce="false">
         <Box className={styles.card}>
           <Box className={styles.card__img}>
             <img src={article} alt="article" />
