@@ -1,12 +1,19 @@
-import { Box, Stack } from "@mui/material";
-import React from "react";
+import { Box, Skeleton, Stack } from "@mui/material";
+import React ,{useContext,useState,useEffect} from "react";
 import style from "./KnowledgeCheck.module.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 import { Context } from "../../components/Context/Context";
 
 export default function KnowledgeCheck() {
   const { categories } = useContext(Context);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
 
   return (
     <Box pb="95px">
@@ -22,8 +29,22 @@ export default function KnowledgeCheck() {
                 <h4 className={style.cat__title}>{cat.title}</h4>
                 <p className={style.cat__dis}>{cat.dis}</p>
                 <Box className={style.cat__pan}>
-                  <img src={cat.img} alt={cat.title} />
-                  <p>{cat.score}</p>
+                  {isLoading ? (
+                    <Stack direction="column">
+                      <Skeleton
+                        variant="rectangular"
+                        width={400}
+                        height={250}
+                      />
+                      <br />
+                      <Skeleton variant="rectangular" width={400} height={20} />
+                    </Stack>
+                  ) : (
+                    <>
+                      <img src={cat.img} alt={cat.title} />
+                      <p>{cat.score}</p>
+                    </>
+                  )}
                 </Box>
               </Link>
             </Box>

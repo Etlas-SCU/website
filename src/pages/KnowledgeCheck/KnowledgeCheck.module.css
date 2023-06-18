@@ -32,9 +32,13 @@
 }
 
 .cat__pan {
-    height: fit-content;
+    height:318px;
     margin-bottom: -4px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 .cat__pan img{
     width: 100%;
