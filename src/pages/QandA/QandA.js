@@ -12,25 +12,24 @@ export default function QandA() {
   const [currQ, setCurrQ] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const { statusQ, statusScore, setStatusScore, categories } = useContext(Context);
-
-  console.log(currQ)
-
+  const [selectedChoice, setSelectedChoice] = useState("");
+  const {statusQ, statusScore, setStatusScore, categories } =
+    useContext(Context);
 
   useEffect(() => {
     setStatusScore(0);
   }, []);
 
-  const handleCorrectAnswer = (iscorrect) => {
-    if (clicked) return;
+  const handleCorrectAnswer = (answer) => {
+    setSelectedChoice(answer.answer);
     setClicked(true);
-    if (currQ === statusQ.length - 1) {
+    if (currQ === statusQ.length - 1 || answer.iscorrect === "false") {
       setTimeout(() => {
         setQuizFinished(true);
         setClicked(false);
       }, 1500);
     }
-    if (iscorrect === "true") {
+    if (answer.iscorrect === "true") {
       setStatusScore(statusScore + 1);
     }
     setTimeout(() => {
@@ -72,34 +71,35 @@ export default function QandA() {
       ) : (
         <Box className={style.QandA}>
           <Box className={style.questions__image}>
-            <img src={statusQ[currQ].img} alt={title}/>
+            <img src={statusQ[currQ].img} alt={title} />
           </Box>
 
           <Box className={style.questions}>
             <p>{statusQ[currQ].Question} </p>
-            <ul>
-              {statusQ[currQ].answers.map((ans, index) => {
-                return (
-                  <li
-                    className={style.questions__answer}
-                    key={index}
-                    onClick={() => handleCorrectAnswer(ans.iscorrect)}
-                    style={{
-                      backgroundColor:
-                        ans.iscorrect === "true" && clicked ? "green" : "",
-                    }}
-                  >
-                    {ans.answer}
-                  </li>
-                );
-              })}
-            </ul>
+
+            {statusQ[currQ].answers.map((ans, index) => {
+              return (
+                <button
+                  disabled={clicked}
+                  className={style.questions__answer}
+                  key={index}
+                  onClick={() => handleCorrectAnswer(ans)}
+                  style={{
+                    backgroundColor:
+                    selectedChoice === ans.answer? ans.iscorrect === "true"? "green":"red" : "",
+                  }}
+                >
+                  {ans.answer}
+                </button>
+              );
+            })}
           </Box>
 
           <Box className={style.questions__score}>
             <Box>
               <p>Need a help? </p>
               <button
+                
                 style={{
                   backgroundColor: "transparent",
                   border: "none",

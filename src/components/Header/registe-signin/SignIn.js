@@ -38,14 +38,13 @@ export default function SignIn() {
       <img className={styles.popup__img} src={sign} alt="formImg" />
       <Stack
         sx={{
-          width: { xs: "90%", md: "70%" },
-          m: "50px 15px 0",
+          m: "80px 0 0 20px ",
         }}
         className={styles.form}
       >
         <Box>
-          <Typography fontWeight="800"> { t("nav.signin")}</Typography>
-          <Typography fontSize="12px" pt="5px">
+          <Typography fontWeight="800"> {t("nav.signin")}</Typography>
+          <Typography fontSize="11px">
             {t("nav.signInPopup.note1")}
           </Typography>
         </Box>
@@ -87,30 +86,25 @@ export default function SignIn() {
                   Forgot password ?
                 </span>
 
-                <Box>
-                  <button type="submit">{t("nav.signin")}</button>
+                <Stack direction="row" className={styles.continueS}>
+                  <Box>
+                    <button type="submit">{t("nav.signin")}</button>
 
-                  <Typography fontSize="12px" mt="10px">
-                    <span>
-                      {t("nav.signInPopup.note2")}
-                      <span
-                        onClick={() =>
-                          setButtonPopup([true, t("nav.register")])
-                        }
-                        style={{ color: "#BF8148", cursor: "pointer" }}
-                      >
-                        {t("nav.register")}
+                    <Typography fontSize="12px" mt="10px">
+                      <span>
+                        {t("nav.signInPopup.note2")}
+                        <span
+                          onClick={() =>
+                            setButtonPopup([true, t("nav.register")])
+                          }
+                          style={{ color: "#BF8148", cursor: "pointer" }}
+                        >
+                          {t("nav.register")}
+                        </span>
                       </span>
-                    </span>
-                  </Typography>
-                </Box>
+                    </Typography>
+                  </Box>
 
-                <Box
-                  display="flex"
-                  justifyContent="flex-end"
-                  height="195px"
-                  alignItems="flex-end"
-                >
                   <Box className={styles.continue__with}>
                     <p>{t("nav.contWith")}</p>
 
@@ -126,7 +120,7 @@ export default function SignIn() {
                       </a>
                     </Stack>
                   </Box>
-                </Box>
+                </Stack>
               </Stack>
             </Form>
           </Formik>

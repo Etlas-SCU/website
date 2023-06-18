@@ -5,15 +5,19 @@ import forget from "../../../../images/Pics/forgetPass.png";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { Context } from "../../../Context/Context";
+import OTPInput from "react-otp-input";
 
 export default function ForgetPass() {
   const { t } = useTranslation();
   const [step, setStep] = useState("enterEmail");
   const [email, setEmail] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
+  const [otp, setOtp] = useState("");
   const { setButtonPopup } = useContext(Context);
 
-
+  // function handleChange(OTP) {
+  //   setOTP(OTP);
+  // }
   const handleEmailSubmit = () => {
     setStep("enterVerificationCode");
   };
@@ -23,7 +27,7 @@ export default function ForgetPass() {
   };
 
   const handlePasswordReset = () => {
-    setButtonPopup(false)
+    setButtonPopup(false);
   };
 
   return (
@@ -43,7 +47,7 @@ export default function ForgetPass() {
         {step === "enterEmail" && (
           <>
             <Box>
-              <Typography fontSize="12px" pt="5px">
+              <Typography className={styles.typo}>
                 Enter your E-mail to send a mail to re-assign a new password for
                 your account.
               </Typography>
@@ -69,32 +73,37 @@ export default function ForgetPass() {
         {step === "enterVerificationCode" && (
           <>
             <Box>
-              <Typography fontSize="12px" pt="5px">
+              <Typography className={styles.typo}>
                 Type the OTP you received on your e-mail to continue reseting
                 your password.
               </Typography>
             </Box>
-            <Stack direction="column">
-              <label htmlFor="email">{t("nav.email")}</label>
-              <input
-                type="email"
-                placeholder={t("nav.emailPlaceholder")}
-                name="email"
-              />
 
+            <div>
+              <OTPInput
+                value={otp}
+                onChange={setOtp}
+                numInputs={4}
+                inputStyle={styles.otp_input}
+                Separator={<span></span>}
+                renderInput={(props) => <input {...props} />}
+              />
+              <Typography
+                style={{ color: "#55c4e0", textDecoration: "underline",fontSize:"12px" }}
+              >
+                Resend the mail again.
+              </Typography>
               <Box>
-                <button type="submit" onClick={handleVerificationCodeSubmit}>
-                  Next
-                </button>
+                <button type="submit" onClick={handleVerificationCodeSubmit}>Next</button>
               </Box>
-            </Stack>
+            </div>
           </>
         )}
 
         {step === "resetPassword" && (
           <>
             <Box>
-              <Typography fontSize="12px" pt="5px">
+              <Typography className={styles.typo}>
                 Please, enter your new password.
               </Typography>
             </Box>
@@ -120,8 +129,6 @@ export default function ForgetPass() {
             </Stack>
           </>
         )}
-
-        
       </Stack>
     </>
   );

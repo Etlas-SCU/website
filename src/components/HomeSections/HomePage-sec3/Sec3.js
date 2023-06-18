@@ -19,7 +19,7 @@ export default function Sec3() {
       <Stack className={styles.slider} key={sec.id}>
         <Stack direction="row">
           <Box className={styles.imgCont}>
-            <Fade>
+            <Fade  triggerOnce="false">
               <img
                 src={sec.img}
                 alt={sec.title}
@@ -29,7 +29,7 @@ export default function Sec3() {
           </Box>
 
           <Stack direction="column" className={styles.disCont}>
-            <Fade direction="left">
+            <Fade direction="left"  triggerOnce="false">
               <p className={styles.slider__title}>{sec.title}</p>
               <p className={styles.slider__dis}>{sec.description}</p>
             </Fade>
@@ -38,7 +38,7 @@ export default function Sec3() {
 
        
         <Link to={`/know_history#${sec.id}`}>
-         <Fade>
+         <Fade  triggerOnce="false">
          <button className={styles.slider__btn}>
             <p>{t("timeLine.timeLineSection.btnText")}</p>
             <ArrowForwardIcon

@@ -21,13 +21,13 @@ export default function Sec2() {
         </Box>
 
         <Box className={styles.home__sec2__LSide}>
-          <Fade direction="top">
+          <Fade direction="top"  triggerOnce="false">
           <h2>{t('DownLoad.DownLoadSection.title')}</h2>
           <p className={styles.home__sec2__para}>{t('DownLoad.description')}  </p>
           </Fade>
 
           <Box width="230px" className={styles.download_button}>
-            <Zoom>
+            <Zoom  triggerOnce="false">
             <NavLink to="/download">
               <ContainedBtn>
                 <span>{t('DownLoad.DownLoadSection.download')}</span>
