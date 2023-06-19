@@ -14,10 +14,18 @@
     --sShadow2:#FFBA7A;    
     --mainFont: 'Montserrat', sans-serif;
 }
-@font-face{
-    font-family: CapitalFont;
-    src: url(fonts/CapitalisTypOasis.ttf);
-    font-family: PressFont;
-    src: url(fonts/PressJobs.ttf);
-    
+
+@font-face {
+    font-family: 'CapitalisTypOasis';
+    src: url(./fonts/CapitalisTypOasis.ttf) format('truetype');    
+}
+
+@font-face {
+    font-family: 'PressFont';
+    src: url(./fonts/PressJobs.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url(./fonts/Montserrat-Regular.ttf) format('truetype');
 }

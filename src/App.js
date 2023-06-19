@@ -28,8 +28,8 @@ function App() {
     <Provider>
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/know_history" element={<KnowHistory />} />
+        <Route path="*" element={<Home />} />
+        <Route path="/know_history"  element={<KnowHistory /> }/>
         <Route path="/tours" element={<Tours />} />
         <Route path="/tours/:id" element={<ToursInfo />}></Route>
         <Route path="/articles" element={<Articles />} />

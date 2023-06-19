@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Skeleton, Stack } from "@mui/material";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./KnowHistory.module.css";
 import "./KnowHistory.module.css";
@@ -12,16 +12,17 @@ import { Link } from "react-scroll";
 import { useTranslation } from "react-i18next";
 import { Context } from "../../components/Context/Context";
 import { useLocation } from "react-router-dom";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 
 export default function KnowHistory() {
-  const { timeLineSections } = useContext(Context); 
+  const { timeLineSections } = useContext(Context);
   const { t } = useTranslation();
 
   const sectionRefs = useRef([]);
   const location = useLocation();
 
   const [activeLink, setActiveLink] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -32,7 +33,10 @@ export default function KnowHistory() {
       if (sectionRef && sectionRef.current) {
         const sectionTop = sectionRef.current.offsetTop;
         const sectionBottom = sectionTop + sectionRef.current.offsetHeight;
-        if (currentScrollPos >= sectionTop && currentScrollPos < sectionBottom) {
+        if (
+          currentScrollPos >= sectionTop &&
+          currentScrollPos < sectionBottom
+        ) {
           activeSection = section.id;
         }
       }
@@ -42,14 +46,17 @@ export default function KnowHistory() {
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
     if (location.hash) {
       const element = document.getElementById(location.hash.slice(1));
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth'});
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   });
-
 
   useEffect(() => {
     sectionRefs.current = new Array(5)
@@ -146,20 +153,34 @@ export default function KnowHistory() {
               >
                 <h4>{sec.title}</h4>
                 <p className={styles.history__date}>{sec.date}</p>
-                <Fade>
-
-                <img
-                  className={styles.history__img}
-                  src={sec.img}
-                  alt={sec.title}
-                />
+                <Fade triggerOnce="false">
+                  {isLoading ? (
+                    <Skeleton height={600} />
+                  ) : (
+                    <img
+                      className={styles.history__img}
+                      src={sec.img}
+                      alt={sec.title}
+                    />
+                  )}
                 </Fade>
                 <Box className={styles.history__discription}>
-                 <Fade top>
-                 <p>{sec.description[0]}</p>
-                  <br />
-                  <p>{sec.description[1]}</p>
-                 </Fade>
+                  <Fade direction="down" triggerOnce="false">
+                    {isLoading ? (
+                      <>
+                        <Skeleton/>
+                        <Skeleton/>
+                        <Skeleton/>
+                        <Skeleton width="60%" />
+                      </>
+                    ) : (
+                      <>
+                        <p>{sec.description[0]}</p>
+                        <br />
+                        <p>{sec.description[1]}</p>
+                      </>
+                    )}
+                  </Fade>
                 </Box>
               </Box>
             );

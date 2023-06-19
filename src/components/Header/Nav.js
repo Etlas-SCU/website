@@ -7,10 +7,10 @@ import { NavLink } from "react-router-dom";
 import styles from "./Nav.module.css";
 import world from "../../images/Icons/World.png";
 import { Stack } from "@mui/material";
-import Popup from "./registe-signin/Popup";
 import { Context } from "../Context/Context";
 import check from "../../images/Icons/Check.png";
 import { useTranslation } from 'react-i18next';
+import Popup from "./registe-signin/PopupOutline/Popup";
 
 export default function Nav() {
   const { t, i18n } = useTranslation();
@@ -22,7 +22,6 @@ export default function Nav() {
     LANGUAGES,
     selectedLanguage,
     setSelectedLanguage,
-    buttonPopup,
     setButtonPopup,
   } = useContext(Context);
 
@@ -113,7 +112,7 @@ export default function Nav() {
 
   return (
     <>
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup} />
+      <Popup/>
 
       <Box className={styles.nav}>
         <Box
@@ -123,7 +122,7 @@ export default function Nav() {
         >
           <div className={styles.elogo}>e</div>
           <Box color="white" fontWeight="200">
-            <p style={{ fontFamily: "CapitalFont", fontSize: "20px" }}>ETLAS</p>
+            <p style={{ fontFamily: "CapitalisTypOasis", fontSize: "20px" }}>ETLAS</p>
             <div style={{ fontFamily: "var(--mainFont)", fontSize: "11px" }}>
               Your Tour Guid
             </div>

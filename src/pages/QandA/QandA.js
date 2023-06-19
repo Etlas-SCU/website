@@ -1,31 +1,39 @@
 import React, { useState } from "react";
 import style from "./QandA.module.css";
-import { Box } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 import { useContext } from "react";
 import { Context } from "../../components/Context/Context";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import hint from "../../images/Pngs/Hint.png";
 
 export default function QandA() {
   const { title } = useParams();
   const [currQ, setCurrQ] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [selectedChoice, setSelectedChoice] = useState("");
   const { statusQ, statusScore, setStatusScore, categories } =
     useContext(Context);
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-      setStatusScore(0);
-    }, []);
-    
-  const handleCorrectAnswer = (iscorrect) => {
+  useEffect(() => {
+    setStatusScore(0);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
+  const handleCorrectAnswer = (answer) => {
+    setSelectedChoice(answer.answer);
     setClicked(true);
-    if (currQ === statusQ.length - 1) {
+    if (currQ === statusQ.length - 1 || answer.iscorrect === "false") {
       setTimeout(() => {
         setQuizFinished(true);
+        setClicked(false);
       }, 1500);
     }
-    if (iscorrect === "true") {
+    if (answer.iscorrect === "true") {
       setStatusScore(statusScore + 1);
     }
     setTimeout(() => {
@@ -33,6 +41,11 @@ export default function QandA() {
       setClicked(false);
     }, 1500);
   };
+
+  // const handleHint=()=>{
+  //   const filteredAnswers = Answers.filter((answer) => answer.isCorrect || filteredAnswers.length < 2);
+  //   setAnswers(filteredAnswers);
+  // }
 
   const SC = () => {
     if (title === "Statues") {
@@ -51,43 +64,63 @@ export default function QandA() {
       </Box>
       {quizFinished ? (
         <Box className={style.finish}>
-          {statusScore >= statusQ.length / 2 ? (
-            <h1>congratulations 🥳</h1>
-          ) : (
-            <h1>Ooops! try again 😥</h1>
-          )}
-          <Box>Your Score is : {SC()}</Box>
+          <Box className={style.score}>
+            <h1>{SC()}</h1>
+            <p>Is your total score</p>
+          </Box>
+          <Link to="/knowledge">
+            <button>play again</button>
+          </Link>
         </Box>
       ) : (
         <Box className={style.QandA}>
           <Box className={style.questions__image}>
-            <img src={statusQ[currQ].img} />
+            {isLoading ? (
+              <Skeleton variant="rectangular" className={style.skeleton} />
+            ) : (
+              <img src={statusQ[currQ].img} alt={title} />
+            )}
           </Box>
 
           <Box className={style.questions}>
             <p>{statusQ[currQ].Question} </p>
-            <ul>
-              {statusQ[currQ].answers.map((ans, index) => {
-                return (
-                  <li
-                    className={style.questions__answer}
-                    key={index}
-                    onClick={() => handleCorrectAnswer(ans.iscorrect)}
-                    style={{
-                      backgroundColor:
-                        ans.iscorrect === "true" && clicked ? "green" : "",
-                    }}
-                  >
-                    {ans.answer}
-                  </li>
-                );
-              })}
-            </ul>
+
+            {statusQ[currQ].answers.map((ans, index) => {
+              return (
+                <button
+                  disabled={clicked}
+                  className={style.questions__answer}
+                  key={index}
+                  onClick={() => handleCorrectAnswer(ans)}
+                  style={{
+                    backgroundColor:
+                      selectedChoice === ans.answer
+                        ? ans.iscorrect === "true"
+                          ? "green"
+                          : "red"
+                        : "",
+                  }}
+                >
+                  {ans.answer}
+                </button>
+              );
+            })}
           </Box>
 
           <Box className={style.questions__score}>
-            <p>Your score: </p>
-            {SC()}
+            <Box>
+              <p>Need a help? </p>
+              <button
+                className={style.hint}
+                //  onClick={handleHint}
+              >
+                <img src={hint} alt="hint" />
+              </button>
+            </Box>
+            <Box>
+              <p>Your score: </p>
+              {SC()}
+            </Box>
           </Box>
         </Box>
       )}
