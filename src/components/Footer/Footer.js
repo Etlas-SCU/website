@@ -153,7 +153,8 @@ export default function Footer() {
                         </ul>
                     </Stack>
                     <Box className={Style.footer_prag2}>
-                        <Link to='/contact' >Contact Us</Link>
+                        {/* <Link to='/contact' >Contact Us</Link> */}
+                        <Link to='/profile' >Profile</Link>
                         <Link to='/terms'>Terms and conditions</Link>
                         <Link to='/about'>About US</Link>
                     </Box>
