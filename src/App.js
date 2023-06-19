@@ -15,10 +15,7 @@ import Terms from "./pages/TermsAndConditions/Terms";
 import { useEffect } from "react";
 import KnowledgeCheck from "./pages/KnowledgeCheck/KnowledgeCheck";
 import QandA from "./pages/QandA/QandA";
-// import Informations from "./pages/Profile/Informations/Informations";
 import Profile from "./pages/Profile/Profile";
-// import Favorites from "./pages/Profile/Favorites/Favorites";
-// import BestScore from "./pages/Profile/BestScore/BestScore";
 
 function App() {
   const { pathname } = useLocation();
@@ -44,8 +41,7 @@ function App() {
         {/* <Route path="/contact" element={<ContactUs />} /> */}
         <Route path="/terms" element={<Terms />} />
         <Route path="/profile" element={<Profile />} />
-        {/* <Route path="/favorites" element={<Favorites />} />
-        <Route path="/bestscore" element={<BestScore />} /> */}
+        
       </Routes>
     </Provider>
   );
