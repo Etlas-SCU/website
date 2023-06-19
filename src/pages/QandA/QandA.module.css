@@ -16,6 +16,10 @@
     display: flex;
     align-items: center;
 }
+.questions__image .skeleton{
+    width: 90%;
+    height: 90%;
+}
 
 .questions__image img {
     width: 100%;
@@ -71,6 +75,11 @@
     font-weight: 600;
     letter-spacing: 3px;
 }
+.hint{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
 .finish{
     text-align: center;
     color: white;
@@ -112,9 +121,12 @@
         margin: 0 auto;
     }
 
-    .questions__image img {
+    .questions__image img ,.questions__image .skeleton{
         width: 65%;
         margin: 0 auto;
+    }
+    .questions__image .skeleton{
+        height: 200px;
     }
 
     .questions__score {
@@ -123,6 +135,9 @@
         justify-content: center;
         align-items: baseline;
         gap: 15px;
+    }
+    .hint img{
+        width: 50%;
     }
 
 }

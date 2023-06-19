@@ -1,8 +1,8 @@
 import { Box, Stack } from "@mui/material";
 import React from "react";
 import styles from "./Popup.module.css";
-import Register from "../Register";
-import SignIn from "../SignIn";
+import Register from "../Signin/Register";
+import SignIn from "../Signin/SignIn";
 import e from "../../../../images/Pngs/e.png";
 import close from "../../../../images/Icons/close.png";
 import { useContext } from "react";

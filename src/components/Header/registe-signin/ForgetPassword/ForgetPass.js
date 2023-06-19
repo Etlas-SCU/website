@@ -1,6 +1,6 @@
-import { Box, Skeleton, Stack, Typography } from "@mui/material";
-import React, { useContext, useEffect } from "react";
-import styles from "../sign_reg.module.css";
+import { Box, Stack, Typography } from "@mui/material";
+import React, { useContext } from "react";
+import styles from "../Signin/sign_reg.module.css";
 import forget from "../../../../images/Pics/forgetPass.png";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
@@ -14,15 +14,6 @@ export default function ForgetPass() {
   const [verificationCode, setVerificationCode] = useState("");
   const [otp, setOtp] = useState("");
   const { setButtonPopup } = useContext(Context);
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
-
 
   // function handleChange(OTP) {
   //   setOTP(OTP);
@@ -41,11 +32,7 @@ export default function ForgetPass() {
 
   return (
     <>
-      {isLoading ? (
-        <Skeleton variant="rectangular" width={460} height={530} />
-      ) : (
-        <img className={styles.popup__img} src={forget} alt="formImg" />
-      )}
+      <img className={styles.popup__img} src={forget} alt="formImg" />
       <Stack
         sx={{
           width: { xs: "90%", md: "70%" },
