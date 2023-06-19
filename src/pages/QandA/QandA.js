@@ -13,7 +13,7 @@ export default function QandA() {
   const [quizFinished, setQuizFinished] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState("");
-  const {statusQ, statusScore, setStatusScore, categories } =
+  const { statusQ, statusScore, setStatusScore, categories } =
     useContext(Context);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -75,11 +75,10 @@ export default function QandA() {
       ) : (
         <Box className={style.QandA}>
           <Box className={style.questions__image}>
-            {isLoading?(
-              <Skeleton variant="rectangular"  width={460} height={530}/>
-            ):(
-
-            <img src={statusQ[currQ].img} alt={title} />
+            {isLoading ? (
+              <Skeleton variant="rectangular" className={style.skeleton} />
+            ) : (
+              <img src={statusQ[currQ].img} alt={title} />
             )}
           </Box>
 
@@ -95,7 +94,11 @@ export default function QandA() {
                   onClick={() => handleCorrectAnswer(ans)}
                   style={{
                     backgroundColor:
-                    selectedChoice === ans.answer? ans.iscorrect === "true"? "green":"red" : "",
+                      selectedChoice === ans.answer
+                        ? ans.iscorrect === "true"
+                          ? "green"
+                          : "red"
+                        : "",
                   }}
                 >
                   {ans.answer}
@@ -108,12 +111,7 @@ export default function QandA() {
             <Box>
               <p>Need a help? </p>
               <button
-                
-                style={{
-                  backgroundColor: "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                }}
+                className={style.hint}
                 //  onClick={handleHint}
               >
                 <img src={hint} alt="hint" />

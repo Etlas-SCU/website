@@ -33,11 +33,9 @@ export default function KnowledgeCheck() {
                     <Stack direction="column">
                       <Skeleton
                         variant="rectangular"
-                        width={400}
-                        height={250}
+                        className={style.Skeleton1}
                       />
-                      <br />
-                      <Skeleton variant="rectangular" width={400} height={20} />
+                      <Skeleton variant="rectangular" width="100%" height={200}/>
                     </Stack>
                   ) : (
                     <>

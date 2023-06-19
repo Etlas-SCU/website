@@ -39,17 +39,34 @@
     font-size: 13px;
 }
 .cont{
-    width: 25%;
+    width: 20%;
     margin: 15px;
 
+}
+.cont .ImgSkeleton{
+    width: 250px;
+    height: 200px;
+}
+@media only screen and (max-width: 1200px){
+    .cont .ImgSkeleton{
+        width: 200px;
+        height: 130px;
+    }
+}
+@media only screen and (max-width: 900px){
+    .cont .ImgSkeleton{
+        width: 150px;
+    }
 }
 @media only screen and (max-width: 700px){
     .card__more{ font-size: 12px;}
     .card__about{font-size: 11px;}
+ 
 }
 @media only screen and (max-width: 600px){
     .cont{width: 40%;}
     .card__more,.card__about{ font-size: 10px;}
+  
 }
 @media only screen and (max-width: 400px){
     .cont{width: 38%;}

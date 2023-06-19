@@ -21,7 +21,13 @@ export default function ArticlesCard({ id, className }) {
         <Box className={styles.card}>
           <Box className={styles.card__img}>
             {isLoading ? (
-              <Skeleton variant="rectangular" animation="wave" width={310} height={180} />
+              <Skeleton
+                variant="rectangular"
+                animation="wave"
+                // width={200}
+                // height={180}
+                className={styles.ImgSkeleton}
+              />
             ) : (
               <img src={article} alt="article" />
             )}
@@ -31,7 +37,6 @@ export default function ArticlesCard({ id, className }) {
               <>
                 <Skeleton />
                 <Skeleton />
-
                 <Skeleton width="60%" />
               </>
             ) : (
