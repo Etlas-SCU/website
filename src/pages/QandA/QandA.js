@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import style from "./QandA.module.css";
-import { Box } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 import { useContext } from "react";
 import { Context } from "../../components/Context/Context";
 import { Link, useParams } from "react-router-dom";
@@ -15,9 +15,13 @@ export default function QandA() {
   const [selectedChoice, setSelectedChoice] = useState("");
   const {statusQ, statusScore, setStatusScore, categories } =
     useContext(Context);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setStatusScore(0);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   }, []);
 
   const handleCorrectAnswer = (answer) => {
@@ -71,7 +75,12 @@ export default function QandA() {
       ) : (
         <Box className={style.QandA}>
           <Box className={style.questions__image}>
+            {isLoading?(
+              <Skeleton variant="rectangular"  width={460} height={530}/>
+            ):(
+
             <img src={statusQ[currQ].img} alt={title} />
+            )}
           </Box>
 
           <Box className={style.questions}>

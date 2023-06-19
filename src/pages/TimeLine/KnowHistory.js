@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Skeleton, Stack } from "@mui/material";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./KnowHistory.module.css";
 import "./KnowHistory.module.css";
@@ -22,6 +22,7 @@ export default function KnowHistory() {
   const location = useLocation();
 
   const [activeLink, setActiveLink] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -45,6 +46,10 @@ export default function KnowHistory() {
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
     if (location.hash) {
       const element = document.getElementById(location.hash.slice(1));
       if (element) {
@@ -148,18 +153,33 @@ export default function KnowHistory() {
               >
                 <h4>{sec.title}</h4>
                 <p className={styles.history__date}>{sec.date}</p>
-                <Fade  triggerOnce="false">
-                  <img
-                    className={styles.history__img}
-                    src={sec.img}
-                    alt={sec.title}
-                  />
+                <Fade triggerOnce="false">
+                  {isLoading ? (
+                    <Skeleton height={600} />
+                  ) : (
+                    <img
+                      className={styles.history__img}
+                      src={sec.img}
+                      alt={sec.title}
+                    />
+                  )}
                 </Fade>
                 <Box className={styles.history__discription}>
-                  <Fade direction="down"  triggerOnce="false">
-                    <p>{sec.description[0]}</p>
-                    <br />
-                    <p>{sec.description[1]}</p>
+                  <Fade direction="down" triggerOnce="false">
+                    {isLoading ? (
+                      <>
+                        <Skeleton/>
+                        <Skeleton/>
+                        <Skeleton/>
+                        <Skeleton width="60%" />
+                      </>
+                    ) : (
+                      <>
+                        <p>{sec.description[0]}</p>
+                        <br />
+                        <p>{sec.description[1]}</p>
+                      </>
+                    )}
                   </Fade>
                 </Box>
               </Box>

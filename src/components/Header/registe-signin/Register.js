@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Stack } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Skeleton, Stack } from "@mui/material";
 import styles from "./sign_reg.module.css";
 import reg from "../../../images/Pics/register.png";
 import fac from "../../../images/Pngs/Groupfac.png";
@@ -15,6 +15,14 @@ import { Context } from "../../Context/Context";
 export default function Register() {
   const { t } = useTranslation();
   const { setButtonPopup } = useContext(Context);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
 
   const initialValues = {
     name: "",
@@ -40,7 +48,11 @@ export default function Register() {
   };
   return (
     <>
-      <img className={styles.popup__img} src={reg} alt="formImg" />
+      {isLoading ? (
+        <Skeleton variant="rectangular" width={460} height={530} />
+      ) : (
+        <img className={styles.popup__img} src={reg} alt="formImg" />
+      )}
       <Stack
         sx={{
           m: "24px 0 0 20px ",

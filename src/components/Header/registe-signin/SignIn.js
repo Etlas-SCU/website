@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Stack } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Skeleton, Stack } from "@mui/material";
 import styles from "./sign_reg.module.css";
 import sign from "../../../images/Pics/signin.png";
 import fac from "../../../images/Pngs/Groupfac.png";
@@ -15,6 +15,14 @@ import { Context } from "../../Context/Context";
 export default function SignIn() {
   const { t } = useTranslation();
   const { setButtonPopup } = useContext(Context);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
 
   const initialValues = {
     email: "",
@@ -35,7 +43,11 @@ export default function SignIn() {
   };
   return (
     <>
-      <img className={styles.popup__img} src={sign} alt="formImg" />
+      {isLoading ? (
+        <Skeleton variant="rectangular" width={460} height={530} />
+      ) : (
+        <img className={styles.popup__img} src={sign} alt="formImg" />
+      )}
       <Stack
         sx={{
           m: "80px 0 0 20px ",
@@ -44,9 +56,7 @@ export default function SignIn() {
       >
         <Box>
           <Typography fontWeight="800"> {t("nav.signin")}</Typography>
-          <Typography fontSize="11px">
-            {t("nav.signInPopup.note1")}
-          </Typography>
+          <Typography fontSize="11px">{t("nav.signInPopup.note1")}</Typography>
         </Box>
 
         <Box>
