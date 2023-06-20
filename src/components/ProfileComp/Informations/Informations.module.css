@@ -1,0 +1,186 @@
+.form_comp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info_img {
+    text-align: right;
+    padding: 0;
+    margin: -40px 30px 0 0;
+    width: 100%;
+}
+
+.prof_img {
+    height: 40%;
+}
+
+.info {
+    margin: 20px;
+    position: relative;
+}
+
+.info_lab {
+    color: var(--secondryColor);
+    font-size: 15px;
+    padding: 7px 0;
+    display: block;
+}
+
+.prof_inp {
+    background: var(--mainColor);
+    color: #9F9F9F;
+    border: none;
+    border-radius: 10px;
+    width: 230px;
+    height: 35px;
+    padding: 7px;
+}
+
+.edit_icon1,
+.edit_icon2,
+.edit_icon3,
+.edit_icon4,
+.edit_icon5,
+.save_icon1,
+.save_icon2,
+.save_icon3,
+.save_icon4,
+.save_icon5 {
+    position: absolute;
+    color: #9F9F9F;
+    right: 5px;
+}
+
+.edit_icon1,
+.save_icon1 {
+    top: 42px;
+}
+
+.edit_icon2,
+.save_icon2 {
+    top: 111px;
+}
+
+.edit_icon3,
+.save_icon3 {
+    top: 180px;
+}
+
+.edit_icon4,
+.save_icon4 {
+    top: 246px;
+}
+
+.edit_icon5,
+.save_icon5 {
+    top: 315px;
+}
+
+.save {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.btn_save {
+    background: #BF8148;
+    color: #ffffff;
+    font-family: 'Montserrat';
+    width: 180px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    margin: 40px 0 -20px 0;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+@media only screen and (max-width : 900px) {
+    .btn_save {
+        font-weight: 400;
+    }
+
+    .prof_inp {
+        width: 300px;
+        height: 40px;
+        border-radius: 15px;
+    }
+
+    .edit_icon1,
+    .save_icon1 {
+        top: 44px;
+        right: 10px;
+    }
+
+    .edit_icon2,
+    .save_icon2 {
+        top: 117px;
+        right: 10px;
+    }
+
+    .edit_icon3,
+    .save_icon3 {
+        top: 190px;
+        right: 10px;
+    }
+
+    .edit_icon4,
+    .save_icon4 {
+        top: 262px;
+        right: 10px;
+    }
+
+    .edit_icon5,
+    .save_icon5 {
+        top: 335px;
+        right: 10px;
+    }
+}
+
+@media only screen and (max-width : 712px) {
+    .prof_img {
+        margin-left: -50px;
+    }
+}
+
+@media only screen and (max-width : 650px) {
+    .info_img {
+        display: none;
+    }
+}
+
+@media only screen and (max-width : 460px) {
+    .prof_inp {
+        width: 240px;
+        height: 35px;
+    }
+
+    .edit_icon1,
+    .save_icon1 {
+        top: 40px;
+    }
+
+
+    .edit_icon2,
+    .save_icon2 {
+        top: 109px;
+    }
+
+    .edit_icon3,
+    .save_icon3 {
+        top: 176px;
+    }
+
+    .edit_icon4,
+    .save_icon4 {
+        top: 245px;
+    }
+
+    .edit_icon5,
+    .save_icon5 {
+        top: 313px;
+    }
+}
