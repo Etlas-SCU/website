@@ -20,7 +20,7 @@ export default function SignIn() {
 
   const initialValues = {
     email: "",
-    address: "",
+    password: "",
   };
 
   const validationSchema = Yup.object({
