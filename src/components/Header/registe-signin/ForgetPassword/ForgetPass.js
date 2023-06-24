@@ -5,15 +5,15 @@ import forget from "../../../../images/Pics/forgetPass.png";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { Context } from "../../../Context/Context";
-import OTPInput from "react-otp-input";
+import Otp from "../../../Otp/Otp";
+import MPopUp from "../../../PopUp_Message/error/MPopUp";
 
 export default function ForgetPass() {
   const { t } = useTranslation();
   const [step, setStep] = useState("enterEmail");
   const [email, setEmail] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
-  const [otp, setOtp] = useState("");
-  const { setButtonPopup } = useContext(Context);
+  const { setButtonPopup, setMassagePopup } = useContext(Context);
 
   // function handleChange(OTP) {
   //   setOTP(OTP);
@@ -28,8 +28,8 @@ export default function ForgetPass() {
 
   const handlePasswordReset = () => {
     setButtonPopup(false);
+    // setMassagePopup(true);
   };
-
   return (
     <>
       <img className={styles.popup__img} src={forget} alt="formImg" />
@@ -71,39 +71,7 @@ export default function ForgetPass() {
         )}
 
         {step === "enterVerificationCode" && (
-          <>
-            <Box>
-              <Typography className={styles.typo}>
-                Type the OTP you received on your e-mail to continue reseting
-                your password.
-              </Typography>
-            </Box>
-
-            <div>
-              <OTPInput
-                value={otp}
-                onChange={setOtp}
-                numInputs={4}
-                inputStyle={styles.otp_input}
-                Separator={<span></span>}
-                renderInput={(props) => <input {...props} />}
-              />
-              <Typography
-                style={{
-                  color: "#55c4e0",
-                  textDecoration: "underline",
-                  fontSize: "12px",
-                }}
-              >
-                Resend the mail again.
-              </Typography>
-              <Box>
-                <button type="submit" onClick={handleVerificationCodeSubmit}>
-                  Next
-                </button>
-              </Box>
-            </div>
-          </>
+          <Otp verfiy={handleVerificationCodeSubmit} />
         )}
 
         {step === "resetPassword" && (
@@ -136,6 +104,14 @@ export default function ForgetPass() {
           </>
         )}
       </Stack>
+      {/* <MPopUp type={"warning"}>
+        <h2>Oops!</h2>
+        <p style={{ marginTop: "10px", fontWeight: "300" }}>
+          Your password hasn’t been reset.
+          <br />
+          Please, try again!
+        </p>
+      </MPopUp> */}
     </>
   );
 }
