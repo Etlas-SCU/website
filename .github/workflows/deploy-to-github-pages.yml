@@ -27,7 +27,11 @@ jobs:
         git config --global user.password "${{ secrets.GH_PAGES_TOKEN  }}"
 
     - name: Install dependencies
-      run: npm install --force
+      run: |
+        npm install --force
+        npm run-script build
+      env:
+        REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
 
     - name: Build project
       run: npm run build
