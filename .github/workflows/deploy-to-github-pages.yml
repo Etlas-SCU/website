@@ -33,9 +33,6 @@ jobs:
       env:
         REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
 
-    - name: Build project
-      run: npm run build
-
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
