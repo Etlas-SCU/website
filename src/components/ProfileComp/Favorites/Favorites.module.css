@@ -14,6 +14,7 @@
 .fav_img{
     width: 90%;
     height: 100%;
+    padding: 2px;
 }
 
 .sec2{
@@ -61,8 +62,22 @@
 
 .next_icon , .prev_icon{
     color: white ;
-    font-size: 50px;
 }
+
+.fav .fav_skelton{
+    width: 250px;
+    height: 100px;
+}
+
+.btn{
+    background : none;
+    border: none;
+}
+/* 
+.swiperSlide{
+    height: fit-content !important;
+} */
+
 
 @media only screen and (max-width: 900px) {
     .img_box{
@@ -82,5 +97,14 @@
     }
     .date{
         font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .img_box{
+        width: 30%;
+    }
+    .sec2{
+        width: 70%;
     }
 }
