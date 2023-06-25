@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import KnowledgeCheck from "./pages/KnowledgeCheck/KnowledgeCheck";
 import QandA from "./pages/QandA/QandA";
 import Profile from "./pages/Profile/Profile";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   const { pathname } = useLocation();
@@ -25,24 +26,30 @@ function App() {
   }, [pathname]);
 
   return (
-    <Provider>
-      <Nav />
-      <Routes>
-        <Route path="*" element={<Home />} />
-        <Route path="/know_history"  element={<KnowHistory /> }/>
-        <Route path="/tours" element={<Tours />} />
-        <Route path="/tours/:id" element={<ToursInfo />}></Route>
-        <Route path="/articles" element={<Articles />} />
-        <Route path="/articles/:id" element={<ArticleInfo />} />
-        <Route path="/knowledge" element={<KnowledgeCheck />} />
-        <Route path="/knowledge/:title" element={<QandA />} />
-        <Route path="/download" element={<Download />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-    </Provider>
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+
+      <Provider>
+        <Nav />
+        <Routes>
+          <Route path="*" element={<Home />} />
+          <Route path="/know_history"  element={<KnowHistory /> }/>
+          <Route path="/tours" element={<Tours />} />
+          <Route path="/tours/:id" element={<ToursInfo />}></Route>
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:id" element={<ArticleInfo />} />
+          <Route path="/knowledge" element={<KnowledgeCheck />} />
+          <Route path="/knowledge/:title" element={<QandA />} />
+          <Route path="/download" element={<Download />} />
+          <Route path="/about" element={<AboutUs />} />
+          {/* <Route path="/contact" element={<ContactUs />} /> */}
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/profile" element={<Profile />} />
+          
+        </Routes>
+      </Provider>
+
+    </GoogleOAuthProvider>
+
   );
 }
 
