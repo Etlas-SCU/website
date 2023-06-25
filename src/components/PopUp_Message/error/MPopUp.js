@@ -7,9 +7,20 @@ import warning from "../../../images/Pngs/warning.png";
 import done from "../../../images/Pngs/done.png";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
+import { useEffect } from "react";
 
 export default function MPopUp(props) {
   const { massagePopup, setMassagePopup } = useContext(Context);
+
+  useEffect(() => {
+    if (massagePopup) {
+      const timeoutId = setTimeout(() => {
+        setMassagePopup(false);
+      }, 2000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [massagePopup]);
 
   return massagePopup ? (
     <Stack className={styles.popup}>
@@ -22,12 +33,12 @@ export default function MPopUp(props) {
             : styles.done
         }`}
       >
-        <button
+        {/* <button
           className={styles.close_btn}
           onClick={() => setMassagePopup(false)}
         >
           <img src={close} className={styles.close_img} alt="close" />
-        </button>
+        </button> */}
         {props.type === "error" ? (
           <img src={error} className={styles.MImge} />
         ) : props.type === "warning" ? (

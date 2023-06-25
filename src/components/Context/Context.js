@@ -13,6 +13,9 @@ export const Provider = (props) => {
   const [langPopup, setLangPopup] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [buttonPopup, setButtonPopup] = useState([false, ""]);
+  const [massagePopup, setMassagePopup] = useState(false);
+  const [LogIn ,setLogIn]=useState(false)
+
 
   const[statusScore,setStatusScore]=useState(0);
   const[MonumentsScore,setMonumentsScore]=useState(0);
@@ -173,6 +176,10 @@ const landmarksQ=[
     statusQ,
     statusScore,
     setStatusScore,
+    massagePopup,
+    setMassagePopup,
+    LogIn,
+    setLogIn
 
   };
 
