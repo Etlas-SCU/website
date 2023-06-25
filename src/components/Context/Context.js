@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import pic1 from "../../images/Pics/pic1.png";
 import pic2 from "../../images/Pics/pic2.png";
 import neith from '../../images/Pics/neith.png'
@@ -14,8 +14,12 @@ export const Provider = (props) => {
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [buttonPopup, setButtonPopup] = useState([false, ""]);
   const [massagePopup, setMassagePopup] = useState(false);
-  const [LogIn ,setLogIn]=useState(false)
+  var access=localStorage.getItem("access")
+  const [LogIn ,setLogIn]=useState(access!==null)
 
+  useEffect(()=>{
+     setLogIn(access!==null)
+  },[access])
 
   const[statusScore,setStatusScore]=useState(0);
   const[MonumentsScore,setMonumentsScore]=useState(0);
@@ -179,7 +183,7 @@ const landmarksQ=[
     massagePopup,
     setMassagePopup,
     LogIn,
-    setLogIn
+    setLogIn,
 
   };
 

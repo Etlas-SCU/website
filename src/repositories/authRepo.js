@@ -11,6 +11,9 @@ export async function Login(body) {
     body: result.body,
   };
 }
+export async function Logout() {
+localStorage.removeItem("access");
+}
 
 export async function refreshToken() {
   var refresh = localStorage.getItem("refresh");

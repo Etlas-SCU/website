@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import Popup from "./registe-signin/PopupOutline/Popup";
 import profile from "../../images/Pngs/Profile.png";
 import arrow from "../../images/Pngs/symbols_arrow.png";
+import { Logout } from "../../repositories/authRepo";
 
 export default function Nav() {
   const { t, i18n } = useTranslation();
@@ -68,7 +69,10 @@ export default function Nav() {
         <Box p="50px 0px 10px 0px" lineHeight="60px">
           {NavList}
           {LogIn ? (
+            <>
             <NavLink to="/profile" style={{marginRight:"2.5vw"}}>profile</NavLink>
+            <button style={{margin:"0 auto" ,display:"block", backgroundColor: "#003441" }} onClick={Logout} className={styles.nav__list__btn} >LogOut</button>
+            </>
           ) : (
             <>
               <button
