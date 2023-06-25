@@ -17,6 +17,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import PopUp from '../../components/PopUp_Message/PopUp';
 
 export default function ToursInfo(props) {
+    
     SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
     const [buttonPopUp, setButtonPopUp] = useState(false);
 
@@ -83,12 +84,12 @@ export default function ToursInfo(props) {
                             }
                         }}
                         pagination={true}
-                        className="mySwiper"
+                        className={Style.mySwiper}
                     >
                         {slide_img.map((img, i) => {
                             return (
                                 <SwiperSlide key={i}>
-                                    <img src={img} alt="" />
+                                    <img src={img} alt="" className={Style.mySwiper_img}/>
                                 </SwiperSlide>
                             );
                         })}

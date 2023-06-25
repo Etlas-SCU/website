@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 import CreateIcon from '@mui/icons-material/Create';
 import CheckIcon from '@mui/icons-material/Check';
+import { Zoom } from 'react-awesome-reveal';
 
 
 export default function Informations() {
@@ -38,6 +39,7 @@ export default function Informations() {
         console.log(values);
         resetEdit({ values: "" });
     };
+    
 
     return (
         <Stack>
@@ -134,9 +136,11 @@ export default function Informations() {
                     <img src={ProfileImg} className={Style.prof_img} alt='profile_img' />
                 </Box>
             </Box>
+            <Zoom triggerOnce='false'>
             <Box className={Style.save}>
                 <button type='submit' className={Style.btn_save}>Save</button>
             </Box>
+            </Zoom>
         </Stack>
     )
 }
