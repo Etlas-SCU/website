@@ -11,6 +11,8 @@ import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { Typography } from "@mui/material";
 import { Context } from "../../../Context/Context";
+import { useGoogleLogin } from "@react-oauth/google";
+import GoogleSignIn from "../../google-signin/GoogleSignIn";
 
 export default function SignIn() {
   const { t } = useTranslation();
@@ -18,7 +20,7 @@ export default function SignIn() {
 
   const initialValues = {
     email: "",
-    address: "",
+    password: "",
   };
 
   const validationSchema = Yup.object({
@@ -110,9 +112,9 @@ export default function SignIn() {
                       <a href="#">
                         <img src={fac} alt="fac" />
                       </a>
-                      <a href="#">
-                        <img src={google} alt="google" />
-                      </a>
+
+                      <GoogleSignIn/>
+                      
                       <a href="#">
                         <img src={apple} alt="apple" />
                       </a>
