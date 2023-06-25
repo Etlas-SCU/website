@@ -6,11 +6,6 @@
     position: relative;
 }
 
-/* .footer_section{
-    display: flex;
-    flex-direction: row;
-} */
-
 .footer_sec1{
     width: 40%;
 }
@@ -114,7 +109,6 @@
 }
 
 .icons{
-    /* position: absolute; */
     text-align: right;
     margin: 0 0 -45px 0 ;
 }
@@ -124,7 +118,6 @@
 }
 
 .arrow_icon{
-    /* position: absolute; */
     margin: -43px 0 0 0; 
     text-align: right;
 }

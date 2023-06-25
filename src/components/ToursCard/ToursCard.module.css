@@ -1,13 +1,15 @@
+.tours_comp{
+    width: 30%;
+}
 .tours_card{
     display: flex;
     justify-content: center;
     margin: 30px 10px 0 10px;
     background: rgba(217, 217, 217, 1);
     border-radius: 15px;
-    width: 30%;
 }
 
-.tours_card :hover{
+.tours_card:hover{
     transform : scale(1.02);
 }
 
@@ -43,8 +45,13 @@
     font-weight: 400;
 }
 
+.tours_sec1 .loading{
+    width: 360px;
+    height: 130px;
+}
+
 @media only screen and (max-width: 900px){
-    .tours_card{
+    .tours_comp{
         width: 40%;
     }
     .tours_sec1{
@@ -60,20 +67,42 @@
     .prag{
         font-size: 11px ;
     }
+    .tours_sec1 .loading{
+        width: 300px;
+        height: 130px;
+    }
+    
 }
 
+@media only screen and (max-width: 760px){
+    .tours_sec1 .loading{
+        width: 250px;
+        height: 130px;
+    }
+    
+}
 
-@media only screen and (max-width: 600px){
-    .tours_card{
+@media only screen and (max-width: 650px){
+    .tours_comp{
         width: 60%;
     }
     .title , .prag{
         font-size: 10px;
     }
+    .tours_sec1 .loading{
+        width: 350px;
+        height: 130px;
+    }
+    
 }
 
 @media only screen and (max-width: 400px){
-    .tours_card{
+    .tours_comp{
         width: 90%;
     }
+    .tours_sec1 .loading{
+        width: 320px;
+        height: 130px;
+    }
+    
 }
