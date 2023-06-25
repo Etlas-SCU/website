@@ -5,6 +5,7 @@ import ProfilePic from '../../images/Pngs/Profile.png';
 import Informations from '../../components/ProfileComp/Informations/Informations';
 import Favorites from '../../components/ProfileComp/Favorites/Favorites';
 import BestScore from '../../components/ProfileComp/BestScore/BestScore';
+import { Zoom } from 'react-awesome-reveal';
 
 
 export default function Profile() {
@@ -39,9 +40,11 @@ export default function Profile() {
                     </Box>
                     <h4 className={Style.name}>Your Name</h4>
                     <Box className={Style.prof_btn}>
-                        <button className={Style.btn} style={{ backgroundColor: activeButton !== 'Informations' ? 'transparent' : '#BF8148' }} onClick={() => { handleButtonClick('Informations'); handleInformationsClick(); }}>Informations</button>
-                        <button className={Style.btn} style={{ backgroundColor: activeButton !== 'Favorites' ? 'transparent' : '#BF8148' }} onClick={() => { handleButtonClick('Favorites'); handleFavoritesClick(); }}>Favorites </button>
-                        <button className={Style.btn} style={{ backgroundColor: activeButton !== 'BestScore' ? 'transparent' : '#BF8148' }} onClick={() => { handleButtonClick('BestScore'); handleBestScoreClick(); }}>Best Score</button>
+                        <Zoom triggerOnce='false'>
+                            <button className={Style.btn} style={{ backgroundColor: activeButton !== 'Informations' ? 'transparent' : '#BF8148' }} onClick={() => { handleButtonClick('Informations'); handleInformationsClick(); }}>Informations</button>
+                            <button className={Style.btn} style={{ backgroundColor: activeButton !== 'Favorites' ? 'transparent' : '#BF8148' }} onClick={() => { handleButtonClick('Favorites'); handleFavoritesClick(); }}>Favorites </button>
+                            <button className={Style.btn} style={{ backgroundColor: activeButton !== 'BestScore' ? 'transparent' : '#BF8148' }} onClick={() => { handleButtonClick('BestScore'); handleBestScoreClick(); }}>Best Score</button>
+                        </Zoom>
                     </Box>
                 </Box>
             </Box>

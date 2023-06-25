@@ -17,9 +17,15 @@ import KnowledgeCheck from "./pages/KnowledgeCheck/KnowledgeCheck";
 import QandA from "./pages/QandA/QandA";
 import Profile from "./pages/Profile/Profile";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { refreshToken } from "./repositories/authRepo";
 
 function App() {
   const { pathname } = useLocation();
+
+  useEffect(()=>{
+    refreshToken()
+    setInterval(refreshToken, 3* 60 * 1000);
+  },[])
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -49,6 +55,7 @@ function App() {
       </Provider>
 
     </GoogleOAuthProvider>
+
   );
 }
 

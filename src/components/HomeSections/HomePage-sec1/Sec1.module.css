@@ -12,7 +12,6 @@
 .home_img {
   width: 43vw;
   margin-top: 15px;
-  /* height: 650px; */
 }
 
 .home_col {
@@ -60,18 +59,6 @@
   width: 180px;
 }
 
-
-/* .download_icons {
-  padding: 10px 0;
-  left: 10px;
-}
-
-.download_btn {
-  background: none;
-  border: none;
-  margin-right: 10px;
-} */
-
 @media only screen and (max-width: 900px) {
   .home_row {
     justify-content: center;
@@ -80,11 +67,6 @@
   .img_col {
     position: absolute;
   }
-
-  /* .home_img {
-    width: 15rem;
-    height: 30rem;
-  } */
 
   .home_col {
     width: 80%;
@@ -109,23 +91,5 @@
     width: 100px;
   }
 
-  /* 
-  .download_prag{
-    flex-wrap: wrap;
-  } */
-
-  /* .search_input {
-        height: 2.5rem;
-        width: 35rem;
-        font-size: 13px;
-    }
-  
-    .search_icon {
-        width: 1rem;
-        height: 1rem;
-        top: 1rem;
-    }
-  
-  */
 
 }

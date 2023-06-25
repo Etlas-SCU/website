@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Stack } from "@mui/material";
 import styles from "./sign_reg.module.css";
 import sign from "../../../../images/Pics/signin.png";
 import fac from "../../../../images/Pngs/Groupfac.png";
-import google from "../../../../images/Pngs/Groupgoogle.png";
 import apple from "../../../../images/Pngs/Groupapple.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -11,12 +10,15 @@ import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { Typography } from "@mui/material";
 import { Context } from "../../../Context/Context";
-import { useGoogleLogin } from "@react-oauth/google";
 import GoogleSignIn from "../../google-signin/GoogleSignIn";
+import { Login } from "../../../../repositories/authRepo";
+import MPopUp from "../../../PopUp_Message/error/MPopUp";
 
 export default function SignIn() {
   const { t } = useTranslation();
-  const { setButtonPopup } = useContext(Context);
+  const { setButtonPopup, setMassagePopup ,setLogIn} = useContext(Context);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const initialValues = {
     email: "",
@@ -31,12 +33,30 @@ export default function SignIn() {
       .matches(/[a-zA-Z]/, t("nav.passwordLetters")),
   });
 
+  function handleLogin(jsonBody){
+    Login(jsonBody).then((result) => {
+      if (!result.isError) {
+        setLogIn(true);
+        setMassagePopup(true);
+        setTimeout(() => {
+          setButtonPopup([false, ""]);
+        }, 2000);
+      }
+    });
+  }
+
   const onSubmit = (values) => {
-    console.log(values);
-    setButtonPopup([false, ""]);
+    var jsonBody = {
+      email: values.email,
+      password: values.password,
+    };
+    localStorage.removeItem("access");
+    setIsLoading(true);
+    handleLogin(jsonBody)
   };
   return (
     <>
+      <MPopUp type="done">you are Login successfully</MPopUp>
       <img className={styles.popup__img} src={sign} alt="formImg" />
       <Stack
         sx={{
@@ -88,7 +108,9 @@ export default function SignIn() {
 
                 <Stack direction="row" className={styles.continueS}>
                   <Box>
-                    <button type="submit">{t("nav.signin")}</button>
+                    <button type="submit" disabled={isLoading}>
+                      {t("nav.signin")}
+                    </button>
 
                     <Typography fontSize="12px" mt="10px">
                       <span>
@@ -113,8 +135,8 @@ export default function SignIn() {
                         <img src={fac} alt="fac" />
                       </a>
 
-                      <GoogleSignIn/>
-                      
+                      <GoogleSignIn />
+
                       <a href="#">
                         <img src={apple} alt="apple" />
                       </a>

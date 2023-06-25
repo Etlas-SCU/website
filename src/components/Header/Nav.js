@@ -9,8 +9,10 @@ import world from "../../images/Icons/World.png";
 import { Stack } from "@mui/material";
 import { Context } from "../Context/Context";
 import check from "../../images/Icons/Check.png";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import Popup from "./registe-signin/PopupOutline/Popup";
+import profile from "../../images/Pngs/Profile.png";
+import arrow from "../../images/Pngs/symbols_arrow.png";
 
 export default function Nav() {
   const { t, i18n } = useTranslation();
@@ -23,6 +25,7 @@ export default function Nav() {
     selectedLanguage,
     setSelectedLanguage,
     setButtonPopup,
+    LogIn,
   } = useContext(Context);
 
   const NavList = (
@@ -42,20 +45,6 @@ export default function Nav() {
       <NavLink to="/knowledge" style={{ marginRight: "2vw" }}>
         <p className={styles.nav__list__item}>Knowledge Check</p>
       </NavLink>
-
-      <button
-        onClick={() => setButtonPopup([true, t('nav.register')])}
-        style={{ backgroundColor: "#003441" }}
-        className={styles.nav__list__btn}
-      >
-        {t('nav.register')}
-      </button>
-      <button
-        onClick={() => setButtonPopup([true,t('nav.signin')])}
-        className={styles.nav__list__btn}
-      >
-        {t('nav.signin')}
-      </button>
     </>
   );
 
@@ -65,7 +54,7 @@ export default function Nav() {
 
   const handleLanguageClick = (obj) => {
     setSelectedLanguage(Object.values(obj)[0]);
-    i18n.changeLanguage(Object.keys(obj)[0])
+    i18n.changeLanguage(Object.keys(obj)[0]);
   };
 
   const drawer = (
@@ -78,6 +67,25 @@ export default function Nav() {
       <Stack className={styles.nav__list} direction="column">
         <Box p="50px 0px 10px 0px" lineHeight="60px">
           {NavList}
+          {LogIn ? (
+            <NavLink to="/profile" style={{marginRight:"2.5vw"}}>profile</NavLink>
+          ) : (
+            <>
+              <button
+                onClick={() => setButtonPopup([true, t("nav.register")])}
+                style={{ backgroundColor: "#003441" }}
+                className={styles.nav__list__btn}
+              >
+                {t("nav.register")}
+              </button>
+              <button
+                onClick={() => setButtonPopup([true, t("nav.signin")])}
+                className={styles.nav__list__btn}
+              >
+                {t("nav.signin")}
+              </button>
+            </>
+          )}
         </Box>
         <Box
           margin="15px auto"
@@ -86,7 +94,7 @@ export default function Nav() {
         ></Box>
 
         <Box width="75%">
-          {LANGUAGES.map((obj ,index) => {
+          {LANGUAGES.map((obj, index) => {
             return (
               <Stack
                 direction="row"
@@ -99,7 +107,9 @@ export default function Nav() {
                   src={check}
                   alt="check"
                   className={
-                    selectedLanguage === Object.values(obj)[0] ? styles.check : styles.notcheck
+                    selectedLanguage === Object.values(obj)[0]
+                      ? styles.check
+                      : styles.notcheck
                   }
                 />
               </Stack>
@@ -112,7 +122,7 @@ export default function Nav() {
 
   return (
     <>
-      <Popup/>
+      <Popup />
 
       <Box className={styles.nav}>
         <Box
@@ -122,7 +132,9 @@ export default function Nav() {
         >
           <div className={styles.elogo}>e</div>
           <Box color="white" fontWeight="200">
-            <p style={{ fontFamily: "CapitalisTypOasis", fontSize: "20px" }}>ETLAS</p>
+            <p style={{ fontFamily: "CapitalisTypOasis", fontSize: "20px" }}>
+              ETLAS
+            </p>
             <div style={{ fontFamily: "var(--mainFont)", fontSize: "11px" }}>
               Your Tour Guid
             </div>
@@ -163,9 +175,7 @@ export default function Nav() {
                 <Box pt="20px" className={styles.lang__popUp}>
                   <p className={styles.triangle_up}> </p>
 
-                  <p className={styles.lang__popUp__title}>
-                  {t('nav.lang')}
-                  </p>
+                  <p className={styles.lang__popUp__title}>{t("nav.lang")}</p>
                   <Box
                     margin="0 auto"
                     mb="10px"
@@ -173,7 +183,7 @@ export default function Nav() {
                     width="92px"
                   ></Box>
 
-                  {LANGUAGES.map((obj ,index)=> {
+                  {LANGUAGES.map((obj, index) => {
                     return (
                       <Stack
                         direction="row"
@@ -181,12 +191,16 @@ export default function Nav() {
                         key={index}
                         onClick={() => handleLanguageClick(obj)}
                       >
-                        <p className={styles.sideNav_li}>{Object.values(obj)[0]}</p>
+                        <p className={styles.sideNav_li}>
+                          {Object.values(obj)[0]}
+                        </p>
                         <img
                           src={check}
                           alt="check"
                           className={
-                            selectedLanguage === Object.values(obj)[0] ? styles.check : styles.notcheck
+                            selectedLanguage === Object.values(obj)[0]
+                              ? styles.check
+                              : styles.notcheck
                           }
                         />
                       </Stack>
@@ -196,8 +210,43 @@ export default function Nav() {
               )}
             </Box>
 
-            <Box display="flex" p="10px 35px" alignItems="center">
+            <Box
+              display="flex"
+              p="10px 35px"
+              alignItems="center"
+              width={LogIn ? "72%" : "95%"}
+            >
               {NavList}
+              {LogIn ? (
+                <Box
+                  width="18%"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
+                  <img src={profile} style={{ width: "20%" }} />
+                  <p>sohila </p>
+                  <NavLink to="/profile">
+                    <img src={arrow} style={{ width: "55%" }} />
+                  </NavLink>
+                </Box>
+              ) : (
+                <>
+                  <button
+                    onClick={() => setButtonPopup([true, t("nav.register")])}
+                    style={{ backgroundColor: "#003441" }}
+                    className={styles.nav__list__btn}
+                  >
+                    {t("nav.register")}
+                  </button>
+                  <button
+                    onClick={() => setButtonPopup([true, t("nav.signin")])}
+                    className={styles.nav__list__btn}
+                  >
+                    {t("nav.signin")}
+                  </button>
+                </>
+              )}
             </Box>
           </Box>
         </Box>
