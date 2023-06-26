@@ -12,8 +12,11 @@ export async function Login(body) {
   };
 }
 export async function Logout(body) {
-  localStorage.removeItem("access");
   const result = await Post("auth/logout/", JSON.stringify(body));
+  if (!result.isError) {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+  }
   return {
     isError: result.isError,
     body: result.body,
