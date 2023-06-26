@@ -1,4 +1,4 @@
-import { Post } from "../helpers/apiService";
+import { Patch, Post } from "../helpers/apiService";
 
 export async function Login(body) {
   const result = await Post("auth/login/", JSON.stringify(body));
@@ -11,8 +11,13 @@ export async function Login(body) {
     body: result.body,
   };
 }
-export async function Logout() {
+export async function Logout(body) {
   localStorage.removeItem("access");
+  const result = await Post("auth/logout/", JSON.stringify(body));
+  return {
+    isError: result.isError,
+    body: result.body,
+  };
 }
 
 export async function refreshToken() {
@@ -45,6 +50,29 @@ export async function RequestOtp(body) {
 
 export async function emailVerify(body) {
   const result = await Post("auth/email-verify/", JSON.stringify(body));
+  return {
+    isError: result.isError,
+    body: result.body,
+  };
+}
+
+export async function RequestPasswordReset(body) {
+  const result = await Post("auth/request-password-reset/", JSON.stringify(body));
+  return {
+    isError: result.isError,
+    body: result.body,
+  };
+}
+
+export async function PasswordResetOtp(body) {
+  const result = await Post("auth/password-reset-otp/", JSON.stringify(body));
+  return {
+    isError: result.isError,
+    body: result.body,
+  };
+}
+export async function passwordResetComplete(body) {
+  const result = await Patch("auth/password-reset-complete/", JSON.stringify(body));
   return {
     isError: result.isError,
     body: result.body,

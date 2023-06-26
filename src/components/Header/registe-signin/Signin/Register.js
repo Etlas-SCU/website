@@ -64,7 +64,7 @@ export default function Register() {
       } else {
         setMassagePopup(true);
         setIsLoading(false);
-        setPopup(<MPopUp type="error">{result.body.email}</MPopUp>);
+        setPopup(<MPopUp type="error">{result.body.response.data.email[0]}</MPopUp>);
       }
     });
   }
@@ -84,7 +84,6 @@ export default function Register() {
     setTimeout(() => {
       resetForm({ values: initialValues });
     }, 2000);
-
     setEmail(values.email)
   };
 

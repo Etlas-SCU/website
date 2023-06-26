@@ -5,7 +5,7 @@ import Nav from "./components/Header/Nav.js";
 import Download from "./pages/Download/Download";
 import AboutUs from "./pages/About/AboutUs";
 import KnowHistory from "./pages/TimeLine/KnowHistory";
-import { Provider } from "./components/Context/Context";
+import { Context, Provider } from "./components/Context/Context";
 import Articles from "./pages/Articles/Articles";
 import Tours from "./pages/Tours/Tours";
 import ArticleInfo from "./pages/ArticleInfo/ArticleInfo";
@@ -17,16 +17,11 @@ import KnowledgeCheck from "./pages/KnowledgeCheck/KnowledgeCheck";
 import QandA from "./pages/QandA/QandA";
 import Profile from "./pages/Profile/Profile";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { refreshToken } from "./repositories/authRepo";
+
 
 function App() {
   const { pathname } = useLocation();
-
-  useEffect(()=>{
-    refreshToken()
-    setInterval(refreshToken, 3* 60 * 1000);
-  },[])
-
+ 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);

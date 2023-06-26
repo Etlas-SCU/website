@@ -5,6 +5,7 @@ import neith from '../../images/Pics/neith.png'
 import statues from "../../images/Pics/statues.png";
 import landmarks from "../../images/Pics/landmarks.png";
 import monuments from "../../images/Pics/monuments.png";
+import { refreshToken } from "../../repositories/authRepo";
 export const Context = createContext();
 
 export const Provider = (props) => {
@@ -14,12 +15,21 @@ export const Provider = (props) => {
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [buttonPopup, setButtonPopup] = useState([false, ""]);
   const [massagePopup, setMassagePopup] = useState(false);
+  const [step, setStep] = useState("enterEmail");
+
   var access=localStorage.getItem("access")
   const [LogIn ,setLogIn]=useState(access!==null)
 
   useEffect(()=>{
      setLogIn(access!==null)
   },[access])
+  
+  useEffect(()=>{
+    if(LogIn!==null){
+      refreshToken()
+    }
+    setInterval(refreshToken, 3* 60 * 1000);
+  },[])
 
   const[statusScore,setStatusScore]=useState(0);
   const[MonumentsScore,setMonumentsScore]=useState(0);
@@ -184,6 +194,8 @@ const landmarksQ=[
     setMassagePopup,
     LogIn,
     setLogIn,
+    step,
+    setStep
 
   };
 

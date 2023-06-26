@@ -3,12 +3,12 @@ import OTPInput from "react-otp-input";
 import { Box, Typography } from "@mui/material";
 import styles from "../Header/registe-signin/Signin/sign_reg.module.css";
 import { Context } from "../Context/Context";
-import { RequestOtp, emailVerify } from "../../repositories/authRepo";
+import { PasswordResetOtp, RequestOtp, emailVerify } from "../../repositories/authRepo";
 import MPopUp from "../PopUp_Message/error/MPopUp";
 
 export default function Otp(props) {
   const [otp, setOtp] = useState("");
-  const { setButtonPopup, setMassagePopup } = useContext(Context);
+  const { setButtonPopup, setMassagePopup ,step,setStep} = useContext(Context);
   const [popup, setPopup] = useState(null);
 
   const handleSubmit = (e) => {
@@ -16,21 +16,26 @@ export default function Otp(props) {
     var jsonBody = {
       otp: otp,
     };
-    emailVerify(jsonBody).then((result) => {
-      if (!result.isError) {
-        setButtonPopup([false, ""]);
-        setButtonPopup([true, "Sign in"]);
-      } else {
-        setMassagePopup(true);
-        setPopup(<MPopUp type="error">otp is wrong</MPopUp>);
-      }
-    });
-  };
-  
-  const handleResendOtp=()=>{
-    var jsonBody={
-      email:props.email
+
+    if (props.callFrom === "forgetPass") {
+      props.verify(jsonBody);
+    } else {
+      emailVerify(jsonBody).then((result) => {
+        if (!result.isError) {
+          setButtonPopup([false, ""]);
+          setButtonPopup([true, "Sign in"]);
+        } else {
+          setMassagePopup(true);
+          setPopup(<MPopUp type="error">otp is wrong</MPopUp>);
+        }
+      });
     }
+  };
+
+  const handleResendOtp = () => {
+    var jsonBody = {
+      email: props.email,
+    };
     RequestOtp(jsonBody).then((res) => {
       if (res.isError) {
         setMassagePopup(true);
@@ -40,7 +45,7 @@ export default function Otp(props) {
         setPopup(<MPopUp type="done">otp sended</MPopUp>);
       }
     });
-  }
+  };
   return (
     <>
       {popup}
@@ -66,7 +71,6 @@ export default function Otp(props) {
               fontSize: "12px",
             }}
             onClick={handleResendOtp}
-            
           >
             Resend the mail again.
           </span>
