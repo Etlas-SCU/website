@@ -16,9 +16,10 @@ import MPopUp from "../../../PopUp_Message/error/MPopUp";
 
 export default function SignIn() {
   const { t } = useTranslation();
-  const { setButtonPopup, setMassagePopup ,setLogIn} = useContext(Context);
+  const { setButtonPopup, setMassagePopup, setLogIn } =
+    useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [popup,setPopup]=useState(null)
 
   const initialValues = {
     email: "",
@@ -33,7 +34,7 @@ export default function SignIn() {
       .matches(/[a-zA-Z]/, t("nav.passwordLetters")),
   });
 
-  function handleLogin(jsonBody){
+  function handleLogin(jsonBody) {
     Login(jsonBody).then((result) => {
       if (!result.isError) {
         setLogIn(true);
@@ -41,22 +42,31 @@ export default function SignIn() {
         setTimeout(() => {
           setButtonPopup([false, ""]);
         }, 2000);
+        setPopup(<MPopUp type="done">you are Login successfully</MPopUp>)
+      } else {
+        setMassagePopup(true);
+        setIsLoading(false);
+        setPopup(<MPopUp type="error">{result.body.detail}</MPopUp>) 
       }
     });
   }
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, { resetForm }) => {
     var jsonBody = {
       email: values.email,
       password: values.password,
     };
     localStorage.removeItem("access");
     setIsLoading(true);
-    handleLogin(jsonBody)
+    handleLogin(jsonBody);
+    setTimeout(() => {
+      resetForm({ values: initialValues });
+    }, 2000);
   };
   return (
     <>
-      <MPopUp type="done">you are Login successfully</MPopUp>
+      {popup}
+
       <img className={styles.popup__img} src={sign} alt="formImg" />
       <Stack
         sx={{

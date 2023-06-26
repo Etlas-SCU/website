@@ -13,11 +13,16 @@ import { Context } from "../../../Context/Context";
 import GoogleSignIn from "../../google-signin/GoogleSignIn";
 import Otp from "../../../Otp/Otp";
 import { useState } from "react";
+import { RequestOtp, register } from "../../../../repositories/authRepo";
+import MPopUp from "../../../PopUp_Message/error/MPopUp";
 
 export default function Register() {
   const { t } = useTranslation();
-  const { setButtonPopup } = useContext(Context);
+  const { setButtonPopup, setMassagePopup } = useContext(Context);
   const [otp, setOtp] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [popup, setPopup] = useState(null);
+  const [Email,setEmail]=useState(null)
 
   const initialValues = {
     name: "",
@@ -36,21 +41,60 @@ export default function Register() {
       .matches(/[a-zA-Z]/, t("nav.passwordLetters")),
   });
 
-  const onSubmit = (values) => {
-    console.log(values);
-    setOtp(true);
-    console.log(otp)
-  };
-  
-  const handleSubmitOtp =()=>{
-    setButtonPopup([false, ""]);
+  function  handleResendOtp(email){
+    var jsonBody={
+      email:email
+    }
+    RequestOtp(jsonBody).then((res) => {
+      if (res.isError) {
+        setMassagePopup(true);
+        setPopup(<MPopUp type="error">faild send otp</MPopUp>);
+      } else {
+        setMassagePopup(true);
+        setPopup(<MPopUp type="done">otp sended</MPopUp>);
+      }
+    });
   }
+  
+  function handleRegister(jsonBody) {
+    register(jsonBody).then((result) => {
+      if (!result.isError) {
+        setOtp(true);
+        handleResendOtp(jsonBody.email)
+      } else {
+        setMassagePopup(true);
+        setIsLoading(false);
+        setPopup(<MPopUp type="error">{result.body.email}</MPopUp>);
+      }
+    });
+  }
+
+  const onSubmit = (values, { resetForm }) => {
+    var jsonBody = {
+      full_name: values.name,
+      email: values.email,
+      phone_number: values.phone,
+      address: values.address,
+      password: values.password,
+      confirm_password: values.password,
+    };
+    localStorage.removeItem("access");
+    setIsLoading(true);
+    handleRegister(jsonBody);
+    setTimeout(() => {
+      resetForm({ values: initialValues });
+    }, 2000);
+
+    setEmail(values.email)
+  };
+
   return (
     <>
+      {popup}
       <img className={styles.popup__img} src={reg} alt="formImg" />
       {otp ? (
         <Box m="50px 0 0 20px " width="60%">
-          <Otp verfiy={handleSubmitOtp} />
+          <Otp email={Email}/>
         </Box>
       ) : (
         <Stack
