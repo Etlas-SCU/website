@@ -109,8 +109,11 @@
         width: 80%;
     }
 
-    .form input {
+    .form input  {
         width: 80%;
+    }
+    .form .otp_input{
+        width: 54px !important;
     }
 
     .popup__img {
