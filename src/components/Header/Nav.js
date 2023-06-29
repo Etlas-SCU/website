@@ -58,6 +58,15 @@ export default function Nav() {
     i18n.changeLanguage(Object.keys(obj)[0]);
   };
 
+  const handelLogout=()=>{
+    var jsonBody = {
+      refresh: localStorage.getItem('refresh'),
+    };
+    Logout(jsonBody).then((res) => {
+      console.log(res.body)
+    });
+  }
+
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
@@ -71,7 +80,7 @@ export default function Nav() {
           {LogIn ? (
             <>
             <NavLink to="/profile" style={{marginRight:"2.5vw"}}>profile</NavLink>
-            <button style={{margin:"0 auto" ,display:"block", backgroundColor: "#003441" }} onClick={Logout} className={styles.nav__list__btn} >LogOut</button>
+            <button style={{margin:"0 auto" ,display:"block", backgroundColor: "#003441" }} onClick={handelLogout} className={styles.nav__list__btn} >LogOut</button>
             </>
           ) : (
             <>
