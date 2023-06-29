@@ -13,6 +13,7 @@ import { Context } from "../../../Context/Context";
 import GoogleSignIn from "../../google-signin/GoogleSignIn";
 import { Login } from "../../../../repositories/authRepo";
 import MPopUp from "../../../PopUp_Message/error/MPopUp";
+import Otp from "../../../Otp/Otp";
 
 export default function SignIn() {
   const { t } = useTranslation();
@@ -20,6 +21,8 @@ export default function SignIn() {
     useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
   const [popup,setPopup]=useState(null)
+  const [otp, setOtp] = useState(false);
+  const [Email,setEmail]=useState(null)
 
   const initialValues = {
     email: "",
@@ -46,12 +49,17 @@ export default function SignIn() {
       } else {
         setMassagePopup(true);
         setIsLoading(false);
-        setPopup(<MPopUp type="error">{result.body.detail}</MPopUp>) 
+        setPopup(<MPopUp type="error">{result.body.response.data.detail}</MPopUp>) 
+        if(result.body.detail === "Email is not verified"){
+          setOtp(true);
+        }
+        console.log(result.body)
       }
     });
   }
 
   const onSubmit = (values, { resetForm }) => {
+    setEmail(values.email)
     var jsonBody = {
       email: values.email,
       password: values.password,
@@ -68,6 +76,11 @@ export default function SignIn() {
       {popup}
 
       <img className={styles.popup__img} src={sign} alt="formImg" />
+      {otp ? (
+        <Box m="50px 0 0 20px " width="60%">
+          <Otp email={Email}/>
+        </Box>
+      ) : (
       <Stack
         sx={{
           m: "80px 0 0 20px ",
@@ -157,7 +170,7 @@ export default function SignIn() {
             </Form>
           </Formik>
         </Box>
-      </Stack>
+      </Stack>)}
     </>
   );
 }

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const url = "http://20.19.184.149:8000";
 
 function getHeaders() {
@@ -11,18 +13,44 @@ function getHeaders() {
 
 export async function Post(endpoint, body) {
   try {
-    var response = await fetch(`${url}/${endpoint}`, {
-      method: "Post",
+    const response = await axios.post(`${url}/${endpoint}`, body, {
       headers: getHeaders(),
-      body: body,
     });
 
     var responseBody = null;
-
     if (response.status !== 204) {
-      responseBody = await response.json();
+      responseBody = response.data;
     }
-    if (response.ok) {
+    if (response.status>=200 && response.status<300) {
+      return {
+        isError: false,
+        body: responseBody,
+      };
+    } else {
+      return {
+        isError: true,
+        body: responseBody,
+      };
+    }
+  } catch (error) {
+    return {
+      isError: true,
+      body: error,
+    };
+  }
+}
+
+export async function Patch(endpoint, body) {
+  try {
+    const response = await axios.patch(`${url}/${endpoint}`, body, {
+      headers: getHeaders(),
+    });
+
+    var responseBody = null;
+    if (response.status !== 204) {
+      responseBody = response.data;
+    }
+    if (response.status>=200 && response.status<300) {
       return {
         isError: false,
         body: responseBody,
