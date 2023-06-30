@@ -33,8 +33,9 @@
     gap: 10px;
 }
 
-.prag2,
-.prag3 {
+.prag2 > p ,
+.prag3 > p , 
+.prag3 > ul > li{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -42,6 +43,18 @@
     line-height: 22px;
     color: var(--mainColor);
 }
+.prag3 > h3{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    color: var(--mainColor);
+}
+
+.prag3 > ul {
+    padding-left: 30px;
+}
+
 
 .terms_img {
     height: 420px;
@@ -89,9 +102,14 @@
         font-size: 25px;
     }
 
-    .prag2,
-    .prag3 {
+    .prag2 > p,
+    .prag3 > p ,
+    .prag3 > ul > li {
         font-size: 15px;
+    }
+
+    .prag3 > h3 {
+        font-size: 18px;
     }
 
     .terms_img {
