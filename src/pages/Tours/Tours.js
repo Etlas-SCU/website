@@ -2,9 +2,9 @@ import { Stack } from "@mui/system";
 import React from "react";
 import PageOutLine from "../../components/PageOutLine/PageOutLine";
 import ToursCard from "../../components/ToursCard/ToursCard"
-import PagePagination from "../../components/Page_Pagination/PagePagination";
-import { useState } from "react";
-import { useEffect } from "react";
+// import PagePagination from "../../components/Page_Pagination/PagePagination";
+// import { useState } from "react";
+// import { useEffect } from "react";
 
 export default function Tours() {
 
