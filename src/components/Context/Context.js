@@ -6,6 +6,7 @@ import statues from "../../images/Pics/statues.png";
 import landmarks from "../../images/Pics/landmarks.png";
 import monuments from "../../images/Pics/monuments.png";
 import { refreshToken } from "../../repositories/authRepo";
+import { getArticles } from "../../repositories/articleRepo";
 export const Context = createContext();
 
 export const Provider = (props) => {
@@ -16,9 +17,16 @@ export const Provider = (props) => {
   const [buttonPopup, setButtonPopup] = useState([false, ""]);
   const [massagePopup, setMassagePopup] = useState(false);
   const [step, setStep] = useState("enterEmail");
+  const [Articles,setArticles]=useState(null)
 
   var access=localStorage.getItem("access")
   const [LogIn ,setLogIn]=useState(access!==null)
+
+  async function articles(){
+    const articles=await getArticles()
+    setArticles(articles.body.results)
+    console.log(articles)
+  }
 
   useEffect(()=>{
      setLogIn(access!==null)
@@ -28,8 +36,11 @@ export const Provider = (props) => {
     if(LogIn!==null){
       refreshToken()
     }
-    setInterval(refreshToken, 3* 60 * 1000);
+    setInterval(refreshToken, 3* 60 * 1000); 
+    
+    articles()
   },[])
+  console.log(Articles)
 
   const[statusScore,setStatusScore]=useState(0);
   const[MonumentsScore,setMonumentsScore]=useState(0);
@@ -195,7 +206,8 @@ const landmarksQ=[
     LogIn,
     setLogIn,
     step,
-    setStep
+    setStep,
+    Articles
 
   };
 

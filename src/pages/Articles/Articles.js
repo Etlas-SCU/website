@@ -3,10 +3,13 @@ import React from "react";
 import ArticlesCard from "../../components/ArticlesCard/ArticlesCard";
 import PageOutLine from "../../components/PageOutLine/PageOutLine";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import { Context } from "../../components/Context/Context";
 
 export default function Articles() {
-  const hamada = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const { t } = useTranslation();
+  const { Articles } =
+  useContext(Context);
 
   return (
     <PageOutLine value={t("Articles.title")}>
@@ -16,8 +19,8 @@ export default function Articles() {
           justifyContent="center"
           mt="25px"
         >
-          {hamada.map((ind) => (
-            <ArticlesCard id={ind} key={ind} />
+          {Articles.map((article) => (
+            <ArticlesCard article={article}/>
           ))}
         </Stack>
     </PageOutLine>

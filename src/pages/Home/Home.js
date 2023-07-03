@@ -18,7 +18,7 @@ export default function Home() {
       <Sec2 />
       <Sec3 />
       <Sec4 />
-      <Sec5 />
+      {/* <Sec5 /> */}
       <Footer />
     </Stack >
   );

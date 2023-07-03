@@ -1,12 +1,12 @@
 import { Box, Skeleton } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import article from "../../images/Pngs/article.png";
+// import article from "../../images/Pngs/article.png";
 import styles from "./ArticlesCard.module.css";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 
-export default function ArticlesCard({ id, className }) {
+export default function ArticlesCard({ id, className ,article}) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function ArticlesCard({ id, className }) {
                 className={styles.ImgSkeleton}
               />
             ) : (
-              <img src={article} alt="article" />
+              <img src={article.image_url} alt="article" />
             )}
           </Box>
           <Box width="90%" margin="0 auto">
@@ -41,13 +41,11 @@ export default function ArticlesCard({ id, className }) {
               </>
             ) : (
               <>
-                <h2 className={styles.card__name}>Anubis</h2>
+                <h2 className={styles.card__name}>{article.article_title}</h2>
                 <p className={styles.card__about}>
-                  Know more about
-                  <br />
-                  Anubis and his powers.
+                  {article.description}
                 </p>
-                <p className={styles.card__date}>15 Jan 2023</p>
+                <p className={styles.card__date}>{article.date}</p>
                 <Link to={`/articles/${id}`}>
                   <p className={styles.card__more}>
                     Learn more <KeyboardArrowRightIcon />
