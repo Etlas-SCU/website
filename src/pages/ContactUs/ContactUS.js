@@ -11,27 +11,35 @@ import PopUp from '../../components/PopUp_Message/PopUp';
 import { Field, Formik, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
-const initialValues = {
-    fullname: "",
-    email: "",
-    subject: "",
-    message: "",
-};
+// const initialValues = {
+//     fullname: "",
+//     email: "",
+//     subject: "",
+//     message: "",
+// };
 
-const validationSchema = Yup.object({
-    fullname: Yup.string().required('required'),
-    email: Yup.string().email('invalid email format').required('required'),
-    subject: Yup.string().required('required')
-})
 
-const onSubmit = (values, { resetForm }) => {
-    console.log(values);
-    resetForm({ values: "" });
-};
 
 export default function ContactUS() {
+
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [subject, setSubject] = useState("");
+    const [message, setMessage] = useState("");
+
     const [buttonPopup , setButtonPopup] = useState(false) ; 
 
+    const validationSchema = Yup.object({
+        fullname: Yup.string().required('required'),
+        email: Yup.string().email('invalid email format').required('required'),
+        subject: Yup.string().required('required')
+    })
+    
+    const onSubmit = (values, { resetForm }) => {
+        console.log(values);
+        resetForm({ values: "" });
+    };
+    
     return (
         <Stack className={Style.contactUs} direction='row'>
             <Box className={Style.sec1}>
@@ -40,7 +48,7 @@ export default function ContactUS() {
                     <h1 className={Style.contact_title}>Contact Us</h1>
                     <Box className={Style.contact} >
                         <Formik
-                            initialValues={initialValues}
+                            // initialValues={initialValues}
                             validationSchema={validationSchema}
                             onSubmit={onSubmit}
                         >
@@ -54,6 +62,7 @@ export default function ContactUS() {
                                                 placeholder='Full Name'
                                                 id='fullname'
                                                 name='fullname'
+                                                onChange={(fullName) => setFullName(fullName)}
                                             />
                                             <ErrorMessage name='fullname'>
                                                 {(e) => <div className={Style.error}>{e}</div>}
@@ -66,6 +75,7 @@ export default function ContactUS() {
                                                 placeholder='Your Email'
                                                 id='email'
                                                 name='email'
+                                                onChange={(email) => setEmail(email)}
                                             />
                                             <ErrorMessage name='email'>
                                                 {(e) => <div className={Style.error}>{e}</div>}
@@ -79,6 +89,7 @@ export default function ContactUS() {
                                         id='subject'
                                         name='subject'
                                         className={Style.subject}
+                                        onChange={(subject) => setSubject(subject)}
                                     />
                                     <ErrorMessage name='subject'>
                                         {(e) => <div className={Style.error}>{e}</div>}
@@ -90,6 +101,7 @@ export default function ContactUS() {
                                         id='message'
                                         name='message'
                                         className={Style.message}
+                                        onChange={(message) => setMessage(message)}
                                     />
                                 </Stack>
                             </Form>

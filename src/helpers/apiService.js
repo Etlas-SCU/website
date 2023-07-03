@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = "http://20.19.184.149:8000";
+const url = "https://api.etlas.tech";
 
 function getHeaders() {
   var access = localStorage.getItem("access");
