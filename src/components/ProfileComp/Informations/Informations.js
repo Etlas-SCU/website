@@ -1,17 +1,20 @@
 import React from 'react';
 import Style from './Informations.module.css';
-import { Box , Stack } from '@mui/system';
+import { Box, Stack } from '@mui/system';
 import ProfileImg from '../../../images/Pngs/Profile2.png';
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
-
 import CreateIcon from '@mui/icons-material/Create';
 import CheckIcon from '@mui/icons-material/Check';
 import { Zoom } from 'react-awesome-reveal';
+import { getUserInfo, editUserInfo } from '../../../repositories/ProfileRepo';
+import { useEffect } from 'react';
+import MPopUp from "../../PopUp_Message/error/MPopUp";
 
 
 export default function Informations() {
-    
+    const [popup , setPopup] = useState(null)
+
     const [fullName, setFullName] = useState("Basem Moahmed");
     const [editName, setEditName] = useState(false);
 
@@ -35,11 +38,38 @@ export default function Informations() {
         setAddress(event.target.value);
     };
 
-    const onSave = (values, { resetEdit }) => {
+    const onSave = async (values, { resetEdit }) => {
         console.log(values);
-        resetEdit({ values: "" });
+
+        var editProfile = {
+            full_name: values.fullName,
+            email: values.email,
+            address: values.address,
+            phone_number: values.phone
+        }
+
+        var result = await editUserInfo(editProfile)
+        if (result.isError) {
+            setPopup(<MPopUp type="error">Something Wrong</MPopUp>);
+        } else {
+            resetEdit({ values: "" });
+            setPopup(<MPopUp type="done">Done</MPopUp>);
+        }
     };
-    
+
+    useEffect(() => {
+        async function getData() {
+            var result = await getUserInfo()
+            console.log(result.body);
+            if (!result.isError) {
+                setFullName(result.body.full_name);
+                setEmail(result.body.email);
+                setPhone(result.body.phone_number);
+                setAddress(result.body.address);
+            }
+        }
+        getData();
+    }, [])
 
     return (
         <Stack>
@@ -58,10 +88,10 @@ export default function Informations() {
                             />
 
                             {editName ? (
-                                <CheckIcon  className={Style.save_icon1} onClick={() => setEditName(false)} style={{fontSize : 'medium'}}/>
+                                <CheckIcon className={Style.save_icon1} onClick={() => setEditName(false)} style={{ fontSize: 'medium' }} />
 
                             ) : (
-                                <CreateIcon className={Style.edit_icon1} onClick={() => setEditName(true)} style={{fontSize : 'medium'}} />
+                                <CreateIcon className={Style.edit_icon1} onClick={() => setEditName(true)} style={{ fontSize: 'medium' }} />
                             )}
 
                             <label className={Style.info_lab}>E-mail</label>
@@ -75,10 +105,10 @@ export default function Informations() {
                             />
 
                             {editEmail ? (
-                                <CheckIcon className={Style.save_icon2} onClick={() => setEditEmail(false)} style={{fontSize : 'medium'}} />
+                                <CheckIcon className={Style.save_icon2} onClick={() => setEditEmail(false)} style={{ fontSize: 'medium' }} />
 
                             ) : (
-                                <CreateIcon className={Style.edit_icon2} onClick={() => setEditEmail(true)} style={{fontSize : 'medium'}}/>
+                                <CreateIcon className={Style.edit_icon2} onClick={() => setEditEmail(true)} style={{ fontSize: 'medium' }} />
                             )}
 
                             <label className={Style.info_lab}>Password</label>
@@ -92,10 +122,10 @@ export default function Informations() {
                             />
 
                             {editPassword ? (
-                                <CheckIcon  className={Style.save_icon3} onClick={() => setEditPassword(false)} style={{fontSize : 'medium'}}/>
+                                <CheckIcon className={Style.save_icon3} onClick={() => setEditPassword(false)} style={{ fontSize: 'medium' }} />
 
                             ) : (
-                                <CreateIcon  className={Style.edit_icon3} onClick={() => setEditPassword(true)} style={{fontSize : 'medium'}} />
+                                <CreateIcon className={Style.edit_icon3} onClick={() => setEditPassword(true)} style={{ fontSize: 'medium' }} />
                             )}
 
                             <label className={Style.info_lab} >Phone Number</label>
@@ -108,10 +138,10 @@ export default function Informations() {
                                 readOnly={!editPhone}
                             />
                             {editPhone ? (
-                                <CheckIcon className={Style.save_icon4} onClick={() => setEditPhone(false)} style={{fontSize : 'medium'}}/>
+                                <CheckIcon className={Style.save_icon4} onClick={() => setEditPhone(false)} style={{ fontSize: 'medium' }} />
 
                             ) : (
-                                <CreateIcon  className={Style.edit_icon4} onClick={() => setEditPhone(true)} style={{fontSize : 'medium'}}/>
+                                <CreateIcon className={Style.edit_icon4} onClick={() => setEditPhone(true)} style={{ fontSize: 'medium' }} />
                             )}
 
                             <label className={Style.info_lab}>Address</label>
@@ -124,10 +154,10 @@ export default function Informations() {
                                 readOnly={!editAddress}
                             />
                             {editAddress ? (
-                                <CheckIcon  className={Style.save_icon5} onClick={() => setEditAddress(false)} style={{fontSize : 'medium'}} />
+                                <CheckIcon className={Style.save_icon5} onClick={() => setEditAddress(false)} style={{ fontSize: 'medium' }} />
 
                             ) : (
-                                <CreateIcon  className={Style.edit_icon5} onClick={() => setEditAddress(true)} style={{fontSize : 'medium'}}/>
+                                <CreateIcon className={Style.edit_icon5} onClick={() => setEditAddress(true)} style={{ fontSize: 'medium' }} />
                             )}
                         </Form>
                     </Formik>
@@ -137,9 +167,9 @@ export default function Informations() {
                 </Box>
             </Box>
             <Zoom triggerOnce='false'>
-            <Box className={Style.save}>
-                <button type='submit' className={Style.btn_save}>Save</button>
-            </Box>
+                <Box className={Style.save}>
+                    <button type='submit' className={Style.btn_save}>Save</button>
+                </Box>
             </Zoom>
         </Stack>
     )
