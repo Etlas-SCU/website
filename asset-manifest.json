@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/website/static/css/main.6d7b4035.css",
-    "main.js": "/website/static/js/main.74279a6d.js",
+    "main.js": "/website/static/js/main.5fd4278f.js",
     "static/media/pic2.png": "/website/static/media/pic2.271acc4c49a4b69f3882.png",
     "static/media/Statue2.png": "/website/static/media/Statue2.de41b062bbfc332368e3.png",
     "static/media/register.png": "/website/static/media/register.7225f00fe095993100c6.png",
@@ -9,6 +9,7 @@
     "static/media/forgetPass.png": "/website/static/media/forgetPass.1595a41b5430da5715de.png",
     "static/media/signin.png": "/website/static/media/signin.9c2053e8b760fb6f0734.png",
     "static/media/Statue(Contact Us).png": "/website/static/media/Statue(Contact Us).5691ee60141bb1815473.png",
+    "static/media/pic3.jpg": "/website/static/media/pic3.822564ec876c8b574be4.jpg",
     "static/media/Tours5.png": "/website/static/media/Tours5.4c77c7062973bef17c37.png",
     "static/media/Tours4.png": "/website/static/media/Tours4.c4120a2b766ce911c37c.png",
     "static/media/Tours3.png": "/website/static/media/Tours3.f1a65024409bb7a62aa2.png",
@@ -18,6 +19,7 @@
     "static/media/Phone.png": "/website/static/media/Phone.48f0d52995f2211e9f94.png",
     "static/media/monuments.png": "/website/static/media/monuments.c5c515ae420844aa8bb5.png",
     "static/media/Tours2.png": "/website/static/media/Tours2.8dca5bcdeaede9900f83.png",
+    "static/media/pic4.jpg": "/website/static/media/pic4.2ec1bd6b64d38c2fe9a4.jpg",
     "static/media/phone (2).png": "/website/static/media/phone (2).c5c13719d314e2cfa7fe.png",
     "static/media/neith.png": "/website/static/media/neith.7f2e7cabf115febd4228.png",
     "static/media/Montserrat-Regular.ttf": "/website/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
@@ -31,10 +33,10 @@
     "static/media/Favorites.png": "/website/static/media/Favorites.8d117981f2ddfc50b363.png",
     "index.html": "/website/index.html",
     "main.6d7b4035.css.map": "/website/static/css/main.6d7b4035.css.map",
-    "main.74279a6d.js.map": "/website/static/js/main.74279a6d.js.map"
+    "main.5fd4278f.js.map": "/website/static/js/main.5fd4278f.js.map"
   },
   "entrypoints": [
     "static/css/main.6d7b4035.css",
-    "static/js/main.74279a6d.js"
+    "static/js/main.5fd4278f.js"
   ]
 }
