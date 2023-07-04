@@ -1,7 +1,7 @@
 import { DELETE, GET, Post } from "../helpers/apiService";
 
-export async function getArticles() {
-  const result = await GET("articles/");
+export async function getArticles(pageNum) {
+  const result = await GET(`articles/?page=${pageNum}`);
   console.log(result.body)
   return {
     isError: result.isError,
