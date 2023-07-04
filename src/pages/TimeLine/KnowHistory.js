@@ -15,8 +15,10 @@ import { useLocation } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 
 export default function KnowHistory() {
-  const { timeLineSections } = useContext(Context);
+  const { timeLineSections ,timeLine} = useContext(Context);
   const { t } = useTranslation();
+
+  console.log(timeLine)
 
   const sectionRefs = useRef([]);
   const location = useLocation();

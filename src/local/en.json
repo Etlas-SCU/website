@@ -20,8 +20,8 @@
     "Articles": {
         "title": "Articles",
         "ArticlesInfo": {
-            "add": "Add to",
-            "remove": "Remove from",
+            "add": "Add to ",
+            "remove": "Remove from ",
             "fav": "Favorite"
         },
         "ArticlesSection": {
