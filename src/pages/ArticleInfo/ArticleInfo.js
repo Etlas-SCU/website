@@ -22,7 +22,6 @@ export default function ArticleInfo() {
   async function getArticle(id) {
     const result = await getArticleById(id);
     if (!result.isError) {
-      // console.log(article);
       setArticle(result.body);
     } else {
       console.log("Error fetching article");
@@ -38,12 +37,12 @@ export default function ArticleInfo() {
     if (!result.isError) {
       setMassagePopup(true);
       setPopup(
-        <MPopUp type="done">{result.body.response.data.detail}</MPopUp>
+        <MPopUp type="done">{result.body.response.data.massage}</MPopUp>
       );
     } else {
       setMassagePopup(true);
       setPopup(
-        <MPopUp type="error">{result.body.response.data.detail}</MPopUp>
+        <MPopUp type="error">{result.body.response.data.massage}</MPopUp>
       );
     }
   }

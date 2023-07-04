@@ -1,12 +1,15 @@
 import { createContext, useEffect, useState } from "react";
 import pic1 from "../../images/Pics/pic1.png";
 import pic2 from "../../images/Pics/pic2.png";
+import pic3 from "../../images/Pics/pic3.jpg";
+import pic4 from "../../images/Pics/pic4.jpg";
 import neith from "../../images/Pics/neith.png";
 import statues from "../../images/Pics/statues.png";
 import landmarks from "../../images/Pics/landmarks.png";
 import monuments from "../../images/Pics/monuments.png";
 import { refreshToken } from "../../repositories/authRepo";
 import { getArticles } from "../../repositories/articleRepo";
+import { getTimeLine } from "../../repositories/timeLineRepo";
 export const Context = createContext();
 
 export const Provider = (props) => {
@@ -17,10 +20,21 @@ export const Provider = (props) => {
   const [buttonPopup, setButtonPopup] = useState([false, ""]);
   const [massagePopup, setMassagePopup] = useState(false);
   const [step, setStep] = useState("enterEmail");
-  const [Articles, setArticles] = useState();
+  const [Articles, setArticles] = useState([]);
+  const [timeLine, setTimeLine] = useState(null);
 
   var access = localStorage.getItem("access");
   const [LogIn, setLogIn] = useState(access !== null);
+
+  async function timeline() {
+    const result = await getTimeLine();
+    if (!result.isError) {
+      setTimeLine(result.body.results);
+      console.log(result);
+    } else {
+      console.log("error");
+    }
+  }
 
   async function articles() {
     const articles = await getArticles();
@@ -37,13 +51,15 @@ export const Provider = (props) => {
   }, [access]);
 
   useEffect(() => {
-    articles();
+    
     if (LogIn !== null) {
       refreshToken();
     }
     setInterval(refreshToken, 3 * 60 * 1000);
+
+    timeline();
+    articles();
   }, []);
-  console.log(Articles);
 
   const [statusScore, setStatusScore] = useState(0);
   const [MonumentsScore, setMonumentsScore] = useState(0);
@@ -80,7 +96,7 @@ export const Provider = (props) => {
       id: 3,
       date: "200 B.C. - 231 B.C.",
       title: "Osiris Kingdom",
-      img: pic1,
+      img: pic3,
       description: [
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially  unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -90,7 +106,7 @@ export const Provider = (props) => {
       id: 4,
       date: "231 B.C. - 369 B.C.",
       title: "The Old Kingdom",
-      img: pic2,
+      img: pic4,
       description: [
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
       ],
@@ -100,7 +116,7 @@ export const Provider = (props) => {
       id: 5,
       date: "200 B.C. - 231 B.C.",
       title: "Osiris Kingdom",
-      img: pic1,
+      img: pic3,
       description: [
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially  unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -203,6 +219,7 @@ export const Provider = (props) => {
     step,
     setStep,
     Articles,
+    timeLine
   };
 
   return (
