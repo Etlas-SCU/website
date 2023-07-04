@@ -22,6 +22,7 @@ export const Provider = (props) => {
   const [step, setStep] = useState("enterEmail");
   const [Articles, setArticles] = useState([]);
   const [timeLine, setTimeLine] = useState(null);
+  const [pageNum, setPageNum] = useState(1);
 
   var access = localStorage.getItem("access");
   const [LogIn, setLogIn] = useState(access !== null);
@@ -36,8 +37,8 @@ export const Provider = (props) => {
     }
   }
 
-  async function articles() {
-    const articles = await getArticles();
+  async function articles(pageNum) {
+    const articles = await getArticles(pageNum);
     if (!articles.isError) {
       setArticles(articles.body.results);
       console.log(articles);
@@ -45,21 +46,23 @@ export const Provider = (props) => {
       console.log("error");
     }
   }
+  useEffect(() => {
+    articles(pageNum);
+  }, [pageNum]);
 
   useEffect(() => {
     setLogIn(access !== null);
   }, [access]);
 
   useEffect(() => {
-    
     if (LogIn !== null) {
       refreshToken();
     }
     setInterval(refreshToken, 3 * 60 * 1000);
-
     timeline();
-    articles();
+    
   }, []);
+
 
   const [statusScore, setStatusScore] = useState(0);
   const [MonumentsScore, setMonumentsScore] = useState(0);
@@ -219,7 +222,9 @@ export const Provider = (props) => {
     step,
     setStep,
     Articles,
-    timeLine
+    timeLine,
+    pageNum,
+    setPageNum,
   };
 
   return (

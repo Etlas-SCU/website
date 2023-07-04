@@ -1,12 +1,20 @@
-import { Stack } from "@mui/material";
-import React from "react";
+import { Pagination, Stack } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
 import filter from "../../images/Icons/Filter.png";
 import SearchInput from "../SearchInput/SearchInput";
 import styles from "./PageOutLine.module.css";
+import { Context } from "../Context/Context";
 
 export default function PageOutLine({ children, value }) {
+  const {pageNum, setPageNum } = useContext(Context);
+
+  const handleChange=(e,p)=>{
+    setPageNum(p)
+  }
+ 
+
   return (
-    <Stack pt="120px" sx={{backgroundColor:"white"}}>
+    <Stack pt="120px" sx={{ backgroundColor: "white" }}>
       <Stack direction="row" gap="10px" flexWrap="wrap">
         <h1 className={styles.title}>{value}</h1>
 
@@ -17,7 +25,9 @@ export default function PageOutLine({ children, value }) {
       </Stack>
       {children}
 
-      <Stack>{/* footer */}</Stack>
+      <Stack spacing={2} m="30px auto">
+        <Pagination count={2} onChange={handleChange}/>
+      </Stack>
     </Stack>
   );
 }

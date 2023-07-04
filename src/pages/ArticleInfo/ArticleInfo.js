@@ -7,18 +7,21 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { addFav, delFav, getArticleById } from "../../repositories/articleRepo";
-import MPopUp from "../../components/PopUp_Message/error/MPopUp";
-import { useContext } from "react";
-import { Context } from "../../components/Context/Context";
 
 export default function ArticleInfo() {
   const [isClicked, setIsClicked] = useState(false);
   const [article, setArticle] = useState();
-  const [popup, setPopup] = useState(null);
-  const { setMassagePopup } = useContext(Context);
   const { id } = useParams();
   const { t } = useTranslation();
 
+  function transformDateFormat(dateString) {
+    const options = { day: "numeric", month: "long", year: "numeric" };
+    const transformedDate = new Date(dateString).toLocaleDateString(
+      undefined,
+      options
+    );
+    return transformedDate;
+  }
   async function getArticle(id) {
     const result = await getArticleById(id);
     if (!result.isError) {
@@ -35,28 +38,18 @@ export default function ArticleInfo() {
   async function handleAddFav(jsonBody) {
     const result = await addFav(jsonBody);
     if (!result.isError) {
-      setMassagePopup(true);
-      setPopup(
-        <MPopUp type="done">{result.body.response.data.massage}</MPopUp>
-      );
+      console.log(result.body);
     } else {
-      setMassagePopup(true);
-      setPopup(
-        <MPopUp type="error">{result.body.response.data.massage}</MPopUp>
-      );
+      console.log(result.body);
     }
   }
 
   async function handleDelFav(jsonBody) {
     const result = await delFav(jsonBody);
     if (!result.isError) {
-      setMassagePopup(true);
-      setPopup(<MPopUp type="done">{result.body.response.data.detail}</MPopUp>);
+      console.log(result.body);
     } else {
-      setMassagePopup(true);
-      setPopup(
-        <MPopUp type="error">{result.body.response.data.detail}</MPopUp>
-      );
+      console.log(result.body);
     }
   }
 
@@ -74,7 +67,6 @@ export default function ArticleInfo() {
 
   return (
     <Stack className={styles.artical__info} position="relative">
-      {popup}
       {article ? (
         <>
           <img
@@ -87,7 +79,9 @@ export default function ArticleInfo() {
             <Stack direction="row" justifyContent="space-between" mb="40px">
               <Box className={styles.cont}>
                 <h2 className={styles.title}>{article.article_title}</h2>
-                <p className={styles.date}>{article.date}</p>
+                <p className={styles.date}>
+                  {transformDateFormat(article.date)}
+                </p>
               </Box>
 
               <Stack
