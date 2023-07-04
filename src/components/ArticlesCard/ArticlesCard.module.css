@@ -14,16 +14,31 @@
 }
 .card__img img{
     width: 90%;
+    height: 180px;
     margin: 10px 0;
+    object-fit: cover;
 }
 .card__name{
     color: var(--mainColor);
-    font-size: 18px;
+    font-size: 14.5px;
 }
-.card__about{
+.card__about {
+    height: 75px;
+    overflow: hidden;
+    position: relative;
     color: #606060;
     font-size: 13px;
     padding: 6px 0px;
+}
+.card__about::after{
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: -10px;
+    width: 100%;
+    height: 45px;
+    background-color: #dfdadafc;
+    filter: blur(18px);
 }
 .card__date{
     color:var(--mainColor);
@@ -68,16 +83,10 @@
 }
 @media only screen and (max-width: 600px){
     .cont{width: 40%;}
-    .card__more,.card__about{ font-size: 10px;}
+    .card_more,.card_about{ font-size: 10px;}
   
 }
 @media only screen and (max-width: 400px){
-    .cont{width: 38%;}
-
-}
-@media only screen and (max-width: 350px){
     .cont{width: 80%;}
 
 }
-
-

@@ -3,9 +3,13 @@ background-color: white;
 }
 .artImg {
     width: 100%;
-    margin-top: 80px;
-
+    height: 695px;
+    margin-top: -40px;
+    object-fit: cover;
+    object-position: top;
 }
+
+
 .info__sec2 {
     color: white;
     padding: 36px 92px;
@@ -28,6 +32,7 @@ background-color: white;
     padding: 0px 20px;
     border-radius: 15px;
     background-color: #A76D86;
+    height: 64px;
 }
 
 .fav p {
@@ -49,6 +54,11 @@ background-color: white;
     font-size: 14px;
     line-height: 21px;
 }
+.cont{
+    border-bottom: 2px solid white;
+    padding: 0 32px 15px 0;
+    width: 60%;
+}
 
 @media only screen and (max-width: 900px) {
 
@@ -65,6 +75,11 @@ background-color: white;
         width: fit-content;
 
     }
+    .artImg{
+        margin-top: 55px;
+        height: 390px;
+    }
+    .cont{width: unset;}
 
     .info__sec2 {
         padding: 36px 20px;
@@ -76,8 +91,6 @@ background-color: white;
     }
 
     .fav p {
-        /* width: 54%; */
-        /* font-size: 12px; */
         display: none;
     }
 }
