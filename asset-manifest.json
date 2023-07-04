@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/website/static/css/main.d1c465e9.css",
-    "main.js": "/website/static/js/main.b6ad1f21.js",
+    "main.css": "/website/static/css/main.6d7b4035.css",
+    "main.js": "/website/static/js/main.74279a6d.js",
     "static/media/pic2.png": "/website/static/media/pic2.271acc4c49a4b69f3882.png",
     "static/media/Statue2.png": "/website/static/media/Statue2.de41b062bbfc332368e3.png",
     "static/media/register.png": "/website/static/media/register.7225f00fe095993100c6.png",
@@ -12,7 +12,6 @@
     "static/media/Tours5.png": "/website/static/media/Tours5.4c77c7062973bef17c37.png",
     "static/media/Tours4.png": "/website/static/media/Tours4.c4120a2b766ce911c37c.png",
     "static/media/Tours3.png": "/website/static/media/Tours3.f1a65024409bb7a62aa2.png",
-    "static/media/info.png": "/website/static/media/info.a1306d87e536382176e2.png",
     "static/media/Tours1.png": "/website/static/media/Tours1.c9316448ebb2897f497b.png",
     "static/media/landmarks.png": "/website/static/media/landmarks.ec8e64cade98f425e7dc.png",
     "static/media/statues.png": "/website/static/media/statues.361b58d97553616da619.png",
@@ -26,17 +25,16 @@
     "static/media/about.png": "/website/static/media/about.21a1238e0103c10f476c.png",
     "static/media/Profile2.png": "/website/static/media/Profile2.2d5b969a581025fda32b.png",
     "static/media/PressJobs.ttf": "/website/static/media/PressJobs.1a5dc7f5afa0e1b2026b.ttf",
-    "static/media/article.png": "/website/static/media/article.439688f42b4c8193c7db.png",
     "static/media/hat-stock 1.png": "/website/static/media/hat-stock 1.93885b19214628f43ea1.png",
     "static/media/Tours.png": "/website/static/media/Tours.7ecffe3e06fb77c8286b.png",
     "static/media/CapitalisTypOasis.ttf": "/website/static/media/CapitalisTypOasis.b1296a99e746f176ddc9.ttf",
     "static/media/Favorites.png": "/website/static/media/Favorites.8d117981f2ddfc50b363.png",
     "index.html": "/website/index.html",
-    "main.d1c465e9.css.map": "/website/static/css/main.d1c465e9.css.map",
-    "main.b6ad1f21.js.map": "/website/static/js/main.b6ad1f21.js.map"
+    "main.6d7b4035.css.map": "/website/static/css/main.6d7b4035.css.map",
+    "main.74279a6d.js.map": "/website/static/js/main.74279a6d.js.map"
   },
   "entrypoints": [
-    "static/css/main.d1c465e9.css",
-    "static/js/main.b6ad1f21.js"
+    "static/css/main.6d7b4035.css",
+    "static/js/main.74279a6d.js"
   ]
 }
