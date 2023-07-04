@@ -1,14 +1,17 @@
 import { Box, Stack } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import ArticlesCard from "../../ArticlesCard/ArticlesCard.js";
 import OutLineBtn from "../../outLineBtn/OutLineBtn.js";
 import styles from "./Sec5.module.css";
 import { useTranslation } from "react-i18next";
+import { Context } from "../../Context/Context.js";
 
 export default function Sec5() {
   const { t } = useTranslation();
-  let arr = [1, 2,3, 4, 5, 6];
+  const { Articles } =
+  useContext(Context); 
+  console.log(Articles)
   return (
     <Stack className={styles.sec5}>
       <Box className={styles.title}>
@@ -17,9 +20,9 @@ export default function Sec5() {
 
       <Stack className={styles.cont}>
         <Box className={styles.cards}>
-          {arr.map((i)=>{
-           return <ArticlesCard className={styles.card} key={i}/>
-          })}
+         {Articles !== null ? Articles.map((article) => (
+            <ArticlesCard key={article.id} id={article.id} article={article}/>
+          )):(<div>no article</div>)}
           
         </Box>
       </Stack>

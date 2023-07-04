@@ -24,8 +24,6 @@ export default function ArticlesCard({ id, className ,article}) {
               <Skeleton
                 variant="rectangular"
                 animation="wave"
-                // width={200}
-                // height={180}
                 className={styles.ImgSkeleton}
               />
             ) : (
@@ -59,9 +57,3 @@ export default function ArticlesCard({ id, className ,article}) {
     </Box>
   );
 }
-
-// <>
-// <Skeleton variant="rectangular" width={310} height={180} />
-// <Skeleton />
-// <Skeleton width="60%" />
-// </>

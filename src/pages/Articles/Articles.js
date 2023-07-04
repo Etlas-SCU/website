@@ -9,8 +9,8 @@ import { Context } from "../../components/Context/Context";
 export default function Articles() {
   const { t } = useTranslation();
   const { Articles } =
-  useContext(Context);
-
+  useContext(Context); 
+  console.log(Articles)
   return (
     <PageOutLine value={t("Articles.title")}>
         <Stack
@@ -19,9 +19,9 @@ export default function Articles() {
           justifyContent="center"
           mt="25px"
         >
-          {Articles.map((article) => (
-            <ArticlesCard article={article}/>
-          ))}
+          {Articles !== null ? Articles.map((article) => (
+            <ArticlesCard key={article.id} id={article.id} article={article}/>
+          )):(<div>no article</div>)}
         </Stack>
     </PageOutLine>
   );
