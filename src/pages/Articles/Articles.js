@@ -10,7 +10,6 @@ export default function Articles() {
   const { t } = useTranslation();
   const { Articles } =
   useContext(Context); 
-  console.log(Articles)
   return (
     <PageOutLine value={t("Articles.title")}>
         <Stack

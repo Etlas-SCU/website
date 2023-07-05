@@ -104,8 +104,7 @@ export const Provider = (props) => {
       refreshToken();
     }
     setInterval(refreshToken, 3 * 60 * 1000);
-    timeline();
-    
+    timeline();    
   }, []);
 
 

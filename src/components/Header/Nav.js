@@ -11,9 +11,10 @@ import { Context } from "../Context/Context";
 import check from "../../images/Icons/Check.png";
 import { useTranslation } from "react-i18next";
 import Popup from "./registe-signin/PopupOutline/Popup";
-import profile from "../../images/Pngs/Profile.png";
+import profile from "../../images/Pngs/ProfilePic.jpg";
 import arrow from "../../images/Pngs/symbols_arrow.png";
 import { Logout } from "../../repositories/authRepo";
+import { useEffect } from "react";
 
 export default function Nav() {
   const { t, i18n } = useTranslation();
@@ -27,7 +28,8 @@ export default function Nav() {
     setSelectedLanguage,
     setButtonPopup,
     LogIn,
-    userData
+    setLogIn,
+    userData,
   } = useContext(Context);
 
   const NavList = (
@@ -59,14 +61,14 @@ export default function Nav() {
     i18n.changeLanguage(Object.keys(obj)[0]);
   };
 
-  const handelLogout=()=>{
+  const handelLogout = () => {
     var jsonBody = {
-      refresh: localStorage.getItem('refresh'),
+      refresh: localStorage.getItem("refresh"),
     };
     Logout(jsonBody).then((res) => {
-      console.log(res.body)
+      setLogIn(false)
     });
-  }
+  };
 
   const drawer = (
     <Box
@@ -80,8 +82,20 @@ export default function Nav() {
           {NavList}
           {LogIn ? (
             <>
-            <NavLink to="/profile" style={{marginRight:"2.5vw"}}>profile</NavLink>
-            <button style={{margin:"0 auto" ,display:"block", backgroundColor: "#003441" }} onClick={handelLogout} className={styles.nav__list__btn} >LogOut</button>
+              <NavLink to="/profile" style={{ marginRight: "2.5vw" }}>
+                profile
+              </NavLink>
+              <button
+                style={{
+                  margin: "0 auto",
+                  display: "block",
+                  backgroundColor: "#003441",
+                }}
+                onClick={handelLogout}
+                className={styles.nav__list__btn}
+              >
+                LogOut
+              </button>
             </>
           ) : (
             <>
@@ -233,16 +247,45 @@ export default function Nav() {
               {NavList}
               {LogIn ? (
                 <Box
-                  width="18%"
+                  width="21%"
                   display="flex"
                   alignItems="center"
                   justifyContent="space-between"
+                  gap="15px"
                 >
-                  <img src={userData != null && userData.image_url != null ? userData.image_url : profile} style={{ width: "20%" }} />
-                  <p>&nbsp;{userData != null && userData.full_name != null ? userData.full_name.split(" ")[0] : ""} </p>
-                  <NavLink to="/profile">
-                    <img src={arrow} style={{ width: "55%" }} />
-                  </NavLink>
+                  <Stack direction="row" gap="4px">
+                    <NavLink
+                      to="/profile"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <img
+                        src={
+                          userData != null && userData.image_url != null
+                            ? userData.image_url
+                            : profile
+                        }
+                        style={{ width: "35%", borderRadius: "50%" }}
+                      />
+                      <p>
+                        &nbsp;
+                        {userData != null && userData.full_name != null
+                          ? userData.full_name.split(" ")[0]
+                          : ""}
+                      </p>
+                    </NavLink>
+                  </Stack>
+
+                  <button
+                    style={{
+                      margin: "0 auto",
+                      display: "block",
+                      backgroundColor: "#003441",
+                    }}
+                    onClick={handelLogout}
+                    className={styles.nav__list__btn}
+                  >
+                    LogOut
+                  </button>
                 </Box>
               ) : (
                 <>
