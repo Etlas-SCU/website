@@ -1,40 +1,41 @@
 import { Box, Skeleton, Stack } from "@mui/material";
-import React ,{useContext,useState,useEffect} from "react";
+import React, { useContext, useState, useEffect } from "react";
 import style from "./KnowledgeCheck.module.css";
 import { Link } from "react-router-dom";
 import { Context } from "../../components/Context/Context";
 import { getBestScoreByTitle } from "../../repositories/questionsRepo";
+import MPopUp from "../../components/PopUp_Message/error/MPopUp";
 
 export default function KnowledgeCheck() {
-  const { categories } = useContext(Context);
+  const { categories, LogIn, setMassagePopup } = useContext(Context);
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const [scores, setScores] = useState(null)
+  const [scores, setScores] = useState(null);
+
+  const [popup, setPopup] = useState(null);
 
   useEffect(() => {
     async function getData() {
       setIsLoading(true);
-      var statuesResult = await getBestScoreByTitle('statues')
-      var monumentsResult = await getBestScoreByTitle('monuments')
-      var landmarksResult = await getBestScoreByTitle('landmarks')
-      console.log(landmarksResult)
+      var statuesResult = await getBestScoreByTitle("statues");
+      var monumentsResult = await getBestScoreByTitle("monuments");
+      var landmarksResult = await getBestScoreByTitle("landmarks");
+      console.log(statuesResult.body)
+      if (!LogIn) {
+        setMassagePopup(true);
+        setPopup(<MPopUp type="error">please signIn first</MPopUp>);
+      }
       setIsLoading(false);
       setScores({
         statues: statuesResult.body.best_score_statues,
         monuments: monumentsResult.body.best_score_monuments,
-        landmarks: landmarksResult.body.best_score_landmarks
+        landmarks: landmarksResult.body.best_score_landmarks,
       });
     }
 
     getData();
-  }, [])
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
+  }, [LogIn]);
 
   return (
     <Box pb="95px">
@@ -42,33 +43,39 @@ export default function KnowledgeCheck() {
         <h2 className={style.title}>Knowledge Check</h2>
       </Box>
 
+      {popup}
+
       <Stack direction="row" justifyContent="center" gap="40px" flexWrap="wrap">
-        {!isLoading ? categories.map((cat) => {
+        {categories.map((cat) => {
           return (
             <Box className={style.cat} key={cat.id}>
               <Link to={`/knowledge/${cat.title}`}>
                 <h4 className={style.cat__title}>{cat.title}</h4>
                 <p className={style.cat__dis}>{cat.dis}</p>
                 <Box className={style.cat__pan}>
-                  {isLoading ? (
+                  {!isLoading ? (
+                    <>
+                      <img src={cat.img} alt={cat.title} />
+                      <p>{scores[cat.title.toLowerCase()]}</p>
+                    </>
+                  ) : (
                     <Stack direction="column">
                       <Skeleton
                         variant="rectangular"
                         className={style.Skeleton1}
                       />
-                      <Skeleton variant="rectangular" width="100%" height={200}/>
+                      <Skeleton
+                        variant="rectangular"
+                        width="100%"
+                        height={200}
+                      />
                     </Stack>
-                  ) : (
-                    <>
-                      <img src={cat.img} alt={cat.title} />
-                      <p>{scores[cat.title.toLowerCase()]}</p>
-                    </>
                   )}
                 </Box>
               </Link>
             </Box>
           );
-        }) : <div></div>}
+        })}
       </Stack>
     </Box>
   );
