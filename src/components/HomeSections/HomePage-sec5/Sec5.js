@@ -11,7 +11,6 @@ export default function Sec5() {
   const { t } = useTranslation();
   const { Articles } =
   useContext(Context); 
-  console.log(Articles)
   return (
     <Stack className={styles.sec5}>
       <Box className={styles.title}>

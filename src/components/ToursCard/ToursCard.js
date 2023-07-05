@@ -6,8 +6,8 @@ import TourImg from '../../images/Pngs/Tours.png';
 import Stars from '../Stars/Stars'
 import { Fade } from 'react-awesome-reveal';
 
-export default function ToursCard({ id }) {
-
+export default function ToursCard({ id ,tour }) {
+    console.log(tour)
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export default function ToursCard({ id }) {
 
                             :
                             <>
-                                <img src={TourImg} className={Style.tours_img} alt='tour_img' />
+                                <img src={tour.images[0].image_url} className={Style.tours_img} alt='tour_img' />
                             </>
                         }
                     </Box>
@@ -43,8 +43,8 @@ export default function ToursCard({ id }) {
                             <>
                                 <Link to={`/tours/${id}`}>
                                     <Box className={Style.Sec2_cont}>
-                                        <h4 className={Style.title}>Giza tour</h4>
-                                        <p className={Style.prag}>where you can visit the <br /> pyramids and ride the camels.</p>
+                                        <h4 className={Style.title}>{tour.title}</h4>
+                                        <p className={Style.prag}>{tour.description}</p>
                                         <Stars />
                                     </Box>
                                 </Link>

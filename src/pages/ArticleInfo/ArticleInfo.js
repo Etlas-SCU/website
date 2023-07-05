@@ -1,5 +1,5 @@
 import { Box, Stack, Tooltip } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./ArticleInfo.module.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -7,12 +7,17 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { addFav, delFav, getArticleById } from "../../repositories/articleRepo";
+import MPopUp from "../../components/PopUp_Message/error/MPopUp";
+import { Context } from "../../components/Context/Context";
 
 export default function ArticleInfo() {
   const [isClicked, setIsClicked] = useState(false);
   const [article, setArticle] = useState();
   const { id } = useParams();
   const { t } = useTranslation();
+  const { setMassagePopup } = useContext(Context);
+  const [popup, setPopup] = useState(null);
+  const [Loading, setLoading] = useState(false);
 
   function transformDateFormat(dateString) {
     const options = { day: "numeric", month: "long", year: "numeric" };
@@ -32,24 +37,31 @@ export default function ArticleInfo() {
   }
   useEffect(() => {
     getArticle(id);
-    console.log("hi");
   }, []);
 
   async function handleAddFav(jsonBody) {
+    setLoading(true)
     const result = await addFav(jsonBody);
+    setLoading(false)
     if (!result.isError) {
-      console.log(result.body);
+      setMassagePopup(true);
+      setPopup(<MPopUp type="done">the article added to your favorite</MPopUp>);
     } else {
-      console.log(result.body);
+      setMassagePopup(true);
+      setPopup(<MPopUp type="error">{result.body.response.data.message} </MPopUp>);
     }
   }
 
   async function handleDelFav(jsonBody) {
+    setLoading(true)
     const result = await delFav(jsonBody);
+    setLoading(false)
     if (!result.isError) {
-      console.log(result.body);
+      setMassagePopup(true);
+      setPopup(<MPopUp type="done">the article removed from your favorite</MPopUp>);
     } else {
-      console.log(result.body);
+      setMassagePopup(true);
+      setPopup(<MPopUp type="error">can't remove the article </MPopUp>);
     }
   }
 
@@ -67,6 +79,7 @@ export default function ArticleInfo() {
 
   return (
     <Stack className={styles.artical__info} position="relative">
+      {popup}
       {article ? (
         <>
           <img
@@ -97,7 +110,7 @@ export default function ArticleInfo() {
                   {t("Articles.ArticlesInfo.fav")}
                 </p>
                 <Tooltip title={isClicked ? "remove" : "add"}>
-                  <button onClick={favorite}>
+                  <button onClick={favorite} disabled={Loading}>
                     {isClicked ? (
                       <FavoriteIcon fontSize="large" className={styles.Icon} />
                     ) : (
