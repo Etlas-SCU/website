@@ -59,7 +59,7 @@ export default function Informations() {
         } else {
             setMassagePopup(true);
             setPopup(<MPopUp type="done">Done</MPopUp>);
-            await updateUserData(result.data);
+            await updateUserData(result.body);
         }
     }
    
