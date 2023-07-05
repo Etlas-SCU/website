@@ -39,6 +39,7 @@ export async function Post(endpoint, body) {
       return {
         isError: true,
         body: responseBody,
+        status: response.status
       };
     }
 
@@ -220,7 +221,7 @@ async function refreshTokens() {
     const expiryDate = new Date();
     expiryDate.setTime(expiryDate.getTime() + (3 * 60 * 1000));
     localStorage.setItem("tokenExpiry", expiryDate.getTime());
-  } else {
+  } else if (result.status == 401) {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
     localStorage.removeItem("tokenExpiry");
