@@ -37,7 +37,6 @@ export default function ArticleInfo() {
   }
   useEffect(() => {
     getArticle(id);
-    console.log("hi");
   }, []);
 
   async function handleAddFav(jsonBody) {

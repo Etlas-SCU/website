@@ -9,6 +9,7 @@ import monuments from "../../images/Pics/monuments.png";
 import { refreshToken } from "../../repositories/authRepo";
 import { getArticles } from "../../repositories/articleRepo";
 import { getTimeLine } from "../../repositories/timeLineRepo";
+import { getTours } from "../../repositories/toursRepo";
 export const Context = createContext();
 
 export const Provider = (props) => {
@@ -20,11 +21,71 @@ export const Provider = (props) => {
   const [massagePopup, setMassagePopup] = useState(false);
   const [step, setStep] = useState("enterEmail");
   const [Articles, setArticles] = useState([]);
+  const [Tours, setTours] = useState([]);
   const [timeLine, setTimeLine] = useState(null);
   const [pageNum, setPageNum] = useState(1);
+  
+  const [userData, setUserData] = useState({});
+
+  const updateUserData = (newData) => {
+    setUserData({
+      ...userData,
+      ...newData
+    });
+  }
+  console.log(userData)
+
+  const getUserData = async () => {
+    return { ...userData };
+  }
 
   var access = localStorage.getItem("access");
   const [LogIn, setLogIn] = useState(access !== null);
+
+  async function timeline() {
+    const result = await getTimeLine();
+    if (!result.isError) {
+      setTimeLine(result.body.results);
+    } else {
+      console.log("error");
+    }
+  }
+
+  async function articles(pageNum) {
+    const articles = await getArticles(pageNum);
+    if (!articles.isError) {
+      setArticles(articles.body.results);
+    } else {
+      console.log("error");
+    }
+  }
+
+  async function tours(pageNum) {
+    const tours = await getTours(pageNum);
+    if (!tours.isError) {
+      setTours(tours.body.results);
+    } else {
+      console.log("error");
+    }
+  }
+  useEffect(() => {
+    articles(pageNum);
+    tours(pageNum)
+  }, [pageNum]);
+
+  useEffect(() => {
+    setLogIn(access !== null);
+  }, [access]);
+
+  useEffect(() => {
+    if (LogIn !== null) {
+      refreshToken();
+    }
+    setInterval(refreshToken, 3 * 60 * 1000);
+    timeline();
+    
+  }, []);
+
 
   const LANGUAGES = [
     { en: "English" },
@@ -127,7 +188,6 @@ export const Provider = (props) => {
     const result = await getTimeLine();
     if (!result.isError) {
       setTimeLine(result.body.results);
-      console.log(result);
     } else {
       console.log("error");
     }
@@ -137,7 +197,6 @@ export const Provider = (props) => {
     const articles = await getArticles(pageNum);
     if (!articles.isError) {
       setArticles(articles.body.results);
-      console.log(articles);
     } else {
       console.log("error");
     }
@@ -162,9 +221,13 @@ export const Provider = (props) => {
     step,
     setStep,
     Articles,
+    Tours,
     timeLine,
     pageNum,
     setPageNum,
+    userData,
+    updateUserData,
+    getUserData,
   };
 
   return (

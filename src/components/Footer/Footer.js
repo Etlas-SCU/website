@@ -85,7 +85,6 @@ export default function Footer() {
                         <Link to='/contact' >Contact Us</Link>
                         <Link to='/terms'>Terms and conditions</Link>
                         <Link to='/about'>About US</Link>
-                        <Link to='/profile' >Profile</Link>
                     </Box>
                 </Stack>
             </Stack>

@@ -145,5 +145,8 @@
     .hint img{
         width: 50%;
     }
+    .questions__answer{
+        width: 65%;
+    }
 
 }

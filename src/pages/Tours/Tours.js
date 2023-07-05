@@ -1,14 +1,15 @@
 import { Stack } from "@mui/system";
-import React from "react";
+import React, { useContext } from "react";
 import PageOutLine from "../../components/PageOutLine/PageOutLine";
-import ToursCard from "../../components/ToursCard/ToursCard"
+import ToursCard from "../../components/ToursCard/ToursCard";
+import { Context } from "../../components/Context/Context";
 // import PagePagination from "../../components/Page_Pagination/PagePagination";
 // import { useState } from "react";
 // import { useEffect } from "react";
 
 export default function Tours() {
-
-  const Tour = [1 , 2 , 3 , 4 , 5 , 6] ;
+  const { Tours } = useContext(Context);
+  console.log(Tours);
   // const [image , setImage] = useState([]) ;
 
   // useEffect( () => {
@@ -19,13 +20,16 @@ export default function Tours() {
   //   )
   // } , [])
 
-
   return (
     <PageOutLine value="Tours">
-      <Stack flexDirection='row' justifyContent='center' flexWrap='wrap' >
-        {Tour.map((value) => (
-          <ToursCard id={value} key={value} />
-        ))}
+      <Stack flexDirection="row" justifyContent="center" flexWrap="wrap">
+        {Tours !== null ? (
+          Tours.map((tour) => (
+            <ToursCard key={tour.id} id={tour.id} tour={tour} />
+          ))
+        ) : (
+          <div>no tours</div>
+        )}
       </Stack>
       {/* <Stack>
         <PagePagination data = {image} />

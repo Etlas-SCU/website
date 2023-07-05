@@ -21,12 +21,11 @@ export default function KnowledgeCheck() {
       var statuesResult = await getBestScoreByTitle("statues");
       var monumentsResult = await getBestScoreByTitle("monuments");
       var landmarksResult = await getBestScoreByTitle("landmarks");
-      console.log(statuesResult.body)
+      setIsLoading(false);
       if (!LogIn) {
         setMassagePopup(true);
         setPopup(<MPopUp type="error">please signIn first</MPopUp>);
       }
-      setIsLoading(false);
       setScores({
         statues: statuesResult.body.best_score_statues,
         monuments: monumentsResult.body.best_score_monuments,

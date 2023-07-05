@@ -45,12 +45,10 @@
 .edit_icon2,
 .edit_icon3,
 .edit_icon4,
-.edit_icon5,
 .save_icon1,
 .save_icon2,
 .save_icon3,
-.save_icon4,
-.save_icon5 {
+.save_icon4 {
     position: absolute;
     color: #9F9F9F;
     right: 5px;
