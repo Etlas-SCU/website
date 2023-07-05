@@ -6,10 +6,12 @@ import pic4 from "../../images/Pics/pic4.jpg";
 import statues from "../../images/Pics/statues.png";
 import landmarks from "../../images/Pics/landmarks.png";
 import monuments from "../../images/Pics/monuments.png";
-import { refreshToken } from "../../repositories/authRepo";
+import { Login, refreshToken } from "../../repositories/authRepo";
 import { getArticles } from "../../repositories/articleRepo";
 import { getTimeLine } from "../../repositories/timeLineRepo";
+import { getUserInfo } from "../../repositories/ProfileRepo";
 import { getTours } from "../../repositories/toursRepo";
+
 export const Context = createContext();
 
 export const Provider = (props) => {
@@ -28,6 +30,7 @@ export const Provider = (props) => {
   const [userData, setUserData] = useState({});
 
   const updateUserData = (newData) => {
+    console.log(newData)
     setUserData({
       ...userData,
       ...newData
@@ -67,6 +70,12 @@ export const Provider = (props) => {
       console.log("error");
     }
   }
+
+  async function fetchUserData() {
+    var result = await getUserInfo();
+    return result;
+  }
+
   useEffect(() => {
     articles(pageNum);
     tours(pageNum)
@@ -75,6 +84,20 @@ export const Provider = (props) => {
   useEffect(() => {
     setLogIn(access !== null);
   }, [access]);
+
+  useEffect(() => {
+
+    async function getData() {
+      if (LogIn) {
+        var result = await fetchUserData()
+        if (!result.isError) {
+          updateUserData(result.body)
+        }
+      }
+    }
+
+    getData()
+  }, [LogIn])
 
   useEffect(() => {
     if (LogIn !== null) {

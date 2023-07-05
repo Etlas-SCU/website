@@ -27,6 +27,7 @@ export default function Nav() {
     setSelectedLanguage,
     setButtonPopup,
     LogIn,
+    userData
   } = useContext(Context);
 
   const NavList = (
@@ -237,8 +238,8 @@ export default function Nav() {
                   alignItems="center"
                   justifyContent="space-between"
                 >
-                  <img src={profile} style={{ width: "20%" }} />
-                  <p>sohila </p>
+                  <img src={userData != null && userData.image_url != null ? userData.image_url : profile} style={{ width: "20%" }} />
+                  <p>&nbsp;{userData != null && userData.full_name != null ? userData.full_name.split(" ")[0] : ""} </p>
                   <NavLink to="/profile">
                     <img src={arrow} style={{ width: "55%" }} />
                   </NavLink>
