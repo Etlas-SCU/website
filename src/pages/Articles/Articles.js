@@ -5,12 +5,17 @@ import PageOutLine from "../../components/PageOutLine/PageOutLine";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { Context } from "../../components/Context/Context";
+import { useEffect } from "react";
 
 export default function Articles() {
   const { t } = useTranslation();
-  const { Articles } =
-  useContext(Context); 
-  console.log(Articles)
+  const { Articles, setPageNum } =
+  useContext(Context);
+  
+  useEffect(() => {
+    setPageNum(1)
+  }, [])
+
   return (
     <PageOutLine value={t("Articles.title")}>
         <Stack
