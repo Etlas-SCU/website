@@ -6,6 +6,7 @@ import { Context } from "../../components/Context/Context";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import hint from "../../images/Pngs/Hint.png";
+import { getQuestionsByTitle, setBestScoreByTitle } from "../../repositories/questionsRepo";
 
 export default function QandA() {
   const { title } = useParams();
@@ -13,31 +14,61 @@ export default function QandA() {
   const [quizFinished, setQuizFinished] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState("");
-  const { statusQ, statusScore, setStatusScore, categories } =
-    useContext(Context);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [currScore, setCurrScore] = useState(0);
+
+  const [questions, setQuestions] = useState(null)
+
   useEffect(() => {
-    setStatusScore(0);
+    async function getData() {
+      setIsLoading(true)
+      var result = await getQuestionsByTitle(title)
+      setIsLoading(false)
+
+      if (!result.isError) {
+        setQuestions(result.body)
+      } else {
+        // handle error
+      }
+      console.log(result)
+    }
+    getData()
+  }, [])
+
+  useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
   }, []);
 
-  const handleCorrectAnswer = (answer) => {
-    setSelectedChoice(answer.answer);
+  
+  function isCorrectAnswer(ans) {
+    return ans.choice_text == questions[currQ].correct_choice
+  }
+
+  const handleCorrectAnswer = async (answer) => {
+    setSelectedChoice(answer.choice_text);
     setClicked(true);
-    if (currQ === statusQ.length - 1 || answer.iscorrect === "false") {
-      setTimeout(() => {
+    if (currQ === questions.length - 1 || !isCorrectAnswer(answer)) {
+      var newScore = currScore;
+      if (isCorrectAnswer) newScore++;
+      var result = await setBestScoreByTitle(title, newScore)
+      console.log(result)
+      if (result.isError) {
+        // handle error
+      }
+      setTimeout(() =>  {
         setQuizFinished(true);
         setClicked(false);
       }, 1500);
     }
-    if (answer.iscorrect === "true") {
-      setStatusScore(statusScore + 1);
+    if (isCorrectAnswer(answer)) {
+      setCurrScore(currScore + 1);
     }
     setTimeout(() => {
       setCurrQ(currQ + 1);
+      setSelectedChoice(null)
       setClicked(false);
     }, 1500);
   };
@@ -48,14 +79,16 @@ export default function QandA() {
   // }
 
   const SC = () => {
-    if (title === "Statues") {
-      return <p> {categories[0].score}</p>;
-    } else if (title === "Monuments") {
-      return <p> {categories[1].score}</p>;
-    } else {
-      return <p> {categories[2].score}</p>;
-    }
+    return (<p>{currScore}/{questions.length}</p>);
   };
+
+  if (isLoading) {
+    return (<h4 style={{padding: "250px"}}>Loading..</h4>)
+  }
+
+  if (questions == null || questions.length == 0) {
+    return (<h4 style={{padding: "250px"}}>No questions</h4>)
+  }
 
   return (
     <Box p="120px 0" height="100%">
@@ -78,30 +111,30 @@ export default function QandA() {
             {isLoading ? (
               <Skeleton variant="rectangular" className={style.skeleton} />
             ) : (
-              <img src={statusQ[currQ].img} alt={title} />
+              <img src={questions[currQ].image_url} alt={title} />
             )}
           </Box>
 
           <Box className={style.questions}>
-            <p>{statusQ[currQ].Question} </p>
+            <p>{questions[currQ].statement} </p>
 
-            {statusQ[currQ].answers.map((ans, index) => {
+            {questions[currQ].shuffled_choices.map((ans) => {
               return (
                 <button
                   disabled={clicked}
                   className={style.questions__answer}
-                  key={index}
+                  key={ans.id}
                   onClick={() => handleCorrectAnswer(ans)}
                   style={{
                     backgroundColor:
-                      selectedChoice === ans.answer
-                        ? ans.iscorrect === "true"
+                      selectedChoice === ans.choice_text
+                        ? isCorrectAnswer(ans)
                           ? "green"
                           : "red"
                         : "",
                   }}
                 >
-                  {ans.answer}
+                  {ans.choice_text}
                 </button>
               );
             })}

@@ -3,11 +3,32 @@ import React ,{useContext,useState,useEffect} from "react";
 import style from "./KnowledgeCheck.module.css";
 import { Link } from "react-router-dom";
 import { Context } from "../../components/Context/Context";
+import { getBestScoreByTitle } from "../../repositories/questionsRepo";
 
 export default function KnowledgeCheck() {
   const { categories } = useContext(Context);
 
   const [isLoading, setIsLoading] = useState(true);
+
+  const [scores, setScores] = useState(null)
+
+  useEffect(() => {
+    async function getData() {
+      setIsLoading(true);
+      var statuesResult = await getBestScoreByTitle('statues')
+      var monumentsResult = await getBestScoreByTitle('monuments')
+      var landmarksResult = await getBestScoreByTitle('landmarks')
+      console.log(landmarksResult)
+      setIsLoading(false);
+      setScores({
+        statues: statuesResult.body.best_score_statues,
+        monuments: monumentsResult.body.best_score_monuments,
+        landmarks: landmarksResult.body.best_score_landmarks
+      });
+    }
+
+    getData();
+  }, [])
 
   useEffect(() => {
     setTimeout(() => {
@@ -22,7 +43,7 @@ export default function KnowledgeCheck() {
       </Box>
 
       <Stack direction="row" justifyContent="center" gap="40px" flexWrap="wrap">
-        {categories.map((cat) => {
+        {!isLoading ? categories.map((cat) => {
           return (
             <Box className={style.cat} key={cat.id}>
               <Link to={`/knowledge/${cat.title}`}>
@@ -40,14 +61,14 @@ export default function KnowledgeCheck() {
                   ) : (
                     <>
                       <img src={cat.img} alt={cat.title} />
-                      <p>{cat.score}</p>
+                      <p>{scores[cat.title.toLowerCase()]}</p>
                     </>
                   )}
                 </Box>
               </Link>
             </Box>
           );
-        })}
+        }) : <div></div>}
       </Stack>
     </Box>
   );
