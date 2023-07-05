@@ -1,81 +1,73 @@
-import React from 'react';
+import React, { useContext , useState , useEffect } from 'react';
 import Style from './Informations.module.css';
 import { Box, Stack } from '@mui/system';
 import ProfileImg from '../../../images/Pngs/Profile2.png';
 import { Form, Formik } from 'formik';
-import { useState } from 'react';
 import CreateIcon from '@mui/icons-material/Create';
 import CheckIcon from '@mui/icons-material/Check';
-import { Zoom } from 'react-awesome-reveal';
-import { getUserInfo, editUserInfo } from '../../../repositories/ProfileRepo';
-import { useEffect } from 'react';
+import { Zoom } from "react-awesome-reveal";
+import { editUserInfo } from "../../../repositories/ProfileRepo";
 import MPopUp from "../../PopUp_Message/error/MPopUp";
+import { Context } from "../../Context/Context" ;
+import { Typography } from "@mui/material";
 
 
 export default function Informations() {
-    const [popup , setPopup] = useState(null)
 
-    const [fullName, setFullName] = useState("Basem Moahmed");
+    const { setButtonPopup, setMassagePopup } = useContext(Context); 
+
+    const [popup , setPopup] = useState(null);
+    const { getUserData, updateUserData, userData } = useContext(Context);
+
+    const [fullName, setFullName] = useState('');
     const [editName, setEditName] = useState(false);
 
-    const [email, setEmail] = useState("basem.m1337@gmail.com");
+    const [email, setEmail] = useState('');
     const [editEmail, setEditEmail] = useState(false);
 
-    const [password, setPassword] = useState("********");
-    const [editPassword, setEditPassword] = useState(false);
-
-    const [phone, setPhone] = useState("+20 101 629 7668");
+    const [phone, setPhone] = useState('');
     const [editPhone, setEditPhone] = useState(false);
 
-    const [address, setAddress] = useState("Egypt - North Sinai - Al-Arish");
+    const [address, setAddress] = useState('');
     const [editAddress, setEditAddress] = useState(false);
+    
+    useEffect(() => {
+        async function getUserInfo() {
+            const user_data = await getUserData();
+            setFullName(user_data.full_name);
+            setEmail(user_data.email);
+            setPhone(user_data.phone_number);
+            setAddress(user_data.address);
+        }
+        getUserInfo();
+    }, [userData, updateUserData, getUserData]);
 
-    const handleInputChange = (event) => {
-        setFullName(event.target.value);
-        setEmail(event.target.value);
-        setPassword(event.target.value);
-        setPhone(event.target.value);
-        setAddress(event.target.value);
-    };
-
-    const onSave = async (values, { resetEdit }) => {
-        console.log(values);
-
+    const onSubmit = async () => {
         var editProfile = {
-            full_name: values.fullName,
-            email: values.email,
-            address: values.address,
-            phone_number: values.phone
+            full_name: fullName,
+            email: email,
+            address: address,
+            phone_number: phone
         }
 
-        var result = await editUserInfo(editProfile)
+        console.log(editProfile);
+
+        var result = await editUserInfo(editProfile);
         if (result.isError) {
+            setMassagePopup(true);
             setPopup(<MPopUp type="error">Something Wrong</MPopUp>);
         } else {
-            resetEdit({ values: "" });
+            setMassagePopup(true);
             setPopup(<MPopUp type="done">Done</MPopUp>);
+            await updateUserData(result.data);
         }
-    };
-
-    useEffect(() => {
-        async function getData() {
-            var result = await getUserInfo()
-            console.log(result.body);
-            if (!result.isError) {
-                setFullName(result.body.full_name);
-                setEmail(result.body.email);
-                setPhone(result.body.phone_number);
-                setAddress(result.body.address);
-            }
-        }
-        getData();
-    }, [])
-
+    }
+   
     return (
         <Stack>
             <Box className={Style.form_comp}>
                 <Box className={Style.info}>
-                    <Formik onSubmit={onSave}>
+                    <Formik>
                         <Form>
                             <label className={Style.info_lab}>Full Name</label>
                             <input
@@ -83,7 +75,7 @@ export default function Informations() {
                                 value={fullName}
                                 name='fullname'
                                 className={Style.prof_inp}
-                                onChange={handleInputChange}
+                                onChange={(event) => {setFullName(event.target.value)}}
                                 readOnly={!editName}
                             />
 
@@ -100,7 +92,7 @@ export default function Informations() {
                                 value={email}
                                 name='email'
                                 className={Style.prof_inp}
-                                onChange={handleInputChange}
+                                onChange={(event) => {setEmail(event.target.value)}}
                                 readOnly={!editEmail}
                             />
 
@@ -111,37 +103,21 @@ export default function Informations() {
                                 <CreateIcon className={Style.edit_icon2} onClick={() => setEditEmail(true)} style={{ fontSize: 'medium' }} />
                             )}
 
-                            <label className={Style.info_lab}>Password</label>
-                            <input
-                                type='password'
-                                value={password}
-                                name='password'
-                                className={Style.prof_inp}
-                                onChange={handleInputChange}
-                                readOnly={!editPassword}
-                            />
-
-                            {editPassword ? (
-                                <CheckIcon className={Style.save_icon3} onClick={() => setEditPassword(false)} style={{ fontSize: 'medium' }} />
-
-                            ) : (
-                                <CreateIcon className={Style.edit_icon3} onClick={() => setEditPassword(true)} style={{ fontSize: 'medium' }} />
-                            )}
-
                             <label className={Style.info_lab} >Phone Number</label>
                             <input
                                 type='text'
                                 value={phone}
                                 name='phone'
                                 className={Style.prof_inp}
-                                onChange={handleInputChange}
+                                onChange={(event) => {setPhone(event.target.value)}}
                                 readOnly={!editPhone}
                             />
+
                             {editPhone ? (
-                                <CheckIcon className={Style.save_icon4} onClick={() => setEditPhone(false)} style={{ fontSize: 'medium' }} />
+                                <CheckIcon className={Style.save_icon3} onClick={() => setEditPhone(false)} style={{ fontSize: 'medium' }} />
 
                             ) : (
-                                <CreateIcon className={Style.edit_icon4} onClick={() => setEditPhone(true)} style={{ fontSize: 'medium' }} />
+                                <CreateIcon className={Style.edit_icon3} onClick={() => setEditPhone(true)} style={{ fontSize: 'medium' }} />
                             )}
 
                             <label className={Style.info_lab}>Address</label>
@@ -150,15 +126,16 @@ export default function Informations() {
                                 value={address}
                                 name='address'
                                 className={Style.prof_inp}
-                                onChange={handleInputChange}
+                                onChange={(event) => {setAddress(event.target.value)}}
                                 readOnly={!editAddress}
                             />
                             {editAddress ? (
-                                <CheckIcon className={Style.save_icon5} onClick={() => setEditAddress(false)} style={{ fontSize: 'medium' }} />
+                                <CheckIcon className={Style.save_icon4} onClick={() => setEditAddress(false)} style={{ fontSize: 'medium' }} />
 
                             ) : (
-                                <CreateIcon className={Style.edit_icon5} onClick={() => setEditAddress(true)} style={{ fontSize: 'medium' }} />
+                                <CreateIcon className={Style.edit_icon4} onClick={() => setEditAddress(true)} style={{ fontSize: 'medium' }} />
                             )}
+
                         </Form>
                     </Formik>
                 </Box>
@@ -167,7 +144,7 @@ export default function Informations() {
                 </Box>
             </Box>
             <Zoom triggerOnce='false'>
-                <Box className={Style.save}>
+                <Box className={Style.save} onClick={ () => {onSubmit()}  }>
                     <button type='submit' className={Style.btn_save}>Save</button>
                 </Box>
             </Zoom>

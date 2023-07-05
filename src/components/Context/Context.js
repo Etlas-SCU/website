@@ -23,6 +23,19 @@ export const Provider = (props) => {
   const [Articles, setArticles] = useState([]);
   const [timeLine, setTimeLine] = useState(null);
   const [pageNum, setPageNum] = useState(1);
+  
+  const [userData, setUserData] = useState({});
+
+  const updateUserData = (newData) => {
+    setUserData({
+      ...userData,
+      ...newData
+    });
+  }
+
+  const getUserData = async () => {
+    return { ...userData };
+  }
 
   var access = localStorage.getItem("access");
   const [LogIn, setLogIn] = useState(access !== null);
@@ -62,7 +75,6 @@ export const Provider = (props) => {
     timeline();
     
   }, []);
-
 
   const [statusScore, setStatusScore] = useState(0);
   const [MonumentsScore, setMonumentsScore] = useState(0);
@@ -225,6 +237,9 @@ export const Provider = (props) => {
     timeLine,
     pageNum,
     setPageNum,
+    userData,
+    updateUserData,
+    getUserData,
   };
 
   return (

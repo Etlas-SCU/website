@@ -4,42 +4,44 @@ import { Box, Stack } from '@mui/material';
 import Econtact1 from '../../images/Pngs/e(contactus).png'
 import Econtact2 from '../../images/Pngs/e(contactus)2.png'
 import Statue from '../../images/Pngs/Statue(Contact Us).png'
-import PopUp_img from '../../images/Icons/Contact Us Pop up Check.png'
-
 import PopUp from '../../components/PopUp_Message/PopUp';
-
 import { Field, Formik, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-
-// const initialValues = {
-//     fullname: "",
-//     email: "",
-//     subject: "",
-//     message: "",
-// };
-
-
+import {Context} from '../../components/Context/Context' ;
+import { useContext } from 'react';
+import { ContactUs } from '../../repositories/ContactUsRepo';
 
 export default function ContactUS() {
+
+    const {userData} = useContext(Context) ;
 
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
 
-    const [buttonPopup , setButtonPopup] = useState(false) ; 
+    const [buttonPopup, setButtonPopup] = useState(false);
 
     const validationSchema = Yup.object({
         fullname: Yup.string().required('required'),
         email: Yup.string().email('invalid email format').required('required'),
         subject: Yup.string().required('required')
     })
-    
-    const onSubmit = (values, { resetForm }) => {
-        console.log(values);
-        resetForm({ values: "" });
+
+    const onSubmit = async () => {
+        const result = await ContactUS(fullName , email , subject , message) ;
+        if(result.isError){
+            console.log(result.message) ;
+        }else{
+            console.log(result.body) ;
+        }
+
+        setFullName('') ;
+        setEmail('');
+        setSubject('');
+        setMessage('');
     };
-    
+
     return (
         <Stack className={Style.contactUs} direction='row'>
             <Box className={Style.sec1}>
@@ -48,9 +50,7 @@ export default function ContactUS() {
                     <h1 className={Style.contact_title}>Contact Us</h1>
                     <Box className={Style.contact} >
                         <Formik
-                            // initialValues={initialValues}
                             validationSchema={validationSchema}
-                            onSubmit={onSubmit}
                         >
                             <Form >
                                 <Stack direction='column'>
@@ -108,7 +108,7 @@ export default function ContactUS() {
                         </Formik>
                     </Box>
                     <Box className={Style.sec2}>
-                        <button type='submit' className={Style.btn_submit} onClick={() => setButtonPopup(true)}>Submit</button>
+                        <button type='submit' className={Style.btn_submit} onClick={() => {setButtonPopup(true); onSubmit();}}>Submit</button>
                         <img src={Econtact2} alt='e2' className={Style.second_eimg} />
                     </Box>
                 </Box>
