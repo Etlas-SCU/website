@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/website/static/css/main.21b1cd30.css",
-    "main.js": "/website/static/js/main.6f6c4cac.js",
+    "main.js": "/website/static/js/main.ff8ba378.js",
     "static/media/pic2.png": "/website/static/media/pic2.271acc4c49a4b69f3882.png",
     "static/media/Statue2.png": "/website/static/media/Statue2.de41b062bbfc332368e3.png",
     "static/media/register.png": "/website/static/media/register.7225f00fe095993100c6.png",
@@ -22,7 +22,6 @@
     "static/media/pic4.jpg": "/website/static/media/pic4.2ec1bd6b64d38c2fe9a4.jpg",
     "static/media/phone (2).png": "/website/static/media/phone (2).c5c13719d314e2cfa7fe.png",
     "static/media/Montserrat-Regular.ttf": "/website/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
-    "static/media/Profile.png": "/website/static/media/Profile.b13c47fc76d9ca669109.png",
     "static/media/about.png": "/website/static/media/about.21a1238e0103c10f476c.png",
     "static/media/Profile2.png": "/website/static/media/Profile2.2d5b969a581025fda32b.png",
     "static/media/PressJobs.ttf": "/website/static/media/PressJobs.1a5dc7f5afa0e1b2026b.ttf",
@@ -32,10 +31,10 @@
     "static/media/Favorites.png": "/website/static/media/Favorites.8d117981f2ddfc50b363.png",
     "index.html": "/website/index.html",
     "main.21b1cd30.css.map": "/website/static/css/main.21b1cd30.css.map",
-    "main.6f6c4cac.js.map": "/website/static/js/main.6f6c4cac.js.map"
+    "main.ff8ba378.js.map": "/website/static/js/main.ff8ba378.js.map"
   },
   "entrypoints": [
     "static/css/main.21b1cd30.css",
-    "static/js/main.6f6c4cac.js"
+    "static/js/main.ff8ba378.js"
   ]
 }
