@@ -17,7 +17,7 @@ export default function BestScore() {
         async function BestScore(){
             var result = await getBestScore() ;
             if(!result.isError){
-                setBestScore(result.body.results) ;
+                setBestScore(result.body.total_best_score) ;
             }else{
                 setPopup(<MPopUp type="error">Something Wrong</MPopUp>);
                 setBestScore(0) ;
@@ -26,8 +26,6 @@ export default function BestScore() {
         BestScore() ;
     })
     
-
-
 
     return (
         <Stack>

@@ -17,7 +17,19 @@ export const Provider = (props) => {
   const [buttonPopup, setButtonPopup] = useState([false, ""]);
   const [massagePopup, setMassagePopup] = useState(false);
   const [step, setStep] = useState("enterEmail");
-  const [Articles, setArticles] = useState();
+  const [Articles, setArticles] = useState(null);
+  const [userData, setUserData] = useState({});
+
+  const updateUserData = (newData) => {
+    setUserData({
+      ...userData,
+      ...newData
+    });
+  }
+
+  const getUserData = async () => {
+    return { ...userData };
+  }
 
   var access = localStorage.getItem("access");
   const [LogIn, setLogIn] = useState(access !== null);
@@ -43,7 +55,7 @@ export const Provider = (props) => {
     }
     setInterval(refreshToken, 3 * 60 * 1000);
   }, []);
-  console.log(Articles);
+  // console.log(Articles);
 
   const [statusScore, setStatusScore] = useState(0);
   const [MonumentsScore, setMonumentsScore] = useState(0);
@@ -203,6 +215,9 @@ export const Provider = (props) => {
     step,
     setStep,
     Articles,
+    userData,
+    updateUserData,
+    getUserData
   };
 
   return (
