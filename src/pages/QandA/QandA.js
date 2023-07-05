@@ -24,7 +24,6 @@ export default function QandA() {
   const [skeleton, setSkeleton] = useState(true);
   const { setMassagePopup ,LogIn} = useContext(Context);
   const [popup, setPopup] = useState(null);
-  const [answers,setAnswers]=useState([])
 
   useEffect(() => {
     async function getData() {
@@ -34,7 +33,6 @@ export default function QandA() {
 
       if (!result.isError) {
         setQuestions(result.body)
-        setAnswers(result.body[currQ].shuffled_choices)
       }
     }
     getData();
@@ -82,10 +80,10 @@ export default function QandA() {
     }, 1500);
   };
 
-  const handleHint=()=>{
-    const filteredAnswers = answers.filter((answer) => answer.isCorrect || filteredAnswers.length < 2);
-    setAnswers(filteredAnswers);
-  }
+  // const handleHint=()=>{
+  //   const filteredAnswers = answers.filter((answer) => answer.isCorrect || filteredAnswers.length < 2);
+  //   setAnswers(filteredAnswers);
+  // }
   
 
   const SC = () => {
@@ -133,7 +131,7 @@ export default function QandA() {
           <Box className={style.questions}>
             <p>{questions[currQ].statement} </p>
 
-            {answers.map((ans) => {
+            {questions[currQ].shuffled_choices.map((ans) => {
               return (
                 <button
                   disabled={clicked}
@@ -160,7 +158,7 @@ export default function QandA() {
               <p>Need a help? </p>
               <button
                 className={style.hint}
-                 onClick={handleHint}
+                //  onClick={handleHint}
               >
                 <img src={hint} alt="hint" />
               </button>
