@@ -33,12 +33,6 @@ export default function MPopUp(props) {
             : styles.done
         }`}
       >
-        {/* <button
-          className={styles.close_btn}
-          onClick={() => setMassagePopup(false)}
-        >
-          <img src={close} className={styles.close_img} alt="close" />
-        </button> */}
         {props.type === "error" ? (
           <img src={error} className={styles.MImge} />
         ) : props.type === "warning" ? (

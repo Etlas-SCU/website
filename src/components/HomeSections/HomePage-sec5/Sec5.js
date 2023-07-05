@@ -21,7 +21,7 @@ export default function Sec5() {
       <Stack className={styles.cont}>
         <Box className={styles.cards}>
          {Articles !== null ? Articles.map((article) => (
-            <ArticlesCard key={article.id} id={article.id} article={article}/>
+            <ArticlesCard key={article.id} id={article.id} article={article} className={styles.card}/>
           )):(<div>no article</div>)}
           
         </Box>
