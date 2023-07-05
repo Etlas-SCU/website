@@ -33,7 +33,6 @@ export const Provider = (props) => {
       ...newData
     });
   }
-  console.log(userData)
 
   const getUserData = async () => {
     return { ...userData };
