@@ -27,6 +27,7 @@ export default function Nav() {
     setSelectedLanguage,
     setButtonPopup,
     LogIn,
+    setLogIn,
     userData
   } = useContext(Context);
 
@@ -64,7 +65,7 @@ export default function Nav() {
       refresh: localStorage.getItem('refresh'),
     };
     Logout(jsonBody).then((res) => {
-      console.log(res.body)
+      setLogIn(false)
     });
   }
 
