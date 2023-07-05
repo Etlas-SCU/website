@@ -29,7 +29,7 @@ export default function Nav() {
     setButtonPopup,
     LogIn,
     setLogIn,
-    userData,
+    userData
   } = useContext(Context);
 
   const NavList = (

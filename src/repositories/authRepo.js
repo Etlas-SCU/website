@@ -5,6 +5,9 @@ export async function Login(body) {
   if (!result.isError) {
     localStorage.setItem("access", result.body.tokens.access);
     localStorage.setItem("refresh", result.body.tokens.refresh);
+    const expiryDate = new Date();
+    expiryDate.setTime(expiryDate.getTime() + (3 * 60 * 1000));
+    localStorage.setItem("tokenExpiry", expiryDate.getTime());
   }
   return {
     isError: result.isError,
@@ -13,31 +16,32 @@ export async function Login(body) {
 }
 export async function Logout(body) {
   const result = await Post("auth/logout/", JSON.stringify(body));
-  if (!result.isError) {
-    localStorage.removeItem("access");
-    localStorage.removeItem("refresh");
-  }
+
+  localStorage.removeItem("access");
+  localStorage.removeItem("refresh");
+  localStorage.removeItem("tokenExpiry");
+
   return {
     isError: result.isError,
     body: result.body,
   };
 }
 
-export async function refreshToken() {
-  var refresh = localStorage.getItem("refresh");
-  const result = await Post(
-    "auth/token/refresh/",
-    JSON.stringify({ refresh: refresh })
-  );
-  if (!result.isError) {
-    localStorage.setItem("access", result.body.access);
-    localStorage.setItem("refresh", result.body.refresh);
-  }
-}
+// export async function refreshToken() {
+//   var refresh = localStorage.getItem("refresh");
+//   const result = await Post(
+//     "auth/token/refresh/",
+//     JSON.stringify({ refresh: refresh })
+//   );
+//   if (!result.isError) {
+//     localStorage.setItem("access", result.body.access);
+//     localStorage.setItem("refresh", result.body.refresh);
+//   }
+// }
 
 export async function register(body) {
   const result = await Post("auth/register/", JSON.stringify(body));
-  console.log(result.body)
+  
   return {
     isError: result.isError,
     body: result.body,

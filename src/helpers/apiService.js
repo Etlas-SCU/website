@@ -13,6 +13,13 @@ function getHeaders() {
 
 export async function Post(endpoint, body) {
   try {
+    var expiryDate = localStorage.getItem("tokenExpiry")
+    if (endpoint != "auth/token/refresh/" && (expiryDate != null && expiryDate <= Date.now())) {
+      var result = await refreshTokens()
+      if (result.isError) {
+        return result
+      }
+    }
     const response = await axios.post(`${url}/${endpoint}`, body, {
       headers: getHeaders(),
     });
@@ -32,6 +39,7 @@ export async function Post(endpoint, body) {
       return {
         isError: true,
         body: responseBody,
+        status: response.status
       };
     }
 
@@ -45,6 +53,14 @@ export async function Post(endpoint, body) {
 
 export async function Put(endpoint, body) {
   try {
+    var expiryDate = localStorage.getItem("tokenExpiry")
+    if (expiryDate != null && expiryDate <= Date.now()) {
+      var result = await refreshTokens()
+      if (result.isError) {
+        return result
+      }
+    }
+
     const response = await axios.put(`${url}/${endpoint}`, body, {
       headers: getHeaders(),
     });
@@ -77,6 +93,14 @@ export async function Put(endpoint, body) {
 
 export async function Patch(endpoint, body) {
   try {
+    var expiryDate = localStorage.getItem("tokenExpiry")
+    if (expiryDate != null && expiryDate <= Date.now()) {
+      var result = await refreshTokens()
+      if (result.isError) {
+        return result
+      }
+    }
+
     const response = await axios.patch(`${url}/${endpoint}`, body, {
       headers: getHeaders(),
     });
@@ -109,6 +133,14 @@ export async function Patch(endpoint, body) {
 
 export async function GET(endpoint) {
   try {
+    var expiryDate = localStorage.getItem("tokenExpiry")
+    if (expiryDate != null && expiryDate <= Date.now()) {
+      var result = await refreshTokens()
+      if (result.isError) {
+        return result
+      }
+    }
+
     const response = await axios.get(`${url}/${endpoint}`, {
       headers: getHeaders(),
     });
@@ -141,6 +173,14 @@ export async function GET(endpoint) {
 
 export async function DELETE(endpoint, body) {
   try {
+    var expiryDate = localStorage.getItem("tokenExpiry")
+    if (expiryDate != null && expiryDate <= Date.now()) {
+      var result = await refreshTokens()
+      if (result.isError) {
+        return result
+      }
+    }
+
     const response = await axios.delete(`${url}/${endpoint}`, body, {
       headers: getHeaders(),
     });
@@ -171,4 +211,20 @@ export async function DELETE(endpoint, body) {
   }
 }
 
+async function refreshTokens() {
+  var refresh = localStorage.getItem("refresh");
+  const result = await Post("auth/token/refresh/", JSON.stringify({ refresh: refresh }));
 
+  if (!result.isError) {
+    localStorage.setItem("access", result.body.access);
+    localStorage.setItem("refresh", result.body.refresh);
+    const expiryDate = new Date();
+    expiryDate.setTime(expiryDate.getTime() + (3 * 60 * 1000));
+    localStorage.setItem("tokenExpiry", expiryDate.getTime());
+  } else if (result.status == 401) {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    localStorage.removeItem("tokenExpiry");
+  }
+  return result
+}
