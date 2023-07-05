@@ -3,13 +3,13 @@ import pic1 from "../../images/Pics/pic1.png";
 import pic2 from "../../images/Pics/pic2.png";
 import pic3 from "../../images/Pics/pic3.jpg";
 import pic4 from "../../images/Pics/pic4.jpg";
-import neith from "../../images/Pics/neith.png";
 import statues from "../../images/Pics/statues.png";
 import landmarks from "../../images/Pics/landmarks.png";
 import monuments from "../../images/Pics/monuments.png";
 import { refreshToken } from "../../repositories/authRepo";
 import { getArticles } from "../../repositories/articleRepo";
 import { getTimeLine } from "../../repositories/timeLineRepo";
+import { getTours } from "../../repositories/toursRepo";
 export const Context = createContext();
 
 export const Provider = (props) => {
@@ -21,6 +21,7 @@ export const Provider = (props) => {
   const [massagePopup, setMassagePopup] = useState(false);
   const [step, setStep] = useState("enterEmail");
   const [Articles, setArticles] = useState([]);
+  const [Tours, setTours] = useState([]);
   const [timeLine, setTimeLine] = useState(null);
   const [pageNum, setPageNum] = useState(1);
   
@@ -44,7 +45,6 @@ export const Provider = (props) => {
     const result = await getTimeLine();
     if (!result.isError) {
       setTimeLine(result.body.results);
-      console.log(result);
     } else {
       console.log("error");
     }
@@ -54,13 +54,22 @@ export const Provider = (props) => {
     const articles = await getArticles(pageNum);
     if (!articles.isError) {
       setArticles(articles.body.results);
-      console.log(articles);
+    } else {
+      console.log("error");
+    }
+  }
+
+  async function tours(pageNum) {
+    const tours = await getTours(pageNum);
+    if (!tours.isError) {
+      setTours(tours.body.results);
     } else {
       console.log("error");
     }
   }
   useEffect(() => {
     articles(pageNum);
+    tours(pageNum)
   }, [pageNum]);
 
   useEffect(() => {
@@ -76,9 +85,6 @@ export const Provider = (props) => {
     
   }, []);
 
-  const [statusScore, setStatusScore] = useState(0);
-  const [MonumentsScore, setMonumentsScore] = useState(0);
-  const [LandmarksScore, setLandmarksScore] = useState(0);
 
   const LANGUAGES = [
     { en: "English" },
@@ -139,78 +145,61 @@ export const Provider = (props) => {
     },
   ]);
 
-  const statusQ = [
-    {
-      img: neith,
-      Question: "what is this statue ?",
-      answers: [
-        { answer: "Isis", iscorrect: "false" },
-        { answer: "Neith", iscorrect: "true" },
-        { answer: "Osiris", iscorrect: "false" },
-        { answer: "Yuno", iscorrect: "false" },
-      ],
-    },
-    {
-      img: neith,
-      Question: "Worship of the goddess Neith began in ?",
-      answers: [
-        { answer: "c. 7000 to 3150 BCE", iscorrect: "false" },
-        { answer: "c. 6000 to 3150 BCE", iscorrect: "true" },
-        { answer: "c. 4000 to 3150 BCE", iscorrect: "false" },
-        { answer: "c. 2000 to 3150 BCE", iscorrect: "false" },
-      ],
-    },
-  ];
-
-  const monumentsQ = [
-    {
-      img: neith,
-      Question: "what is this monuments ?",
-      answers: [
-        { answer: "Egyptian Museum of Cairo", iscorrect: "false" },
-        { answer: "Great Temple of Abu Simbel", iscorrect: "true" },
-        { answer: " Temple of Isis", iscorrect: "false" },
-        { answer: " Tomb of Ramses VI", iscorrect: "false" },
-      ],
-    },
-  ];
-
-  const landmarksQ = [
-    {
-      img: neith,
-      Question: "what is this landmarksQ ?",
-      answers: [
-        { answer: "Egyptian Museum of Cairo", iscorrect: "false" },
-        { answer: "Great Temple of Abu Simbel", iscorrect: "true" },
-        { answer: " Temple of Isis", iscorrect: "false" },
-        { answer: " Tomb of Ramses VI", iscorrect: "false" },
-      ],
-    },
-  ];
-
   const categories = [
     {
       id: 1,
       title: "Statues",
       dis: "Test yourself in the mostpopular statues.",
-      score: `${statusScore}/${statusQ.length}`,
       img: landmarks,
     },
     {
       id: 2,
       title: "Monuments",
       dis: "The world of monuments is in your mind, time to test",
-      score: `${MonumentsScore}/${monumentsQ.length}`,
       img: monuments,
     },
     {
       id: 3,
       title: "Landmarks",
       dis: "of course you know alot of landmarks, let’s try.",
-      score: `${LandmarksScore}/${landmarksQ.length}`,
       img: statues,
     },
   ];
+
+
+  useEffect(() => {
+    articles(pageNum);
+  }, [pageNum]);
+
+  useEffect(() => {
+    setLogIn(access !== null);
+  }, [access]);
+
+  useEffect(() => {
+    if (LogIn !== null) {
+      refreshToken();
+    }
+    setInterval(refreshToken, 3 * 60 * 1000);
+    timeline();
+  }, []);
+
+  async function timeline() {
+    const result = await getTimeLine();
+    if (!result.isError) {
+      setTimeLine(result.body.results);
+    } else {
+      console.log("error");
+    }
+  }
+
+  async function articles(pageNum) {
+    const articles = await getArticles(pageNum);
+    if (!articles.isError) {
+      setArticles(articles.body.results);
+    } else {
+      console.log("error");
+    }
+  }
 
   const AllContext = {
     mobileOpen,
@@ -224,9 +213,6 @@ export const Provider = (props) => {
     setButtonPopup,
     timeLineSections,
     categories,
-    statusQ,
-    statusScore,
-    setStatusScore,
     massagePopup,
     setMassagePopup,
     LogIn,
@@ -234,6 +220,7 @@ export const Provider = (props) => {
     step,
     setStep,
     Articles,
+    Tours,
     timeLine,
     pageNum,
     setPageNum,

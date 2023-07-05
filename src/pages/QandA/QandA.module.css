@@ -109,6 +109,12 @@
 .finish button:hover{
     transform: scale(1.08);
 }
+.error{
+    padding: 200px 0;
+    color: white;
+    margin: 0 auto;
+    width: fit-content;
+}
 @media only screen and (max-width: 900px) {
     .QandA {
         display: flex;
@@ -138,6 +144,9 @@
     }
     .hint img{
         width: 50%;
+    }
+    .questions__answer{
+        width: 65%;
     }
 
 }
