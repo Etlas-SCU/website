@@ -6,15 +6,10 @@ import Informations from '../../components/ProfileComp/Informations/Informations
 import Favorites from '../../components/ProfileComp/Favorites/Favorites';
 import BestScore from '../../components/ProfileComp/BestScore/BestScore';
 import { Zoom } from 'react-awesome-reveal';
-import { getUserInfo } from '../../repositories/ProfileRepo';
 import {Context} from '../../components/Context/Context'
 import { useContext } from 'react';
 
 export default function Profile() {
-
-    function refreshPage() {
-        window.location.reload(false);
-    }
 
     const {userData , updateUserData} = useContext(Context) ;
 
@@ -37,19 +32,6 @@ export default function Profile() {
     const handleBestScoreClick = () => {
         setIsClicked(!isClicked);
     };
-
-    useEffect(() => {
-        const getUserData = async () => {
-            var result = await getUserInfo();
-            if (result.isError) {
-                console.log(result.message);
-            } else {
-                // await updateUserData(result.body);
-            }
-        }
-        getUserData();
-    }, [updateUserData]);
-
 
     return (
         <Box className={Style.prof_info}>
