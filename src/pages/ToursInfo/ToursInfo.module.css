@@ -17,7 +17,7 @@
     width: 50px;
     height: 50px;
     position: absolute;
-    right: 25%;
+    right: 24%;
     top: 140px;
     z-index: 9999;
     background: #003441;
@@ -37,7 +37,7 @@
     width: 50px;
     height: 50px;
     position: absolute;
-    left: 33%;
+    left: 32%;
     top: 140px;
     z-index: 9999;
     background: #003441;
@@ -130,6 +130,52 @@
     align-items: center;
 }
 
+@media only screen and (max-width: 1300px){
+    .next_btn{
+        right: 23%;
+    }
+} 
+
+@media only screen and (max-width: 1210px){
+    .next_btn{
+        right: 20%;
+    }
+} 
+
+@media only screen and (max-width: 1100px){
+    .next_btn{
+        right: 14%;
+    }
+    .prev_btn{
+        left: 30%;
+    }
+} 
+
+@media only screen and (max-width: 1000px){
+    .next_btn{
+        right: 10%;
+    }
+} 
+
+@media only screen and (max-width: 950px){
+    .next_btn{
+        right: 6%;
+    }
+} 
+
+@media only screen and (max-width: 900px){
+    .next_btn{
+        right: 10%;
+    }
+    .prev_btn{
+        left: 22%;
+    }
+} 
+@media only screen and (max-width: 800px){
+    .next_btn{
+        right: 4%;
+    }
+} 
 @media only screen and (max-width: 700px) {
     .tours_info {
         flex-direction: column-reverse;
@@ -147,5 +193,9 @@
 
     .popup_prag {
         font-size: 13px;
+    }
+    .next_btn ,
+    .prev_btn{
+        display: none;
     }
 }

@@ -6,7 +6,6 @@ import Tours1 from "../../images/Pngs/Tours1.png";
 import Tours2 from "../../images/Pngs/Tours2.png";
 import Tours3 from "../../images/Pngs/Tours3.png";
 import Tours4 from "../../images/Pngs/Tours4.png";
-import Tours5 from "../../images/Pngs/Tours5.png";
 import Arrow_Prev from "../../images/Icons/prevArrow.png";
 import Arrow_Next from "../../images/Icons/nextArrow.png";
 import "swiper/swiper-bundle.min.css";
@@ -44,24 +43,20 @@ export default function ToursInfo(props) {
   SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
   const [buttonPopUp, setButtonPopUp] = useState(false);
 
-  // reference for swiper
   const swiperRef = React.useRef(null);
 
-  // goto next slide
   const goNext = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slideNext();
     }
   };
 
-  // goto prev slide
   const goPrev = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slidePrev();
     }
   };
 
-  // the images that will be displayed
   const slide_img = [Tours1, Tours2, Tours3, Tours4];
 
   return (
