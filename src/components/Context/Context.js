@@ -30,7 +30,7 @@ export const Provider = (props) => {
   const [userData, setUserData] = useState({});
 
   const updateUserData = (newData) => {
-    console.log(newData)
+    
     setUserData({
       ...userData,
       ...newData
@@ -49,7 +49,7 @@ export const Provider = (props) => {
     if (!result.isError) {
       setTimeLine(result.body.results);
     } else {
-      console.log("error");
+      ;
     }
   }
 
@@ -58,7 +58,7 @@ export const Provider = (props) => {
     if (!articles.isError) {
       setArticles(articles.body.results);
     } else {
-      console.log("error");
+      ;
     }
   }
 
@@ -67,7 +67,7 @@ export const Provider = (props) => {
     if (!tours.isError) {
       setTours(tours.body.results);
     } else {
-      console.log("error");
+      ;
     }
   }
 
@@ -99,14 +99,15 @@ export const Provider = (props) => {
     getData()
   }, [LogIn])
 
-  useEffect(() => {
-    if (LogIn !== null) {
-      refreshToken();
-    }
-    setInterval(refreshToken, 3 * 60 * 1000);
-    timeline();
+
+  // useEffect(() => {
+  //   if (LogIn !== null) {
+  //     refreshToken();
+  //   }
+  //   setInterval(refreshToken, 3 * 60 * 1000);
+  //   timeline();
     
-  }, []);
+  // }, []);
 
 
   const LANGUAGES = [
@@ -198,20 +199,20 @@ export const Provider = (props) => {
     setLogIn(access !== null);
   }, [access]);
 
-  useEffect(() => {
-    if (LogIn !== null) {
-      refreshToken();
-    }
-    setInterval(refreshToken, 3 * 60 * 1000);
-    timeline();
-  }, []);
+  // useEffect(() => {
+  //   if (LogIn !== null) {
+  //     refreshToken();
+  //   }
+  //   setInterval(refreshToken, 3 * 60 * 1000);
+  //   timeline();
+  // }, []);
 
   async function timeline() {
     const result = await getTimeLine();
     if (!result.isError) {
       setTimeLine(result.body.results);
     } else {
-      console.log("error");
+      ;
     }
   }
 
@@ -220,7 +221,7 @@ export const Provider = (props) => {
     if (!articles.isError) {
       setArticles(articles.body.results);
     } else {
-      console.log("error");
+      ;
     }
   }
 
