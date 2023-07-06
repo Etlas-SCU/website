@@ -9,7 +9,6 @@ import { Zoom } from "react-awesome-reveal";
 import { editUserInfo } from "../../../repositories/ProfileRepo";
 import MPopUp from "../../PopUp_Message/error/MPopUp";
 import { Context } from "../../Context/Context" ;
-import { Typography } from "@mui/material";
 
 
 export default function Informations() {
@@ -143,6 +142,7 @@ export default function Informations() {
                     <img src={ProfileImg} className={Style.prof_img} alt='profile_img' />
                 </Box>
             </Box>
+            {popup}
             <Zoom triggerOnce='false'>
                 <Box className={Style.save} onClick={ () => {onSubmit()}  }>
                     <button type='submit' className={Style.btn_save}>Save</button>

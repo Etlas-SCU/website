@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
 import Style from './ContactUs.module.css'
 import { Box, Stack } from '@mui/material';
 import Econtact1 from '../../images/Pngs/e(contactus).png'
@@ -7,39 +7,53 @@ import Statue from '../../images/Pngs/Statue(Contact Us).png'
 import PopUp from '../../components/PopUp_Message/PopUp';
 import { Field, Formik, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import {Context} from '../../components/Context/Context' ;
-import { useContext } from 'react';
 import { ContactUs } from '../../repositories/ContactUsRepo';
+import MPopUp from "../../components/PopUp_Message/error/MPopUp";
+import { Context } from "../../components/Context/Context";
 
 export default function ContactUS() {
 
-    const {userData} = useContext(Context) ;
-
-    const [fullName, setFullName] = useState("");
+    const [full_name, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
 
-    const [buttonPopup, setButtonPopup] = useState(false);
+    // const [buttonPopup, setButtonPopup] = useState(false);
+    const { setButtonPopup, setMassagePopup } = useContext(Context);
+    const [popup, setPopup] = useState(null);
 
     const validationSchema = Yup.object({
-        fullname: Yup.string().required('required'),
+        full_name: Yup.string().required('required'),
         email: Yup.string().email('invalid email format').required('required'),
-        subject: Yup.string().required('required')
-    })
+        subject: Yup.string().required('required'),
+        message: Yup.string().required('required').min(100,'Small Message')
+    });
 
     const onSubmit = async () => {
-        const result = await ContactUS(fullName , email , subject , message) ;
+        const data ={
+            full_name : full_name ,
+            email : email ,
+            subject : subject,
+            message : message
+        }
+        const result = await ContactUs(data) ;
         if(result.isError){
-            console.log(result.message) ;
+            console.log(result.body.message) ;
+            setMassagePopup(true);
+            setPopup(<MPopUp type="error">{result.body.message}</MPopUp>);
         }else{
             console.log(result.body) ;
+            setMassagePopup(true);
+            setPopup(<MPopUp type="done">
+                <h2>Thank You For Contacting Us</h2> <br />
+                <p>Your message has been sent successfully</p>
+            </MPopUp>);
         }
 
-        setFullName('') ;
-        setEmail('');
-        setSubject('');
-        setMessage('');
+        setFullName("") ;
+        setEmail("");
+        setSubject("");
+        setMessage("");
     };
 
     return (
@@ -51,6 +65,7 @@ export default function ContactUS() {
                     <Box className={Style.contact} >
                         <Formik
                             validationSchema={validationSchema}
+                            onSubmit={onSubmit}
                         >
                             <Form >
                                 <Stack direction='column'>
@@ -60,9 +75,10 @@ export default function ContactUS() {
                                             <Field
                                                 type='text'
                                                 placeholder='Full Name'
-                                                id='fullname'
-                                                name='fullname'
-                                                onChange={(fullName) => setFullName(fullName)}
+                                                id='full_name'
+                                                name='full_name'
+                                                value={full_name}
+                                                onChange={(event) => {setFullName(event.target.value)}}
                                             />
                                             <ErrorMessage name='fullname'>
                                                 {(e) => <div className={Style.error}>{e}</div>}
@@ -75,7 +91,8 @@ export default function ContactUS() {
                                                 placeholder='Your Email'
                                                 id='email'
                                                 name='email'
-                                                onChange={(email) => setEmail(email)}
+                                                value={email}
+                                                onChange={(event) => {setEmail(event.target.value)}}
                                             />
                                             <ErrorMessage name='email'>
                                                 {(e) => <div className={Style.error}>{e}</div>}
@@ -89,20 +106,25 @@ export default function ContactUS() {
                                         id='subject'
                                         name='subject'
                                         className={Style.subject}
-                                        onChange={(subject) => setSubject(subject)}
+                                        value={subject}
+                                        onChange={(event) => {setSubject(event.target.value)}}
                                     />
                                     <ErrorMessage name='subject'>
                                         {(e) => <div className={Style.error}>{e}</div>}
                                     </ErrorMessage>
                                     <label htmlFor='message'>Message</label>
-                                    <Field
+                                    <input
                                         type='text'
                                         placeholder='Write a message'
                                         id='message'
                                         name='message'
                                         className={Style.message}
-                                        onChange={(message) => setMessage(message)}
+                                        value={message}
+                                        onChange={(event) => setMessage(event.target.value)}
                                     />
+                                    <ErrorMessage name='subject'>
+                                        {(e) => <div className={Style.error}>{e}</div>}
+                                    </ErrorMessage>
                                 </Stack>
                             </Form>
                         </Formik>
@@ -112,12 +134,13 @@ export default function ContactUS() {
                         <img src={Econtact2} alt='e2' className={Style.second_eimg} />
                     </Box>
                 </Box>
-                <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}>
+                {/* <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}>
                     <Box>
                         <h2 className={Style.title_popup}>Thanks for contacting us</h2>
                         <p className={Style.prag_popup}>Your message has been sent successfully</p>
                     </Box>
-                </PopUp>
+                </PopUp> */}
+                {popup}
             </Box>
             <Box width='42%' className={Style.contact_eimg}>
                 <img src={Statue} alt='statue' className={Style.contact_img} />
