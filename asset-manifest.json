@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/website/static/css/main.21b1cd30.css",
-    "main.js": "/website/static/js/main.ff8ba378.js",
+    "main.css": "/website/static/css/main.ea7d3c31.css",
+    "main.js": "/website/static/js/main.dbccade5.js",
     "static/media/pic2.png": "/website/static/media/pic2.271acc4c49a4b69f3882.png",
     "static/media/Statue2.png": "/website/static/media/Statue2.de41b062bbfc332368e3.png",
     "static/media/register.png": "/website/static/media/register.7225f00fe095993100c6.png",
@@ -10,7 +10,6 @@
     "static/media/signin.png": "/website/static/media/signin.9c2053e8b760fb6f0734.png",
     "static/media/Statue(Contact Us).png": "/website/static/media/Statue(Contact Us).5691ee60141bb1815473.png",
     "static/media/pic3.jpg": "/website/static/media/pic3.822564ec876c8b574be4.jpg",
-    "static/media/Tours5.png": "/website/static/media/Tours5.4c77c7062973bef17c37.png",
     "static/media/Tours4.png": "/website/static/media/Tours4.c4120a2b766ce911c37c.png",
     "static/media/Tours3.png": "/website/static/media/Tours3.f1a65024409bb7a62aa2.png",
     "static/media/Tours1.png": "/website/static/media/Tours1.c9316448ebb2897f497b.png",
@@ -30,11 +29,11 @@
     "static/media/CapitalisTypOasis.ttf": "/website/static/media/CapitalisTypOasis.b1296a99e746f176ddc9.ttf",
     "static/media/Favorites.png": "/website/static/media/Favorites.8d117981f2ddfc50b363.png",
     "index.html": "/website/index.html",
-    "main.21b1cd30.css.map": "/website/static/css/main.21b1cd30.css.map",
-    "main.ff8ba378.js.map": "/website/static/js/main.ff8ba378.js.map"
+    "main.ea7d3c31.css.map": "/website/static/css/main.ea7d3c31.css.map",
+    "main.dbccade5.js.map": "/website/static/js/main.dbccade5.js.map"
   },
   "entrypoints": [
-    "static/css/main.21b1cd30.css",
-    "static/js/main.ff8ba378.js"
+    "static/css/main.ea7d3c31.css",
+    "static/js/main.dbccade5.js"
   ]
 }
