@@ -6,7 +6,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { addFav, delFav, getArticleById } from "../../repositories/articleRepo";
+import { addFav, delFav, getArticleById, isFavorite } from "../../repositories/articleRepo";
 import MPopUp from "../../components/PopUp_Message/error/MPopUp";
 import { Context } from "../../components/Context/Context";
 
@@ -18,6 +18,7 @@ export default function ArticleInfo() {
   const { setMassagePopup } = useContext(Context);
   const [popup, setPopup] = useState(null);
   const [Loading, setLoading] = useState(false);
+  const [isfavorite,setIsfavorite]=useState(false);
 
   function transformDateFormat(dateString) {
     const options = { day: "numeric", month: "long", year: "numeric" };
@@ -35,8 +36,18 @@ export default function ArticleInfo() {
       console.log("Error fetching article");
     }
   }
+  async function isFav(id) {
+    const result = await isFavorite(id);
+    if (!result.isError) {
+      setIsfavorite(result.body);
+    } else {
+      console.log("Error");
+    }
+  }
+
   useEffect(() => {
     getArticle(id);
+    isFav(id)
   }, []);
 
   async function handleAddFav(jsonBody) {
@@ -48,7 +59,7 @@ export default function ArticleInfo() {
       setPopup(<MPopUp type="done">the article added to your favorite</MPopUp>);
     } else {
       setMassagePopup(true);
-      setPopup(<MPopUp type="error">{result.body.response.data.message} </MPopUp>);
+      setPopup(<MPopUp type="warning">{result.body.response.data.message} </MPopUp>);
     }
   }
 
@@ -104,14 +115,14 @@ export default function ArticleInfo() {
                 alignItems="center"
               >
                 <p>
-                  {isClicked
+                  {isClicked || isfavorite
                     ? t("Articles.ArticlesInfo.remove")
                     : t("Articles.ArticlesInfo.add")}
                   {t("Articles.ArticlesInfo.fav")}
                 </p>
-                <Tooltip title={isClicked ? "remove" : "add"}>
+                <Tooltip title={isClicked || isfavorite? "remove" : "add"}>
                   <button onClick={favorite} disabled={Loading}>
-                    {isClicked ? (
+                    {isClicked || isfavorite? (
                       <FavoriteIcon fontSize="large" className={styles.Icon} />
                     ) : (
                       <FavoriteBorderIcon

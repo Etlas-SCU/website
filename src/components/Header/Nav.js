@@ -12,9 +12,7 @@ import check from "../../images/Icons/Check.png";
 import { useTranslation } from "react-i18next";
 import Popup from "./registe-signin/PopupOutline/Popup";
 import profile from "../../images/Pngs/ProfilePic.jpg";
-import arrow from "../../images/Pngs/symbols_arrow.png";
 import { Logout } from "../../repositories/authRepo";
-import { useEffect } from "react";
 
 export default function Nav() {
   const { t, i18n } = useTranslation();
@@ -242,7 +240,7 @@ export default function Nav() {
               display="flex"
               p="10px 35px"
               alignItems="center"
-              width={LogIn ? "72%" : "95%"}
+              width={LogIn ? "75%" : "95%"}
             >
               {NavList}
               {LogIn ? (

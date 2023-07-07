@@ -2,7 +2,6 @@ import { DELETE, GET, Post } from "../helpers/apiService";
 
 export async function getArticles(pageNum) {
   const result = await GET(`articles/?page=${pageNum}`);
-  console.log(result.body)
   return {
     isError: result.isError,
     body: result.body,
@@ -10,6 +9,13 @@ export async function getArticles(pageNum) {
 }
 export async function getArticleById(id) {
   const result = await GET(`articles/${id}/`);
+  return {
+    isError: result.isError,
+    body: result.body,
+  };
+}
+export async function isFavorite(id) {
+  const result = await GET(`favorites/is-favorite/${id}/`);
   console.log(result.body)
   return {
     isError: result.isError,
