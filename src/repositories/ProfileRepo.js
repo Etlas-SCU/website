@@ -26,13 +26,12 @@ export async function getBestScore(){
 
 export async function getFavoriteArticle(){
   const result = await GET("favorites/") ;
-  console.log(result.body.results) ;
-  return{
+  console.log(result.body.results);
+  return {
     isError: result.isError,
     body: result.body,
   }
 }
-
 
 export async function getFavoriteById(id){
   const result = await GET(`favorites/${id}/`) ;

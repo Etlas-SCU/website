@@ -48,27 +48,19 @@ export default function Favorites() {
         async function getFavorite() {
             const result = await getFavoriteArticle();
             if (!result.isError) {
-                console.log(result.body.results);
-                setFavorite(result.body.results);
+                let favoriteAritcleList = result.body.results;
+                
+                favoriteAritcleList = favoriteAritcleList
+                .filter(favorite => favorite.article !== null)
+                .map(favorite => favorite.article);
+
+                setFavorite(favoriteAritcleList);
             } else {
                 console.log("error");
             }
         }
         getFavorite();
-    },);
-
-    useEffect(() => {
-        async function getFavoriteId(id) {
-            const result = await getFavoriteById(id);
-            if (!result.isError) {
-                console.log(result.body);
-                setFavoriteId(result.body);
-            } else {
-                console.log("error");
-            }
-        }
-        getFavoriteId();
-    },);
+    }, []);
 
     return (
         <Stack>
@@ -99,9 +91,10 @@ export default function Favorites() {
                     </button>
                 </Box>
                 <Fade direction='right' triggerOnce='false'>
-                    { favorites !== null ? favorites.map((favorite) => (
+                    { favorites !== null ? favorites.map((favorite, index) => (
                         <SwiperSlide
                             className={Style.swiperSlide}
+                            key={index}
                         >
                             <Stack className={Style.fav} direction='row' id={favorite.id} key={favorite.id}>
                                 <Box className={Style.img_box}>
@@ -110,7 +103,7 @@ export default function Favorites() {
                                             <Skeleton variant='rectangle' animation='circle' className={Style.fav_skelton} />
                                         </> :
                                         <>
-                                            <img src={favoriteId.article.image_url} alt='favorites' className={Style.fav_img} />
+                                            <img src={favorite.image_url} alt='favorites' className={Style.fav_img} />
                                         </>}
                                 </Box>
                                 <Box className={Style.sec2} >
@@ -123,9 +116,9 @@ export default function Favorites() {
                                         :
                                         <>
                                             <Box className={Style.fav_info}>
-                                                <h3 className={Style.title}>{favoriteId.article.article_title}</h3>
-                                                <p className={Style.prag}>{favoriteId.article.description}</p>
-                                                <p className={Style.date}>{favoriteId.article.date}</p>
+                                                <h3 className={Style.title}>{favorite.article_title}</h3>
+                                                <p className={Style.prag}>{favorite.description}</p>
+                                                <p className={Style.date}>{favorite.date}</p>
                                             </Box>
                                             <Box className={Style.icons}>
                                                 <ArrowOutwardIcon className={Style.arrow_icon} />
