@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Style from './Favorites.module.css';
 import { Box, Stack } from '@mui/system';
-import FavoritesImg from '../../../images/Pngs/Favorites.png';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import DeleteIcon from '@mui/icons-material/Delete';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Fade } from 'react-awesome-reveal';
-import { Skeleton } from '@mui/material';
+import { Skeleton , Link } from '@mui/material';
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import SwiperCore, { Autoplay, Navigation, Pagination, EffectCoverflow } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { getFavoriteArticle, getFavoriteById } from '../../../repositories/ProfileRepo';
+import { getArticleById, getArticles } from '../../../repositories/articleRepo';
 
 export default function Favorites() {
 
@@ -20,9 +20,6 @@ export default function Favorites() {
     const [isLoading, setIsLoading] = useState(true);
 
     const [favorites, setFavorite] = useState([]);
-    const [favoriteId, setFavoriteId] = useState();
-
-    const isfavorite = [1, 2, 3];
 
     const swiperRef = React.useRef(null);
 
@@ -61,6 +58,11 @@ export default function Favorites() {
         }
         getFavorite();
     }, []);
+
+    const Article = async (id) => {
+        const result = await getArticleById(id) ;
+        return result ;
+    }
 
     return (
         <Stack>
@@ -121,7 +123,9 @@ export default function Favorites() {
                                                 <p className={Style.date}>{favorite.date}</p>
                                             </Box>
                                             <Box className={Style.icons}>
-                                                <ArrowOutwardIcon className={Style.arrow_icon} />
+                                                <button className={Style.arrow_btn}onClick={Article(favorite.id)} >
+                                                    <ArrowOutwardIcon className={Style.arrow_icon} />
+                                                </button>
                                                 <button className={Style.del_btn}>
                                                     <DeleteIcon className={Style.delete_icon} />
                                                 </button>

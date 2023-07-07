@@ -69,7 +69,7 @@
     height: 100px;
 }
 
-.btn{
+.btn , .arrow_btn , .del_btn{
     background : none;
     border: none;
 }
