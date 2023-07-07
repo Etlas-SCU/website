@@ -21,7 +21,7 @@ export default function QandA() {
   const [skeleton, setSkeleton] = useState(true);
   const { setMassagePopup, LogIn } = useContext(Context);
   const [popup, setPopup] = useState(null);
-  // const [choices, setChoices] = useState([]);
+  const [choices, setChoices] = useState([])
 
   useEffect(() => {
     async function getData() {
@@ -34,21 +34,18 @@ export default function QandA() {
       }
     }
     getData();
-
-    if (questions !== null) {
-      // setChoices(questions[currQ].shuffled_choices);
-    }
   }, []);
+
+  useEffect(() => {
+    if (questions != null && currQ < questions.length)
+      setChoices(questions[currQ].shuffled_choices)
+  }, [currQ, questions])
 
   useEffect(() => {
     setTimeout(() => {
       setSkeleton(false);
     }, 2000);
   }, []);
-
-  // useEffect(() => {
-  //   setChoices(questions[currQ].shuffled_choices);
-  // }, [currQ]);
 
   function isCorrectAnswer(ans) {
     return ans.choice_text === questions[currQ].correct_choice;
@@ -95,23 +92,20 @@ export default function QandA() {
       </p>
     );
   };
+  
+  const handleHint = () => {
+    var wrong = choices.filter((answer) => !isCorrectAnswer(answer));
+    var right = choices.filter((answer) => isCorrectAnswer(answer));
+    setChoices([right[0], wrong[0]])
+  };
 
   if (isLoading) {
     return <h2 className={style.error}>Loading..</h2>;
   }
 
-  if (questions === null || questions.length === 0) {
+  if (questions === null || questions.length === 0 || choices == null) {
     return <h2 className={style.error}>No questions</h2>;
   }
-
-  var choices = questions[currQ].shuffled_choices;
-
-  const handleHint = () => {
-    var wrong = choices.filter((answer) => !isCorrectAnswer(answer));
-    choices = [questions[currQ].correct_choice, wrong[0].choice_text];
-    // setChoices(choices);
-    console.log(choices);
-  };
 
   return (
     <Box p="120px 0" height="100%">
