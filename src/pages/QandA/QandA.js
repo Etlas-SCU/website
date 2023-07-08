@@ -144,7 +144,7 @@ export default function QandA() {
       ) : (
         <Box className={style.QandA}>
           <Box className={style.questions__image}>
-            {questions[currQ].image_url ? (
+            {skeleton ? (
               <Skeleton variant="rectangular" className={style.skeleton} />
             ) : (
               <img src={questions[currQ].image_url} alt={title} />
