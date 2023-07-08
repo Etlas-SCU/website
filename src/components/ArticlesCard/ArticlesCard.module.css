@@ -17,6 +17,7 @@
     height: 240px;
     margin: 10px 0;
     object-fit: cover;
+    border-radius: 7px;
 }
 .card__name{
     color: var(--mainColor);
