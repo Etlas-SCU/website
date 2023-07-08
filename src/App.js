@@ -21,9 +21,10 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   const { pathname } = useLocation();
- 
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    // localStorage.removeItem("access");
   }, [pathname]);
 
   return (

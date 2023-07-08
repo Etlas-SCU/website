@@ -1,5 +1,6 @@
 .tours_comp{
     width: 30%;
+    margin: 15px;
 }
 .tours_card{
     display: flex;
@@ -7,6 +8,7 @@
     margin: 30px 10px 0 10px;
     background: rgba(217, 217, 217, 1);
     border-radius: 15px;
+    height: 170px;
 }
 
 .tours_card:hover{
@@ -16,60 +18,86 @@
 .tours_sec1{
     display: flex;
     justify-content: left;
-    width: 35%;
+    width: 40%;
+   
 }
 
 .tours_img{
-    width: 90% ;
+    width: 95% ;
+    height: 170px;
+    margin-right: 5px ;
+    border-radius: 15px;
 }
 
 .tours_sec2{
-    width: 65%;
+    width: 60%;
     margin: 0;
 }
 
 .Sec2_cont{
-    padding: 10px 0;
+    margin: 5px 0;
 }
 
 .title{
     color: var(--mainColor);
     font-size: 16px;
     font-weight: 500;
-    padding: 7px 0;
+    margin: 7px 0;
 }
 
 .prag{
     color: rgba(96, 96, 96, 1);
     font-size: 13px;
     font-weight: 400;
+    height: 70px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 5px ;
+}
+
+.prag::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: -16px;
+    left: -15px;
+    background-color: #dfdadafc;
+    filter: blur(18px);
 }
 
 .tours_sec1 .loading{
     width: 360px;
-    height: 130px;
+    height: 170px;
+}
+
+@media only screen and (max-width: 1120px){
+    .tours_comp{
+        width: 40%;
+    }
 }
 
 @media only screen and (max-width: 900px){
     .tours_comp{
-        width: 40%;
+        width: 70%;
     }
     .tours_sec1{
-        width: 40%;
+        width: 33%;
     }
     .tours_sec2{
-        width: 60%;
+        width: 67%;
     }
     .title{
         font-size: 14px;
-        width: 250px;
+        width: 400px;
+        height: 20px;
     }
     .prag{
         font-size: 11px ;
     }
     .tours_sec1 .loading{
         width: 300px;
-        height: 130px;
+        height: 170px;
     }
     
 }
@@ -77,32 +105,47 @@
 @media only screen and (max-width: 760px){
     .tours_sec1 .loading{
         width: 250px;
-        height: 130px;
+        height: 170px;
     }
     
 }
 
 @media only screen and (max-width: 650px){
     .tours_comp{
-        width: 60%;
+        width: 80%;
+        margin: 15px;
     }
     .title , .prag{
         font-size: 10px;
     }
     .tours_sec1 .loading{
         width: 350px;
-        height: 130px;
+        height: 170px;
     }
+
     
 }
+@media only screen and (max-width: 540px){
+    .tours_comp{
+        width: 85%;
+        margin: 20px;
+    }
+}
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 500px){
     .tours_comp{
         width: 90%;
+        margin: 0 40px;
     }
     .tours_sec1 .loading{
         width: 320px;
-        height: 130px;
+        height: 170px;
     }
     
+}
+@media only screen and (max-width: 400px){
+    .tours_comp{
+        width: 90%;
+        margin: 0 70px ;
+    }
 }

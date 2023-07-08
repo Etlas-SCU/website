@@ -35,9 +35,6 @@ export default function Tours() {
           <div>no tours</div>
         )}
       </Stack>
-      {/* <Stack>
-        <PagePagination data = {image} />
-      </Stack> */}
     </PageOutLine>
   );
 }

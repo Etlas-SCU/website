@@ -7,7 +7,7 @@ import OutLineBtn from "../../outLineBtn/OutLineBtn";
 import { Context } from "../../Context/Context";
 import { useContext } from "react";
 
-export default function Sec4(props) {
+export default function Sec4() {
   const { Tours } = useContext(Context);
   return (
     <Stack className={Style.sec4}>
