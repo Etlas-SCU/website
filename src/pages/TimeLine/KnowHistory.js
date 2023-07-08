@@ -180,6 +180,8 @@ export default function KnowHistory() {
                         <p>{sec.description[0]}</p>
                         <br />
                         <p>{sec.description[1]}</p>
+                        <br/>
+                        <p>{sec.description[2]}</p>
                       </>
                     )}
                   </Fade>

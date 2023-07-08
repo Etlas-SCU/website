@@ -114,7 +114,7 @@ export default function Sec3() {
       </Stack>
 
       <Box className={styles.date}>
-        <p>200 BC | Ancient Egypt (Osiris Kingdom)</p>
+        <p>{`${timeLineSections[currIndx].date} | ${timeLineSections[currIndx].title}`}</p>
       </Box>
 
       <Stack direction="row" alignItems="center" justifyContent="center">

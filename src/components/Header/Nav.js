@@ -12,9 +12,7 @@ import check from "../../images/Icons/Check.png";
 import { useTranslation } from "react-i18next";
 import Popup from "./registe-signin/PopupOutline/Popup";
 import profile from "../../images/Pngs/ProfilePic.jpg";
-import arrow from "../../images/Pngs/symbols_arrow.png";
 import { Logout } from "../../repositories/authRepo";
-import { useEffect } from "react";
 
 export default function Nav() {
   const { t, i18n } = useTranslation();
@@ -242,16 +240,14 @@ export default function Nav() {
               display="flex"
               p="10px 35px"
               alignItems="center"
-              width={LogIn ? "72%" : "95%"}
+              width={LogIn ? "78%" : "95%"}
             >
               {NavList}
               {LogIn ? (
                 <Box
-                  width="21%"
+                  width="28%"
                   display="flex"
                   alignItems="center"
-                  justifyContent="space-between"
-                  gap="15px"
                 >
                   <Stack direction="row" gap="4px">
                     <NavLink
@@ -264,14 +260,12 @@ export default function Nav() {
                             ? userData.image_url
                             : profile
                         }
-                        style={{ width: "35%", borderRadius: "50%" }}
+                        style={{ width: "18%", borderRadius: "50%" }}
                       />
-                      <p>
                         &nbsp;
                         {userData != null && userData.full_name != null
-                          ? userData.full_name.split(" ")[0]
+                          ? <Stack>{userData.full_name.split(" ")[0]}<p style={{fontSize:"0.5vw"}}>{userData.email}</p></Stack>
                           : ""}
-                      </p>
                     </NavLink>
                   </Stack>
 

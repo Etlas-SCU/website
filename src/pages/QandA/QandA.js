@@ -4,10 +4,7 @@ import { Box, Skeleton } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import hint from "../../images/Pngs/Hint.png";
-import {
-  getQuestionsByTitle,
-  setBestScoreByTitle,
-} from "../../repositories/questionsRepo";
+import {getQuestionsByTitle,setBestScoreByTitle} from "../../repositories/questionsRepo";
 import { useContext } from "react";
 import { Context } from "../../components/Context/Context";
 import MPopUp from "../../components/PopUp_Message/error/MPopUp";
@@ -22,21 +19,27 @@ export default function QandA() {
   const [currScore, setCurrScore] = useState(0);
   const [questions, setQuestions] = useState(null);
   const [skeleton, setSkeleton] = useState(true);
-  const { setMassagePopup ,LogIn} = useContext(Context);
+  const { setMassagePopup, LogIn } = useContext(Context);
   const [popup, setPopup] = useState(null);
+  const [choices, setChoices] = useState([])
 
   useEffect(() => {
     async function getData() {
       setIsLoading(true);
       var result = await getQuestionsByTitle(title);
       setIsLoading(false);
-
+      console.log(result.body)
       if (!result.isError) {
-        setQuestions(result.body)
+        setQuestions(result.body);
       }
     }
     getData();
   }, []);
+
+  useEffect(() => {
+    if (questions != null && currQ < questions.length)
+      setChoices(questions[currQ].shuffled_choices)
+  }, [currQ, questions])
 
   useEffect(() => {
     setTimeout(() => {
@@ -45,7 +48,7 @@ export default function QandA() {
   }, []);
 
   function isCorrectAnswer(ans) {
-    return ans.choice_text == questions[currQ].correct_choice;
+    return ans.choice_text === questions[currQ].correct_choice;
   }
 
   const handleCorrectAnswer = async (answer) => {
@@ -56,19 +59,21 @@ export default function QandA() {
       if (isCorrectAnswer) newScore++;
       if (!LogIn) {
         setMassagePopup(true);
-        setPopup(<MPopUp type="error">your score not be saved,SignIn first</MPopUp>);
-      }else{
+        setPopup(
+          <MPopUp type="error">your score not be saved,SignIn first</MPopUp>
+        );
+      } else {
         var result = await setBestScoreByTitle(title, newScore);
-        if(!result.isError){
+        if (!result.isError) {
           setPopup(<MPopUp type="error">your score saved</MPopUp>);
-        }else{
+        } else {
           setPopup(<MPopUp type="error">error</MPopUp>);
         }
       }
       setTimeout(() => {
         setQuizFinished(true);
         setClicked(false);
-      }, 1500);
+      }, 3000);
     }
     if (isCorrectAnswer(answer)) {
       setCurrScore(currScore + 1);
@@ -77,14 +82,8 @@ export default function QandA() {
       setCurrQ(currQ + 1);
       setSelectedChoice(null);
       setClicked(false);
-    }, 1500);
+    }, 3000);
   };
-
-  // const handleHint=()=>{
-  //   const filteredAnswers = answers.filter((answer) => answer.isCorrect || filteredAnswers.length < 2);
-  //   setAnswers(filteredAnswers);
-  // }
-  
 
   const SC = () => {
     return (
@@ -93,12 +92,36 @@ export default function QandA() {
       </p>
     );
   };
+  
+  const handleHint = () => {
+    var wrong = choices.filter((answer) => !isCorrectAnswer(answer));
+    var right = choices.filter((answer) => isCorrectAnswer(answer));
+    setChoices(shuffle([right[0], wrong[0]]))
+  };
+
+  function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
 
   if (isLoading) {
     return <h2 className={style.error}>Loading..</h2>;
   }
 
-  if (questions == null || questions.length == 0) {
+  if (questions === null || questions.length === 0 || choices === null) {
     return <h2 className={style.error}>No questions</h2>;
   }
 
@@ -130,8 +153,7 @@ export default function QandA() {
 
           <Box className={style.questions}>
             <p>{questions[currQ].statement} </p>
-
-            {questions[currQ].shuffled_choices.map((ans) => {
+            {choices.map((ans) => {
               return (
                 <button
                   disabled={clicked}
@@ -156,10 +178,7 @@ export default function QandA() {
           <Box className={style.questions__score}>
             <Box>
               <p>Need a help? </p>
-              <button
-                className={style.hint}
-                //  onClick={handleHint}
-              >
+              <button className={style.hint} onClick={handleHint}>
                 <img src={hint} alt="hint" />
               </button>
             </Box>
