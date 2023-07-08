@@ -28,7 +28,7 @@ export default function QandA() {
       setIsLoading(true);
       var result = await getQuestionsByTitle(title);
       setIsLoading(false);
-
+      console.log(result.body)
       if (!result.isError) {
         setQuestions(result.body);
       }
@@ -121,7 +121,7 @@ export default function QandA() {
     return <h2 className={style.error}>Loading..</h2>;
   }
 
-  if (questions === null || questions.length === 0 || choices == null) {
+  if (questions === null || questions.length === 0 || choices === null) {
     return <h2 className={style.error}>No questions</h2>;
   }
 
@@ -144,7 +144,7 @@ export default function QandA() {
       ) : (
         <Box className={style.QandA}>
           <Box className={style.questions__image}>
-            {skeleton ? (
+            {questions[currQ].image_url ? (
               <Skeleton variant="rectangular" className={style.skeleton} />
             ) : (
               <img src={questions[currQ].image_url} alt={title} />

@@ -14,8 +14,8 @@ export async function getArticleById(id) {
     body: result.body,
   };
 }
-export async function isFavorite(id) {
-  const result = await GET(`favorites/is-favorite/${id}/`);
+export async function isFavorite(body) {
+  const result = await Post("favorites/is-favorite/", JSON.stringify(body));
   console.log(result.body)
   return {
     isError: result.isError,

@@ -36,18 +36,21 @@ export default function ArticleInfo() {
       console.log("Error fetching article");
     }
   }
-  async function isFav(id) {
-    const result = await isFavorite(id);
+  async function isFav() {
+    var jsonBody={
+      article_id:id
+    }
+    const result = await isFavorite(jsonBody);
     if (!result.isError) {
       setIsfavorite(result.body);
     } else {
-      console.log("Error");
+      console.log(result.body);
     }
   }
 
   useEffect(() => {
     getArticle(id);
-    isFav(id)
+    isFav()
   }, []);
 
   async function handleAddFav(jsonBody) {
@@ -80,7 +83,7 @@ export default function ArticleInfo() {
     var jsonBody = {
       id: id,
     };
-    if (!isClicked) {
+    if (!isfavorite) {
       handleAddFav(jsonBody);
     } else {
       handleDelFav(jsonBody);
