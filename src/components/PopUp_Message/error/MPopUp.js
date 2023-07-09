@@ -1,6 +1,5 @@
 import { Box, Stack } from "@mui/material";
 import React from "react";
-import close from "../../../images/Icons/close.png";
 import styles from "./MPopUp.module.css";
 import error from "../../../images/Pngs/error.png";
 import warning from "../../../images/Pngs/warning.png";

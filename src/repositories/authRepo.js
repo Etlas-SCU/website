@@ -27,21 +27,8 @@ export async function Logout(body) {
   };
 }
 
-// export async function refreshToken() {
-//   var refresh = localStorage.getItem("refresh");
-//   const result = await Post(
-//     "auth/token/refresh/",
-//     JSON.stringify({ refresh: refresh })
-//   );
-//   if (!result.isError) {
-//     localStorage.setItem("access", result.body.access);
-//     localStorage.setItem("refresh", result.body.refresh);
-//   }
-// }
-
 export async function register(body) {
   const result = await Post("auth/register/", JSON.stringify(body));
-  
   return {
     isError: result.isError,
     body: result.body,

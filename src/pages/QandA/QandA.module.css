@@ -49,6 +49,7 @@
     width: 50%;
     border: none;
     display: block;
+    color: var(--mainColor);
 
 }
 
@@ -79,6 +80,9 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+.hint img{
+    width: 100px;
 }
 .finish{
     text-align: center;

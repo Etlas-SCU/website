@@ -18,8 +18,6 @@ export default function KnowHistory() {
   const { timeLineSections ,timeLine} = useContext(Context);
   const { t } = useTranslation();
 
-  console.log(timeLine)
-
   const sectionRefs = useRef([]);
   const location = useLocation();
 

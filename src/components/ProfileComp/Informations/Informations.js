@@ -49,7 +49,6 @@ export default function Informations() {
             phone_number: phone
         }
 
-        console.log(editProfile);
 
         var result = await editUserInfo(editProfile);
         if (result.isError) {

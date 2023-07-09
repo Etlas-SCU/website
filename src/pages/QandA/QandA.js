@@ -28,7 +28,6 @@ export default function QandA() {
       setIsLoading(true);
       var result = await getQuestionsByTitle(title);
       setIsLoading(false);
-      console.log(result.body)
       if (!result.isError) {
         setQuestions(result.body);
       }

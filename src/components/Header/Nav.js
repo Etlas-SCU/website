@@ -245,7 +245,7 @@ export default function Nav() {
               {NavList}
               {LogIn ? (
                 <Box
-                  width="28%"
+                  width="29%"
                   display="flex"
                   alignItems="center"
                 >
@@ -263,7 +263,7 @@ export default function Nav() {
                         style={{ width: "18%", borderRadius: "50%" }}
                       />
                         &nbsp;
-                        {userData != null && userData.full_name != null
+                        {userData != null && userData.full_name != null && userData.full_name != null
                           ? <Stack>{userData.full_name.split(" ")[0]}<p style={{fontSize:"0.5vw"}}>{userData.email}</p></Stack>
                           : ""}
                     </NavLink>

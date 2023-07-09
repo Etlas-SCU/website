@@ -24,6 +24,7 @@ export async function isFavorite(body) {
 }
 export async function addFav(body) {
   const result = await Post("favorites/article/add/", JSON.stringify(body));
+  console.log(result.body)
   return {
     isError: result.isError,
     body: result.body,
@@ -31,6 +32,7 @@ export async function addFav(body) {
 }
 export async function delFav(body) {
   const result = await DELETE("favorites/article/delete/", JSON.stringify(body));
+  console.log(result.body)
   return {
     isError: result.isError,
     body: result.body,

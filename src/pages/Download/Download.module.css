@@ -1,7 +1,5 @@
 .down{
     padding: 105px 25px 0px 25px;
-    /* margin: 0 0 30px; */
-
     color: var(--mainColor);
 }
 .title{
@@ -45,7 +43,6 @@
     position: absolute;
     width: 397px;
     right: -181px;
-    /* bottom: 200px; */
     top: -95px;
   
 }

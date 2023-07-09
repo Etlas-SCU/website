@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState } from 'react';
 import Style from './Profile.module.css';
 import { Box } from '@mui/material';
 import ProfilePic from '../../images/Pngs/ProfilePic.jpg';
