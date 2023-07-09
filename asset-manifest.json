@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/website/static/css/main.569de429.css",
-    "main.js": "/website/static/js/main.c13591bb.js",
+    "main.css": "/website/static/css/main.1bfbfdeb.css",
+    "main.js": "/website/static/js/main.8d11abba.js",
     "static/media/pic2.png": "/website/static/media/pic2.271acc4c49a4b69f3882.png",
     "static/media/Statue2.png": "/website/static/media/Statue2.de41b062bbfc332368e3.png",
     "static/media/register.png": "/website/static/media/register.7225f00fe095993100c6.png",
@@ -25,15 +25,13 @@
     "static/media/Profile2.png": "/website/static/media/Profile2.2d5b969a581025fda32b.png",
     "static/media/PressJobs.ttf": "/website/static/media/PressJobs.1a5dc7f5afa0e1b2026b.ttf",
     "static/media/hat-stock 1.png": "/website/static/media/hat-stock 1.93885b19214628f43ea1.png",
-    "static/media/Tours.png": "/website/static/media/Tours.7ecffe3e06fb77c8286b.png",
     "static/media/CapitalisTypOasis.ttf": "/website/static/media/CapitalisTypOasis.b1296a99e746f176ddc9.ttf",
-    "static/media/Favorites.png": "/website/static/media/Favorites.8d117981f2ddfc50b363.png",
     "index.html": "/website/index.html",
-    "main.569de429.css.map": "/website/static/css/main.569de429.css.map",
-    "main.c13591bb.js.map": "/website/static/js/main.c13591bb.js.map"
+    "main.1bfbfdeb.css.map": "/website/static/css/main.1bfbfdeb.css.map",
+    "main.8d11abba.js.map": "/website/static/js/main.8d11abba.js.map"
   },
   "entrypoints": [
-    "static/css/main.569de429.css",
-    "static/js/main.c13591bb.js"
+    "static/css/main.1bfbfdeb.css",
+    "static/js/main.8d11abba.js"
   ]
 }
