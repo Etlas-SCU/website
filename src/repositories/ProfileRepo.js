@@ -1,4 +1,4 @@
-import {GET , Patch} from '../helpers/apiService' ;
+import {GET , Patch , DELETE} from '../helpers/apiService' ;
 
 export async function getUserInfo(){
     const result = await GET("users/") ;
@@ -22,4 +22,22 @@ export async function getBestScore(){
     isError: result.isError,
     body: result.body,
   };
+}
+
+export async function getFavoriteArticle(){
+  const result = await GET("favorites/") ;
+  console.log(result.body.results);
+  return {
+    isError: result.isError,
+    body: result.body,
+  }
+}
+
+export async function deleteFavorite(body){
+  const result = await DELETE(`favorites/articles/delete/` , JSON.stringify(body)) ;
+  console.log(result.body) ;
+  return{
+    isError: result.isError,
+    body: result.body,
+  }
 }

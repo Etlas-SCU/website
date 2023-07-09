@@ -71,6 +71,7 @@
     .play_btn{
         font-weight: 500;
         font-size: 15px;
+        margin-top: 60px;
     }
 }
 
@@ -83,6 +84,9 @@
     }
     .best_score{
         font-size: 14px;
+    }
+    .play_btn{
+        margin-top: 80px;
     }
 
 }

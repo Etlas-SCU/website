@@ -1,41 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext } from 'react';
 import Style from './Favorites.module.css';
 import { Box, Stack } from '@mui/system';
-import FavoritesImg from '../../../images/Pngs/Favorites.png';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import DeleteIcon from '@mui/icons-material/Delete';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Arrow from '../../../images/Icons/ArrowIcon.png';
+import Delete from '../../../images/Icons/Delete.png';
+import {Link} from 'react-router-dom';
 import { Fade } from 'react-awesome-reveal';
 import { Skeleton } from '@mui/material';
-// import "swiper/swiper-bundle.min.css";
-// import "swiper/swiper.min.css";
-// import SwiperCore, { Autoplay, Navigation, Pagination, EffectCoverflow } from "swiper";
-// import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+import SwiperCore, { Autoplay, Navigation, Pagination, EffectCoverflow } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { deleteFavorite, getFavoriteArticle} from '../../../repositories/ProfileRepo';
+import MPopUp from "../../PopUp_Message/error/MPopUp";
+import { Context } from "../../Context/Context";
 
 export default function Favorites() {
 
-    // SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
-    const favorite = [1, 2, 3];
-
-    // const swiperRef = React.useRef(null);
-
-    // // goto next slide
-    // const goNext = () => {
-    //     if (swiperRef.current && swiperRef.current.swiper) {
-    //         swiperRef.current.swiper.slideNext();
-    //     }
-    // };
-
-
-    // // goto prev slide
-    // const goPrev = () => {
-    //     if (swiperRef.current && swiperRef.current.swiper) {
-    //         swiperRef.current.swiper.slidePrev();
-    //     }
-    // };
-
+    SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
     const [isLoading, setIsLoading] = useState(true);
+    const [popup, setPopup] = useState(null);
+    const { setMassagePopup } = useContext(Context);
+
+    const [favorites, setFavorite] = useState([]);
+
+    const swiperRef = React.useRef(null);
 
     useEffect(() => {
         setTimeout(() => {
@@ -43,9 +31,41 @@ export default function Favorites() {
         }, 2000);
     }, []);
 
+    useEffect(() => {
+        async function getFavorite() {
+            const result = await getFavoriteArticle();
+            if (!result.isError) {
+                let favoriteAritcleList = result.body.results;
+                
+                favoriteAritcleList = favoriteAritcleList
+                .filter(favorite => favorite.article !== null)
+                .map(favorite => favorite.article);
+
+                setFavorite(favoriteAritcleList);
+            } else {
+                console.log("error");
+            }
+        }
+        getFavorite();
+    }, []);
+
+    useEffect( () => {
+        async function DeleteFav(body) {
+            const result = await deleteFavorite(body);
+            if (!result.isError) {
+              setMassagePopup(true);
+              setPopup(<MPopUp type="done">The article removed from your Favorite</MPopUp>);
+            } else {
+              setMassagePopup(true);
+              setPopup(<MPopUp type="error">The article can't remove from your Favorite </MPopUp>);
+            }
+        }
+        DeleteFav();
+    })
+
     return (
         <Stack>
-            {/* <Swiper
+            <Swiper
                 ref={swiperRef}
                 autoplay={false}
                 initialSlide={0}
@@ -54,72 +74,67 @@ export default function Favorites() {
                 centeredSlides={true}
                 slidesPerView={3}
                 direction='vertical'
-                longSwipes={false}
-                setWrapperSize={true}
+                spaceBetween={7}
                 coverflowEffect={{
-                    rotate: 0,
+                    rotate: 50,
                     stretch: 0,
                     depth: 100,
                     modifier: 1,
                     slideShadows: false,
                 }}
-                pagination={true}
+                pagination={false}
                 className={Style.mySwiper}
-            > */}
-                <Box className={Style.prev}>
-                    <button className={Style.btn} >
-                        <KeyboardArrowUpIcon className={Style.prev_icon} style={{ fontSize: 'x-large' }} />
-                    </button>
-                </Box>
+            >
                 <Fade direction='right' triggerOnce='false'>
-                    {favorite.map((value) => (
-                        // <SwiperSlide 
-                        // className={Style.swiperSlide}
-                        // >
-                            <Stack className={Style.fav} direction='row' id={value} key={value}>
+                    { favorites !== null ? favorites.map((favorite, index) => (
+                        <SwiperSlide
+                            className={Style.swiperSlide}
+                            key={index}
+                        >
+                            <Stack className={Style.fav} direction='row' id={favorite.id} key={favorite.id}>
                                 <Box className={Style.img_box}>
                                     {isLoading ?
                                         <>
                                             <Skeleton variant='rectangle' animation='circle' className={Style.fav_skelton} />
                                         </> :
                                         <>
-                                            <img src={FavoritesImg} alt='favorites' className={Style.fav_img} />
+                                            <img src={favorite.image_url} alt='favorites' className={Style.fav_img} />
                                         </>}
                                 </Box>
                                 <Box className={Style.sec2} >
                                     {isLoading ?
                                         <>
-                                            <Skeleton />
-                                            <Skeleton />
                                             <Skeleton width='70%' />
+                                            <Skeleton width='10%' />
+                                            
                                         </>
                                         :
                                         <>
                                             <Box className={Style.fav_info}>
-                                                <h3 className={Style.title}>Anubis</h3>
-                                                <p className={Style.prag}>Know more about <br /> Anubis and his powers.</p>
-                                                <p className={Style.date}>15 Jan 2023</p>
+                                                <h3 className={Style.title}>{favorite.article_title}</h3>
+                                                <p className={Style.prag}>{favorite.description}</p>
+                                                <p className={Style.date}>{favorite.date}</p>
                                             </Box>
                                             <Box className={Style.icons}>
-                                                <ArrowOutwardIcon className={Style.arrow_icon} />
-                                                <DeleteIcon className={Style.delete_icon} />
+                                                <button className={Style.arrow_btn} >
+                                                    <Link to={`/articles/${favorite.id}`}>
+                                                        <img src={Arrow} className={Style.arrow_icon} alt='arrow'/>
+                                                    </Link>
+                                                </button>
+                                                <button className={Style.del_btn}>
+                                                    <img src={Delete} alt='delete' className={Style.delete_icon} />
+                                                </button>
                                             </Box>
                                         </>
                                     }
 
                                 </Box>
                             </Stack>
-                        // </SwiperSlide>
+                        </SwiperSlide>
                     ))
-                    }
+                        : <h2>no favorite articles </h2>}
                 </Fade >
-
-                <Box className={Style.next}>
-                    <button className={Style.btn} >
-                        <KeyboardArrowDownIcon className={Style.next_icon} style={{ fontSize: 'x-large' }} />
-                    </button>
-                </Box>
-            {/* </Swiper> */}
+            </Swiper>
         </Stack >
     )
 }

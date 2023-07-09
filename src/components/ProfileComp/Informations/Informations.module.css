@@ -94,20 +94,15 @@
     height: 50px;
     border: none;
     border-radius: 15px;
-    margin: 40px 0 -20px 0;
+    margin: 70px 0 -20px 0;
     font-size: 18px;
     font-weight: 600;
     text-align: center;
 }
-/* 
-.info .skelton_info{
-    width: 250px ; 
-    height: 320px ;
-} */
 
 @media only screen and (max-width : 1110px){
     .info_img{
-        visibility: hidden;
+        display: none;
     }
 }
 
@@ -152,8 +147,8 @@
         right: 10px;
     }
 
-    .info_img{
-        visibility:visible;
+    .btn_save{
+        margin-top: 50px ;
     }
 }
 
@@ -199,5 +194,9 @@
     .edit_icon5,
     .save_icon5 {
         top: 313px;
+    }
+
+    .btn_save{
+        margin-top: 70px ;
     }
 }
