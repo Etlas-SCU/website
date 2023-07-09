@@ -18,7 +18,6 @@ export default function ArticleInfo() {
   const { setMassagePopup } = useContext(Context);
   const [popup, setPopup] = useState(null);
   const [Loading, setLoading] = useState(false);
-  const [isfavorite,setIsfavorite]=useState(false);
 
   function transformDateFormat(dateString) {
     const options = { day: "numeric", month: "long", year: "numeric" };
@@ -42,7 +41,7 @@ export default function ArticleInfo() {
     }
     const result = await isFavorite(jsonBody);
     if (!result.isError) {
-      setIsfavorite(result.body);
+      setIsClicked(result.body.is_favorite);
     } else {
       console.log(result.body);
     }
@@ -53,6 +52,9 @@ export default function ArticleInfo() {
     isFav()
   }, []);
 
+  // useEffect(() => {
+  //  console.log("hi")
+  // }, [isClicked]);
   async function handleAddFav(jsonBody) {
     setLoading(true)
     const result = await addFav(jsonBody);
@@ -66,9 +68,9 @@ export default function ArticleInfo() {
     }
   }
 
-  async function handleDelFav(jsonBody) {
+  async function handleDelFav(id) {
     setLoading(true)
-    const result = await delFav(jsonBody);
+    const result = await delFav(id);
     setLoading(false)
     if (!result.isError) {
       setMassagePopup(true);
@@ -83,12 +85,13 @@ export default function ArticleInfo() {
     var jsonBody = {
       id: id,
     };
-    if (!isfavorite) {
+    if (isClicked === false) {
       handleAddFav(jsonBody);
     } else {
-      handleDelFav(jsonBody);
+      handleDelFav(id);
     }
     setIsClicked(!isClicked);
+    console.log(isClicked)
   }
 
   return (
@@ -118,14 +121,14 @@ export default function ArticleInfo() {
                 alignItems="center"
               >
                 <p>
-                  {isClicked || isfavorite
+                  { isClicked === true
                     ? t("Articles.ArticlesInfo.remove")
                     : t("Articles.ArticlesInfo.add")}
                   {t("Articles.ArticlesInfo.fav")}
                 </p>
-                <Tooltip title={isClicked || isfavorite? "remove" : "add"}>
+                <Tooltip title={ isClicked === true? "remove" : "add"}>
                   <button onClick={favorite} disabled={Loading}>
-                    {isClicked || isfavorite? (
+                    { isClicked === true? (
                       <FavoriteIcon fontSize="large" className={styles.Icon} />
                     ) : (
                       <FavoriteBorderIcon

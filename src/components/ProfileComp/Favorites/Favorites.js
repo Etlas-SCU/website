@@ -61,7 +61,7 @@ export default function Favorites() {
             }
         }
         DeleteFav();
-    })
+    },[])
 
     return (
         <Stack>

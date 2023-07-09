@@ -171,7 +171,7 @@ export async function GET(endpoint) {
   }
 }
 
-export async function DELETE(endpoint, body) {
+export async function DELETE(endpoint) {
   try {
     var expiryDate = localStorage.getItem("tokenExpiry")
     if (expiryDate != null && expiryDate <= Date.now()) {
@@ -181,7 +181,7 @@ export async function DELETE(endpoint, body) {
       }
     }
 
-    const response = await axios.delete(`${url}/${endpoint}`, body, {
+    const response = await axios.delete(`${url}/${endpoint}`, {
       headers: getHeaders(),
     });
 
