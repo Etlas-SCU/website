@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Style from './ToursCard.module.css';
 import { Stack, Box, Skeleton } from '@mui/material';
 import { Link } from 'react-router-dom'
-import TourImg from '../../images/Pngs/Tours.png';
 import Stars from '../Stars/Stars'
 import { Fade } from 'react-awesome-reveal';
 

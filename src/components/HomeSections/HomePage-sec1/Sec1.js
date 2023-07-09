@@ -35,12 +35,11 @@ export default function Sec1() {
             </Stack>
           </Zoom>
         </Box>
-        <Zoom triggerOnce="false">
-          <Box className={styles.img_col} width='45%'>
-            <img src={Statue2} className={styles.home_img} alt='etlas-home' />
-          </Box>
-        </Zoom>
 
+        <Box className={styles.img_col} width='45%'>
+          <img src={Statue2} className={styles.home_img} alt='etlas-home' />
+        </Box>
+        
       </Stack>
     </Stack>
 

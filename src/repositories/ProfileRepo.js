@@ -33,8 +33,8 @@ export async function getFavoriteArticle(){
   }
 }
 
-export async function getFavoriteById(id){
-  const result = await GET(`favorites/${id}/`) ;
+export async function deleteFavorite(body){
+  const result = await DELETE(`favorites/articles/delete/` , JSON.stringify(body)) ;
   console.log(result.body) ;
   return{
     isError: result.isError,
