@@ -30,8 +30,8 @@ export async function addFav(body) {
     body: result.body,
   };
 }
-export async function delFav(body) {
-  const result = await DELETE("favorites/article/delete/", JSON.stringify(body));
+export async function delFav(id) {
+  const result = await DELETE(`favorites/article/delete/${id}/`);
   console.log(result.body)
   return {
     isError: result.isError,
