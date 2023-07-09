@@ -17,6 +17,7 @@ import KnowledgeCheck from "./pages/KnowledgeCheck/KnowledgeCheck";
 import QandA from "./pages/QandA/QandA";
 import Profile from "./pages/Profile/Profile";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import PricingPage from "./pages/PricingPage/PricingPage";
 
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/profile" element={<Profile />} />
-          
+          <Route path="/pricing" element={<PricingPage />} />
         </Routes>
       </Provider>
 
