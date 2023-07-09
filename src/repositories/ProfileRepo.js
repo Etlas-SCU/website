@@ -26,7 +26,6 @@ export async function getBestScore(){
 
 export async function getFavoriteArticle(){
   const result = await GET("favorites/") ;
-  console.log(result.body.results);
   return {
     isError: result.isError,
     body: result.body,
@@ -35,7 +34,6 @@ export async function getFavoriteArticle(){
 
 export async function deleteFavorite(body){
   const result = await DELETE(`favorites/articles/delete/` , JSON.stringify(body)) ;
-  console.log(result.body) ;
   return{
     isError: result.isError,
     body: result.body,

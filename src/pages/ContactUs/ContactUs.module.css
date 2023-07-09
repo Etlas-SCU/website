@@ -102,18 +102,6 @@
     height: 99.5%;
 }
 
-/* .title_popup{
-    padding: 40px 0 20px 0;
-    color: var(--mainColor);
-
-}
-
-.prag_popup{
-    color: var(--mainColor);
-    font-size: 15px;
-    font-weight: 500;
-} */
-
 @media only screen and (max-width: 1000px){
     .contact_eimg{
         display: none;

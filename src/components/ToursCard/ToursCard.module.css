@@ -26,7 +26,8 @@
     width: 95% ;
     height: 170px;
     margin-right: 5px ;
-    border-radius: 15px;
+    border-radius: 15px 0 0 15px;
+    object-fit: cover;
 }
 
 .tours_sec2{

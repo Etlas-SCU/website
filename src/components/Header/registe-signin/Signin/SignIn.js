@@ -53,7 +53,6 @@ export default function SignIn() {
         if(result.body.detail === "Email is not verified"){
           setOtp(true);
         }
-        console.log(result.body)
       }
     });
   }

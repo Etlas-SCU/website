@@ -5,7 +5,7 @@ import Nav from "./components/Header/Nav.js";
 import Download from "./pages/Download/Download";
 import AboutUs from "./pages/About/AboutUs";
 import KnowHistory from "./pages/TimeLine/KnowHistory";
-import { Context, Provider } from "./components/Context/Context";
+import { Provider } from "./components/Context/Context";
 import Articles from "./pages/Articles/Articles";
 import Tours from "./pages/Tours/Tours";
 import ArticleInfo from "./pages/ArticleInfo/ArticleInfo";
@@ -24,7 +24,6 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // localStorage.removeItem("access");
   }, [pathname]);
 
   return (

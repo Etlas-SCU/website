@@ -6,7 +6,6 @@ import Stars from '../Stars/Stars'
 import { Fade } from 'react-awesome-reveal';
 
 export default function ToursCard({ id ,tour }) {
-    console.log(tour)
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {

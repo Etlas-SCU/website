@@ -1,12 +1,12 @@
 import { Pagination, Stack } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import filter from "../../images/Icons/Filter.png";
 import SearchInput from "../SearchInput/SearchInput";
 import styles from "./PageOutLine.module.css";
 import { Context } from "../Context/Context";
 
 export default function PageOutLine({ children, value }) {
-  const {pageNum, setPageNum } = useContext(Context);
+  const { setPageNum } = useContext(Context);
 
   const handleChange=(e,p)=>{
     setPageNum(p)

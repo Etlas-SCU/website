@@ -2,6 +2,7 @@ import { GET, Put } from "../helpers/apiService";
 
 export async function getQuestionsByTitle(title) {
     const result = await GET(`questions/${title.toLowerCase()}/`);
+    console.log(result.body)
     return result;
 }
 

@@ -3,7 +3,7 @@ import OTPInput from "react-otp-input";
 import { Box, Typography } from "@mui/material";
 import styles from "../Header/registe-signin/Signin/sign_reg.module.css";
 import { Context } from "../Context/Context";
-import { PasswordResetOtp, RequestOtp, emailVerify } from "../../repositories/authRepo";
+import { RequestOtp, emailVerify } from "../../repositories/authRepo";
 import MPopUp from "../PopUp_Message/error/MPopUp";
 
 export default function Otp(props) {

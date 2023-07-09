@@ -37,7 +37,6 @@ export default function ToursInfo(props) {
   }
   useEffect(() => {
     getTour(id);
-    console.log(tour);
   }, []);
 
   SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);

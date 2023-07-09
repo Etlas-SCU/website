@@ -4,26 +4,15 @@ import React, { useState, useEffect } from 'react';
 import Pic from '../../images/Pics/pic1.png'
 import Status from '../../images/Pngs/hat-stock 1.png'
 import { Skeleton } from '@mui/material';
-// import { getTerms , isSuccessfulRequest } from '../../helpers/apiService';
-// import DOMPurify from 'dompurify';
 
 export default function Terms(props) {
 
     const [isLoading, setIsLoading] = useState(true);
-    // const [terms , setTerms] = useState(null) ;
 
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
         }, 2000);
-        // async function fetchData (){
-        //     const {statusCode , data} = await getTerms() ;
-        //     setIsLoading(false) ;
-        //     if(isSuccessfulRequest(statusCode)){
-        //         setTerms(DOMPurify.sanitize(data)) ;
-        //     }
-        // }
-        // fetchData() ;
     }, []);
 
 

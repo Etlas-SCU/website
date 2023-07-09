@@ -80,7 +80,6 @@ export default function ForgetPass() {
         setTimeout(() => {
           setButtonPopup(false);
         }, 2000);
-        console.log(res.body)
       }
     });
   };

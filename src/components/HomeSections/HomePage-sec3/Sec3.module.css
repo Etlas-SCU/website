@@ -57,12 +57,12 @@
 .disCont::after{
     content: '';
     position: absolute;
-    bottom: -12px;
-    left: -33px;
-    width: 100%;
-    height: 45px;
+    bottom: -26px;
+    left: -13px;
+    width: 110%;
+    height: 60px;
     background-color: #dfdadafc;
-    filter: blur(15px);
+    filter: blur(9px);
 }
 
 .slider__title {
