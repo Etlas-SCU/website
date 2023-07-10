@@ -52,9 +52,7 @@ export default function ArticleInfo() {
     isFav()
   }, []);
 
-  // useEffect(() => {
-  //  console.log("hi")
-  // }, [isClicked]);
+  
   async function handleAddFav(jsonBody) {
     setLoading(true)
     const result = await addFav(jsonBody);
@@ -64,7 +62,7 @@ export default function ArticleInfo() {
       setPopup(<MPopUp type="done">the article added to your favorite</MPopUp>);
     } else {
       setMassagePopup(true);
-      setPopup(<MPopUp type="warning">{result.body.response.data.message} </MPopUp>);
+      setPopup(<MPopUp type="error">{result.body.response.data.detail} </MPopUp>);
     }
   }
 
@@ -77,7 +75,7 @@ export default function ArticleInfo() {
       setPopup(<MPopUp type="done">the article removed from your favorite</MPopUp>);
     } else {
       setMassagePopup(true);
-      setPopup(<MPopUp type="error">can't remove the article </MPopUp>);
+      setPopup(<MPopUp type="error">{result.body.response.data.detail} </MPopUp>);
     }
   }
 
@@ -91,7 +89,6 @@ export default function ArticleInfo() {
       handleDelFav(id);
     }
     setIsClicked(!isClicked);
-    console.log(isClicked)
   }
 
   return (
