@@ -2,7 +2,6 @@ import React from 'react';
 import Style from './PopUp.module.css'
 import { Stack, Box } from '@mui/material';
 import Close from '../../images/Icons/close.png';
-import popup_image from '../../images/Icons/Contact Us Pop up Check.png';
 
 export default function PopUp(props) {
     return (
