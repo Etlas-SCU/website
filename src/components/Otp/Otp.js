@@ -10,7 +10,6 @@ export default function Otp(props) {
   const [otp, setOtp] = useState("");
   const { setButtonPopup, setMassagePopup ,step,setStep} = useContext(Context);
   const [popup, setPopup] = useState(null);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     var jsonBody = {
@@ -69,6 +68,7 @@ export default function Otp(props) {
               color: "#55c4e0",
               textDecoration: "underline",
               fontSize: "12px",
+              cursor:"pointer"
             }}
             onClick={handleResendOtp}
           >

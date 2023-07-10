@@ -27,7 +27,7 @@ export default function Nav() {
     setButtonPopup,
     LogIn,
     setLogIn,
-    userData
+    userData,
   } = useContext(Context);
 
   const NavList = (
@@ -64,7 +64,7 @@ export default function Nav() {
       refresh: localStorage.getItem("refresh"),
     };
     Logout(jsonBody).then((res) => {
-      setLogIn(false)
+      setLogIn(false);
     });
   };
 
@@ -240,15 +240,11 @@ export default function Nav() {
               display="flex"
               p="10px 35px"
               alignItems="center"
-              width={LogIn ? "78%" : "95%"}
+              width={LogIn ? "87%" : "95%"}
             >
               {NavList}
               {LogIn ? (
-                <Box
-                  width="29%"
-                  display="flex"
-                  alignItems="center"
-                >
+                <Box width="36%" display="flex" alignItems="center">
                   <Stack direction="row" gap="4px">
                     <NavLink
                       to="/profile"
@@ -262,24 +258,45 @@ export default function Nav() {
                         }
                         style={{ width: "18%", borderRadius: "50%" }}
                       />
-                        &nbsp;
-                        {userData != null && userData.full_name != null && userData.full_name != null
-                          ? <Stack>{userData.full_name.split(" ")[0]}<p style={{fontSize:"0.5vw"}}>{userData.email}</p></Stack>
-                          : ""}
+                      &nbsp;
+                      {userData != null &&
+                      userData.full_name != null &&
+                      userData.full_name != null ? (
+                        <Stack>
+                          {userData.full_name.split(" ")[0]}
+                          <p style={{ fontSize: "0.5vw" }}>{userData.email}</p>
+                        </Stack>
+                      ) : (
+                        ""
+                      )}
                     </NavLink>
                   </Stack>
+
+                  <Stack direction="row" gap="10px">
+                  <NavLink to="/pricing">
+                    <button
+                      style={{
+                        margin: "0 auto",
+                        display: "block",
+                        backgroundColor: "#003441",
+                      }}
+                      className={styles.nav__list__btn}
+                    >
+                      Pricing
+                    </button>
+                  </NavLink>
 
                   <button
                     style={{
                       margin: "0 auto",
                       display: "block",
-                      backgroundColor: "#003441",
                     }}
                     onClick={handelLogout}
                     className={styles.nav__list__btn}
                   >
                     LogOut
                   </button>
+                  </Stack>
                 </Box>
               ) : (
                 <>

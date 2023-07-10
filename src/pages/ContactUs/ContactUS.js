@@ -4,7 +4,6 @@ import { Box, Stack } from '@mui/material';
 import Econtact1 from '../../images/Pngs/e(contactus).png'
 import Econtact2 from '../../images/Pngs/e(contactus)2.png'
 import Statue from '../../images/Pngs/Statue(Contact Us).png'
-import PopUp from '../../components/PopUp_Message/PopUp';
 import { Field, Formik, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { ContactUs } from '../../repositories/ContactUsRepo';
