@@ -1,4 +1,4 @@
-import {GET , Patch , DELETE} from '../helpers/apiService' ;
+import {GET , Patch , DELETE , Put} from '../helpers/apiService' ;
 
 export async function getUserInfo(){
     const result = await GET("users/") ;
@@ -32,8 +32,16 @@ export async function getFavoriteArticle(){
   }
 }
 
-export async function deleteFavorite(body){
-  const result = await DELETE(`favorites/articles/delete/` , JSON.stringify(body)) ;
+export async function deleteFavorite(id){
+  const result = await DELETE(`favorites/article/delete/${id}/`) ;
+  return{
+    isError: result.isError,
+    body: result.body,
+  }
+}
+
+export async function changePassword(body){
+  const result = await Put("users/change-password/" ,  JSON.stringify(body) ) ;
   return{
     isError: result.isError,
     body: result.body,

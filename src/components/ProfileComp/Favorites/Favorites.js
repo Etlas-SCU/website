@@ -21,6 +21,12 @@ export default function Favorites() {
     const [popup, setPopup] = useState(null);
     const { setMassagePopup } = useContext(Context);
 
+    
+    const handleRefresh = () => {
+        window.location.reload();
+    };
+    
+
     const [favorites, setFavorite] = useState([]);
 
     const swiperRef = React.useRef(null);
@@ -49,22 +55,21 @@ export default function Favorites() {
         getFavorite();
     }, []);
 
-    useEffect( () => {
-        async function DeleteFav(body) {
-            const result = await deleteFavorite(body);
-            if (!result.isError) {
-              setMassagePopup(true);
-              setPopup(<MPopUp type="done">The article removed from your Favorite</MPopUp>);
-            } else {
-              setMassagePopup(true);
-              setPopup(<MPopUp type="error">The article can't remove from your Favorite </MPopUp>);
-            }
+    async function DeleteFav(id) {
+        const result = await deleteFavorite(id);
+        if (!result.isError) {
+            setMassagePopup(true);
+            setPopup(<MPopUp type="done">The article removed from your Favorite</MPopUp>);
+            handleRefresh() ;
+        } else {
+            setMassagePopup(true);
+            setPopup(<MPopUp type="error">The article can't remove from your Favorite </MPopUp>);
         }
-        DeleteFav();
-    },[])
+    }
 
     return (
         <Stack>
+            {popup}
             <Swiper
                 ref={swiperRef}
                 autoplay={false}
@@ -121,7 +126,7 @@ export default function Favorites() {
                                                         <img src={Arrow} className={Style.arrow_icon} alt='arrow'/>
                                                     </Link>
                                                 </button>
-                                                <button className={Style.del_btn}>
+                                                <button className={Style.del_btn} onClick={() => DeleteFav(favorite.id)}>
                                                     <img src={Delete} alt='delete' className={Style.delete_icon} />
                                                 </button>
                                             </Box>

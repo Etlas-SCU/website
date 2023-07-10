@@ -151,7 +151,7 @@ export default function ToursInfo(props) {
                 <br />
               </Box>
               <Box className={Style.popup_star}>
-                <Stars rating={0} />
+                <Stars rating={3} />
               </Box>
             </PopUp>
             <br />

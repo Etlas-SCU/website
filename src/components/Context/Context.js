@@ -184,14 +184,6 @@ export const Provider = (props) => {
     setLogIn(access !== null);
   }, [access]);
 
-  // useEffect(() => {
-  //   if (LogIn !== null) {
-  //     refreshToken();
-  //   }
-  //   setInterval(refreshToken, 3 * 60 * 1000);
-  //   timeline();
-  // }, []);
-
   async function timeline() {
     const result = await getTimeLine();
     if (!result.isError) {
